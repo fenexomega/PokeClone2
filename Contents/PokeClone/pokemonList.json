@@ -1,0 +1,8 @@
+{
+    "pokemons":[
+        {
+            "name":"Bulbasaur",
+            "type":["grass"],
+            
+        }]
+}
