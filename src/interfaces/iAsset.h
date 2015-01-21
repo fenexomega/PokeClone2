@@ -13,11 +13,10 @@ class iAsset
 private:
 
 public:
-    std::string filePath;
     int id;
 
-    iAsset(std::string _filePath,int _id)
-        : filePath(_filePath), id(_id) {}
+    iAsset(int _id)
+        : id(_id) {}
 
 };
 

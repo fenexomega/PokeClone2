@@ -1,10 +1,11 @@
 #include "sysGraphics.h"
 
+#include <SDL2/SDL_ttf.h>
 
 bool sysGraphics::Init()
 {
 
-    if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    if(SDL_Init(SDL_INIT_VIDEO) || TTF_Init() < 0)
     {
         uLOG("ERROR: Graphics cannot be initialized.\n " << SDL_GetError());
         return false;

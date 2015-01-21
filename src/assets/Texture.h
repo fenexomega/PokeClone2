@@ -16,7 +16,10 @@ public:
     Texture(std::string path);
 //    Texture( int width,  int height,SDL_Texture *tex);
     void Render(int x, int y);
+    void Render(Rect rect);
     void Scale(float w,float h);
+    Texture(SDL_Texture *tex);
+    SDL_Texture* setTexture(SDL_Texture *tex);
     Texture operator=(Texture &tex);
     Rect getRect() const;
     ~Texture();

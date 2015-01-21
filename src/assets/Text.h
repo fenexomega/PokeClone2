@@ -6,16 +6,21 @@
 
 #include "assets/Texture.h"
 #include "interfaces/iAsset.h"
-
+#include "graphics/Color.h"
 
 class Text : iAsset
 {
 private:
-    std::shared_ptr<TTF_Font> font;
-    int textSize;
-    Rect rect;
+    TTF_Font* m_font;
+    int m_textSize;
+    Rect m_rect;
+    std::string m_text;
+    Texture *m_tex;
+    Color m_color;
 public:
-    Text(std::string _path,int _textSize,Rect _rect);
+    Text(std::string _path,std::string _text,int _textSize,Rect _rect,Color _color);
+    void Render();
+    Texture * setText(std::string _text);
     ~Text();
 };
 

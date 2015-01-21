@@ -6,6 +6,7 @@
 #include "debuggames/MouseTest.h"
 #include "debuggames/BackgroundScrolling.h"
 #include "debuggames/ButtonTest.h"
+#include "debuggames/TextTest.h"
 
 /*@TODO
 
@@ -17,7 +18,7 @@
   */
 int main()
 {
-    MouseTest game;
+    TextTest game;
     Engine::Run(&game);
     return 0;
 }
