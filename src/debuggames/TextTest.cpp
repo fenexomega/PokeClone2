@@ -18,13 +18,19 @@ TextTest::~TextTest()
 void TextTest::Init()
 {
     text = new Text("Contents/UbuntuMono-B.ttf",
-                    "TEXTO LINDO.",
-                    72,Rect(0,0,200,72),
+                    "TEXTO LINDO DEMAIS.",
+                    72,
                     Color(255,255,255,255));
+    Text *tex1 = new Text("Contents/UbuntuMono-B.ttf",
+                          "Pressionar",
+                          16,
+                          Color(0,255,0,255));
     bt = new Button(100,100,
                     new Texture("Contents/button.png"),
                     new Texture("Contents/buttonMouseOver.png"),
-                    new CommandTextChanger(text));
+                    new CommandTextChanger(text),
+                    tex1);
+
 }
 
 void TextTest::Update(float dt)
@@ -36,7 +42,7 @@ void TextTest::Update(float dt)
 void TextTest::Draw()
 {
     bt->Draw();
-    text->Render();
+    text->Render(0,0);
 }
 
 void TextTest::Dispose()

@@ -6,7 +6,7 @@
 #include "interfaces/iComponent.h"
 #include "interfaces/iCommand.h"
 #include "assets/Texture.h"
-
+#include "assets/Text.h"
 
 class Button : public iComponent
 {   
@@ -20,7 +20,7 @@ public:
 
     };
 
-    Button(int x, int y, Texture *normal,Texture *mouseOver,iCommand* command);
+    Button(int x, int y, Texture *normal,Texture *mouseOver,iCommand* command = nullptr,Text *text = nullptr);
     void RegisterCommand(iCommand* command);
     ~Button();
 
@@ -33,6 +33,7 @@ private:
     std::vector<Texture *> textures;
     Rect rect;
     int state;
+    Text *m_text;
 };
 
 #endif // BUTTON_H

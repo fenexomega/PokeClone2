@@ -4,13 +4,14 @@
 #include "systems/sysPhysics.h"
 
 Button::Button(int x, int y, Texture *normal, Texture *mouseOver
-               , iCommand* command)
+               , iCommand* command, Text *text)
 {
     rect = normal->getRect();
     rect.x = x;
     rect.y = y;
     textures.push_back(normal);
     textures.push_back(mouseOver);
+    m_text = text;
     RegisterCommand(command);
 }
 
@@ -21,6 +22,7 @@ void Button::RegisterCommand(iCommand *command)
 
 Button::~Button()
 {
+
 }
 
 
@@ -36,7 +38,11 @@ void Button::Update(iGameObject &obj)
     {
         state = STATE_MOUSE_OVER;
         if(leftbutton)
-            command->Run();
+        {
+            if(command != nullptr)
+                command->Run();
+
+        }
 
     }
     else
@@ -49,4 +55,7 @@ void Button::Update(iGameObject &obj)
 void Button::Draw()
 {
     textures[state]->Render(rect.x,rect.y);
+    if(m_text != nullptr)
+        m_text->Render( rect.x + (rect.w/2 - m_text->rect().w/2),
+                   rect.y + (rect.h/2 - m_text->rect().h/2) );
 }

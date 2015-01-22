@@ -1,28 +1,30 @@
 #include "Engine.h"
-#include <unistd.h>
+
+#include "gSystems.h"
 #include "graphics/Window.h"
 
-extern SDL_Event event;
+
+Engine::Engine()
+{
+    systems.push_back(new sysGraphics);
+    systems.push_back(new sysSound);
+//    systems.push_back(new sysInput);
+
+}
 
 bool Engine::InitSystems()
 {
-    bool allGreat;
-    allGreat = sysGraphics::Init();
-    if(allGreat)
-    {
-        uLOG("All Systems Initialized. ");
-        return true;
-    }
-
-    uLOG("Errors occurried. Closing :(");
-    return false;
+    for(iSystem* i : systems)
+        i->Init();
+    return true;
 }
 
 
 void Engine::ShutSystems()
 {
     //sysGraphics MUST be the last to shut.
-    sysGraphics::Shut();
+    for(iSystem* i : systems)
+        i->Dispose();
 }
 
 int Engine::Run(iGame *game)
@@ -69,6 +71,7 @@ int Engine::Run(iGame *game)
 
     }
     game->Dispose();
+    win.Destroy();
     ShutSystems();
     return 0;
 }

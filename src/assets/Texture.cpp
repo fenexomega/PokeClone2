@@ -37,11 +37,13 @@ Texture::Texture(SDL_Texture *tex) : iAsset(AS_TEXTURE)
 
 }
 
-SDL_Texture *Texture::setTexture( SDL_Texture* tex)
+void Texture::setTexture( SDL_Texture* tex)
 {
     SDL_DestroyTexture(m_tex);
     m_tex = tex;
     SDL_QueryTexture(m_tex,NULL,NULL,&m_rect.w,&m_rect.h);
+    m_rect.x = 0;
+    m_rect.y = 0;
 
 }
 

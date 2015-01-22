@@ -3,17 +3,28 @@
 #include "io/FileLoader.h"
 #include "graphics/Window.h"
 
-Text::Text(std::string _path, std::string _text, int _textSize, Rect _rect, Color _color) :
-    iAsset(AS_FONT), m_text(_text), m_textSize(_textSize), m_rect(_rect),m_color(_color)
+
+Rect Text::rect() const
+{
+    return m_rect;
+}
+
+Text::Text(std::string _path, std::string _text, int _textSize, Color _color) :
+    iAsset(AS_FONT), m_textSize(_textSize), m_text(_text),m_color(_color)
 {
     m_font = FileLoader::LoadFont(_path,m_textSize);
     setText(_text);
 }
 
-void Text::Render()
+void Text::Render(int x, int y)
 {
-    m_tex->Render(m_rect);
+    m_tex->Render(x,y);
 }
+
+//void Text::Render()
+//{
+//    m_tex->Render(m_rect);
+//}
 
 Texture *Text::setText(std::string _text)
 {
@@ -22,6 +33,7 @@ Texture *Text::setText(std::string _text)
     SDL_Texture *tex = SDL_CreateTextureFromSurface(Window::getActiveRenderer(),surface);
     m_tex = new Texture(tex);
     SDL_FreeSurface(surface);
+    m_rect = m_tex->getRect();
     return m_tex;
 }
 

@@ -1,7 +1,6 @@
 #include "Rects.h"
 
 #include "graphics/Drawer.h"
-#include "util/uRandom.h"
 
 void Rects::Init()
 {

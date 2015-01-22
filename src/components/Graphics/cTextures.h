@@ -2,8 +2,7 @@
 #define CTEXTURES_H
 
 #include <iostream>
-#include "SDL2/SDL.h"
-#include "systems/sysGraphics.h"
+#include <SDL2/SDL.h>
 
 class cTextures
 {

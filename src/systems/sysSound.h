@@ -1,13 +1,19 @@
 #ifndef SYSSOUND_H
 #define SYSSOUND_H
 
-#include "sysFlags.h"
+#include <iostream>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
+#include "interfaces/iSystem.h"
 
-class sysSound
+
+class sysSound : public iSystem
 {
 public:
-    sysSound();
+    // iSystem interface
     bool Init();
+    void Update();
+    void Dispose();
 };
 
 #endif // SOUND_H

@@ -19,7 +19,9 @@
 int main()
 {
     TextTest game;
-    Engine::Run(&game);
+
+    Engine engine;
+    engine.Run(&game);
     return 0;
 }
 

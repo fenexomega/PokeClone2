@@ -18,10 +18,10 @@ void cTextures::Render(int x, int y)
 {
     rect.x = x;
     rect.y = y;
-    sysGraphics::renderTexture(texture,rect);
+//    sysGraphics::renderTexture(texture,rect);
 }
 
 void cTextures::Render()
 {
-    sysGraphics::renderTexture(texture,rect);
+//    sysGraphics::renderTexture(texture,rect);
 }

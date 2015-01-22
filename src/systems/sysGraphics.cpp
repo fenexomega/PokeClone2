@@ -1,38 +1,32 @@
 #include "sysGraphics.h"
 
+#include <iostream>
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
 bool sysGraphics::Init()
 {
 
-    if(SDL_Init(SDL_INIT_VIDEO) || TTF_Init() < 0)
+    if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-        uLOG("ERROR: Graphics cannot be initialized.\n " << SDL_GetError());
+        std::cerr << SDL_GetError() << std::endl;
+        return false;
+    }
+    if(TTF_Init() < 0)
+    {
+        std::cerr << TTF_GetError() << std::endl;
         return false;
     }
     return true;
 }
 
+
 void sysGraphics::Update()
 {
-//    SDL_RenderPresent(renderer);
 }
 
-void sysGraphics::renderTexture(SDL_Texture *texture, SDL_Rect rect)
+
+
+void sysGraphics::Dispose()
 {
-//    SDL_RenderCopy(renderer, texture, NULL, &rect);
 }
-
-void sysGraphics::Shut()
-{
-//    SDL_DestroyRenderer(renderer);
-//    SDL_DestroyWindow(screen);
-}
-
-void sysGraphics::clearScreen(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
-{
-//    SDL_SetRenderDrawColor(renderer,r,g,b,a);
-//    SDL_RenderClear(renderer);
-}
-
-

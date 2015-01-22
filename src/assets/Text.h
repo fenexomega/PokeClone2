@@ -18,10 +18,11 @@ private:
     Texture *m_tex;
     Color m_color;
 public:
-    Text(std::string _path,std::string _text,int _textSize,Rect _rect,Color _color);
-    void Render();
+    Text(std::string _path, std::string _text, int _textSize = 16, Color _color = COLORBLACK);
+    void Render(int x, int y);
     Texture * setText(std::string _text);
     ~Text();
+    Rect rect() const;
 };
 
 #endif // TEXT_H

@@ -29,8 +29,7 @@ void Window::setHeight(int value)
 
 Window::~Window()
 {
-    SDL_DestroyRenderer(SDLrenderer);
-    SDL_DestroyWindow(SDLwindow);
+
 }
 
 SDL_Renderer* Window::getActiveRenderer()
@@ -48,6 +47,12 @@ bool Window::UserWannaQuit()
     SDL_Event e;
     SDL_PollEvent(&e);
     return e.type == SDL_QUIT;
+}
+
+void Window::Destroy()
+{
+    SDL_DestroyRenderer(SDLrenderer);
+    SDL_DestroyWindow(SDLwindow);
 }
 
 void Window::appendTitle(std::string st)

@@ -20,6 +20,7 @@ public:
 
     void SwapBuffers();
     bool UserWannaQuit();
+    void Destroy();
 
     static void appendTitle(std::string st);
     static void clearScreen(uint8_t r, uint8_t g, uint8_t b,uint8_t a);
