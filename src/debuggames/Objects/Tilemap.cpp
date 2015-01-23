@@ -4,6 +4,9 @@
 
 #define PRINT(X) std::cout << X << std::endl
 
+//TODO Pegar as otras coisas do json que podem ser relevantes
+//TODO ver como renderizar esses tiles no mapa
+
 Tilemap::Tilemap(std::string jsonFile)
 {
     Json::Value json, *object = FileLoader::LoadJson(jsonFile);
@@ -18,9 +21,29 @@ Tilemap::Tilemap(std::string jsonFile)
         m_tex.push_back(new Texture("Contents/" + json["tilesets"][i]["image"].asString()));
     }
 
+    Json::Value jsonLayers = json["layers"];
+    ArraySize = jsonLayers.size();
+
+    for(int i = 0; i < ArraySize; ++i)
+    {
+        Layer l1;
+        l1.size = Vector2D<int>(jsonLayers[i]["width"].asInt(),jsonLayers[i]["height"].asInt());
+        l1.visible = jsonLayers[i]["visible"].asBool();
+
+        for(auto iit = jsonLayers[i]["data"].begin();
+            iit != jsonLayers[i]["data"].end();
+            ++iit)
+        {
+                l1.data.push_back((*iit).asInt());
+        }
+
+        layers.push_back(l1);
+    }
 
 
-    std::cout << m_size << std::endl;
+    PRINT(layers.size());
+
+//    std::cout << m_size << std::endl;
 }
 
 Tilemap::~Tilemap()

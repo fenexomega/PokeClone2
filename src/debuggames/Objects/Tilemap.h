@@ -11,7 +11,7 @@
 typedef struct{
     std::vector<Uint16> data;
     Vector2D<int> size;
-
+    bool visible;
 }Layer;
 
 class Tilemap : public iGameObject
