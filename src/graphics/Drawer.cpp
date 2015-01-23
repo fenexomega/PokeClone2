@@ -49,3 +49,9 @@ void Drawer::renderTexture(SDL_Texture *texture, SDL_Rect *rect)
 
 }
 
+void Drawer::renderTexture(SDL_Texture *texture, SDL_Rect *srcrect, SDL_Rect *destrect)
+{
+    SDL_RenderCopy(RENDERER, texture,srcrect,destrect);
+
+}
+

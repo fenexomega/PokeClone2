@@ -19,6 +19,8 @@ public:
 //    Texture( int width,  int height,SDL_Texture *tex);
     void Render(int x, int y);
     void Render(Rect rect);
+    void Render(Rect srcrect,Rect destrect);
+
     void Scale(float w,float h);
     Texture(SDL_Texture *tex);
     void setTexture(SDL_Texture *tex);

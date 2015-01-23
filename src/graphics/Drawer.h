@@ -12,6 +12,7 @@ private:
     Drawer();
     ~Drawer();
     static void renderTexture(SDL_Texture* texture,SDL_Rect *rect);
+    static void renderTexture(SDL_Texture* texture,SDL_Rect *srcrect,SDL_Rect *destrect);
 public:
     //Renderizar textura.
 

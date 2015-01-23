@@ -24,6 +24,14 @@ void Texture::Render(Rect rect)
     Drawer::renderTexture(m_tex,&aux);
 }
 
+void Texture::Render(Rect srcrect, Rect destrect)
+{
+    SDL_Rect aux = srcrect.To_SDLRect();
+    SDL_Rect aux1 = destrect.To_SDLRect();
+
+    Drawer::renderTexture(m_tex,&aux,&aux1);
+}
+
 void Texture::Scale(float w, float h)
 {
    m_rect.w *= w;

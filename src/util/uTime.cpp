@@ -1,5 +1,7 @@
 #include "uTime.h"
 
+#include "util/Logger.h"
+
 uTime::uTime()
 {
     currentTime = oldTime = SDL_GetTicks();
@@ -14,5 +16,9 @@ void uTime::Update()
 
 float uTime::getDeltaTime()
 {
-    return dt;
+    //TODO fazer esse delta time direito
+    double value = 0.017f; //60.0f/1000.0f;
+    LOG("DT = " + TOSTR(dt) + " | VALUE =  " + TOSTR(value));
+    return dt >= value ? dt : value ;
+//    return dt;
 }

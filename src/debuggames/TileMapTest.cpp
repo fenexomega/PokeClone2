@@ -23,8 +23,10 @@ void TileMapTest::Update(float dt)
 
 void TileMapTest::Draw()
 {
+    tilemap->Draw();
 }
 
 void TileMapTest::Dispose()
 {
+    delete tilemap;
 }

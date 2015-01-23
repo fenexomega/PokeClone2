@@ -2,7 +2,7 @@
 
 #include "gSystems.h"
 #include "graphics/Window.h"
-
+#include "util/Logger.h"
 
 Engine::Engine()
 {
@@ -33,8 +33,11 @@ int Engine::Run(iGame *game)
     float seconds = 0,dt;
     uTime timer;
 
+    Logger::CreateLogFile();
+
     if(!InitSystems())
         return -1;
+
 
     Window win(800,600,"PokeClone");
 
@@ -46,6 +49,7 @@ int Engine::Run(iGame *game)
         timer.Update();
 
         dt = timer.getDeltaTime();
+        SDL_Delay(dt);
 
         seconds += dt;
         framerate++;
@@ -73,5 +77,7 @@ int Engine::Run(iGame *game)
     game->Dispose();
     win.Destroy();
     ShutSystems();
+    Logger::CloseLogFile();
+
     return 0;
 }

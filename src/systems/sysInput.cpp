@@ -17,8 +17,6 @@ void sysInput::update()
     SDL_PumpEvents();
     keys = SDL_GetKeyboardState(NULL);
     int i;
-    //TODO Mouse Unput!
-
 
     mouseUpKeys.clear();
     for(i = 0; i < 4; i++)

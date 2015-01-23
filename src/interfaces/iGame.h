@@ -9,7 +9,10 @@ class iGame
 public:
     virtual void Init() = 0;
     virtual void Update(float dt) = 0;
+
+    //TODO isso daqui deveria receber uma textura para desenhar
     virtual void Draw() = 0;
+
     virtual void Dispose() = 0;
 };
 
