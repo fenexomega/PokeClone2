@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
-
 class Window
 {
 private:
@@ -31,7 +30,5 @@ public:
 
 
 };
-
-
 
 #endif // WINDOW_H

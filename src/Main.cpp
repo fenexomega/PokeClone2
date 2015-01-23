@@ -7,6 +7,7 @@
 #include "debuggames/BackgroundScrolling.h"
 #include "debuggames/ButtonTest.h"
 #include "debuggames/TextTest.h"
+#include "debuggames/TileMapTest.h"
 
 /*@TODO
 
@@ -18,7 +19,7 @@
   */
 int main()
 {
-    TextTest game;
+    TileMapTest game;
 
     Engine engine;
     engine.Run(&game);

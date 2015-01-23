@@ -39,10 +39,10 @@ Json::Value* FileLoader::LoadJson(std::string path)
     std::ifstream file;
     file.open(path.c_str());
     if(!file.is_open())
-        ;
+        std::cerr << "Não conseguiu abrir" << std::endl;
 
     if(reader.parse(file,*root,false) == false)
-        ; //LOG ERROR reader.gerFormattedErrorMessages()
+        std::cerr << "Problema no json" << std::endl; //LOG ERROR reader.gerFormattedErrorMessages()
 
     return root;
 }

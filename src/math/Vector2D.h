@@ -2,6 +2,7 @@
 #define VECTOR2D_H
 
 #include <cmath>
+#include <iostream>
 
 template <class TYPE>
 class Vector2D
@@ -27,5 +28,11 @@ public:
     }
 
 };
+
+template <class TYPE>
+std::ostream& operator<<(std::ostream& ost,Vector2D<TYPE> vec)
+{
+    return ost << "{ " << vec.x << ", " << vec.y << " }";
+}
 
 #endif // VECTOR2D_H
