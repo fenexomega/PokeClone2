@@ -11,9 +11,14 @@ find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 
-add_executable(game ${SRC_THIRDPARTIES}  ${SRC_FILES} )
+# Para não compilar esses arquivos
+set_source_files_properties(${JSON_FILES} PROPERTIES HEADER_FILE_ONLY TRUE)
+
+
+add_executable(game ${SRC_THIRDPARTIES}  ${SRC_FILES} ${JSON_FILES} )
 
 include_directories(src/ ThirdParties/ ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} )
+
 
 set(CMAKE_CXX_FLAGS "-Wall -std=c++11")
 
