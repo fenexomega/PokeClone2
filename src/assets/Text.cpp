@@ -3,6 +3,7 @@
 #include "io/FileLoader.h"
 #include "graphics/Window.h"
 
+#include "graphics/Drawer.h"
 
 Rect Text::rect() const
 {
@@ -18,7 +19,7 @@ Text::Text(std::string _path, std::string _text, int _textSize, Color _color) :
 
 void Text::Render(int x, int y)
 {
-    m_tex->Render(x,y);
+    Drawer::Render(m_tex,x,y);
 }
 
 //void Text::Render()

@@ -3,6 +3,8 @@
 #include "systems/sysInput.h"
 #include "systems/sysPhysics.h"
 
+#include "graphics/Drawer.h"
+
 Button::Button(int x, int y, Texture *normal, Texture *mouseOver
                , iCommand* command, Text *text)
 {
@@ -24,8 +26,6 @@ Button::~Button()
 {
 
 }
-
-
 
 void Button::Update(iGameObject &obj)
 {
@@ -54,7 +54,7 @@ void Button::Update(iGameObject &obj)
 
 void Button::Draw()
 {
-    textures[state]->Render(rect.x,rect.y);
+    Drawer::Render(textures[state],rect.x,rect.y);
     if(m_text != nullptr)
         m_text->Render( rect.x + (rect.w/2 - m_text->rect().w/2),
                    rect.y + (rect.h/2 - m_text->rect().h/2) );

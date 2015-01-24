@@ -2,7 +2,7 @@
 #define TILEMAPTEST_H
 
 #include "interfaces/iGame.h"
-#include "Objects/Tilemap.h"
+#include "TileMapTest/Tilemap.h"
 
 class TileMapTest : public iGame
 {

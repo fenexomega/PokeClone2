@@ -2,6 +2,7 @@
 #define RECT_H
 
 #include <SDL2/SDL.h>
+#include "math/Vector2D.h"
 
 class Rect
 {
@@ -14,6 +15,19 @@ public:
         : x(_x), y(_y), w(_w), h(_h)
     {
 
+    }
+
+    inline Rect operator+(Vector2D<int> vec)
+    {
+        Rect r(x + vec.x, y + vec.y, w,h);
+        return r;
+    }
+
+    inline Rect& operator+=(Vector2D<int> vec)
+    {
+        x += vec.x;
+        y += vec.y;
+        return *this;
     }
 
     bool operator==(Rect rect)

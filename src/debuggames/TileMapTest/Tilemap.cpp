@@ -2,9 +2,12 @@
 
 #include "io/FileLoader.h"
 #include "graphics/Window.h"
+#include "graphics/Drawer.h"
 #define PRINT(X) std::cout << X << std::endl
 
 //TODO Pegar as otras coisas do json que podem ser relevantes
+
+
 
 Tilemap::Tilemap(std::string jsonFile)
 {
@@ -17,12 +20,14 @@ Tilemap::Tilemap(std::string jsonFile)
     m_tileSize.y = json["tilewidth"].asInt();
 
 
+    m_pos.x = 0;
+    m_pos.y = 0;
 
     int ArraySize = json["tilesets"].size();
     PRINT(ArraySize);
     for(int i = 0; i < ArraySize ; ++i)
     {
-        m_tileImages.push_back(TileImage(new Texture("Contents/" + json["tilesets"][i]["image"].asString()),
+        m_tileImages.push_back(new TileImage(new Texture("Contents/" + json["tilesets"][i]["image"].asString()),
                                         json["tilesets"][i]["name"].asString(),
                                         Vector2D<int>(json["tilesets"][i]["imagewidth"].asInt(),
                                                       json["tilesets"][i]["imageheight"].asInt()) ));
@@ -47,14 +52,21 @@ Tilemap::Tilemap(std::string jsonFile)
         layers.push_back(l1);
     }
 
-
-    PRINT(layers.size());
+    tileTexture = new Texture(m_tileImages[0]->tex->acess(),
+            m_size.x * m_tileSize.x,
+            m_size.y * m_tileSize.y);
 
 //    std::cout << m_size << std::endl;
+    generateTileMap();
+
+    delete object;
 }
 
 Tilemap::~Tilemap()
 {
+    delete tileTexture;
+    for (auto i : m_tileImages)
+        delete i;
 
 }
 
@@ -65,25 +77,28 @@ void Tilemap::SendMessage(MSG msg)
 
 void Tilemap::Update(float dt)
 {
-
+    input.Update(*this);
 }
 
 void Tilemap::Draw()
 {
+    Drawer::Render(tileTexture,m_pos);
+}
+
+void Tilemap::generateTileMap()
+{
+    Drawer::RenderTo(tileTexture);
     Rect srcrect;
     Rect destrect;
-
-//    Vector2D<int> tilesInScreen(Window::getWidth()/m_tileSize.x,
-//                                Window::getHeight()/m_tileSize.y);
-
+    Drawer::clearScreen(0,0,0,255);
     //TODO Otimizar esse código
     for(Layer layer : layers)
     {
         //Pegar o tamanho da imagem em tiles
-        Vector2D<int> imageSizeIT(m_tileImages[0].size.x / m_tileSize.x,
-                                  m_tileImages[0].size.y / m_tileSize.y);
+        Vector2D<int> imageSizeIT(m_tileImages[0]->size.x / m_tileSize.x,
+                                  m_tileImages[0]->size.y / m_tileSize.y);
         //Para cada valor na camada de tiles
-        for(int i = 0; i < layer.data.size(); ++i)
+        for(Uint16 i = 0; i < layer.data.size(); ++i)
         {
             int value = layer.data[i];
             //Gerar um novo retangulo src
@@ -96,11 +111,12 @@ void Tilemap::Draw()
                                 m_tileSize.x,m_tileSize.y);
 
             //Renderizar na tela
-            TileImage tileimage = m_tileImages[0];
-            tileimage.tex->Render(srcrect,destrect);
+            TileImage *tileimage = m_tileImages[0];
+            Drawer::Render(tileimage->tex,&srcrect,&destrect);
 
         }
 
     }
+    Drawer::RenderTo(NULL);
 
 }

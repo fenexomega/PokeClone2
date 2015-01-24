@@ -17,8 +17,8 @@ void uTime::Update()
 float uTime::getDeltaTime()
 {
     //TODO fazer esse delta time direito
-    double value = 0.017f; //60.0f/1000.0f;
-    LOG("DT = " + TOSTR(dt) + " | VALUE =  " + TOSTR(value));
+    double value = 0.012f; //60.0f/1000.0f;
+//    LOG("DT = " + TOSTR(dt) + " | VALUE =  " + TOSTR(value));
     return dt >= value ? dt : value ;
 //    return dt;
 }

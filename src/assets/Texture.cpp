@@ -1,36 +1,47 @@
 #include "Texture.h"
 
-#include "graphics/Drawer.h"
 #include "io/FileLoader.h"
 
+#include "graphics/Window.h"
+
+#include "util/Logger.h"
+
+SDL_Texture *Texture::tex() const
+{
+    return m_tex;
+}
+
+void Texture::setTex(SDL_Texture *tex)
+{
+    m_tex = tex;
+}
+
+Uint32 Texture::pixelFormat() const
+{
+    return m_pixelFormat;
+}
+
+void Texture::setPixelFormat(const Uint32 &pixelFormat)
+{
+    m_pixelFormat = pixelFormat;
+}
+
+int Texture::acess() const
+{
+    return m_acess;
+}
+
+void Texture::setAcess(int acess)
+{
+    m_acess = acess;
+}
 Texture::Texture(std::string path) :
     iAsset(AS_TEXTURE)
 {
     m_tex = FileLoader::LoadTexture(path);
-    SDL_QueryTexture(m_tex,NULL,NULL,&m_rect.w,&m_rect.h);
+    SDL_QueryTexture(m_tex,&m_pixelFormat,&m_acess,&m_rect.w,&m_rect.h);
 }
 
-void Texture::Render(int x, int y)
-{
-    SDL_Rect aux = m_rect;
-    aux.x = x;
-    aux.y = y;
-    Drawer::renderTexture(m_tex,&aux);
-}
-
-void Texture::Render(Rect rect)
-{
-    SDL_Rect aux = rect.To_SDLRect();
-    Drawer::renderTexture(m_tex,&aux);
-}
-
-void Texture::Render(Rect srcrect, Rect destrect)
-{
-    SDL_Rect aux = srcrect.To_SDLRect();
-    SDL_Rect aux1 = destrect.To_SDLRect();
-
-    Drawer::renderTexture(m_tex,&aux,&aux1);
-}
 
 void Texture::Scale(float w, float h)
 {
@@ -38,10 +49,23 @@ void Texture::Scale(float w, float h)
    m_rect.h *= h;
 }
 
+Texture::Texture(Uint32 pf,int w, int h) : iAsset(AS_TEXTURE)
+{
+    m_tex = SDL_CreateTexture(Window::getActiveRenderer()
+                              ,pf,
+                              SDL_TEXTUREACCESS_TARGET,w,h);
+    if(m_tex == NULL)
+    {
+        ERROR(SDL_GetError());
+    }
+    m_pixelFormat = pf;
+    m_rect = {0,0,w,h};
+}
+
 Texture::Texture(SDL_Texture *tex) : iAsset(AS_TEXTURE)
 {
     m_tex = tex;
-    SDL_QueryTexture(m_tex,NULL,NULL,&m_rect.w,&m_rect.h);
+    SDL_QueryTexture(m_tex,&m_pixelFormat,&m_acess,&m_rect.w,&m_rect.h);
 
 }
 
@@ -49,7 +73,7 @@ void Texture::setTexture( SDL_Texture* tex)
 {
     SDL_DestroyTexture(m_tex);
     m_tex = tex;
-    SDL_QueryTexture(m_tex,NULL,NULL,&m_rect.w,&m_rect.h);
+    SDL_QueryTexture(m_tex,&m_pixelFormat,&m_acess,&m_rect.w,&m_rect.h);
     m_rect.x = 0;
     m_rect.y = 0;
 

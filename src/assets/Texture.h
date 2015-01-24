@@ -10,23 +10,28 @@
 class Texture : iAsset
 {
 private:
-    SDL_Texture* m_tex;
+    SDL_Texture *m_tex;
     SDL_Rect m_rect;
     friend class Drawer;
-
+    Uint32 m_pixelFormat;
+    int m_acess;
 public:
     Texture(std::string path);
-//    Texture( int width,  int height,SDL_Texture *tex);
-    void Render(int x, int y);
-    void Render(Rect rect);
-    void Render(Rect srcrect,Rect destrect);
+    Texture(Uint32 pf, int w, int h);
+    Texture(SDL_Texture *tex);
+    Texture operator=(Texture &tex);
+    ~Texture();
+
+    Rect getRect() const;
 
     void Scale(float w,float h);
-    Texture(SDL_Texture *tex);
     void setTexture(SDL_Texture *tex);
-    Texture operator=(Texture &tex);
-    Rect getRect() const;
-    ~Texture();
+    SDL_Texture *tex() const;
+    void setTex(SDL_Texture *tex);
+    Uint32 pixelFormat() const;
+    void setPixelFormat(const Uint32 &pixelFormat);
+    int acess() const;
+    void setAcess(int acess);
 };
 
 #endif // TEXTURE

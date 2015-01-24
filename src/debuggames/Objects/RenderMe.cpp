@@ -10,7 +10,7 @@ RenderMe::RenderMe(std::string path)
 
 void RenderMe::Draw()
 {
-    texture->Render(0,0);
+    Drawer::Render(texture,0,0);
 }
 
 void RenderMe::Update(float dt)

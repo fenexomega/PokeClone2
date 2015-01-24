@@ -17,8 +17,6 @@ typedef struct color
         :  r(_r),g(_g),b(_b),a(_a) {}
 }Color;
 
-#define COLOR_BLUE COLOR_BLUE = {0,0,255,255}
-
 static const Color COLORRED = {255,0,0,255};
 static const Color COLORBLUE = {0,0,255,255};
 static const Color COLORGREEN = {0,255,0,255};

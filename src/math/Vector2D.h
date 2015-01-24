@@ -13,20 +13,60 @@ public:
     Vector2D() : x(0.0f), y(0.0f) {}
     Vector2D(TYPE _x, TYPE _y) : x(_x), y(_y) {}
 
-    Vector2D operator +(Vector2D v);
-    Vector2D operator -(Vector2D v);
-    Vector2D& operator +=(Vector2D v);
-    bool operator    ==(Vector2D v);
+    inline Vector2D operator +(Vector2D v)
+    {
+        return Vector2D<TYPE> (x + v.x, y + v.y);
+    }
 
-    TYPE size();
+    inline Vector2D operator -(Vector2D v)
+    {
+        return Vector2D<TYPE> (x - v.x, y - v.y);
+    }
 
-    Vector2D* set(TYPE _x, TYPE _y)
+    inline Vector2D& operator +=(Vector2D v)
+    {
+        x = x + v.x;
+        y = y + v.y;
+        return *this;
+    }
+
+    inline Vector2D& operator -=(Vector2D v)
+    {
+        x -= v.x;
+        y -= v.y;
+        return *this;
+    }
+
+    inline bool operator ==(Vector2D v)
+    {
+        return x == v.getX() && v.getY() ? true : false;
+    }
+
+    inline Vector2D& operator+=(TYPE i)
+    {
+        x += i;
+        y += i;
+        return *this;
+    }
+
+    inline Vector2D& operator-=(TYPE i)
+    {
+        x -= i;
+        y -= i;
+        return *this;
+    }
+
+    inline double size()
+    {
+        return sqrt(x*x + y*y);
+    }
+
+    inline Vector2D* set(TYPE _x, TYPE _y)
     {
         x = _x;
         y = _y;
         return this;
     }
-
 };
 
 template <class TYPE>
