@@ -8,7 +8,7 @@
 #include "interfaces/iAsset.h"
 #include "graphics/Color.h"
 
-class Text : iAsset
+class Text : public iAsset
 {
 private:
     TTF_Font* m_font;

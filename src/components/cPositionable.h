@@ -9,12 +9,12 @@ public:
     Vector2D<int> pos;
     cPositionable(int x, int y)
     {
-        pos.set(x,y);
+        pos.to(x,y);
     }
 
     cPositionable()
     {
-        pos.set(0,0);
+        pos.to(0,0);
     }
 };
 

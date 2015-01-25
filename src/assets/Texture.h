@@ -7,7 +7,7 @@
 #include "physics/Rect.h"
 #include "interfaces/iAsset.h"
 
-class Texture : iAsset
+class Texture : public iAsset
 {
 private:
     SDL_Texture *m_tex;
@@ -19,7 +19,7 @@ public:
     Texture(std::string path);
     Texture(Uint32 pf, int w, int h);
     Texture(SDL_Texture *tex);
-    Texture operator=(Texture &tex);
+//    Texture operator=(Texture &tex);
     ~Texture();
 
     Rect getRect() const;

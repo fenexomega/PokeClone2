@@ -3,6 +3,8 @@
 #include <signal.h>
 #include <execinfo.h>
 
+std::ofstream Logger::logFile;
+
 
 Logger::Logger()
 {

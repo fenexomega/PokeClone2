@@ -5,7 +5,6 @@
 
 #include "json/json.h"
 #include "graphics/Window.h"
-#include "gSettings.h"
 
 FileLoader::FileLoader()
 {
@@ -15,6 +14,11 @@ FileLoader::FileLoader()
 FileLoader::~FileLoader()
 {
 
+}
+
+Mix_Chunk *FileLoader::LoadSound(std::string path)
+{
+    return NULL;
 }
 
 SDL_Texture* FileLoader::LoadTexture(std::string path)

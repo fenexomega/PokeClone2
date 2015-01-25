@@ -79,13 +79,6 @@ void Texture::setTexture( SDL_Texture* tex)
 
 }
 
-Texture Texture::operator=(Texture &tex)
-{
-    m_rect = tex.m_rect;
-    m_tex  = tex.m_tex;
-
-    return *this;
-}
 
 Rect Texture::getRect() const
 {

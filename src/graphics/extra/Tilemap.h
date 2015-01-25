@@ -8,35 +8,37 @@
 #include "interfaces/iGameObject.h"
 #include "math/Vector2D.h"
 
-#include "cTileMapInput.h"
+class Layer
+{
+public:
+    std::vector<Uint16> data;
+    Vector2D<int> size;
+    bool visible;
+};
+
+
+class TileImage
+{
+public:
+    Texture *tex;
+    std::string name;
+    Vector2D<int> size;
+    TileImage(Texture *_tex,std::string _name,Vector2D<int> _imageSize)
+        :   tex(_tex), name(_name), size(_imageSize) {}
+    ~TileImage()
+    {
+        delete tex;
+    }
+};
+
 
 class Tilemap : public iGameObject
 {
 private:
-    typedef struct
-    {
-        std::vector<Uint16> data;
-        Vector2D<int> size;
-        bool visible;
-    }Layer;
 
-    class TileImage
-    {
-    public:
-        Texture *tex;
-        std::string name;
-        Vector2D<int> size;
-        TileImage(Texture *_tex,std::string _name,Vector2D<int> _imageSize)
-            :   tex(_tex), name(_name), size(_imageSize) {}
-        ~TileImage()
-        {
-            delete tex;
-        }
-    };
 
     void generateTileMap();
 
-    cTileMapInput input;
 
 public:
     Vector2D<int> m_pos;

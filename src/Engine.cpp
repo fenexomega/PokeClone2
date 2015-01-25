@@ -1,8 +1,11 @@
 #include "Engine.h"
 
-#include "gSystems.h"
 #include "graphics/Window.h"
 #include "util/Logger.h"
+#include "systems/sysGraphics.h"
+#include "systems/sysSound.h"
+#include "systems/sysInput.h"
+
 
 Engine::Engine()
 {

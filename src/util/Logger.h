@@ -8,7 +8,6 @@
 
 #include "Engine.h"
 
-static std::ofstream logFile;
 
 
 #define LOGFILE "output.txt"
@@ -24,11 +23,12 @@ class Logger
 private:
     Logger();
     ~Logger();
-	void static signalCallbackHandler(int signum);
-	void static instanceSignalCallbacks();
-	void static generateBackTrace(std::vector<char *> &vec);
+    static std::ofstream logFile;
+    static void  signalCallbackHandler(int signum);
+    static void  instanceSignalCallbacks();
+    static void  generateBackTrace(std::vector<char *> &vec);
 public:
-//  void operator<<(std::ostream &ost);
+    //  void operator<<(std::ostream &ost);
     static void Log(std::string stg);
     static void CreateLogFile();
     static void CloseLogFile();

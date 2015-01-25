@@ -77,7 +77,7 @@ void Tilemap::SendMessage(MSG msg)
 
 void Tilemap::Update(float dt)
 {
-    input.Update(*this);
+
 }
 
 void Tilemap::Draw()

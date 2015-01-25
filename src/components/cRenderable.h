@@ -1,7 +1,6 @@
 #ifndef RENDERABLE_H
 #define RENDERABLE_H
 
-#include "gSystems.h"
 
 class cRenderable
 {

@@ -10,11 +10,11 @@ private:
 public:
     cMovable(float _x,float _y)
     {
-        direction.set(_x,_y);
+        direction.to(_x,_y);
     }
     void setVec(float _x, float _y)
     {
-        direction.set(_x,_y);
+        direction.to(_x,_y);
     }
 };
 
