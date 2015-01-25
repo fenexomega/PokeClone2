@@ -6,9 +6,6 @@
 #define PRINT(X) std::cout << X << std::endl
 
 //TODO Pegar as otras coisas do json que podem ser relevantes
-
-
-
 Tilemap::Tilemap(std::string jsonFile)
 {
     Json::Value json, *object = FileLoader::LoadJson(jsonFile);
@@ -52,7 +49,7 @@ Tilemap::Tilemap(std::string jsonFile)
         layers.push_back(l1);
     }
 
-    tileTexture = new Texture(m_tileImages[0]->tex->acess(),
+    tileTexture = new Texture(
             m_size.x * m_tileSize.x,
             m_size.y * m_tileSize.y);
 
@@ -83,6 +80,11 @@ void Tilemap::Update(float dt)
 void Tilemap::Draw()
 {
     Drawer::Render(tileTexture,m_pos);
+}
+
+std::vector<Uint16> Tilemap::operator[](int i)
+{
+   return  layers.at(i).data;
 }
 
 void Tilemap::generateTileMap()

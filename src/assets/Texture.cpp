@@ -49,16 +49,16 @@ void Texture::Scale(float w, float h)
    m_rect.h *= h;
 }
 
-Texture::Texture(Uint32 pf,int w, int h) : iAsset(AS_TEXTURE)
+Texture::Texture(int w, int h) : iAsset(AS_TEXTURE)
 {
     m_tex = SDL_CreateTexture(Window::getActiveRenderer()
-                              ,pf,
+                              ,SDL_PIXELFORMAT_RGBA8888,
                               SDL_TEXTUREACCESS_TARGET,w,h);
     if(m_tex == NULL)
     {
         ERROR(SDL_GetError());
     }
-    m_pixelFormat = pf;
+    m_pixelFormat = SDL_PIXELFORMAT_RGBA8888;
     m_rect = {0,0,w,h};
 }
 

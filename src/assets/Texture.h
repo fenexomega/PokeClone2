@@ -17,7 +17,7 @@ private:
     int m_acess;
 public:
     Texture(std::string path);
-    Texture(Uint32 pf, int w, int h);
+    Texture(int w, int h);
     Texture(SDL_Texture *tex);
     Texture operator=(Texture &tex);
     ~Texture();

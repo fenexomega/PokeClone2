@@ -8,6 +8,7 @@
 #include "debuggames/ButtonTest.h"
 #include "debuggames/TextTest.h"
 #include "debuggames/TileMapTest.h"
+#include "debuggames/SpriteSheetTest.h"
 
 /*@TODO
 
@@ -19,7 +20,7 @@
   */
 int main()
 {
-    TileMapTest game;
+    SpriteSheetTest game;
 
     Engine engine;
     engine.Run(&game);

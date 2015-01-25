@@ -35,6 +35,8 @@ public:
 
     //Renderiza um retângulo
     static void fillRect(Color color, int x, int y, int w, int h);
+
+    static void setColor(Color color);
 };
 
 #endif // DRAWER_H

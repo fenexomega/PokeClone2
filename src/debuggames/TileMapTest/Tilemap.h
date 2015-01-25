@@ -10,6 +10,8 @@
 
 #include "cTileMapInput.h"
 
+
+//TODO fazer isso usar graphics/tiles/SpriteSheet.h
 class Tilemap : public iGameObject
 {
 private:
@@ -53,6 +55,7 @@ public:
     void SendMessage(MSG msg);
     void Update(float dt);
     void Draw();
+    std::vector<Uint16> operator[](int i);
 
     ~Tilemap();
 

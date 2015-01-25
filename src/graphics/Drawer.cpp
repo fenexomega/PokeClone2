@@ -38,6 +38,11 @@ void Drawer::fillRect(Color color, int x, int y, int w, int h)
     SDL_RenderFillRect(RENDERER,&rect);
 }
 
+void Drawer::setColor(Color color)
+{
+
+}
+
 Drawer::~Drawer()
 {
 
