@@ -68,7 +68,7 @@ int Engine::Run(iGame *game)
 
         game->Update(dt);
 
-        game->Draw();
+        game->Render();
 
         win.SwapBuffers();
 

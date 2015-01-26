@@ -16,7 +16,7 @@ SpriteSheetTest::~SpriteSheetTest()
 void SpriteSheetTest::Init()
 {
     spst = new SpriteSheet("Contents/test_tiles.png",32,32);
-    anm = new SpriteAnimation(spst,8);
+    anm = new SpriteAnimation("Contents/test_tiles.png",8,32,32);
     time = 0.0f;
 }
 
@@ -30,16 +30,22 @@ void SpriteSheetTest::Update(float dt)
     }
 }
 
-void SpriteSheetTest::Draw()
+void SpriteSheetTest::Render()
 {
     for (int i = 0; i < 16; ++i)
     {
-        spst->Draw(i*32,0,i);
+        spst->Render(i*32,0,i);
     }
-    anm->Draw(0,32);
+    anm->Render(0,32);
 }
 
 void SpriteSheetTest::Dispose()
 {
+    delete anm;
     delete spst;
+}
+
+
+void SpriteSheetTest::SendMessage(MSG msg)
+{
 }

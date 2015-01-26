@@ -1,18 +1,18 @@
-#include "Rects.h"
+#include "RectsTest.h"
 
 #include "graphics/Drawer.h"
 
-void Rects::Init()
+void RectsTests::Init()
 {
 
 }
 
-void Rects::Update(float dt)
+void RectsTests::Update(float dt)
 {
 
 }
 
-void Rects::Draw()
+void RectsTests::Render()
 {
 
     Drawer::drawRect(COLORRED,0,0,100,100);
@@ -21,7 +21,7 @@ void Rects::Draw()
 
 }
 
-void Rects::Dispose()
+void RectsTests::Dispose()
 {
 
 }

@@ -8,7 +8,7 @@ RenderMe::RenderMe(std::string path)
     texture = new Texture(path);
 }
 
-void RenderMe::Draw()
+void RenderMe::Render()
 {
     Drawer::Render(texture,0,0);
 }
@@ -23,7 +23,3 @@ RenderMe::~RenderMe()
     delete texture;
 }
 
-
-void RenderMe::SendMessage(MSG msg)
-{
-}

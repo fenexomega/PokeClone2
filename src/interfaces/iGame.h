@@ -4,16 +4,26 @@
 #include "gSystems.h"
 #include "gSettings.h"
 
+class MSG
+{
+public:
+    int id;
+};
+
 class iGame
 {
 public:
     virtual void Init() = 0;
     virtual void Update(float dt) = 0;
 
+    virtual void SendMessage(MSG msg) = 0;
+
     //TODO isso daqui deveria receber uma textura para desenhar
-    virtual void Draw() = 0;
+    virtual void Render() = 0;
 
     virtual void Dispose() = 0;
+
+    virtual ~iGame() {};
 };
 
 #endif
@@ -25,7 +35,7 @@ public:
 public:
     void Init();
     void Update();
-    void Draw();
+    void Render();
     void Dispose();
 
 
@@ -39,7 +49,7 @@ void Rects::Update()
 
 }
 
-void Rects::Draw()
+void Rects::Render()
 {
 
 }

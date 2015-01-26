@@ -6,16 +6,16 @@
 //#include "interfaces/iComponent.h"
 #include "physics/Rect.h"
 
-typedef struct {
-    int id;
-}MSG;
-
 class iGameObject
 {
 private:
 //    std::vector<iComponent> m_components;
 public:
     Rect rect;
+    Vector2D<int> pos;
+    Vector2D<int> acc;
+
+
 
 //    inline void ComponentAdd(iComponent c)
 //    {
@@ -36,16 +36,16 @@ public:
 //            i.Update(this);
 //    }
 
-//    inline void ComponentsDraw()
+//    inline void ComponentsRender()
 //    {
 //        for(iComponent i : m_components)
-//            i.Draw();
+//            i.Render();
 //    }
 
-    virtual void SendMessage(MSG msg) = 0;
+//    virtual void SendMessage(MSG msg) = 0;
     virtual void Update(float dt) = 0;
     //TODO isso daqui deveria receber uma textura para desenhar
-    virtual void Draw() = 0;
+    virtual void Render() = 0;
 
     virtual ~iGameObject() {}
 

@@ -36,12 +36,12 @@ void TextTest::Init()
 void TextTest::Update(float dt)
 {
     RenderMe aux("Contents/button.png");
-    bt->Update(aux);
+    bt->Update();
 }
 
-void TextTest::Draw()
+void TextTest::Render()
 {
-    bt->Draw();
+    bt->Render();
     text->Render(0,0);
 }
 

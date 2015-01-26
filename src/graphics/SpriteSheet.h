@@ -22,7 +22,9 @@ public:
 
     ~SpriteSheet();
 
-    void Draw(int x, int y, Uint16 frame);
+    void Render(int x, int y, Uint16 frame);
+    void Render(Vector2D<int>, Uint16 frame);
+
     unsigned int getFrames() const;
     Vector2D<int> getSz() const;
 };

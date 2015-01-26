@@ -36,9 +36,9 @@ void SpriteAnimation::UpdateAnimation(int i)
 
 }
 
-void SpriteAnimation::Draw(int x, int y)
+void SpriteAnimation::Render(int x, int y)
 {
-    spst->Draw(x,y,currentFrame);
+    spst->Render(x,y,currentFrame);
 }
 
 int SpriteAnimation::getKeyFrame() const

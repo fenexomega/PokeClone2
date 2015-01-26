@@ -3,12 +3,11 @@
 
 #include <vector>
 
-#include "interfaces/iComponent.h"
 #include "interfaces/iCommand.h"
 #include "assets/Texture.h"
 #include "assets/Text.h"
 
-class Button : public iComponent
+class Button
 {   
 public:
     enum
@@ -25,10 +24,9 @@ public:
     ~Button();
 
     // iComponent interface
-    void Update(iGameObject &obj);
-    void Draw();
+    void Update();
+    void Render();
 private:
-
     iCommand *command;
     std::vector<Texture *> textures;
     Rect rect;

@@ -10,14 +10,12 @@ private:
     Texture *texture;
 public:
     RenderMe(std::string path);
-    void Draw();
+    void Render();
     void Update(float dt);
 
     ~RenderMe();
 
     // iGameObject interface
-public:
-    void SendMessage(MSG msg);
 };
 
 #endif // RENDERME_H

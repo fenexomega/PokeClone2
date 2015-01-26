@@ -9,7 +9,7 @@ public:
     cZoneInput();
     ~cZoneInput();
     void Update(iGameObject &obj);
-    void Draw();
+    void Render();
 
     // iComponent interface
 

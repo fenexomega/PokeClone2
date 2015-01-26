@@ -1,16 +1,16 @@
-#ifndef RECTS_H
-#define RECTS_H
+#ifndef RECTSTEST_H
+#define RECTSTEST_H
 
 #include "interfaces/iGame.h"
 
-class Rects : public iGame
+class RectsTests : public iGame
 {
 private:
 
 public:
     void Init();
     void Update(float dt);
-    void Draw();
+    void Render();
     void Dispose();
 };
 

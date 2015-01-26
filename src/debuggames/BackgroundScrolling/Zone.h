@@ -17,7 +17,6 @@ private:
 public:
     void addComponent(shared_ptr<iComponent> ptr);
     void removeComponent(unsigned int at);
-    void SendMessage(MSG msg);
 
     Zone();
     ~Zone();
@@ -25,7 +24,7 @@ public:
     // iGameObject interface
 public:
     void Update(float dt);
-    void Draw();
+    void Render();
 
     // iGameObject interface
 };

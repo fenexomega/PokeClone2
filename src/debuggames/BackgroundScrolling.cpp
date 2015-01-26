@@ -28,10 +28,10 @@ void BackgroundScrolling::Update(float dt)
 //    zone.Update(dt);
 }
 
-void BackgroundScrolling::Draw()
+void BackgroundScrolling::Render()
 {
 //    tex->Render(0,0);
-//    zone.Draw();
+//    zone.Render();
 }
 
 void BackgroundScrolling::Dispose()

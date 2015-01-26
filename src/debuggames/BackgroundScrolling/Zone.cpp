@@ -28,14 +28,10 @@ void Zone::Update(float dt)
     }
 }
 
-void Zone::Draw()
+void Zone::Render()
 {
     for(auto i : components) {
-        i->Draw();
+        i->Render();
     }
 }
 
-
-void Zone::SendMessage(MSG msg)
-{
-}

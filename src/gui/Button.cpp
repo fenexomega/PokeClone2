@@ -24,10 +24,12 @@ void Button::RegisterCommand(iCommand *command)
 
 Button::~Button()
 {
+    for(auto i : textures)
+        delete i;
 
 }
 
-void Button::Update(iGameObject &obj)
+void Button::Update()
 {
     Vector2D<int> mousePos = sysInput::getMousePos();
     bool leftbutton = sysInput::isMouseButtonDown(1);
@@ -52,7 +54,7 @@ void Button::Update(iGameObject &obj)
 
 }
 
-void Button::Draw()
+void Button::Render()
 {
     Drawer::Render(textures[state],rect.x,rect.y);
     if(m_text != nullptr)

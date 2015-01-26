@@ -16,10 +16,6 @@ Tilemap::Tilemap(std::string jsonFile)
     m_tileSize.x = json["tileheight"].asInt();
     m_tileSize.y = json["tilewidth"].asInt();
 
-
-    m_pos.x = 0;
-    m_pos.y = 0;
-
     int ArraySize = json["tilesets"].size();
     PRINT(ArraySize);
     for(int i = 0; i < ArraySize ; ++i)
@@ -67,19 +63,16 @@ Tilemap::~Tilemap()
 
 }
 
-void Tilemap::SendMessage(MSG msg)
-{
 
+void Tilemap::Render(Vector2D<int> pos)
+{
+    Drawer::Render(tileTexture,pos);
 }
 
-void Tilemap::Update(float dt)
+void Tilemap::Render(int x, int y)
 {
-    input.Update(*this);
-}
+    Drawer::Render(tileTexture,x,y);
 
-void Tilemap::Draw()
-{
-    Drawer::Render(tileTexture,m_pos);
 }
 
 std::vector<Uint16> Tilemap::operator[](int i)

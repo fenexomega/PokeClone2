@@ -2,12 +2,14 @@
 #define TILEMAPTEST_H
 
 #include "interfaces/iGame.h"
-#include "TileMapTest/Tilemap.h"
+#include "graphics/Tilemap.h"
+#include "graphics/Sprite.h"
 
 class TileMapTest : public iGame
 {
 private:
     Tilemap *tilemap;
+    Sprite *sprite;
 public:
     TileMapTest();
     ~TileMapTest();
@@ -15,7 +17,7 @@ public:
     // iGame interface
     void Init();
     void Update(float dt);
-    void Draw();
+    void Render();
     void Dispose();
 };
 

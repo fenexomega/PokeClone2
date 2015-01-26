@@ -10,7 +10,7 @@ public:
     cInput();
     ~cInput();
     void Update(iGameObject &obj);
-    void Draw();
+    void Render();
 
     // iComponent interface
 

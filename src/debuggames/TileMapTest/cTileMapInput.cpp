@@ -1,7 +1,7 @@
 #include "cTileMapInput.h"
 
 #include "systems/sysInput.h"
-#include "debuggames/TileMapTest/Tilemap.h"
+#include "graphics/Tilemap.h"
 #include "util/Logger.h"
 
 cTileMapInput::cTileMapInput()
@@ -22,23 +22,23 @@ void cTileMapInput::Update(iGameObject &obj)
 
     if(sysInput::isKeyPressed(SDL_SCANCODE_D))
     {
-        map.m_pos.x -= 16;
+//        map.m_pos.x -= 16;
     }
     if(sysInput::isKeyPressed(SDL_SCANCODE_A))
     {
-        map.m_pos.x += 16;
+//        map.m_pos.x += 16;
     }
     if(sysInput::isKeyPressed(SDL_SCANCODE_S))
     {
-        map.m_pos.y -= 16;
+//        map.m_pos.y -= 16;
     }
     if(sysInput::isKeyPressed(SDL_SCANCODE_W))
     {
-        map.m_pos.y += 16;
+//        map.m_pos.y += 16;
     }
 }
 
-void cTileMapInput::Draw()
+void cTileMapInput::Render()
 {
 
 }

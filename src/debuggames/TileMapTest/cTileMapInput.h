@@ -12,7 +12,7 @@ public:
     // iComponent interface
 public:
     void Update(iGameObject &obj);
-    void Draw();
+    void Render();
 };
 
 #endif // CTILEMAPINPUT_H

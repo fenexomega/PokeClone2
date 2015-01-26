@@ -14,9 +14,9 @@ void TextureTest::Update(float dt)
     }
 }
 
-void TextureTest::Draw()
+void TextureTest::Render()
 {
-    renderOBJ->Draw();
+    renderOBJ->Render();
 }
 
 void TextureTest::Dispose()

@@ -18,7 +18,7 @@ public:
     ~SpriteAnimation();
     void UpdateAnimation(int i = 1);
 
-    void Draw(int x, int y);
+    void Render(int x, int y);
 
     int getKeyFrame() const;
     void setKeyFrame(int value);

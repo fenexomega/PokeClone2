@@ -11,9 +11,8 @@ public:
 
     // iGameObject interface
 public:
-    void SendMessage(MSG msg);
     void Update(float dt);
-    void Draw();
+    void Render();
 };
 
 #endif // DUMMYGAMEOBJECT_H

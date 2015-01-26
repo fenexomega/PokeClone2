@@ -39,7 +39,12 @@ public:
 
     inline bool operator ==(Vector2D v)
     {
-        return x == v.getX() && v.getY() ? true : false;
+        return x == v.x && y == v.y ? true : false;
+    }
+
+    inline bool operator !=(Vector2D v)
+    {
+        return x == v.x && y == v.y ? false : true;
     }
 
     inline Vector2D& operator+=(TYPE i)

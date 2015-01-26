@@ -5,14 +5,11 @@
 #include <vector>
 
 #include "assets/Texture.h"
-#include "interfaces/iGameObject.h"
 #include "math/Vector2D.h"
-
-#include "cTileMapInput.h"
 
 
 //TODO fazer isso usar graphics/tiles/SpriteSheet.h
-class Tilemap : public iGameObject
+class Tilemap
 {
 private:
     typedef struct
@@ -37,11 +34,7 @@ private:
     };
 
     void generateTileMap();
-
-    cTileMapInput input;
-
 public:
-    Vector2D<int> m_pos;
     Vector2D<int> m_size;
     Vector2D<int> m_tileSize;
     Texture *tileTexture;
@@ -51,24 +44,12 @@ public:
 
     Tilemap(std::string jsonFile);
 
-    // iGameObject interface
-    void SendMessage(MSG msg);
-    void Update(float dt);
-    void Draw();
+    void Render(Vector2D<int> pos);
+    void Render(int x, int y);
     std::vector<Uint16> operator[](int i);
 
     ~Tilemap();
 
-};
-
-class POSMSG : public MSG
-{
-private:
-    Vector2D<int> pos;
-    POSMSG()
-    {
-        id = 1;
-    }
 };
 
 

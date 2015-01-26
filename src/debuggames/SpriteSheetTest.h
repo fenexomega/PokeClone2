@@ -18,8 +18,11 @@ public:
     // iGame interface
     void Init();
     void Update(float dt);
-    void Draw();
+    void Render();
     void Dispose();
+
+    // iGame interface
+    void SendMessage(MSG msg);
 };
 
 #endif // SPRITESHEETTEST_H

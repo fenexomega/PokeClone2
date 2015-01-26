@@ -27,6 +27,6 @@ void cZoneInput::Update(iGameObject &obj)
 
 
 
-void cZoneInput::Draw()
+void cZoneInput::Render()
 {
 }

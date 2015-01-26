@@ -18,6 +18,6 @@ void cInput::Update(iGameObject &obj)
 }
 
 
-void cInput::Draw()
+void cInput::Render()
 {
 }

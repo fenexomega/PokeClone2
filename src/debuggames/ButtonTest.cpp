@@ -24,12 +24,12 @@ void ButtonTest::Init()
 
 void ButtonTest::Update(float dt)
 {
-    button->Update(real);
+    button->Update();
 }
 
-void ButtonTest::Draw()
+void ButtonTest::Render()
 {
-    button->Draw();
+    button->Render();
 }
 
 void ButtonTest::Dispose()

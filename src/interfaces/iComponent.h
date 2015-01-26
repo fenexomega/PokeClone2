@@ -14,7 +14,7 @@ public:
 
 
     virtual void Update(iGameObject &obj) = 0;
-    virtual void Draw() = 0;
+    virtual void Render() = 0;
 
     virtual ~iComponent()
     {

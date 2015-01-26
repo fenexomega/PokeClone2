@@ -49,13 +49,26 @@ SpriteSheet::~SpriteSheet()
     delete m_tex;
 }
 
-void SpriteSheet::Draw(int x, int y,Uint16 frame)
+void SpriteSheet::Render(int x, int y,Uint16 frame)
 {
     if(frame >= frames)
     {
         throw "ERROR: requested frame out of bounds";
     }
     Rect dest(x,y,framerect.w,framerect.h);
+
+    Rect src(framerect.w * (frame%sz.x), framerect.h * (frame / sz.x)
+             ,framerect.w,framerect.h);
+    Drawer::Render(m_tex,&src,&dest);
+}
+
+void SpriteSheet::Render(Vector2D<int> vec,Uint16 frame)
+{
+    if(frame >= frames)
+    {
+        throw "ERROR: requested frame out of bounds";
+    }
+    Rect dest(vec.x,vec.y,framerect.w,framerect.h);
 
     Rect src(framerect.w * (frame%sz.x), framerect.h * (frame / sz.x)
              ,framerect.w,framerect.h);

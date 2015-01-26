@@ -22,7 +22,7 @@ void MouseTest::Update(float dt)
 
 }
 
-void MouseTest::Draw()
+void MouseTest::Render()
 {
     Drawer::clearScreen(255,255,255,255);
     if(squares[0])
@@ -33,7 +33,7 @@ void MouseTest::Draw()
     if(squares[1])
         Drawer::fillRect(COLORRED,145,50,20,110);
 
-    mouse->Draw();
+    mouse->Render();
 
 }
 

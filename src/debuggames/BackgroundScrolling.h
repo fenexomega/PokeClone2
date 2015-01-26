@@ -16,7 +16,7 @@ public:
     // iGame interface
     void Init();
     void Update(float dt);
-    void Draw();
+    void Render();
     void Dispose();
 };
 
