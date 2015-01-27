@@ -41,6 +41,13 @@ void SpriteAnimation::Render(int x, int y)
     spst->Render(x,y,currentFrame);
 }
 
+void SpriteAnimation::Render(Vector2D<int> pos)
+{
+    spst->Render(pos,currentFrame);
+
+}
+
+
 int SpriteAnimation::getKeyFrame() const
 {
     return keyFrame;

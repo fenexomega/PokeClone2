@@ -1,0 +1,6 @@
+{
+	"sprite":"Contents/MainGame/playersprite.png",
+	"height":32,
+	"width":32,
+	"animationFrames":4
+}

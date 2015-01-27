@@ -19,7 +19,7 @@ public:
     void UpdateAnimation(int i = 1);
 
     void Render(int x, int y);
-
+    void Render(Vector2D<int> pos);
     int getKeyFrame() const;
     void setKeyFrame(int value);
 };

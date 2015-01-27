@@ -26,7 +26,8 @@
  "orientation":"orthogonal",
  "properties":
     {
-
+     "playerPosX":"0",
+     "playerPosY":"0"
     },
  "renderorder":"right-down",
  "tileheight":32,

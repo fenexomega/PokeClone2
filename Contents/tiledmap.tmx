@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="1">
+ <properties>
+  <property name="playerPosX" value="0"/>
+  <property name="playerPosY" value="0"/>
+ </properties>
  <tileset firstgid="1" name="default" tilewidth="32" tileheight="32">
   <image source="test_tiles.png" width="256" height="64"/>
  </tileset>

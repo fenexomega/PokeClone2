@@ -8,10 +8,14 @@ class PlayerInput : public cInput
 {
 public:
     PlayerInput();
-    void Update(iGameObject *player);
+    void Update(iGameObject *obj);
     ~PlayerInput();
 
 
+
+    // Component interface
+private:
+    void receiveMessage(int msg);
 };
 
 #endif // PLAYERINPUT_H

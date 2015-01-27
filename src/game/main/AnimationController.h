@@ -4,17 +4,24 @@
 #include "graphics/SpriteAnimation.h"
 #include "interfaces/iGameObject.h"
 #include "math/Vector2D.h"
+#include "game/components/cGraphic.h"
 
-class AnimationController
+class AnimationController : public cGraphic
 {
 private:
     float timeCounter;
     int DirectionFrame(iGameObject *obj);
+    SpriteAnimation *_animation;
     Vector2D<int> oldAcc;
 public:
-    AnimationController();
-    void Update(iGameObject *obj, SpriteAnimation *anm, float dt);
+    AnimationController(SpriteAnimation *sptAnm);
     ~AnimationController();
+
+    // Component interface
+    void receiveMessage(int msg);
+    // cGraphic interface
+    void Update(iGameObject *obj, float dt);
+    void Render(iGameObject *obj);
 };
 
 #endif // ANIMATIONCONTROLLER_H

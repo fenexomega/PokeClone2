@@ -2,8 +2,10 @@
 #define CINPUT
 
 #include "interfaces/iGameObject.h"
+#include "game/components/Component.h"
 
-class cInput
+
+class cInput : public Component
 {
 public:
     virtual void Update(iGameObject *player) = 0;

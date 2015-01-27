@@ -14,35 +14,45 @@ int AnimationController::DirectionFrame(iGameObject *obj)
     return result;
 }
 
-AnimationController::AnimationController()
+AnimationController::AnimationController(SpriteAnimation *sptAnm)
+    : _animation(sptAnm)
 {
     timeCounter = 0;
 }
 
 
-void AnimationController::Update(iGameObject *obj, SpriteAnimation *anm,float dt)
+AnimationController::~AnimationController()
+{
+    delete _animation;
+}
+
+
+
+void AnimationController::receiveMessage(int msg)
+{
+}
+
+void AnimationController::Update(iGameObject *obj, float dt)
 {
     timeCounter += dt;
 
-    if(timeCounter >= 0.3f)
+    if(timeCounter >= 0.25f)
     {
-        anm->UpdateAnimation();
+        _animation->UpdateAnimation();
         timeCounter = 0;
     }
 
     if(obj->acc.x == 0 && obj->acc.y == 0)
     {
-        anm->setKeyFrame(anm->getKeyFrame());
+        _animation->setKeyFrame(_animation->getKeyFrame());
     }
     else
         if(oldAcc != obj->acc)
-            anm->setKeyFrame(DirectionFrame(obj));
+            _animation->setKeyFrame(DirectionFrame(obj));
     oldAcc = obj->acc;
-
 }
 
-AnimationController::~AnimationController()
+void AnimationController::Render(iGameObject *obj)
 {
-
+    _animation->Render(obj->pos);
 }
-

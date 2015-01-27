@@ -1,6 +1,6 @@
 #include "MenuGame.h"
 
-#include "commands/changeGame.h"
+#include "game/commands/changeGame.h"
 
 MenuGame::MenuGame(iGame *_game)
     : game(_game)

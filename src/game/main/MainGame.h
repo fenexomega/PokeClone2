@@ -2,14 +2,16 @@
 #define MAINGAME_H
 
 #include "interfaces/iGame.h"
-
+#include "graphics/Tilemap.h"
 #include "game/main/Player.h"
+#include "game/objects/GameObject.h"
 
 class MainGame : public iGame
 {
 private:
     iGame *game;
-    Player *player;
+    GameObject *player;
+    Tilemap *map;
 
 public:
     MainGame(iGame *_game);
