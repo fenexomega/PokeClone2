@@ -3,7 +3,6 @@
 
 #include "interfaces/iGame.h"
 #include "graphics/Tilemap.h"
-#include "game/main/Player.h"
 #include "game/objects/GameObject.h"
 
 class MainGame : public iGame
@@ -11,8 +10,7 @@ class MainGame : public iGame
 private:
     iGame *game;
     GameObject *player;
-    Tilemap *map;
-
+    World *actualWorld;
 public:
     MainGame(iGame *_game);
     ~MainGame();

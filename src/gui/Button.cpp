@@ -26,6 +26,7 @@ Button::~Button()
 {
     for(auto i : textures)
         delete i;
+    delete m_text;
 
 }
 

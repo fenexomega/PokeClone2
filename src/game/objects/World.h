@@ -12,12 +12,21 @@
 //TODO terminar essa classe
 class World
 {
-public:
+private:
     Tilemap *tilemap;
-    std::vector<iGameObject *> npcs;
+    Vector2D<int> pos;
     Vector2D<int> playerInitialPos;
+    Vector2D<int> playerDimensions;
+
+    std::string getLocationDir(std::string filename);
+public:
+    std::vector<iGameObject *> npcs;
+
     World(std::string jsonFile);
+    void Render();
     ~World();
+    Vector2D<int> getPlayerDimensions() const;
+    void setPlayerDimensions(int x, int y);
 };
 
 #endif // WORLD_H

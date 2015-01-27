@@ -23,6 +23,14 @@ public:
         return Vector2D<TYPE> (x - v.x, y - v.y);
     }
 
+    inline Vector2D operator *(double i)
+    {
+        Vector2D aux = *this;
+        aux.x *= i;
+        aux.y *= i;
+        return aux;
+    }
+
     inline Vector2D& operator +=(Vector2D v)
     {
         x = x + v.x;
@@ -36,6 +44,8 @@ public:
         y -= v.y;
         return *this;
     }
+
+
 
     inline bool operator ==(Vector2D v)
     {

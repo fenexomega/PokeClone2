@@ -7,7 +7,7 @@
 class cPhysics
 {
 public:
-    virtual void Update(iGameObject *obj,World *world) = 0;
+    virtual void Update(iGameObject *obj,World *world,float dt) = 0;
 };
 
 #endif // CPHYSICS

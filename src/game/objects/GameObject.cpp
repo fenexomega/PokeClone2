@@ -14,7 +14,7 @@ GameObject::~GameObject()
 void GameObject::Update(float dt)
 {
     _input->Update(this);
-//    _physics->Update(this,_world);
+    _physics->Update(this,_world,dt);
     _graphic->Update(this,dt);
 }
 

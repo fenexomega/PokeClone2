@@ -35,7 +35,7 @@ void Game::Render()
 
 void Game::Dispose()
 {
-
+    actualGame->Dispose();
 }
 
 

@@ -6,10 +6,21 @@
 #define PRINT(X) std::cout << X << std::endl
 
 //TODO Pegar as otras coisas do json que podem ser relevantes
+
+std::string Tilemap::getLocationDir(std::string filename)
+{
+    std::string aux;
+    int i = filename.find_last_of('/');
+    aux.append(filename.substr(0,i) + '/');
+    return aux;
+
+}
+
 Tilemap::Tilemap(std::string jsonFile)
 {
-    Json::Value json, *object = FileLoader::LoadJson(jsonFile);
-    json = *object;
+    Json::Value json = FileLoader::LoadJson(jsonFile);
+    std::string Dir = getLocationDir(jsonFile);
+
     m_size.x = json["height"].asInt();
     m_size.y = json["width"].asInt();
 
@@ -17,10 +28,9 @@ Tilemap::Tilemap(std::string jsonFile)
     m_tileSize.y = json["tilewidth"].asInt();
 
     int ArraySize = json["tilesets"].size();
-    PRINT(ArraySize);
     for(int i = 0; i < ArraySize ; ++i)
     {
-        m_tileImages.push_back(new TileImage(new Texture("Contents/" + json["tilesets"][i]["image"].asString()),
+        m_tileImages.push_back(new TileImage(new Texture(Dir + json["tilesets"][i]["image"].asString()),
                                         json["tilesets"][i]["name"].asString(),
                                         Vector2D<int>(json["tilesets"][i]["imagewidth"].asInt(),
                                                       json["tilesets"][i]["imageheight"].asInt()) ));
@@ -52,7 +62,6 @@ Tilemap::Tilemap(std::string jsonFile)
 //    std::cout << m_size << std::endl;
     generateTileMap();
 
-    delete object;
 }
 
 Tilemap::~Tilemap()

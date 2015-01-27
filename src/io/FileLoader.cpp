@@ -32,16 +32,16 @@ SDL_Texture* FileLoader::LoadTexture(std::string path)
     return texture;
 }
 
-Json::Value* FileLoader::LoadJson(std::string path)
+Json::Value FileLoader::LoadJson(std::string path)
 {
     Json::Reader reader;
-    Json::Value *root = new Json::Value;
+    Json::Value root = new Json::Value;
     std::ifstream file;
     file.open(path.c_str());
     if(!file.is_open())
         std::cerr << "Não conseguiu abrir" << std::endl;
 
-    if(reader.parse(file,*root,false) == false)
+    if(reader.parse(file,root,false) == false)
         std::cerr << "Problema no json" << std::endl; //LOG ERROR reader.gerFormattedErrorMessages()
 
     return root;
