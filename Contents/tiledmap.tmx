@@ -7,14 +7,19 @@
  <tileset firstgid="1" name="default" tilewidth="32" tileheight="32">
   <image source="test_tiles.png" width="256" height="64"/>
  </tileset>
- <layer name="Camada de Tiles 1" width="30" height="30">
+ <layer name="background" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1bENAEAIQlHO/Yd2g+sQE39B6yswWpIqlDccXFynO73nv9nXXHe/29xr/brdxN9K3ytcXFxc3J1uIg1ydAQH
+   eJztwwENAAAMw6DOv+kLOSSsmqqqqu8ezqADhQ==
   </data>
  </layer>
- <layer name="Camada de Tiles 2" width="30" height="30">
+ <layer name="colidiveis" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AU0BqwDrQDkAAvAXlmIGahon308DsbAXmYnznobO8oGH6AD4qZsOBRMApGwSgYBaNgKAIAbYkAZg==
+   eJxjYmBgYBogjA3gEqcGGLV31N5Re4envWzD2F5Syk9q2otLbqTZi475oJiW9SAtwai9o/aO2jtq71Czd7D0UWgNBspeEAAAPf4BVw==
+  </data>
+ </layer>
+ <layer name="objetos" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0qENAAAIBLE37L8yGxCCwbT27CXwp44NJr4CANhp3MgAFQ==
   </data>
  </layer>
 </map>

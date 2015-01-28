@@ -1,5 +1,7 @@
 #include "AnimationController.h"
 
+#include "graphics/Drawer.h"
+
 int AnimationController::DirectionFrame(iGameObject *obj)
 {
     int result;
@@ -54,5 +56,6 @@ void AnimationController::Update(iGameObject *obj, float dt)
 
 void AnimationController::Render(iGameObject *obj)
 {
-    _animation->Render(obj->pos);
+    _animation->Render(obj->rect.x,obj->rect.y);
+    Drawer::fillRect(COLORBLUE,obj->rect.x,obj->rect.y,4,4);
 }

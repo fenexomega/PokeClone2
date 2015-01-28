@@ -16,15 +16,10 @@ MainGame::~MainGame()
 
 }
 
-
-
 void MainGame::Init()
 {
     actualWorld = new World("Contents/MainGame/map0.json");
     player = Factory::createPlayer("Contents/MainGame/player.json",actualWorld);
-//    player = new Player("Contents/MainGame/playersprite.png",
-//                        Vector2D<int>(10,10),Rect(400,400,32,32),
-//                        4,new PlayerInput());
 }
 
 void MainGame::Update(float dt)

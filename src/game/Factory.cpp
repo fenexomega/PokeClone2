@@ -22,7 +22,11 @@ GameObject *Factory::createPlayer(std::string jsonFile, World *world)
                                             ,json["animationFrames"].asInt()
                                         ,json["width"].asInt(),json["height"].asInt())),
                                         world);
-    world->setPlayerDimensions(player->rect.w,player->rect.h);
+    world->Normalize(player->rect.w,player->rect.h);
+    player->pos = world->getPlayerInitialPos();
+    Vector2D<int> aux = world->getOffset();
+    player->rect.x = aux.x;
+    player->rect.y = aux.y;
     return player;
 }
 

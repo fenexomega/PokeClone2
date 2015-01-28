@@ -15,6 +15,12 @@ std::string Tilemap::getLocationDir(std::string filename)
     return aux;
 
 }
+std::vector<Uint32> Tilemap::getLayers(int i) const
+{
+    return layers.at(i).data;
+}
+
+
 
 Tilemap::Tilemap(std::string jsonFile)
 {
@@ -84,9 +90,14 @@ void Tilemap::Render(int x, int y)
 
 }
 
-std::vector<Uint16> Tilemap::operator[](int i)
+std::vector<Uint32> Tilemap::operator[](int i)
 {
-   return  layers.at(i).data;
+    return  layers.at(i).data;
+}
+
+Vector2D<int> Tilemap::getLayerSize()
+{
+    return layers.at(0).size;
 }
 
 void Tilemap::generateTileMap()
@@ -102,7 +113,7 @@ void Tilemap::generateTileMap()
         Vector2D<int> imageSizeIT(m_tileImages[0]->size.x / m_tileSize.x,
                                   m_tileImages[0]->size.y / m_tileSize.y);
         //Para cada valor na camada de tiles
-        for(Uint16 i = 0; i < layer.data.size(); ++i)
+        for(Uint32 i = 0; i < layer.data.size(); ++i)
         {
             int value = layer.data[i];
             //Gerar um novo retangulo src
@@ -113,7 +124,7 @@ void Tilemap::generateTileMap()
             destrect = Rect( (i%m_size.x) * m_tileSize.x,
                                 (i/m_size.y) * m_tileSize.y,
                                 m_tileSize.x,m_tileSize.y);
-
+            m_tileRects.push_back(destrect);
             //Renderizar na tela
             TileImage *tileimage = m_tileImages[0];
             Drawer::Render(tileimage->tex,&srcrect,&destrect);

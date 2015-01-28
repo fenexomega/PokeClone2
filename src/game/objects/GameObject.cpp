@@ -3,6 +3,9 @@
 GameObject::GameObject(cInput *input, cPhysics *physics, cGraphic *graphic, World *world)
     : _input(input),_physics(physics),_graphic(graphic), _world(world)
 {
+    mediator.addComponent(input);
+    mediator.addComponent(physics);
+    mediator.addComponent(graphic);
 
 }
 

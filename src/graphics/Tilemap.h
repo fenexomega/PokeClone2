@@ -7,17 +7,18 @@
 #include "assets/Texture.h"
 #include "math/Vector2D.h"
 
+typedef struct
+{
+    std::vector<Uint32> data;
+    Vector2D<int> size;
+    bool visible;
+}Layer;
+
 
 //TODO fazer isso usar graphics/tiles/SpriteSheet.h
 class Tilemap
 {
 private:
-    typedef struct
-    {
-        std::vector<Uint16> data;
-        Vector2D<int> size;
-        bool visible;
-    }Layer;
 
     class TileImage
     {
@@ -36,6 +37,8 @@ private:
     void generateTileMap();
     std::string getLocationDir(std::string filename);
 public:
+
+    std::vector<Rect> m_tileRects;
     Vector2D<int> m_size;
     Vector2D<int> m_tileSize;
     Texture *tileTexture;
@@ -49,10 +52,11 @@ public:
 
     void Render(Vector2D<int> pos);
     void Render(int x, int y);
-    std::vector<Uint16> operator[](int i);
-
+    std::vector<Uint32> operator[](int i);
+    Vector2D<int> getLayerSize();
     ~Tilemap();
 
+    std::vector<Uint32> getLayers(int i) const;
 };
 
 

@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 
+
 template <class TYPE>
 class Vector2D
 {
@@ -15,19 +16,49 @@ public:
 
     inline Vector2D operator +(Vector2D v)
     {
-        return Vector2D<TYPE> (x + v.x, y + v.y);
+        return Vector2D (x + v.x, y + v.y);
     }
 
-    inline Vector2D operator -(Vector2D v)
+    inline Vector2D<TYPE> operator -(Vector2D<TYPE> v)
     {
         return Vector2D<TYPE> (x - v.x, y - v.y);
     }
+
+    inline Vector2D operator *(Vector2D v)
+    {
+        return Vector2D (x * v.x, y * v.y);
+    }
+
 
     inline Vector2D operator *(double i)
     {
         Vector2D aux = *this;
         aux.x *= i;
         aux.y *= i;
+        return aux;
+    }
+
+    inline Vector2D operator /(double i)
+    {
+        Vector2D aux = *this;
+        aux.x /= i;
+        aux.y /= i;
+        return aux;
+    }
+
+    inline Vector2D operator +(double i)
+    {
+        Vector2D aux = *this;
+        aux.x += i;
+        aux.y += i;
+        return aux;
+    }
+
+    inline Vector2D operator -(double i)
+    {
+        Vector2D aux = *this;
+        aux.x -= i;
+        aux.y -= i;
         return aux;
     }
 
@@ -89,5 +120,14 @@ std::ostream& operator<<(std::ostream& ost,Vector2D<TYPE> vec)
 {
     return ost << "{ " << vec.x << ", " << vec.y << " }";
 }
+
+template <class TYPE>
+inline Vector2D<TYPE> operator-(Vector2D<TYPE> v)
+{
+    v.x *= -1;
+    v.y *= -1;
+    return v;
+}
+
 
 #endif // VECTOR2D_H

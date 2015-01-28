@@ -27,6 +27,7 @@ public:
 
     static void RenderTo(Texture *texture = NULL);
 
+    //TODO funcoes de draw usando rects
     //Desenha uma linha de x1,y1 a x2,y2
     static void drawLine(Color color,int x1, int y1, int x2, int y2);
 
@@ -35,6 +36,8 @@ public:
 
     //Renderiza um retângulo
     static void fillRect(Color color, int x, int y, int w, int h);
+    static void fillRect(Color color, Rect _rect);
+
 
     static void setColor(Color color);
 };

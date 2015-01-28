@@ -9,7 +9,6 @@ class cGraphic : public Component
 public:
     virtual void Update(iGameObject *obj,float dt) = 0;
     virtual void Render(iGameObject *obj) = 0 ;
-
 };
 
 
