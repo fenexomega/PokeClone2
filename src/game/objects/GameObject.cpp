@@ -1,5 +1,7 @@
 #include "GameObject.h"
 
+#include "graphics/Drawer.h"
+
 GameObject::GameObject(cInput *input, cPhysics *physics, cGraphic *graphic, World *world)
     : _input(input),_physics(physics),_graphic(graphic), _world(world)
 {

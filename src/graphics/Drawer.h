@@ -31,8 +31,10 @@ public:
     //Desenha uma linha de x1,y1 a x2,y2
     static void drawLine(Color color,int x1, int y1, int x2, int y2);
 
-    //Desenhar retângulo com a margem esquerda superior. Desenha apenas as aretas
+    //Desenhar retângulo com a margem esquerda superior. Desenha apenas as arestas
     static void drawRect(Color color, int x, int y, int w, int h);
+    static void drawRect(Color color, Rect _rect);
+
 
     //Renderiza um retângulo
     static void fillRect(Color color, int x, int y, int w, int h);

@@ -22,6 +22,9 @@ public:
     // cGraphic interface
     void Update(iGameObject *obj, float dt);
     void Render(iGameObject *obj);
+
+    // cGraphic interface
+    Vector2D<int> getWidthAndHeight();
 };
 
 #endif // ANIMATIONCONTROLLER_H

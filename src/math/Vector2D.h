@@ -24,11 +24,6 @@ public:
         return Vector2D<TYPE> (x - v.x, y - v.y);
     }
 
-    inline Vector2D operator *(Vector2D v)
-    {
-        return Vector2D (x * v.x, y * v.y);
-    }
-
 
     inline Vector2D operator *(double i)
     {

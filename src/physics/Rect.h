@@ -44,4 +44,9 @@ public:
     Rect(){}
 };
 
+static inline std::ostream& operator<<(std::ostream& ost,Rect r)
+{
+    return ost << "{ " << r.x << "," << r.y << "," << r.w << "," << r.h << " }";
+}
+
 #endif // RECT_H

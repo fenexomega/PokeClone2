@@ -59,3 +59,11 @@ void SpriteAnimation::setKeyFrame(int value)
     currentFrame = keyFrame;
 }
 
+Vector2D<int> SpriteAnimation::getWidthAndHeight()
+{
+    Vector2D<int> aux;
+    Rect aux_rect = spst->getFramerect();
+    aux.set(aux_rect.w,aux_rect.h);
+    return aux;
+}
+

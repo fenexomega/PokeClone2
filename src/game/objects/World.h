@@ -20,13 +20,16 @@ private:
     Vector2D<int> offset;
     Vector2D<int> playerInitialPos;
     Vector2D<int> playerDimensions;
-    Vector2D<int> tileSize;
+
+    std::vector<Rect>tileRects;
 
     std::map<std::string,std::vector<Uint32> > layersTiles;
 
     std::string getLocationDir(std::string filename);
 public:
+    Vector2D<int> tileSize;
     Vector2D<int> layerSize;
+
     std::vector<iGameObject *> npcs;
 
     World(std::string jsonFile);
@@ -39,6 +42,8 @@ public:
     void Render();
 
     Uint32 atPos(std::string stg,int x, int y);
+    Rect atPosRect(int x, int y);
+
     Vector2D<int> getPlayerInitialPos() const;
     Vector2D<int> getOffset() const;
     void setOffset(const Vector2D<int> &value);

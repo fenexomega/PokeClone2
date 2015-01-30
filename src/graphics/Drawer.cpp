@@ -31,6 +31,13 @@ void Drawer::drawRect(Color color, int x, int y, int w, int h)
     SDL_RenderDrawRect(RENDERER,&rect);
 }
 
+void Drawer::drawRect(Color color, Rect _rect)
+{
+    SDL_Rect rect = _rect.To_SDLRect();
+    SDL_SetRenderDrawColor(RENDERER,color.r,color.g,color.b,color.a);
+    SDL_RenderDrawRect(RENDERER,&rect);
+}
+
 void Drawer::fillRect(Color color, int x, int y, int w, int h)
 {
     SDL_Rect rect = {x,y,w,h};

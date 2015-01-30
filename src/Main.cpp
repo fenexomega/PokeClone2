@@ -9,7 +9,7 @@
 #include "debuggames/TextTest.h"
 #include "debuggames/TileMapTest.h"
 #include "debuggames/SpriteSheetTest.h"
-
+#include "debuggames/PhysicsTest.h"
 /*@TODO
 
   FileParser Class

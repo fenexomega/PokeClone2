@@ -3,6 +3,7 @@
 #include "gSystems.h"
 #include "graphics/Window.h"
 #include "util/Logger.h"
+#include "util/uRandom.h"
 
 Engine::Engine()
 {
@@ -32,6 +33,7 @@ int Engine::Run(iGame *game)
     unsigned int framerate = 0;
     float seconds = 0,dt;
     uTime timer;
+    uRandom::initRandomSeed();
 
     Logger::CreateLogFile();
 

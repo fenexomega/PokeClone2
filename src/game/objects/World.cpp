@@ -58,6 +58,8 @@ World::World(std::string jsonFile)
     layersTiles["colidiveis"] = tilemap->getLayers(1);
     layersTiles["objetos"] = tilemap->getLayers(2);
 
+    tileRects = tilemap->m_tileRects;
+
 }
 
 void World::Render()
@@ -67,9 +69,13 @@ void World::Render()
 
 Uint32 World::atPos(std::string stg, int x, int y)
 {
-    x /= layerSize.x;
-    y /= layerSize.y;
+
     return layersTiles[stg][x + y*layerSize.x ];
+}
+
+Rect World::atPosRect(int x, int y)
+{
+    return tileRects.at(x + y*layerSize.x);
 }
 
 

@@ -2,8 +2,11 @@
 
 #include "graphics/Drawer.h"
 
+#include "util/Logger.h"
+
 int AnimationController::DirectionFrame(iGameObject *obj)
 {
+
     int result;
     if(obj->acc.y == -1)
         result = 12;
@@ -37,7 +40,6 @@ void AnimationController::receiveMessage(int msg)
 void AnimationController::Update(iGameObject *obj, float dt)
 {
     timeCounter += dt;
-
     if(timeCounter >= 0.25f)
     {
         _animation->UpdateAnimation();
@@ -57,5 +59,11 @@ void AnimationController::Update(iGameObject *obj, float dt)
 void AnimationController::Render(iGameObject *obj)
 {
     _animation->Render(obj->rect.x,obj->rect.y);
-    Drawer::fillRect(COLORBLUE,obj->rect.x,obj->rect.y,4,4);
+
+}
+
+
+Vector2D<int> AnimationController::getWidthAndHeight()
+{
+    return _animation->getWidthAndHeight();
 }

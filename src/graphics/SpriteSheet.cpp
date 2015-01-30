@@ -15,6 +15,12 @@ Vector2D<int> SpriteSheet::getSz() const
 }
 
 
+
+Rect SpriteSheet::getFramerect() const
+{
+    return framerect;
+}
+
 SpriteSheet::SpriteSheet(std::string fileName, Rect _frameRect)
     : framerect(_frameRect)
 {

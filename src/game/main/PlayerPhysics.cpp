@@ -1,5 +1,7 @@
 #include "PlayerPhysics.h"
+
 #include "util/Logger.h"
+
 #include "systems/sysPhysics.h"
 
 PlayerPhysics::PlayerPhysics(int _velocity)
@@ -20,29 +22,32 @@ void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
     if(hitBox == NULL)
     {
         Rect aux = obj->rect;
-        int h = aux.h/2;
-        hitBox = new Rect(aux.x,aux.y + h,aux.w,h);
+        int h = 16;//aux.h/2;
+        hitBox = new Rect(0,0,32,32);
+        PRINT(*hitBox);
+        PRINT(obj->rect);
 
     }
-    auto aux = obj->pos + ((world->layerSize/2) * obj->acc);
-    aux.x += obj->rect.w;
-    aux.y += obj->rect.h;
-    PRINT(obj->pos);
-//    if( world->atPos("colidiveis",aux.x,aux.y) == 0)
+    //TODO a largura e altura do game object estão nulas!
+    // não consigo pensar em como passar por parametro
+    hitBox->x = obj->pos.x;
+    hitBox->y = obj->pos.y;
+
+    Vector2D<int> auxVec = (obj->pos + 16) + obj->acc * 16;
+    auxVec.x /= world->tileSize.x;
+    auxVec.y /= world->tileSize.y;
+    auxVec += obj->acc;
+//    PRINT(world->atPos("colidiveis",auxVec.x,auxVec.y));
+    if(world->atPos("colidiveis",auxVec.x,auxVec.y) != 0)
     {
-        obj->pos += obj->acc*velocity;
-        world->pos = -(obj->pos + obj->rect.w/2);
-
-//        static Vector2D<int> vec = world->layerSize;
-//        static Rect levelHitBox((aux.x/vec.x) * vec.x,
-//                                (aux.y/vec.y) * vec.y,
-//                                vec.x,vec.y);
-
-//        if(sysPhysics::isColliding(*hitBox,levelHitBox))
-//            return;
-
+        Rect tileBox = world->atPosRect(auxVec.x,auxVec.y);
+        PRINT(tileBox);
+        PRINT(*hitBox);
+        if(sysPhysics::isColliding(*hitBox,tileBox))
+            return;
     }
-
+    obj->pos += obj->acc*velocity;
+    world->pos = -obj->pos;
 
 
 }

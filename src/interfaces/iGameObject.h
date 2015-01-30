@@ -44,7 +44,6 @@ public:
 
 //    virtual void SendMessage(MSG msg) = 0;
     virtual void Update(float dt) = 0;
-    //TODO isso daqui deveria receber uma textura para desenhar
     virtual void Render() = 0;
 
     virtual ~iGameObject() {}

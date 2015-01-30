@@ -27,6 +27,7 @@ public:
 
     unsigned int getFrames() const;
     Vector2D<int> getSz() const;
+    Rect getFramerect() const;
 };
 
 #endif // SPRITESHEET_H
