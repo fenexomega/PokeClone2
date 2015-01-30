@@ -10,14 +10,7 @@
 #include "debuggames/TileMapTest.h"
 #include "debuggames/SpriteSheetTest.h"
 #include "debuggames/PhysicsTest.h"
-/*@TODO
 
-  FileParser Class
-  Entity Class
-  Actor Class
-
-
-  */
 int main()
 {
     Game game;

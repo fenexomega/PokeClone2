@@ -2,14 +2,14 @@
 #define COMPONENTMEDIATOR_H
 
 #include <vector>
-#include "game/components/Component.h"
+#include "interfaces/iComponent.h"
 
 class ComponentMediator
 {
 public:
-    std::vector <Component *> _components;
+    std::vector <iComponent *> _components;
 
-    void addComponent(Component *cmp);
+    void addComponent(iComponent *cmp);
     ComponentMediator();
     void sendMessage(int msg);
     ~ComponentMediator();

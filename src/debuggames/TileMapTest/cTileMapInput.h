@@ -11,8 +11,8 @@ public:
 
     // iComponent interface
 public:
-    void Update(iGameObject &obj);
-    void Render();
+//    void Update(iGameObject &obj);
+//    void Render();
 };
 
 #endif // CTILEMAPINPUT_H

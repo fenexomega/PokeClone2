@@ -3,13 +3,14 @@
 
 #include "interfaces/iGame.h"
 #include "graphics/Tilemap.h"
-#include "game/objects/GameObject.h"
+#include "interfaces/iGameObject.h"
+#include "game/main/objects/World.h"
 
 class MainGame : public iGame
 {
 private:
     iGame *game;
-    GameObject *player;
+    iGameObject *player;
     World *actualWorld;
 public:
     MainGame(iGame *_game);

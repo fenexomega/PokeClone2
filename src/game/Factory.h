@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#include "game/objects/GameObject.h"
-#include "game/objects/World.h"
+#include "interfaces/iGameObject.h"
+#include "game/main/objects/World.h"
 
 #define OBJ_PLAYER 0
 #define OBJ_ENEMY 1
@@ -14,7 +14,7 @@ class Factory
 {
 public:
     Factory();
-    static GameObject *createPlayer(std::string jsonFile, World *world);
+    static iGameObject *createPlayer(std::string jsonFile, World *world);
     ~Factory();
 };
 

@@ -1,6 +1,6 @@
 #include "ComponentMediator.h"
 
-void ComponentMediator::addComponent(Component *cmp)
+void ComponentMediator::addComponent(iComponent *cmp)
 {
     _components.push_back(cmp);
 }
@@ -12,7 +12,7 @@ ComponentMediator::ComponentMediator()
 
 void ComponentMediator::sendMessage(int msg)
 {
-    for(Component* c : _components)
+    for(iComponent* c : _components)
         if(c != nullptr)
             c->receiveMessage(msg);
 }

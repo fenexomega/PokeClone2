@@ -8,8 +8,8 @@ class cZoneInput : public iComponent
 public:
     cZoneInput();
     ~cZoneInput();
-    void Update(iGameObject &obj);
-    void Render();
+//    void Update(iGameObject &obj);
+//    void Render();
 
     // iComponent interface
 

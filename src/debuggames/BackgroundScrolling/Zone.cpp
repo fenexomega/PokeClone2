@@ -24,14 +24,14 @@ Zone::~Zone()
 void Zone::Update(float dt)
 {
     for(auto i : components) {
-        i->Update(*this);
+//        i->Update(*this);
     }
 }
 
 void Zone::Render()
 {
     for(auto i : components) {
-        i->Render();
+//        i->Render();
     }
 }
 

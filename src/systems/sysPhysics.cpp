@@ -2,6 +2,11 @@
 
 #include "graphics/Window.h"
 
+bool sysPhysics::isOverlapping(int minA, int maxA,int minB, int maxB)
+{
+    return minB <= maxA && minA <= maxB;
+}
+
 bool sysPhysics::isColliding(Rect obj1, Rect obj2)
 {
     if(obj1 == obj2)
@@ -9,7 +14,18 @@ bool sysPhysics::isColliding(Rect obj1, Rect obj2)
     if(obj1.x + obj1.w >= obj2.x &&
             obj1.x  <= obj2.x + obj2.w)
         if(obj1.y + obj1.h >= obj2.y &&
-                obj1.y + obj1.h <= obj2.y + obj2.h)
+                obj1.y  <= obj2.y + obj2.h)
+            return true;
+    return false;
+
+}
+
+bool sysPhysics::isColliding(Vector2D<int> point, Rect rect)
+{
+    if(point.x >= rect.x &&
+            point.x  <= rect.x + rect.w)
+        if(point.y >= rect.y &&
+                point.y <= rect.y + rect.h)
             return true;
     return false;
 }

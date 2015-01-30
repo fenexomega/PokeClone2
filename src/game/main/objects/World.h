@@ -24,6 +24,8 @@ private:
     std::vector<Rect>tileRects;
 
     std::map<std::string,std::vector<Uint32> > layersTiles;
+    std::map<std::string,std::vector<Rect> > layersRect;
+
 
     std::string getLocationDir(std::string filename);
 public:
@@ -47,6 +49,8 @@ public:
     Vector2D<int> getPlayerInitialPos() const;
     Vector2D<int> getOffset() const;
     void setOffset(const Vector2D<int> &value);
+    std::vector<Rect> getLayersRect(std::string key);
+    void setLayersRect(const std::map<std::string, std::vector<Rect> > &value);
 };
 
 #endif // WORLD_H

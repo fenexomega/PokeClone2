@@ -20,7 +20,7 @@ add_executable(game ${SRC_THIRDPARTIES}  ${SRC_FILES} ${JSON_FILES} )
 include_directories(src/ ThirdParties/ ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR} )
 
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -std=c++11")
+set(CMAKE_CXX_FLAGS "-Wall -std=c++11")
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Contents
 DESTINATION ${CMAKE_BINARY_DIR} )

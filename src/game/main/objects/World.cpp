@@ -31,6 +31,16 @@ void World::setOffset(const Vector2D<int> &value)
 {
     offset = value;
 }
+
+std::vector<Rect> World::getLayersRect(std::string key)
+{
+    return layersRect[key];
+}
+
+void World::setLayersRect(const std::map<std::string, std::vector<Rect> > &value)
+{
+    layersRect = value;
+}
 std::string World::getLocationDir(std::string filename)
 {
     std::string aux;
@@ -57,6 +67,11 @@ World::World(std::string jsonFile)
     layersTiles["background"] = tilemap->getLayers(0);
     layersTiles["colidiveis"] = tilemap->getLayers(1);
     layersTiles["objetos"] = tilemap->getLayers(2);
+
+    std::vector<Uint32> aux  = layersTiles["colidiveis"];
+    for( auto i = 0; i < aux.size() ; ++i)
+        if( aux[i] != 0)
+        layersRect["colidiveis"].push_back(tilemap->m_tileRects[i]);
 
     tileRects = tilemap->m_tileRects;
 

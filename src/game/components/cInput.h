@@ -2,13 +2,13 @@
 #define CINPUT
 
 #include "interfaces/iGameObject.h"
-#include "game/components/Component.h"
+#include "interfaces/iComponent.h"
 
 
-class cInput : public Component
+class cInput : public iComponent
 {
 public:
-    virtual void Update(iGameObject *player) = 0;
+    virtual void Update(iGameObject *player) {}
 };
 
 #endif // CINPUT
