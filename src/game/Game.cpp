@@ -3,6 +3,8 @@
 #include "game/menu/MenuGame.h"
 #include "game/main/MainGame.h"
 
+#include "graphics/Window.h"
+
 #define ADD_GAME(GAME) games.push_back(sh_ptr(GAME))
 
 Game::Game()

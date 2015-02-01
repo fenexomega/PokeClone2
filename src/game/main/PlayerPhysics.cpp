@@ -4,48 +4,36 @@
 
 #include "systems/sysPhysics.h"
 
-PlayerPhysics::PlayerPhysics(int _velocity)
-    : velocity(_velocity)
+PlayerPhysics::PlayerPhysics(int velocity,Rect hitBox)
+    : _velocity(velocity),_hitBox(hitBox)
 {
-    hitBox = NULL;
 }
 
 PlayerPhysics::~PlayerPhysics()
 {
-    delete hitBox;
+
 }
-
-
 
 void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
 {
-    if(hitBox == NULL)
-    {
-        hitBox = new Rect(0,0,32,16);
-        PRINT(*hitBox);
-    }
 
+    obj->pos += obj->acc*_velocity;
 
-    obj->pos += obj->acc*velocity;
-
-    hitBox->x = obj->pos.x;
-    hitBox->y = obj->pos.y + 16;
+    _hitBox.x = obj->pos.x;
+    _hitBox.y = obj->pos.y + 16;
 
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
     for(auto i : colidables)
     {
-        if(sysPhysics::isColliding(*hitBox,i))
+        if(sysPhysics::isColliding(_hitBox,i))
         {
             PRINT(i);
-            PRINT(*hitBox);
-            obj->pos -= obj->acc*velocity;
+            PRINT(_hitBox);
+            obj->pos -= obj->acc*_velocity;
             return;
         }
     }
     world->pos = -obj->pos;
-
-
-
 }
 
 

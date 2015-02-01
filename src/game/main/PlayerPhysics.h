@@ -3,13 +3,15 @@
 
 #include "game/components/cPhysics.h"
 
+#include "physics/Rect.h"
+
 class PlayerPhysics : public cPhysics
 {
 private:
-    int velocity = 2;
-    Rect *hitBox;
+    int _velocity = 2;
+    Rect _hitBox;
 public:
-    PlayerPhysics(int _velocity);
+    PlayerPhysics(int velocity,Rect hitBox);
     ~PlayerPhysics();
 
     // cPhysics interface

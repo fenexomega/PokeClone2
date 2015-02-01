@@ -18,7 +18,7 @@ iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *player = new PlayerObject(new PlayerInput(),
-                                        new PlayerPhysics(2),
+                                        new PlayerPhysics(2,Rect(0,0,32,16)),
                                         new AnimationController(
                                             new SpriteAnimation(json["sprite"].asString()
                                             ,json["animationFrames"].asInt()
