@@ -6,7 +6,6 @@
 #include <fstream>
 #include <string>
 
-#include "Engine.h"
 
 static std::ofstream logFile;
 

@@ -9,6 +9,7 @@ Engine::Engine()
 {
     systems.push_back(new sysGraphics);
     systems.push_back(new sysSound);
+    systems.push_back(new sysScripting);
 //    systems.push_back(new sysInput);
 
 }
