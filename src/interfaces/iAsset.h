@@ -5,6 +5,7 @@
 #define AS_JSON    1
 #define AS_SOUND   2
 #define AS_FONT    3
+#define AS_SCRIPT  4
 
 #include <iostream>
 

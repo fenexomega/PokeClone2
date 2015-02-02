@@ -1,6 +1,8 @@
 #include "MouseTest.h"
 
 #include "graphics/Drawer.h"
+#include "systems/sysInput.h"
+
 
 void MouseTest::Init()
 {

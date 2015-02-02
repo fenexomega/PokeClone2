@@ -1,5 +1,7 @@
 #include "TextureTest.h"
 
+#include "systems/sysInput.h"
+
 void TextureTest::Init()
 {
     renderOBJ = new RenderMe("Contents/Debug/texture.png");
