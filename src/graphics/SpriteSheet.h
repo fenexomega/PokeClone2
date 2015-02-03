@@ -2,6 +2,7 @@
 #define SPRITESHEET_H
 
 #include <iostream>
+#include <memory>
 #include "physics/Rect.h"
 #include "assets/Texture.h"
 #include "math/Vector2D.h"
@@ -12,7 +13,7 @@ private:
     typedef unsigned int Uint16;
     Vector2D<int> sz; // in frames
     Uint16 frames;
-    Texture *m_tex;
+    std::shared_ptr<Texture> m_tex;
     Rect framerect;
 
 public:

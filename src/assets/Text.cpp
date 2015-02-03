@@ -5,6 +5,8 @@
 
 #include "graphics/Drawer.h"
 
+#include <memory>
+
 Rect Text::rect() const
 {
     return m_rect;
@@ -27,12 +29,12 @@ void Text::Render(int x, int y)
 //    m_tex->Render(m_rect);
 //}
 
-Texture *Text::setText(std::string _text)
+shared_ptr<Texture> Text::setText(std::string _text)
 {
     m_text = _text;
     SDL_Surface *surface = TTF_RenderText_Blended(m_font,_text.c_str(),m_color.toSDLColor());
     SDL_Texture *tex = SDL_CreateTextureFromSurface(Window::getActiveRenderer(),surface);
-    m_tex = new Texture(tex);
+    m_tex = shared_ptr<Texture>(new Texture(tex));
     SDL_FreeSurface(surface);
     m_rect = m_tex->getRect();
     return m_tex;

@@ -5,7 +5,7 @@
 
 #include "graphics/Drawer.h"
 
-Button::Button(int x, int y, Texture *normal, Texture *mouseOver
+Button::Button(int x, int y, std::shared_ptr<Texture> normal, std::shared_ptr<Texture> mouseOver
                , iCommand* command, Text *text)
 {
     rect = normal->getRect();
@@ -24,8 +24,6 @@ void Button::RegisterCommand(iCommand *command)
 
 Button::~Button()
 {
-    for(auto i : textures)
-        delete i;
     delete m_text;
 
 }

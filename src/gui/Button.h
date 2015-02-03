@@ -19,7 +19,7 @@ public:
 
     };
 
-    Button(int x, int y, Texture *normal,Texture *mouseOver,iCommand* command = nullptr,Text *text = nullptr);
+    Button(int x, int y, std::shared_ptr<Texture>normal,std::shared_ptr<Texture>mouseOver,iCommand* command = nullptr,Text *text = nullptr);
     void RegisterCommand(iCommand* command);
     ~Button();
 
@@ -28,7 +28,7 @@ public:
     void Render();
 private:
     iCommand *command;
-    std::vector<Texture *> textures;
+    std::vector<std::shared_ptr<Texture> > textures;
     Rect rect;
     int state;
     Text *m_text;

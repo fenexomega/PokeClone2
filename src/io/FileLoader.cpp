@@ -2,10 +2,15 @@
 
 #include <fstream>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 #include "json/json.h"
 #include "graphics/Window.h"
 #include "gSettings.h"
+
+
+std::map<std::string,std::shared_ptr<iAsset> > FileLoader::files;
 
 FileLoader::FileLoader()
 {
@@ -17,19 +22,32 @@ FileLoader::~FileLoader()
 
 }
 
-SDL_Texture* FileLoader::LoadTexture(std::string path)
+shared_ptr<Texture> FileLoader::LoadTexture(std::string path)
 {
+    shared_ptr<Texture> shared;
+    if(files.find(path) != files.end())
+    {
+        shared = std::static_pointer_cast<Texture,iAsset>(files[path]);
+        return shared;
+    }
     SDL_Texture *texture = NULL;
     SDL_Surface *surface = IMG_Load((path).c_str());
-    //SDL_SetColorKey(surface,SDL_TRUE,SDL_MapRGB(surface->format,GALPHA_COLOR));
 
     texture = SDL_CreateTextureFromSurface(Window::getActiveRenderer(),surface);
+    SDL_FreeSurface(surface);
+
+    //TODO throw exception
     if(texture == NULL)
     {
-                std::cerr << "ERROR: " << SDL_GetError() << std::endl;
+        std::cerr << "ERROR: " << SDL_GetError() << std::endl;
+        return nullptr;
     }
-    SDL_FreeSurface(surface);
-    return texture;
+    Texture *aux = new Texture(texture);
+    shared = std::shared_ptr<Texture>(aux);
+
+    files[path] = shared;
+
+    return shared;
 }
 
 Json::Value FileLoader::LoadJson(std::string path)
@@ -56,5 +74,14 @@ TTF_Font* FileLoader::LoadFont(std::string path,int size)
     }
     return font;
 
+}
+
+void FileLoader::Update()
+{
+    for(auto i = files.begin(); i != files.end(); ++i)
+    {
+        if(i->second.unique())
+            files.erase(i);
+    }
 }
 

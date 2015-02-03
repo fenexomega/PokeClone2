@@ -2,6 +2,8 @@
 
 #include "graphics/Drawer.h"
 
+#include "io/FileLoader.h"
+
 unsigned int SpriteSheet::getFrames() const
 {
     return frames;
@@ -24,7 +26,7 @@ Rect SpriteSheet::getFramerect() const
 SpriteSheet::SpriteSheet(std::string fileName, Rect _frameRect)
     : framerect(_frameRect)
 {
-    m_tex = new Texture(fileName);
+    m_tex = FileLoader::LoadTexture(fileName);
     sz.set( m_tex->getRect().w / framerect.w,
             m_tex->getRect().h / framerect.h );
     frames = sz.x * sz.y;
@@ -32,7 +34,7 @@ SpriteSheet::SpriteSheet(std::string fileName, Rect _frameRect)
 
 SpriteSheet::SpriteSheet(std::string fileName, Vector2D<int> frameSize)
 {
-    m_tex = new Texture(fileName);
+    m_tex = FileLoader::LoadTexture(fileName);
     framerect.w = frameSize.x;
     framerect.h = frameSize.y;
     sz.set( m_tex->getRect().w / framerect.w,
@@ -42,7 +44,7 @@ SpriteSheet::SpriteSheet(std::string fileName, Vector2D<int> frameSize)
 
 SpriteSheet::SpriteSheet(std::string fileName, int frame_width, int frame_height)
 {
-    m_tex = new Texture(fileName);
+    m_tex = FileLoader::LoadTexture(fileName);
     framerect.w = frame_width;
     framerect.h = frame_height;
     sz.set( m_tex->getRect().w / framerect.w,
@@ -52,7 +54,6 @@ SpriteSheet::SpriteSheet(std::string fileName, int frame_width, int frame_height
 
 SpriteSheet::~SpriteSheet()
 {
-    delete m_tex;
 }
 
 void SpriteSheet::Render(int x, int y,Uint16 frame)

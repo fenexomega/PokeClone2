@@ -7,6 +7,7 @@
 #include "assets/Texture.h"
 #include "interfaces/iAsset.h"
 #include "graphics/Color.h"
+using std::shared_ptr;
 
 class Text : iAsset
 {
@@ -15,12 +16,12 @@ private:
     int m_textSize;
     Rect m_rect;
     std::string m_text;
-    Texture *m_tex;
+    std::shared_ptr<Texture> m_tex;
     Color m_color;
 public:
     Text(std::string _path, std::string _text, int _textSize = 16, Color _color = COLORBLACK);
     void Render(int x, int y);
-    Texture * setText(std::string _text);
+    shared_ptr<Texture> setText(std::string _text);
     ~Text();
     Rect rect() const;
 };

@@ -36,7 +36,7 @@ Tilemap::Tilemap(std::string jsonFile)
     int ArraySize = json["tilesets"].size();
     for(int i = 0; i < ArraySize ; ++i)
     {
-        m_tileImages.push_back(new TileImage(new Texture(Dir + json["tilesets"][i]["image"].asString()),
+        m_tileImages.push_back(new TileImage(FileLoader::LoadTexture(Dir + json["tilesets"][i]["image"].asString()),
                                         json["tilesets"][i]["name"].asString(),
                                         Vector2D<int>(json["tilesets"][i]["imagewidth"].asInt(),
                                                       json["tilesets"][i]["imageheight"].asInt()) ));
@@ -61,9 +61,9 @@ Tilemap::Tilemap(std::string jsonFile)
         layers.push_back(l1);
     }
 
-    tileTexture = new Texture(
+    tileTexture = std::shared_ptr<Texture>(new Texture(
             m_size.x * m_tileSize.x,
-            m_size.y * m_tileSize.y);
+            m_size.y * m_tileSize.y));
 
 //    std::cout << m_size << std::endl;
     generateTileMap();
@@ -72,7 +72,6 @@ Tilemap::Tilemap(std::string jsonFile)
 
 Tilemap::~Tilemap()
 {
-    delete tileTexture;
     for (auto i : m_tileImages)
         delete i;
 

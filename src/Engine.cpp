@@ -4,6 +4,7 @@
 #include "graphics/Window.h"
 #include "util/Logger.h"
 #include "util/uRandom.h"
+#include "io/FileLoader.h"
 
 Engine::Engine()
 {
@@ -56,6 +57,8 @@ int Engine::Run(iGame *game)
 
         seconds += dt;
         framerate++;
+
+        FileLoader::Update();
 
         if(seconds >= 1.0f)
         {

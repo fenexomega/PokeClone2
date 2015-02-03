@@ -27,8 +27,6 @@ void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
     {
         if(sysPhysics::isColliding(_hitBox,i))
         {
-            PRINT(i);
-            PRINT(_hitBox);
             obj->pos -= obj->acc*_velocity;
             return;
         }

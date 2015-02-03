@@ -25,11 +25,11 @@ void TextTest::Init()
                           "Pressionar",
                           16,
                           Color(0,255,0,255));
-    bt = new Button(100,100,
-                    new Texture("Contents/button.png"),
-                    new Texture("Contents/buttonMouseOver.png"),
-                    new CommandTextChanger(text),
-                    tex1);
+//    bt = new Button(100,100,
+//                    new Texture("Contents/button.png"),
+//                    new Texture("Contents/buttonMouseOver.png"),
+//                    new CommandTextChanger(text),
+//                    tex1);
 
 }
 

@@ -4,6 +4,8 @@
 
 #include "util/Logger.h"
 
+lua::State* sysScripting::state;
+
 sysScripting::sysScripting()
 {
 
@@ -32,4 +34,9 @@ void sysScripting::Update()
 void sysScripting::Dispose()
 {
     delete state;
+}
+
+lua::State *sysScripting::getState()
+{
+    return state;
 }

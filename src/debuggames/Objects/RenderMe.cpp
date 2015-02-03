@@ -5,12 +5,12 @@
 
 RenderMe::RenderMe(std::string path)
 {
-    texture = new Texture(path);
+//    texture = new Texture(path);
 }
 
 void RenderMe::Render()
 {
-    Drawer::Render(texture,0,0);
+//    Drawer::Render(texture,0,0);
 }
 
 void RenderMe::Update(float dt)

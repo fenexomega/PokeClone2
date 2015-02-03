@@ -3,9 +3,11 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
 #include "assets/Texture.h"
 #include "math/Vector2D.h"
+
 
 typedef struct
 {
@@ -23,14 +25,13 @@ private:
     class TileImage
     {
     public:
-        Texture *tex;
+        std::shared_ptr<Texture> tex;
         std::string name;
         Vector2D<int> size;
-        TileImage(Texture *_tex,std::string _name,Vector2D<int> _imageSize)
+        TileImage(std::shared_ptr<Texture> _tex,std::string _name,Vector2D<int> _imageSize)
             :   tex(_tex), name(_name), size(_imageSize) {}
         ~TileImage()
         {
-            delete tex;
         }
     };
 
@@ -41,7 +42,7 @@ public:
     std::vector<Rect> m_tileRects;
     Vector2D<int> m_size;
     Vector2D<int> m_tileSize;
-    Texture *tileTexture;
+    std::shared_ptr<Texture> tileTexture;
 
     std::vector<TileImage* >m_tileImages;
     std::vector<Layer> layers;

@@ -10,10 +10,11 @@
 #include "debuggames/TileMapTest.h"
 #include "debuggames/SpriteSheetTest.h"
 #include "debuggames/PhysicsTest.h"
+#include "debuggames/ScriptTest.h"
 
 int main()
 {
-    Game game;
+    ScriptTest game;
 
     Engine engine;
     engine.Run(&game);

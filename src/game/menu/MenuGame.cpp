@@ -2,6 +2,8 @@
 
 #include "game/commands/changeGame.h"
 
+#include "io/FileLoader.h"
+
 MenuGame::MenuGame(iGame *_game)
     : game(_game)
 {
@@ -16,8 +18,8 @@ MenuGame::~MenuGame()
 void MenuGame::Init()
 {
     static Button *aux = new Button(200,200,
-                             new Texture("Contents/Menu/button.png"),
-                             new Texture("Contents/Menu/buttonMouseOver.png"),
+                             FileLoader::LoadTexture("Contents/Menu/button.png"),
+                             FileLoader::LoadTexture("Contents/Menu/buttonMouseOver.png"),
                              new changeGame(game),
                              new Text("Contents/Menu/UbuntuMono-B.ttf",
                                                        "Iniciar",

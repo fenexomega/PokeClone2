@@ -15,11 +15,11 @@ ButtonTest::~ButtonTest()
 
 void ButtonTest::Init()
 {
-    button = new Button(100,100,
-                        new Texture("Contents/button.png")
-                        ,new Texture("Contents/buttonMouseOver.png"),
-                        new DummyCommand(),
-                        new Text("Contents/UbuntuMono-B.ttf","Pressione",16,COLORBLACK));
+//    button = new Button(100,100,
+//                        new Texture("Contents/button.png")
+//                        ,new Texture("Contents/buttonMouseOver.png"),
+//                        new DummyCommand(),
+//                        new Text("Contents/UbuntuMono-B.ttf","Pressione",16,COLORBLACK));
 }
 
 void ButtonTest::Update(float dt)

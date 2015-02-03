@@ -35,12 +35,6 @@ void Texture::setAcess(int acess)
 {
     m_acess = acess;
 }
-Texture::Texture(std::string path) :
-    iAsset(AS_TEXTURE)
-{
-    m_tex = FileLoader::LoadTexture(path);
-    SDL_QueryTexture(m_tex,&m_pixelFormat,&m_acess,&m_rect.w,&m_rect.h);
-}
 
 
 void Texture::Scale(float w, float h)
