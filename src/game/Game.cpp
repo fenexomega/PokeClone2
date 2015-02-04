@@ -23,7 +23,6 @@ Game::~Game()
 
 void Game::Init()
 {
-    Script script("Contents/keys.lua");
     actualGame->Init();
 }
 

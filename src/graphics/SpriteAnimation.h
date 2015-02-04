@@ -9,8 +9,9 @@ class SpriteAnimation
 {
 private:
     SpriteSheet *spst;
-    int amtOfFrames,currentFrame,keyFrame;
 public:
+    int amtOfFrames,currentFrame,keyFrame;
+
     Vector2D<int> sizeInTiles;
     SpriteAnimation(std::string filePath, int amtOfFramesPerAnimation, int frameWidth,
                     int frameHeight, int _keyFrame = 0 );

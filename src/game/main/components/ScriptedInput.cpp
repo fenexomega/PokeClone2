@@ -22,7 +22,7 @@ void ScriptedInput::receiveMessage(int msg)
 void ScriptedInput::Update(iGameObject *obj)
 {
 
-    auto objTable = Lua_Wrapper::toLua(obj,"obj");
+    auto objTable = Lua_Wrapper::toLua(script,obj,"obj");
 
     //call function
     script->getState()["Update"](objTable);

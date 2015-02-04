@@ -3,15 +3,15 @@
 
 #include "interfaces/iGameObject.h"
 #include "luastate/LuaState.h"
+#include "assets/Script.h"
 
 class Lua_Wrapper
 {
-friend class sysScripting;
-private:
-    static void RegisterCoreFunctions();
 public:
+    static void RegisterCoreFunctions(lua::State* state);
+
     Lua_Wrapper();
-    static lua::Value toLua(iGameObject *obj, std::string varName);
+    static lua::Value toLua(Script *script,iGameObject *obj, std::string varName);
     static void toObj(iGameObject *obj, lua::Value objTable);
     ~Lua_Wrapper();
 

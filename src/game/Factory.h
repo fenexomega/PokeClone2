@@ -15,6 +15,8 @@ class Factory
 public:
     Factory();
     static iGameObject *createPlayer(std::string jsonFile, World *world);
+    static iGameObject *createEnemy(std::string jsonFile, World *world);
+
     ~Factory();
 };
 

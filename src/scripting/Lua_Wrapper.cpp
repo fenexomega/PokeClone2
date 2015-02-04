@@ -3,9 +3,9 @@
 #include "systems/sysScripting.h"
 #include "systems/sysInput.h"
 
-void Lua_Wrapper::RegisterCoreFunctions()
+void Lua_Wrapper::RegisterCoreFunctions(lua::State* state)
 {
-    lua::State* state = sysScripting::getState();
+    state->doFile("Contents/keys.lua");
     state->set("isKeyPressed",&sysInput::isKeyPressed);
     state->set("isKeyDown",&sysInput::isKeyDown);
     state->set("isKeyUp",&sysInput::isKeyUp);
@@ -18,10 +18,10 @@ Lua_Wrapper::Lua_Wrapper()
 
 }
 
-lua::Value Lua_Wrapper::toLua(iGameObject *obj,std::string varName)
+lua::Value Lua_Wrapper::toLua(Script *script,iGameObject *obj,std::string varName)
 {
-    sysScripting::getState()->set(varName.c_str(),lua::Table());
-    auto objTable = (*sysScripting::getState())[varName.c_str()];
+    script->getState().set(varName.c_str(),lua::Table());
+    auto objTable = script->getState()[varName.c_str()];
 
     // set acc vector to Lua table
     objTable.set("acc",lua::Table());

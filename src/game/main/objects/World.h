@@ -17,7 +17,6 @@ class World : public iGameObject
 {
 private:
     Tilemap *tilemap;
-    Vector2D<int> offset;
     Vector2D<int> playerInitialPos;
     Vector2D<int> playerDimensions;
 
@@ -29,6 +28,7 @@ private:
 
     std::string getLocationDir(std::string filename);
 public:
+    Vector2D<int> offset;
     Vector2D<int> tileSize;
     Vector2D<int> layerSize;
 

@@ -6,8 +6,6 @@
 
 class sysScripting : public iSystem
 {
-private:
-    static lua::State *state;
 public:
     sysScripting();
     ~sysScripting();
@@ -17,7 +15,6 @@ public:
     void Update();
     void Dispose();
 
-    static lua::State* getState();
 };
 
 #endif // SYSSCRIPTING_H
