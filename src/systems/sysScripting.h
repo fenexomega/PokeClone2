@@ -4,7 +4,6 @@
 #include "interfaces/iSystem.h"
 #include "luastate/LuaState.h"
 
-
 class sysScripting : public iSystem
 {
 private:

@@ -4,6 +4,7 @@
 #include "game/main/AnimationController.h"
 #include "game/main/PlayerPhysics.h"
 #include "game/main/objects/PlayerObject.h"
+#include "game/main/ScriptedInput.h"
 
 #include "io/FileLoader.h"
 
@@ -17,7 +18,8 @@ Factory::Factory()
 iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    iGameObject *player = new PlayerObject(new PlayerInput(),
+    iGameObject *player = new PlayerObject(//new PlayerInput(),
+                                           new ScriptedInput("Contents/playerInput.lua"),
                                         new PlayerPhysics(2,Rect(0,0,32,16)),
                                         new AnimationController(
                                             new SpriteAnimation(json["sprite"].asString()

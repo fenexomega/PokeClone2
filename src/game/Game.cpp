@@ -5,6 +5,8 @@
 
 #include "graphics/Window.h"
 
+#include "assets/Script.h"
+
 #define ADD_GAME(GAME) games.push_back(sh_ptr(GAME))
 
 Game::Game()
@@ -21,6 +23,7 @@ Game::~Game()
 
 void Game::Init()
 {
+    Script script("Contents/keys.lua");
     actualGame->Init();
 }
 

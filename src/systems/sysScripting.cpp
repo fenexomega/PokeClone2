@@ -4,6 +4,8 @@
 
 #include "util/Logger.h"
 
+#include "scripting/Lua_Wrapper.h"
+
 lua::State* sysScripting::state;
 
 sysScripting::sysScripting()
@@ -16,14 +18,10 @@ sysScripting::~sysScripting()
 
 }
 
-
-
 bool sysScripting::Init()
 {
     state = new lua::State;
-    state->set("x",20);
-    int n = (*state)["x"];
-    PRINT(n);
+    Lua_Wrapper::RegisterCoreFunctions();
     return true;
 }
 

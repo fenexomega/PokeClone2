@@ -14,7 +14,7 @@
 
 int main()
 {
-    ScriptTest game;
+    Game game;
 
     Engine engine;
     engine.Run(&game);
