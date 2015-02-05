@@ -3,6 +3,10 @@
 #include "systems/sysScripting.h"
 #include "systems/sysInput.h"
 
+#include "util/Logger.h"
+
+std::vector<Script *> Lua_Wrapper::scripts;
+
 void Lua_Wrapper::RegisterCoreFunctions(lua::State* state)
 {
     state->doFile("Contents/keys.lua");
@@ -53,6 +57,31 @@ void Lua_Wrapper::toObj(iGameObject *obj, lua::Value objTable)
     obj->rect.h = objTable["rect"]["h"];
 
 
+}
+
+void Lua_Wrapper::ReloadScripts()
+{
+    for(auto i : scripts)
+        i->Reload();
+    PRINT("Scripts recarregados");
+}
+
+void Lua_Wrapper::SubscribleScript(Script *script)
+{
+    scripts.push_back(script);
+}
+
+void Lua_Wrapper::Unsubscrible(Script *script)
+{
+    for(auto i = scripts.begin(); i != scripts.end();++i)
+    {
+        if(*i == script)
+        {
+            scripts.erase(i);
+            return;
+        }
+    }
+    return;
 }
 
 Lua_Wrapper::~Lua_Wrapper()

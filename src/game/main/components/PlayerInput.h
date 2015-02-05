@@ -8,7 +8,7 @@ class PlayerInput : public cInput
 {
 public:
     PlayerInput();
-    void Update(iGameObject *obj);
+    void Update(iGameObject *obj,float dt);
     ~PlayerInput();
 
 

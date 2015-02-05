@@ -7,7 +7,7 @@ PlayerInput::PlayerInput()
 
 }
 
-void PlayerInput::Update(iGameObject *obj)
+void PlayerInput::Update(iGameObject *obj,float dt)
 {
     obj->acc = Vector2D<int>(0,0);
     if(sysInput::isKeyPressed(SDL_SCANCODE_W))

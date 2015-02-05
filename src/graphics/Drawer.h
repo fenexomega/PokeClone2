@@ -29,7 +29,6 @@ public:
 
     static void RenderTo(std::shared_ptr<Texture>texture = NULL);
 
-    //TODO funcoes de draw usando rects
     //Desenha uma linha de x1,y1 a x2,y2
     static void drawLine(Color color,int x1, int y1, int x2, int y2);
 

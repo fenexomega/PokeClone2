@@ -69,6 +69,8 @@ int Engine::Run(iGame *game)
 
         sysInput::update();
 
+        for(iSystem *i : systems)
+            i->Update();
 
         win.clearScreen(0,0,0,255);
 

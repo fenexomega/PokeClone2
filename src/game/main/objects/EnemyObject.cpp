@@ -17,7 +17,7 @@ EnemyObject::~EnemyObject()
 
 void EnemyObject::Update(float dt)
 {
-    _input->Update(this);
+    _input->Update(this,dt);
     _physics->Update(this,_world,dt);
     _graphic->Update(this,dt);
 }

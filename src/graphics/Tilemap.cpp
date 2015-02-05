@@ -102,10 +102,11 @@ Vector2D<int> Tilemap::getLayerSize()
 void Tilemap::generateTileMap()
 {
     Drawer::RenderTo(tileTexture);
+
     Rect srcrect;
     Rect destrect;
     Drawer::clearScreen(0,0,0,255);
-    //TODO Otimizar esse código
+
     for(Layer layer : layers)
     {
         //Pegar o tamanho da imagem em tiles

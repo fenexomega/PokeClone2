@@ -9,7 +9,8 @@
 #define OBJ_PLAYER 0
 #define OBJ_ENEMY 1
 
-
+//TODO a fabrica vai criar o mundo e
+// por os inimigos nele
 class Factory
 {
 public:

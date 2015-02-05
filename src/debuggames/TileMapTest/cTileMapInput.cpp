@@ -16,7 +16,6 @@ cTileMapInput::~cTileMapInput()
 
 //void cTileMapInput::Update(iGameObject &obj)
 //{
-//    //TODO O jeito certo seria por método virtual
 //    // em vez de dynamic_cast
 //    Tilemap& map = dynamic_cast<Tilemap&>(obj);
 

@@ -16,7 +16,7 @@ public:
     void receiveMessage(int msg);
 
     // cInput interface
-    void Update(iGameObject *obj);
+    void Update(iGameObject *obj,float dt);
 };
 
 #endif // SCRIPTEDINPUT_H

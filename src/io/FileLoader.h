@@ -18,6 +18,7 @@ private:
     ~FileLoader();
     static std::map<std::string,std::shared_ptr<iAsset> > files;
 public:
+    //TODO usar Flyweights
 //    static Mix_Chunk*   LoadSound(std::string path);
     static shared_ptr<Texture> LoadTexture(std::string path);
     static Json::Value LoadJson(std::string path);

@@ -16,7 +16,6 @@ static std::ofstream logFile;
 #define LOG(x) Logger::Log(x)
 
 
-//TODO fazer com que a classe logger aceite std::ostream
 class Logger
 {
 private:

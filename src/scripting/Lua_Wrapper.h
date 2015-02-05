@@ -7,12 +7,16 @@
 
 class Lua_Wrapper
 {
+    static std::vector<Script *> scripts;
 public:
     static void RegisterCoreFunctions(lua::State* state);
 
     Lua_Wrapper();
     static lua::Value toLua(Script *script,iGameObject *obj, std::string varName);
     static void toObj(iGameObject *obj, lua::Value objTable);
+    static void ReloadScripts();
+    static void SubscribleScript(Script * script);
+    static void Unsubscrible(Script *script);
     ~Lua_Wrapper();
 
 

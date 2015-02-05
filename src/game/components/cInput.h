@@ -8,7 +8,7 @@
 class cInput : public iComponent
 {
 public:
-    virtual void Update(iGameObject *player) {}
+    virtual void Update(iGameObject *player,float dt) {}
 };
 
 #endif // CINPUT

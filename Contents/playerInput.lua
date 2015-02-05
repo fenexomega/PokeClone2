@@ -1,5 +1,5 @@
 
-function Update(obj)
+function Update(obj,dt)
     acc = obj["acc"]
     acc["x"] = 0 ; acc["y"] = 0
     if isKeyPressed(keys["up"]) then

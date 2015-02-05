@@ -1,13 +1,13 @@
 math.randomseed(os.time())
 x = 0
 
-function Update(obj)
+function Update(obj,dt)
     acc = obj["acc"]
     acc["x"] = 0; acc["y"] = 0
 
-    if x == 0 then
+    if x >= 0.5 then
         number = math.random(5) - 1;
-        x = 20
+        x = 0
     end
 
     if number == 0 then
@@ -20,6 +20,6 @@ function Update(obj)
             acc["y"] =  1
     end
 
-    x = x - 1
+    x = x + dt
 
 end
