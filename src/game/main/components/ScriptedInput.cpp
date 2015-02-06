@@ -2,9 +2,12 @@
 
 #include "scripting/Lua_Wrapper.h"
 
-ScriptedInput::ScriptedInput(std::string _script)
+ScriptedInput::ScriptedInput(std::string _script,iComponentMediator *mediator)
+    : MessageSender(mediator)
 {
     script = new Script(_script);
+    script->getState().set("SendMessage",[this](int msg){ sendMessage(msg); });
+
 }
 
 ScriptedInput::~ScriptedInput()
@@ -16,6 +19,8 @@ ScriptedInput::~ScriptedInput()
 
 void ScriptedInput::receiveMessage(int msg)
 {
+   script->getState()["ReceiveMessage"](msg);
+
 }
 
 
@@ -28,8 +33,8 @@ void ScriptedInput::Update(iGameObject *obj, float dt)
     script->getState()["Update"](objTable,dt);
 
     Lua_Wrapper::toObj(obj,objTable);
-//    obj->acc.set(objTable["acc"]["x"],objTable["acc"]["y"]);
 
 
 
 }
+

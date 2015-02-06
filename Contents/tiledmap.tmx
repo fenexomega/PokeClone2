@@ -14,12 +14,12 @@
  </layer>
  <layer name="colidiveis" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYBogjA3gEqcGGLV31N5Re4envWzD2F5Syk9q2otLbqTZi475oJiW9SAtwai9o/aO2jtq71Czd7D0UWgNBspeEAAAPf4BVw==
+   eJxjYmBgYBogjA3gEqcGGLWXMnvZcbCHs73ImF72EgtG7UUAtmFsLynlJzXtxSU30uxFx3xQTMt6kJZg1N5Re0ftHbV3qNk7WPootAYDZS8IAAC13AGP
   </data>
  </layer>
  <layer name="objetos" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0qENAAAIBLE37L8yGxCCwbT27CXwp44NJr4CANhp3MgAFQ==
+   eJzt0qERADAMAzGTwu6/bkgGMCuodPfI1Am8c8rtbtBofwUA8LsBBUIALw==
   </data>
  </layer>
 </map>

@@ -46,6 +46,10 @@ public:
 
     static bool isAnyKeyDown();
 
+    static int getKeyDown();
+
+    static int getKeyPressed();
+
     static bool getKey(int key);
 
     static Vector2D<int> getMousePos();

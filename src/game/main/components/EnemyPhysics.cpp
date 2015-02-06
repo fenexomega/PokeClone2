@@ -41,3 +41,4 @@ void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
     obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
     obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
 }
+

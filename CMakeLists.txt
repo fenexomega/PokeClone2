@@ -23,8 +23,11 @@ include_directories(src/ ThirdParties/ ${SDL2_INCLUDE_DIR}
 ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR}
  ${LUA_INCLUDE_DIR} )
 
+if( CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_definitions(-DRELEASE)
+endif()
 
-set(CMAKE_CXX_FLAGS "-Wall -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Contents
 DESTINATION ${CMAKE_BINARY_DIR} )

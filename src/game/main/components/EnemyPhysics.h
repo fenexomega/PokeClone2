@@ -17,6 +17,8 @@ public:
 
     // cPhysics interface
     void Update(iGameObject *obj, World *world, float dt);
+
+
 };
 
 #endif // ENEMYPHYSICS_H

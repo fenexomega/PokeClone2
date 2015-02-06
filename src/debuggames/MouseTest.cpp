@@ -6,7 +6,7 @@
 
 void MouseTest::Init()
 {
-    mouse = new RenderMe("Contents/Debug/mouse.png");
+//    mouse = new RenderMe("Contents/Debug/mouse.png");
 }
 
 void MouseTest::Update(float dt)
@@ -35,11 +35,11 @@ void MouseTest::Render()
     if(squares[1])
         Drawer::fillRect(COLORRED,145,50,20,110);
 
-    mouse->Render();
+//    mouse->Render();
 
 }
 
 void MouseTest::Dispose()
 {
-    delete mouse;
+//    delete mouse;
 }

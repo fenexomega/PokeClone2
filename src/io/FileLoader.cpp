@@ -8,7 +8,7 @@
 #include "json/json.h"
 #include "graphics/Window.h"
 #include "gSettings.h"
-
+#include "util/Logger.h"
 
 std::map<std::string,std::shared_ptr<iAsset> > FileLoader::files;
 
@@ -55,6 +55,7 @@ Json::Value FileLoader::LoadJson(std::string path)
     Json::Reader reader;
     Json::Value root = new Json::Value;
     std::ifstream file;
+    PRINT(path);
     file.open(path.c_str());
     if(!file.is_open())
         std::cerr << "Não conseguiu abrir" << std::endl;

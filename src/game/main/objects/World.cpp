@@ -69,7 +69,7 @@ World::World(std::string jsonFile)
     layersTiles["objetos"] = tilemap->getLayers(2);
 
     std::vector<Uint32> aux  = layersTiles["colidiveis"];
-    for( auto i = 0; i < aux.size() ; ++i)
+    for( Uint16 i = 0; i < aux.size() ; ++i)
         if( aux[i] != 0)
         layersRect["colidiveis"].push_back(tilemap->m_tileRects[i]);
 
@@ -104,3 +104,4 @@ World::~World()
 void World::Update(float dt)
 {
 }
+

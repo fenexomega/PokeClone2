@@ -2,9 +2,9 @@
 #define COMPONENTMEDIATOR_H
 
 #include <vector>
-#include "interfaces/iComponent.h"
+#include "interfaces/iComponentMediator.h"
 
-class ComponentMediator
+class ComponentMediator : public iComponentMediator
 {
 public:
     std::vector <iComponent *> _components;

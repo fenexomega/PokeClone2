@@ -4,9 +4,12 @@
 
 #include "systems/sysPhysics.h"
 
-PlayerPhysics::PlayerPhysics(int velocity,Rect hitBox)
-    : _velocity(velocity),_hitBox(hitBox)
+//TODO hitbox finetuning
+
+PlayerPhysics::PlayerPhysics(int velocity, Rect hitBox, iComponentMediator *mediator)
+    : _hitBox(hitBox),_velocity(velocity),MessageSender(mediator)
 {
+//    _hitBox.w -= _hitBox.w/4;
 }
 
 PlayerPhysics::~PlayerPhysics()
@@ -38,3 +41,4 @@ void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
 void PlayerPhysics::receiveMessage(int msg)
 {
 }
+

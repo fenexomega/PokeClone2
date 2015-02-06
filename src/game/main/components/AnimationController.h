@@ -6,7 +6,8 @@
 #include "math/Vector2D.h"
 #include "game/components/cGraphic.h"
 
-class AnimationController : public cGraphic
+
+class AnimationController : public cGraphic,MessageSender
 {
 private:
     float timeCounter;
@@ -14,7 +15,7 @@ private:
     SpriteAnimation *_animation;
     Vector2D<int> oldAcc;
 public:
-    AnimationController(SpriteAnimation *sptAnm);
+    AnimationController(SpriteAnimation *sptAnm,iComponentMediator *mediator);
     ~AnimationController();
 
     // Component interface
@@ -23,8 +24,7 @@ public:
     void Update(iGameObject *obj, float dt);
     void Render(iGameObject *obj);
 
-    // cGraphic interface
-    Vector2D<int> getWidthAndHeight();
+
 };
 
 #endif // ANIMATIONCONTROLLER_H

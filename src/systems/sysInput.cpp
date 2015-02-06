@@ -89,6 +89,16 @@ bool sysInput::isAnyKeyDown()
     return false;
 }
 
+int sysInput::getKeyDown()
+{
+    return  downKeys.back();
+}
+
+int sysInput::getKeyPressed()
+{
+    return  currentKeys.back();
+}
+
 bool sysInput::getKey(int key)
 {
     return keys[key] == 1;

@@ -2,16 +2,17 @@
 #define PLAYERPHYSICS_H
 
 #include "game/components/cPhysics.h"
-
+#include "components/MessageSender.h"
 #include "physics/Rect.h"
 
-class PlayerPhysics : public cPhysics
+class PlayerPhysics : public cPhysics, MessageSender
 {
 private:
-    int _velocity = 2;
     Rect _hitBox;
+    int _velocity = 2;
 public:
-    PlayerPhysics(int velocity,Rect hitBox);
+    PlayerPhysics(int velocity,Rect hitBox,
+                  iComponentMediator *mediator);
     ~PlayerPhysics();
 
     // cPhysics interface
@@ -19,6 +20,7 @@ public:
 
     // Component interface
     void receiveMessage(int msg);
+
 };
 
 #endif // PLAYERPHYSICS_H

@@ -20,7 +20,7 @@ void MainGame::Init()
 {
     actualWorld = new World("Contents/MainGame/map0.json");
     player = Factory::createPlayer("Contents/MainGame/player.json",actualWorld);
-    enemy = Factory::createEnemy("Contents/MainGame/enemy.json",actualWorld);
+    enemy = Factory::createEnemy("Contents/MainGame/enemy.json",actualWorld,Vector2D<int>(150,60));
 }
 
 void MainGame::Update(float dt)
@@ -36,8 +36,9 @@ void MainGame::SendMessage(MSG msg)
 void MainGame::Render()
 {
     actualWorld->Render();
-    player->Render();
     enemy->Render();
+    player->Render();
+
 }
 
 void MainGame::Dispose()

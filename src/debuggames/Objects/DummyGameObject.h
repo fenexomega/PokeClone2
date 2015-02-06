@@ -13,6 +13,8 @@ public:
 public:
     void Update(float dt);
     void Render();
+
+    // iGameObject interface
 };
 
 #endif // DUMMYGAMEOBJECT_H

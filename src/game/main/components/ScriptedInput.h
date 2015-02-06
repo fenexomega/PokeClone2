@@ -3,13 +3,14 @@
 
 #include "game/components/cInput.h"
 #include "assets/Script.h"
+#include "components/MessageSender.h"
 
-class ScriptedInput : public cInput
+class ScriptedInput : public cInput,MessageSender
 {
 private:
     Script *script;
 public:
-    ScriptedInput(std::string _script);
+    ScriptedInput(std::string _script,iComponentMediator *mediator);
     ~ScriptedInput();
 
     // iComponent interface
@@ -17,6 +18,7 @@ public:
 
     // cInput interface
     void Update(iGameObject *obj,float dt);
+
 };
 
 #endif // SCRIPTEDINPUT_H

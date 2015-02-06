@@ -1,7 +1,6 @@
 #include "TextTest.h"
 
 #include "Objects/CommandTextChanger.h"
-#include "Objects/RenderMe.h"
 
 TextTest::TextTest()
 {
@@ -35,7 +34,6 @@ void TextTest::Init()
 
 void TextTest::Update(float dt)
 {
-    RenderMe aux("Contents/button.png");
     bt->Update();
 }
 

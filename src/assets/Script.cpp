@@ -2,12 +2,18 @@
 
 #include "scripting/Lua_Wrapper.h"
 
+#include "util/Logger.h"
+
 Script::Script(std::string fileName)
     : iAsset(AS_SCRIPT),file(fileName)
 {
+#ifdef RELEASE
+    file += "c";
+#endif
     st = new lua::State();
     Lua_Wrapper::RegisterCoreFunctions(st);
-    st->doFile(fileName);
+    if(st->doFile(file))
+        PRINT("Loaded " + file);
     Lua_Wrapper::SubscribleScript(this);
 }
 

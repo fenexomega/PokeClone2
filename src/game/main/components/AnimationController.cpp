@@ -19,8 +19,8 @@ int AnimationController::DirectionFrame(iGameObject *obj)
     return result;
 }
 
-AnimationController::AnimationController(SpriteAnimation *sptAnm)
-    : _animation(sptAnm)
+AnimationController::AnimationController(SpriteAnimation *sptAnm, iComponentMediator *mediator)
+    : _animation(sptAnm),MessageSender(mediator)
 {
     timeCounter = 0;
 }
@@ -62,8 +62,3 @@ void AnimationController::Render(iGameObject *obj)
 
 }
 
-
-Vector2D<int> AnimationController::getWidthAndHeight()
-{
-    return _animation->getWidthAndHeight();
-}

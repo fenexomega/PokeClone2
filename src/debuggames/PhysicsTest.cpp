@@ -20,9 +20,9 @@ void PhysicsTest::Init()
 {
     for(int i = 0; i < 10;++i)
     {
-        rects.push_back(new ObjRect(Vector2D<int>(uRandom::getInt(2)+1,uRandom::getInt(2)+1),
-                                    Rect(uRandom::getInt(800),uRandom::getInt(800),64,64),
-                                    Color(uRandom::getInt(255),uRandom::getInt(255),uRandom::getInt(255),255)));
+//        rects.push_back(new ObjRect(Vector2D<int>(uRandom::getInt(2)+1,uRandom::getInt(2)+1),
+//                                    Rect(uRandom::getInt(800),uRandom::getInt(800),64,64),
+//                                    Color(uRandom::getInt(255),uRandom::getInt(255),uRandom::getInt(255),255)));
     }
 }
 

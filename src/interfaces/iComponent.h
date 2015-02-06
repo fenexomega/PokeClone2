@@ -7,7 +7,6 @@
 
 class iComponent
 {
-
 public:
 
     virtual void receiveMessage(int msg) = 0;

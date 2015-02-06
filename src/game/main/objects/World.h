@@ -51,6 +51,8 @@ public:
     void setOffset(const Vector2D<int> &value);
     std::vector<Rect> getLayersRect(std::string key);
     void setLayersRect(const std::map<std::string, std::vector<Rect> > &value);
+
+
 };
 
 #endif // WORLD_H

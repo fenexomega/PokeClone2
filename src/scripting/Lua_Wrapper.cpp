@@ -13,7 +13,7 @@ void Lua_Wrapper::RegisterCoreFunctions(lua::State* state)
     state->set("isKeyPressed",&sysInput::isKeyPressed);
     state->set("isKeyDown",&sysInput::isKeyDown);
     state->set("isKeyUp",&sysInput::isKeyUp);
-
+    state->set("getKeyPressed",&sysInput::getKeyPressed);
 
 }
 

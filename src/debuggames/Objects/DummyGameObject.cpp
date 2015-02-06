@@ -19,3 +19,4 @@ void DummyGameObject::Update(float dt)
 void DummyGameObject::Render()
 {
 }
+
