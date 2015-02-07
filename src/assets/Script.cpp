@@ -4,6 +4,8 @@
 
 #include "util/Logger.h"
 
+
+
 Script::Script(std::string fileName)
     : iAsset(AS_SCRIPT),file(fileName)
 {

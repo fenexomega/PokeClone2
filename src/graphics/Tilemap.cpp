@@ -5,7 +5,6 @@
 #include "graphics/Drawer.h"
 #define PRINT(X) std::cout << X << std::endl
 
-//TODO Pegar as otras coisas do json que podem ser relevantes
 
 std::string Tilemap::getLocationDir(std::string filename)
 {

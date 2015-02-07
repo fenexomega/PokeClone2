@@ -6,11 +6,15 @@
 #include <SDL2/SDL_ttf.h>
 #include <map>
 
-#include "assets/Texture.h"
 #include "json/json.h"
+
+class Texture;
+class iAsset;
 
 using std::shared_ptr;
 
+
+//TODO usar um flyweight para passar assets
 class FileLoader
 {
 private:

@@ -9,6 +9,8 @@
 class cGraphic : public iComponent
 {
 public:
+    cGraphic(iComponentMediator *mediator)
+        : iComponent(mediator){}
     virtual void Update(iGameObject *obj,float dt) {}
     virtual void Render(iGameObject *obj) {}
 };

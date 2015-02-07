@@ -12,7 +12,6 @@
 #include <iostream>
 
 //TODO pegar w e h do mapa
-//TODO pegar layers
 class World : public iGameObject
 {
 private:

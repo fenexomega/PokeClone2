@@ -1,7 +1,7 @@
 #ifndef ICOMPONENTMEDIATOR
 #define ICOMPONENTMEDIATOR
 
-#include "interfaces/iComponent.h"
+class iComponent;
 
 class iComponentMediator
 {

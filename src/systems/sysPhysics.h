@@ -1,7 +1,9 @@
 #ifndef SYSPHYSICS_H
 #define SYSPHYSICS_H
 
-#include "interfaces/iGameObject.h"
+
+#include "physics/Rect.h"
+#include "math/Vector2D.h"
 
 static const  char NO_COL = 0;
 static const  char X_AXIS_COL = 1;

@@ -1,9 +1,9 @@
 #ifndef LUA_WRAPPER_H
 #define LUA_WRAPPER_H
 
-#include "interfaces/iGameObject.h"
 #include "luastate/LuaState.h"
-#include "assets/Script.h"
+class iGameObject;
+class Script;
 
 class Lua_Wrapper
 {

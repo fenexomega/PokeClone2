@@ -1,7 +1,6 @@
 #ifndef IGAME_H
 #define IGAME_H
 
-#include "gSettings.h"
 
 class MSG
 {

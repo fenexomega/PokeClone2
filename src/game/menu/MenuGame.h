@@ -5,8 +5,7 @@
 #include <memory>
 
 #include "gui/Button.h"
-#include "interfaces/iScene.h"
-
+#include "interfaces/iGame.h"
 
 class MenuGame : public iGame
 {

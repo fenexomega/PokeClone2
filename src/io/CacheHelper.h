@@ -8,8 +8,6 @@
 
 
 
-//TODO implement as singleton
-//TODO Use shared_ptr
 class CacheHelper
 {
 private:

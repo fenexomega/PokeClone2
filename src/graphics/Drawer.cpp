@@ -1,6 +1,8 @@
 #include "Drawer.h"
 
 #include "graphics/Window.h"
+#include "assets/Texture.h"
+#include "physics/Rect.h"
 
 #define RENDERER Window::getActiveRenderer()
 

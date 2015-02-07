@@ -3,6 +3,10 @@
 #include "systems/sysScripting.h"
 #include "systems/sysInput.h"
 
+#include "interfaces/iGameObject.h"
+#include "assets/Script.h"
+
+
 #include "util/Logger.h"
 
 std::vector<Script *> Lua_Wrapper::scripts;

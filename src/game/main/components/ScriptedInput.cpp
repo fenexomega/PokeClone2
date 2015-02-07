@@ -3,7 +3,7 @@
 #include "scripting/Lua_Wrapper.h"
 
 ScriptedInput::ScriptedInput(std::string _script,iComponentMediator *mediator)
-    : MessageSender(mediator)
+    : cInput(mediator)
 {
     script = new Script(_script);
     script->getState().set("SendMessage",[this](int msg){ sendMessage(msg); });

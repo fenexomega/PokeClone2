@@ -3,10 +3,11 @@
 
 #include <memory>
 
-#include "assets/Texture.h"
 #include "graphics/Color.h"
-#include "physics/Rect.h"
 #include "math/Vector2D.h"
+
+class Rect;
+class Texture;
 
 class Drawer
 {

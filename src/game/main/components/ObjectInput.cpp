@@ -1,7 +1,7 @@
 #include "ObjectInput.h"
 
 ObjectInput::ObjectInput(iComponentMediator *mediator)
-    : MessageSender(mediator)
+    : cInput(mediator)
 {
 
 }

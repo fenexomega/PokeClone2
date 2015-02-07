@@ -11,9 +11,6 @@ void GameObject::setComponents(cInput *input, cPhysics *physics, cGraphic *graph
     _input = input;
     _physics = physics;
     _graphic = graphic;
-    _mediator.addComponent(input);
-    _mediator.addComponent(physics);
-    _mediator.addComponent(graphic);
 
 }
 

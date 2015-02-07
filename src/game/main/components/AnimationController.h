@@ -7,7 +7,7 @@
 #include "game/components/cGraphic.h"
 
 
-class AnimationController : public cGraphic,MessageSender
+class AnimationController : public cGraphic
 {
 private:
     float timeCounter;

@@ -6,7 +6,7 @@
 
 #define PLAYER_COLLIDING 1
 
-class ObjectInput : public cInput,MessageSender
+class ObjectInput : public cInput
 {
 private:
     bool isAble;

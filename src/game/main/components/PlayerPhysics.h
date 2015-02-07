@@ -5,7 +5,7 @@
 #include "components/MessageSender.h"
 #include "physics/Rect.h"
 
-class PlayerPhysics : public cPhysics, MessageSender
+class PlayerPhysics : public cPhysics
 {
 private:
     Rect _hitBox;

@@ -9,7 +9,7 @@ private:
     int _velocity = 2;
     Rect _hitBox;
 public:
-    EnemyPhysics(int velocity, Rect hitBox);
+    EnemyPhysics(int velocity, Rect hitBox, iComponentMediator *mediator);
     ~EnemyPhysics();
 
     // iComponent interface

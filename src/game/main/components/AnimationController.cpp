@@ -20,7 +20,7 @@ int AnimationController::DirectionFrame(iGameObject *obj)
 }
 
 AnimationController::AnimationController(SpriteAnimation *sptAnm, iComponentMediator *mediator)
-    : _animation(sptAnm),MessageSender(mediator)
+    : _animation(sptAnm),cGraphic(mediator)
 {
     timeCounter = 0;
 }

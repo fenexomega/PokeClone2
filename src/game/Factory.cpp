@@ -1,6 +1,5 @@
 #include "Factory.h"
 
-#include "game/main/components/PlayerInput.h"
 #include "game/main/components/AnimationController.h"
 #include "game/main/components/PlayerPhysics.h"
 #include "game/main/components/ScriptedInput.h"
@@ -45,7 +44,7 @@ iGameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<i
     GameObject *enemy = new GameObject(world);
     enemy->setComponents(
                 new ScriptedInput("Contents/input.lua",enemy->mediator()),
-                new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2)),
+                new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2),enemy->mediator()),
             new AnimationController(
                 new SpriteAnimation(json["sprite"].asString()
                 ,json["animationFrames"].asInt()
@@ -65,7 +64,7 @@ iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vect
     GameObject *object = new GameObject(world);
     object->setComponents(
                 new ScriptedInput("Contents/input.lua",object->mediator()),
-                new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2)),
+                new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2),object->mediator()),
             new AnimationController(
                 new SpriteAnimation(json["sprite"].asString()
                 ,json["animationFrames"].asInt()

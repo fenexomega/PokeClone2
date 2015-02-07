@@ -5,7 +5,7 @@
 #include "assets/Script.h"
 #include "components/MessageSender.h"
 
-class ScriptedInput : public cInput,MessageSender
+class ScriptedInput : public cInput
 {
 private:
     Script *script;

@@ -1,5 +1,7 @@
 #include "ComponentMediator.h"
 
+#include "interfaces/iComponent.h"
+
 void ComponentMediator::addComponent(iComponent *cmp)
 {
     _components.push_back(cmp);

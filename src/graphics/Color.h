@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-typedef struct color
+struct Color
 {
     Uint8 r,g,b,a;
 
@@ -13,9 +13,9 @@ typedef struct color
         return color;
     }
 
-    color(Uint8 _r, Uint8 _g , Uint8 _b , Uint8 _a)
+    Color(Uint8 _r, Uint8 _g , Uint8 _b , Uint8 _a)
         :  r(_r),g(_g),b(_b),a(_a) {}
-}Color;
+};
 
 static const Color COLORRED = {255,0,0,255};
 static const Color COLORBLUE = {0,0,255,255};

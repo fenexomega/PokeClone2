@@ -9,6 +9,8 @@
 #include "graphics/Window.h"
 #include "gSettings.h"
 #include "util/Logger.h"
+#include "assets/Texture.h"
+
 
 std::map<std::string,std::shared_ptr<iAsset> > FileLoader::files;
 

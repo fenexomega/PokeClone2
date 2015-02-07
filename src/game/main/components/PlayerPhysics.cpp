@@ -7,7 +7,7 @@
 //TODO hitbox finetuning
 
 PlayerPhysics::PlayerPhysics(int velocity, Rect hitBox, iComponentMediator *mediator)
-    : _hitBox(hitBox),_velocity(velocity),MessageSender(mediator)
+    : _hitBox(hitBox),_velocity(velocity),cPhysics(mediator)
 {
 //    _hitBox.w -= _hitBox.w/4;
 }

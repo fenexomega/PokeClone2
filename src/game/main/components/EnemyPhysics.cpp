@@ -4,8 +4,8 @@
 
 #include "util/Logger.h"
 
-EnemyPhysics::EnemyPhysics(int velocity,Rect hitBox)
-    : _velocity(velocity),_hitBox(hitBox)
+EnemyPhysics::EnemyPhysics(int velocity, Rect hitBox, iComponentMediator *mediator)
+    : _velocity(velocity),_hitBox(hitBox),cPhysics(mediator)
 
 {
 
