@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="14">
  <properties>
   <property name="playerPosX" value="0"/>
   <property name="playerPosY" value="0"/>
@@ -19,7 +19,13 @@
  </layer>
  <layer name="objetos" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0qERADAMAzGTwu6/bkgGMCuodPfI1Am8c8rtbtBofwUA8LsBBUIALw==
+   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
   </data>
  </layer>
+ <objectgroup name="keys">
+  <object id="8" name="key0" type="keyGold" x="653" y="145" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="doors">
+  <object id="11" name="door0" type="doorGold" x="354" y="483" width="62" height="29"/>
+ </objectgroup>
 </map>

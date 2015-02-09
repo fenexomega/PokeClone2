@@ -1,4 +1,5 @@
 #include "ScriptedInput.h"
+#include "assets/Script.h"
 
 #include "scripting/Lua_Wrapper.h"
 

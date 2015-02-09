@@ -1,5 +1,5 @@
-#ifndef ENEMYOBJECT_H
-#define ENEMYOBJECT_H
+#ifndef GAMEOBJECT_H
+#define GAMEOBJECT_H
 
 
 #include "game/components/cInput.h"
@@ -25,4 +25,4 @@ public:
     void Render();
 };
 
-#endif // ENEMYOBJECT_H
+#endif // GAMEOBJECT_H

@@ -21,7 +21,7 @@ void MainGame::Init()
     player = Factory::createPlayer("Contents/MainGame/player.json",actualWorld);
     enemy = Factory::createEnemy("Contents/MainGame/enemy.json",actualWorld,Vector2D<int>(150,60));
     enemy2 = Factory::createEnemy("Contents/MainGame/enemy.json",actualWorld,Vector2D<int>(600,60));
-
+    object = Factory::createInteractive("",actualWorld,Vector2D<int>(400,400));
 }
 
 void MainGame::Update(float dt)
@@ -29,6 +29,7 @@ void MainGame::Update(float dt)
     player->Update(dt);
     enemy->Update(dt);
     enemy2->Update(dt);
+    object->Update(dt);
 
 
 }
@@ -42,8 +43,9 @@ void MainGame::Render()
     actualWorld->Render();
     enemy->Render();
     enemy2->Render();
-
     player->Render();
+    object->Render();
+
 
 }
 

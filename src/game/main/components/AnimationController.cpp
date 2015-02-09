@@ -1,4 +1,6 @@
 #include "AnimationController.h"
+#include "interfaces/iGameObject.h"
+
 
 #include "graphics/Drawer.h"
 
@@ -8,13 +10,13 @@ int AnimationController::DirectionFrame(iGameObject *obj)
 {
 
     int result;
-    if(obj->acc.y == -1)
+    if(obj->acc.y <= -1)
         result = _animation->amtOfFrames*3;
-    else if(obj->acc.y ==  1)
+    else if(obj->acc.y >=  1)
         result = 0;
-    else if(obj->acc.x ==  1)
+    else if(obj->acc.x >=  1)
         result = _animation->amtOfFrames;
-    else if( obj->acc.x == -1)
+    else if( obj->acc.x <= -1)
         result = _animation->amtOfFrames*2;
     return result;
 }
@@ -40,7 +42,10 @@ void AnimationController::receiveMessage(int msg)
 void AnimationController::Update(iGameObject *obj, float dt)
 {
     timeCounter += dt;
-    if(timeCounter >= 0.25f)
+    int aux = abs(obj->acc.x + obj->acc.y);
+    aux = aux == 0 ? 1 : aux;
+
+    if(timeCounter >= 0.25f/aux)
     {
         _animation->UpdateAnimation();
         timeCounter = 0;

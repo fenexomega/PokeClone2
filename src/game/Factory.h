@@ -9,11 +9,14 @@
 #define OBJ_PLAYER 0
 #define OBJ_ENEMY 1
 
+class GameObject;
+
 //TODO a fabrica vai criar o mundo e
 // por os inimigos nele
 class Factory
 {
 public:
+    static GameObject* player;
     Factory();
     static iGameObject *createPlayer(std::string jsonFile, World *world);
     static iGameObject *createEnemy(std::string jsonFile, World *world, Vector2D<int> pos);

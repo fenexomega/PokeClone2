@@ -66,7 +66,6 @@ World::World(std::string jsonFile)
 
     layersTiles["background"] = tilemap->getLayers(0);
     layersTiles["colidiveis"] = tilemap->getLayers(1);
-    layersTiles["objetos"] = tilemap->getLayers(2);
 
     std::vector<Uint32> aux  = layersTiles["colidiveis"];
     for( Uint16 i = 0; i < aux.size() ; ++i)
@@ -103,5 +102,6 @@ World::~World()
 
 void World::Update(float dt)
 {
+
 }
 

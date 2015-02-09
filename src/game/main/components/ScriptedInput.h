@@ -2,8 +2,8 @@
 #define SCRIPTEDINPUT_H
 
 #include "game/components/cInput.h"
-#include "assets/Script.h"
-#include "components/MessageSender.h"
+
+class Script;
 
 class ScriptedInput : public cInput
 {

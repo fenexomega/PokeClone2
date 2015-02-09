@@ -19,22 +19,27 @@ PlayerPhysics::~PlayerPhysics()
 
 void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
 {
-
     obj->pos += obj->acc*_velocity;
 
-    _hitBox.x = obj->pos.x;
-    _hitBox.y = obj->pos.y + 16;
+    //TODO melhorar isso
+    obj->rect.x = obj->pos.x - 16;
+    obj->rect.y = obj->pos.y ;
 
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
     for(auto i : colidables)
     {
-        if(sysPhysics::isColliding(_hitBox,i))
+        if(sysPhysics::isColliding(obj->rect,i))
         {
             obj->pos -= obj->acc*_velocity;
+            obj->rect.x = obj->pos.x - 16;
+            obj->rect.y = obj->pos.y ;
             return;
         }
     }
+
     world->pos = -obj->pos;
+
+
 }
 
 

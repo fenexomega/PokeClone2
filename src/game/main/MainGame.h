@@ -11,7 +11,7 @@ class MainGame : public iGame
 private:
     iGame *game;
     iGameObject *player;
-    iGameObject *enemy,*enemy2;
+    iGameObject *enemy,*enemy2,*object;
     World *actualWorld;
 public:
     MainGame(iGame *_game);

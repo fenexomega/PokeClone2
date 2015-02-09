@@ -2,9 +2,9 @@
 #define ANIMATIONCONTROLLER_H
 
 #include "graphics/SpriteAnimation.h"
-#include "interfaces/iGameObject.h"
 #include "math/Vector2D.h"
 #include "game/components/cGraphic.h"
+
 
 
 class AnimationController : public cGraphic
