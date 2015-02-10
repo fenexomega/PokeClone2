@@ -2,17 +2,14 @@
 #define MAINGAME_H
 
 #include "interfaces/iGame.h"
-#include "graphics/Tilemap.h"
-#include "interfaces/iGameObject.h"
-#include "game/main/objects/World.h"
+class iGameObject;
 
 class MainGame : public iGame
 {
 private:
     iGame *game;
     iGameObject *player;
-    iGameObject *enemy,*enemy2,*object;
-    World *actualWorld;
+    iGameObject *actualWorld;
 public:
     MainGame(iGame *_game);
     ~MainGame();

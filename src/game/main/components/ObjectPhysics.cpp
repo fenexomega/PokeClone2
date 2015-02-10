@@ -4,10 +4,11 @@
 
 #include "util/Logger.h"
 
-#define NOT_ACTIVE 0
+#define PLAYER_INTERACTION 1
+#define DISSAPEAR 2
 
-ObjectPhysics::ObjectPhysics(iGameObject *player, iComponentMediator *mediator, Rect hitbox)
-    : cPhysics(mediator),_player(player),_hitBox(hitbox)
+ObjectPhysics::ObjectPhysics(iGameObject *player, iComponentMediator *mediator, Rect hitbox, bool active)
+    : cPhysics(mediator),_player(player),_hitBox(hitbox),_active(active)
 {
 
 }
@@ -22,11 +23,14 @@ void ObjectPhysics::receiveMessage(int msg)
 {
     switch(msg)
     {
-        case 1:
+        case PLAYER_INTERACTION:
         {
+        if(_active)
             if(sysPhysics::isColliding(_player->rect,_hitBox))
             {
                 PRINT("Item pegue!");
+                _active = !_active;
+                sendMessage(DISSAPEAR);
             }
 
         }break;

@@ -4,8 +4,8 @@
 
 #include "util/Logger.h"
 
-EnemyPhysics::EnemyPhysics(int velocity, Rect hitBox, iComponentMediator *mediator)
-    : _velocity(velocity),_hitBox(hitBox),cPhysics(mediator)
+EnemyPhysics::EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iComponentMediator *mediator)
+    : _velocity(velocity),_hitBox(hitBox),cPhysics(mediator),_player(player)
 
 {
 
@@ -24,15 +24,29 @@ void EnemyPhysics::receiveMessage(int msg)
 
 void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
 {
+
     obj->pos += obj->acc*_velocity;
 
     _hitBox.x = obj->pos.x;
     _hitBox.y = obj->pos.y + 16;
 
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
+    //Ver se está colidindo com algum gameObject
+    bool colliding = false;
+    for(iGameObject *i : world->gameObjects)
+        if(sysPhysics::isColliding(obj->rect,i->rect))
+        {
+            //TODO estão colidindo mas não saem do canto
+            PRINT("FODA_SE");
+            colliding = true;
+            break;
+        }
+
+
     for(auto i : colidables)
     {
-        if(sysPhysics::isColliding(_hitBox,i))
+        if(sysPhysics::isColliding(_hitBox,i) || sysPhysics::isColliding(_player->rect,_hitBox)
+                || colliding)
         {
             obj->pos -= obj->acc*_velocity;
             break;

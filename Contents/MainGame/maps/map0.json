@@ -1,0 +1,28 @@
+{
+    "TilemapJson":"Contents/MainGame/tiledmap.json",
+    "player":{"type":"player",
+              "pos":[400,128] //Posição Inicial
+            },
+    "objects":[
+        { "type":"key0",
+            "pos":[600,600]
+        },
+        {"type":"door0",
+            "pos":[400,400]
+        }
+    ],
+    "enemies":[
+        {
+            "type":"enemy0",
+            "pos":[250,80]
+        },
+        {
+            "type":"enemy0",
+            "pos":[300,90]
+        },
+        {
+            "type":"enemy0",
+            "pos":[400,80]
+        }
+    ]
+}

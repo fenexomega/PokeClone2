@@ -1,0 +1,6 @@
+{
+    "image" : "Contents/MainGame/images/door0.png",
+	"type"   : "door",
+    "prop"  : true,
+    "script": "Contents/MainGame/scripts/doorInput.lua"
+}

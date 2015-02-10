@@ -8,8 +8,9 @@ class EnemyPhysics : public cPhysics
 private:
     int _velocity = 2;
     Rect _hitBox;
+    iGameObject *_player;
 public:
-    EnemyPhysics(int velocity, Rect hitBox, iComponentMediator *mediator);
+    EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iComponentMediator *mediator);
     ~EnemyPhysics();
 
     // iComponent interface

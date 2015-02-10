@@ -15,13 +15,14 @@ class GameObject;
 // por os inimigos nele
 class Factory
 {
+private:
+    static std::string getLocationDir(std::string filename);
 public:
-    static GameObject* player;
-    Factory();
+    static iGameObject* player;
     static iGameObject *createPlayer(std::string jsonFile, World *world);
     static iGameObject *createEnemy(std::string jsonFile, World *world, Vector2D<int> pos);
     static iGameObject *createInteractive(std::string jsonFile, World *world, Vector2D<int> pos);
-    ~Factory();
+    static iGameObject *createWorld(std::string jsonFile);
 };
 
 #endif // FACTORY_H

@@ -11,8 +11,9 @@ class DecorationGraphic : public cGraphic
 {
 private:
     std::shared_ptr<Texture> _tex;
+    bool _active;
 public:
-    DecorationGraphic(std::string TexFile,iComponentMediator *mediator);
+    DecorationGraphic(std::string TexFile, iComponentMediator *mediator, bool active = true);
     ~DecorationGraphic();
 
     // iComponent interface

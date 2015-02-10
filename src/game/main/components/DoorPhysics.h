@@ -1,17 +1,16 @@
-#ifndef OBJECTPHYSICS_H
-#define OBJECTPHYSICS_H
+#ifndef DOORPHYSICS_H
+#define DOORPHYSICS_H
 
 #include "game/components/cPhysics.h"
 
-class ObjectPhysics : public cPhysics
+class DoorPhysics : public cPhysics
 {
 private:
     iGameObject *_player;
     Rect _hitBox;
-    bool _active;
 public:
-    ObjectPhysics(iGameObject *player,iComponentMediator *mediator,Rect hitbox,bool active = true);
-    ~ObjectPhysics();
+    DoorPhysics(iGameObject *player, iComponentMediator *mediator,Rect hitbox , bool active = true);
+    ~DoorPhysics();
 
     // iComponent interface
     void receiveMessage(int msg);
@@ -20,4 +19,4 @@ public:
     void Update(iGameObject *obj, World *world, float dt);
 };
 
-#endif // OBJECTPHYSICS_H
+#endif // DOORPHYSICS_H

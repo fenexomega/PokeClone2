@@ -1,12 +1,20 @@
 math.randomseed(os.time())
+waitTime = math.random()
 x = 0
 
 function Update(obj,dt)
     acc = obj["acc"]
     acc["x"] = 0; acc["y"] = 0
 
-    if x >= 0.5 then
-        number = math.random(5) - 1;
+    if not onScreen(obj["rect"]) then
+        print(obj["rect"]["w"])
+        print("Não está na tela")
+        return
+    end
+
+    if x >= waitTime then
+        number = math.random(8) - 1;
+        waitTime = math.random()
         x = 0
     end
 

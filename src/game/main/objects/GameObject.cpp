@@ -1,5 +1,9 @@
 #include "GameObject.h"
 
+#include "game/components/cInput.h"
+#include "game/components/cGraphic.h"
+#include "game/components/cPhysics.h"
+
 GameObject::GameObject(World *world)
     : _world(world)
 {

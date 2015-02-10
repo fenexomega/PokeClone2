@@ -6,6 +6,7 @@
 #include "interfaces/iGameObject.h"
 #include "assets/Script.h"
 
+#include "systems/sysPhysics.h"
 
 #include "util/Logger.h"
 
@@ -18,6 +19,8 @@ void Lua_Wrapper::RegisterCoreFunctions(lua::State* state)
     state->set("isKeyDown",&sysInput::isKeyDown);
     state->set("isKeyUp",&sysInput::isKeyUp);
     state->set("getKeyPressed",&sysInput::getKeyPressed);
+
+    state->set("onScreen",&onScreen);
 
 }
 
@@ -86,6 +89,13 @@ void Lua_Wrapper::Unsubscrible(Script *script)
         }
     }
     return;
+}
+
+bool Lua_Wrapper::onScreen(lua::Value value)
+{
+    Rect rect(value["x"],value["y"],value["w"],value["h"]);
+    return sysPhysics::onScreen(rect);
+
 }
 
 Lua_Wrapper::~Lua_Wrapper()

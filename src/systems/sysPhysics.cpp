@@ -40,3 +40,9 @@ int sysPhysics::onBorders(Rect obj)
     return NO_COL;
 
 }
+
+bool sysPhysics::onScreen(Rect obj)
+{
+    Rect win(0,0,Window::getWidth(),Window::getHeight());
+    return isColliding(obj,win);
+}

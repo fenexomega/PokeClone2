@@ -17,6 +17,7 @@ public:
     static bool isColliding(Rect obj1, Rect obj2);
     static bool isColliding(Vector2D<int> point, Rect rect);
     static int onBorders(Rect obj);
+    static bool onScreen(Rect obj);
 };
 
 #endif // SYSPHYSICS_H

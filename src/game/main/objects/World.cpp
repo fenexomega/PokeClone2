@@ -5,7 +5,32 @@
 #include "util/Logger.h"
 
 #include "graphics/Window.h"
+#include "graphics/Tilemap.h"
 
+World::World(std::string jsonFile)
+{
+    Json::Value root = FileLoader::LoadJson(jsonFile);
+    tilemap = new Tilemap(root["TilemapJson"].asString());
+
+    playerInitialPos.x = root["player"]["pos"][0].asInt();
+    playerInitialPos.y = root["player"]["pos"][1].asInt();
+
+    pos = playerInitialPos - 32;
+
+    tileSize = tilemap->m_tileSize;
+    layerSize = tilemap->getLayerSize();
+
+    layersTiles["background"] = tilemap->getLayers(0);
+    layersTiles["colidiveis"] = tilemap->getLayers(1);
+
+    std::vector<Uint32> aux  = layersTiles["colidiveis"];
+    for( Uint16 i = 0; i < aux.size() ; ++i)
+        if( aux[i] != 0)
+            layersRect["colidiveis"].push_back(tilemap->m_tileRects[i]);
+
+    tileRects = tilemap->m_tileRects;
+
+}
 
 void World::Normalize(int x, int y)
 {
@@ -47,38 +72,18 @@ std::string World::getLocationDir(std::string filename)
     int i = filename.find_last_of('/');
     aux.append(filename.substr(0,i) + '/');
     return aux;
-
-}
-
-World::World(std::string jsonFile)
-{
-    Json::Value root = FileLoader::LoadJson(jsonFile);
-    std::string Dir = getLocationDir(jsonFile);
-    tilemap = new Tilemap(Dir + root["TilemapJson"].asString());
-
-    playerInitialPos.x = root["PlayerPos"][0].asInt();
-    playerInitialPos.y = root["PlayerPos"][1].asInt();
-
-    pos = playerInitialPos - 32;
-
-    tileSize = tilemap->m_tileSize;
-    layerSize = tilemap->getLayerSize();
-
-    layersTiles["background"] = tilemap->getLayers(0);
-    layersTiles["colidiveis"] = tilemap->getLayers(1);
-
-    std::vector<Uint32> aux  = layersTiles["colidiveis"];
-    for( Uint16 i = 0; i < aux.size() ; ++i)
-        if( aux[i] != 0)
-        layersRect["colidiveis"].push_back(tilemap->m_tileRects[i]);
-
-    tileRects = tilemap->m_tileRects;
-
 }
 
 void World::Render()
 {
     tilemap->Render(pos + offset);
+    for(iGameObject* i : gameObjects)
+        i->Render();
+}
+
+void World::addGameObject(iGameObject *obj)
+{
+    gameObjects.push_back(obj);
 }
 
 Uint32 World::atPos(std::string stg, int x, int y)
@@ -92,16 +97,16 @@ Rect World::atPosRect(int x, int y)
     return tileRects.at(x + y*layerSize.x);
 }
 
-
-World::~World()
+void World::Update(float dt)
 {
-
+    for(iGameObject* i : gameObjects)
+        i->Update(dt);
 }
 
 
-
-void World::Update(float dt)
+World::~World()
 {
-
+    for(iGameObject* i : gameObjects)
+        delete i;
 }
 

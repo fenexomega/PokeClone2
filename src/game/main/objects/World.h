@@ -4,12 +4,12 @@
 #include <vector>
 
 #include "interfaces/iGameObject.h"
-#include "graphics/Tilemap.h"
 #include "math/Vector2D.h"
+
 #include <map>
-
-
 #include <iostream>
+
+class Tilemap;
 
 //TODO pegar w e h do mapa
 class World : public iGameObject
@@ -24,9 +24,11 @@ private:
     std::map<std::string,std::vector<Uint32> > layersTiles;
     std::map<std::string,std::vector<Rect> > layersRect;
 
-
     std::string getLocationDir(std::string filename);
+
 public:
+    std::vector<iGameObject *> gameObjects;
+
     Vector2D<int> offset;
     Vector2D<int> tileSize;
     Vector2D<int> layerSize;
@@ -41,6 +43,9 @@ public:
     // iGameObject interface
     void Update(float dt);
     void Render();
+    //
+
+    void addGameObject(iGameObject *obj);
 
     Uint32 atPos(std::string stg,int x, int y);
     Rect atPosRect(int x, int y);

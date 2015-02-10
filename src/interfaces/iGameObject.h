@@ -24,7 +24,10 @@ public:
 
 
 
-
+    void SendMessage(int msg)
+    {
+        _mediator.sendMessage(msg);
+    }
 
     ComponentMediator* const mediator()
     {

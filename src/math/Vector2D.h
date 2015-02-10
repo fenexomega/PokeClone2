@@ -102,11 +102,11 @@ public:
         return sqrt(x*x + y*y);
     }
 
-    inline Vector2D* set(TYPE _x, TYPE _y)
+    inline Vector2D set(TYPE _x, TYPE _y)
     {
         x = _x;
         y = _y;
-        return this;
+        return *this;
     }
 };
 

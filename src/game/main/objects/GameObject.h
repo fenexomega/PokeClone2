@@ -1,12 +1,12 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-
-#include "game/components/cInput.h"
-#include "game/components/cGraphic.h"
-#include "game/components/cPhysics.h"
-#include "components/ComponentMediator.h"
 #include "interfaces/iGameObject.h"
+
+class cInput;
+class cPhysics;
+class cGraphic;
+class World;
 
 class GameObject : public iGameObject
 {

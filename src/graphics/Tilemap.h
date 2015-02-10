@@ -36,7 +36,6 @@ private:
     };
 
     void generateTileMap();
-    std::string getLocationDir(std::string filename);
 public:
 
     std::vector<Rect> m_tileRects;
@@ -48,8 +47,6 @@ public:
     std::vector<Layer> layers;
 
     Tilemap(std::string jsonFile);
-
-
 
     void Render(Vector2D<int> pos);
     void Render(int x, int y);
