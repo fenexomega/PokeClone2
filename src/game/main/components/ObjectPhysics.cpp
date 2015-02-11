@@ -26,7 +26,7 @@ void ObjectPhysics::receiveMessage(int msg)
         case PLAYER_INTERACTION:
         {
         if(_active)
-            if(sysPhysics::isColliding(_player->rect,_hitBox))
+            if(sysPhysics::isColliding(_player->rect,_obj->rect))
             {
                 PRINT("Item pegue!");
                 _active = !_active;
@@ -40,6 +40,7 @@ void ObjectPhysics::receiveMessage(int msg)
 
 void ObjectPhysics::Update(iGameObject *obj, World *world, float dt)
 {
+    _obj = obj;
     obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
     obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
 }

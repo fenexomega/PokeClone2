@@ -7,8 +7,6 @@ function Update(obj,dt)
     acc["x"] = 0; acc["y"] = 0
 
     if not onScreen(obj["rect"]) then
-        print(obj["rect"]["w"])
-        print("Não está na tela")
         return
     end
 

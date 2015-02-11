@@ -28,6 +28,7 @@ private:
 
 public:
     std::vector<iGameObject *> gameObjects;
+    std::vector<iGameObject *> gameEnemies;
 
     Vector2D<int> offset;
     Vector2D<int> tileSize;
@@ -46,6 +47,8 @@ public:
     //
 
     void addGameObject(iGameObject *obj);
+    void addGameEnemies(iGameObject *obj);
+
 
     Uint32 atPos(std::string stg,int x, int y);
     Rect atPosRect(int x, int y);

@@ -10,3 +10,12 @@ Key::~Key()
 
 }
 
+
+
+void Key::Update(float dt)
+{
+}
+
+void Key::Render()
+{
+}

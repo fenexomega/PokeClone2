@@ -12,7 +12,9 @@
 #include "game/main/components/DecorationGraphic.h"
 #include "game/main/components/DoorPhysics.h"
 
+#include "interfaces/iGameObject.h"
 #include "game/main/objects/GameObject.h"
+#include "game/main/objects/World.h"
 
 #include "io/FileLoader.h"
 
@@ -31,24 +33,27 @@ std::string Factory::getLocationDir(std::string filename)
 iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
 {
 
-    //TODO fix do bug da posição (se o player nascer colidindo com algo,
-    // ele é "empurrado" para fora
+    //TODO BUG? fix do bug da posição (se o player nascer colidindo com algo,
+    // ele é "empurrado" para fora e fica preso)
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    GameObject* player = new GameObject(world);
-    world->Normalize(json["width"].asInt(),json["height"].asInt());
-    player->pos = world->getPlayerInitialPos();
-    Vector2D<int> aux = world->getOffset();
+    GameObject* gameObj = new GameObject(world);
+    gameObj->name = json["name"].asString();
+    gameObj->type = json["type"].asString();
 
-    player->setComponents(
-                new ScriptedInput(json["script"].asString(),player->mediator()),
+    world->Normalize(json["width"].asInt(),json["height"].asInt());
+    gameObj->pos = world->getPlayerInitialPos();
+
+    gameObj->setComponents(
+                new ScriptedInput(json["script"].asString(),gameObj->mediator()),
             new PlayerPhysics(2,Rect(0,0,json["width"].asInt(),
                               json["height"].asInt()/2),
-            player->mediator()),
-            new PlayerAnimation(aux,
+            gameObj->mediator()),
+//            new PlayerAnimation(aux,
+            new AnimationController(
                                 new SpriteAnimation(json["sprite"].asString()
                                 ,json["animationFrames"].asInt()
             ,json["width"].asInt(),json["height"].asInt()),
-            player->mediator()));
+            gameObj->mediator()));
 
     //TODO player deve colidir com os tiles com sua
     // coordenada especial.
@@ -57,65 +62,68 @@ iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
 
 
     //O rect do player agora é sua hitbox
-    //TODO necessário?
-    player->rect.x = player->pos.x;
-    player->rect.y = player->pos.y;
-    player->rect.w = json["width"].asInt();
-    player->rect.h = json["height"].asInt()/2;
+    gameObj->rect.x = world->offset.x;
+    gameObj->rect.y = world->offset.y + json["height"].asInt()/2; //A hitbox tem um offset
+    gameObj->rect.w = json["width"].asInt();
+    gameObj->rect.h = json["height"].asInt()/2;
 
 
 
-    return player;
+    return gameObj;
 }
 
 iGameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    GameObject *enemy = new GameObject(world);
-    enemy->setComponents(
-                new ScriptedInput(json["script"].asString(),enemy->mediator()),
+    GameObject *gameObj = new GameObject(world);
+    gameObj->name = json["name"].asString();
+    gameObj->type = json["type"].asString();
+
+    gameObj->setComponents(
+                new ScriptedInput(json["script"].asString(),gameObj->mediator()),
             new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2),
-            player,enemy->mediator()),
+            player,gameObj->mediator()),
             new AnimationController(
                 new SpriteAnimation(json["sprite"].asString()
                 ,json["animationFrames"].asInt()
             ,json["width"].asInt(),json["height"].asInt()),
-            enemy->mediator()));
-    world->Normalize(enemy->rect.w,enemy->rect.h);
-    enemy->pos = pos;
+            gameObj->mediator()));
+    world->Normalize(gameObj->rect.w,gameObj->rect.h);
+    gameObj->pos = pos;
     Vector2D<int> aux = world->getOffset();
-    enemy->rect.x = aux.x;
-    enemy->rect.y = aux.y;
-    enemy->rect.w = json["width"].asInt();
-    enemy->rect.h = json["height"].asInt();
+
+    gameObj->rect.x = aux.x;
+    gameObj->rect.y = aux.y + json["height"].asInt()/2; //A hitbox tem um offset
+    gameObj->rect.w = json["width"].asInt();
+    gameObj->rect.h = json["height"].asInt()/2;
 
 
-    return enemy;
+    return gameObj;
 }
 
 iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    GameObject *object = new GameObject(world);
-    iComponentMediator *mediator = object->mediator();
+    GameObject *gameObject = new GameObject(world);
+    iComponentMediator *mediator = gameObject->mediator();
     cPhysics *physics;
 
 
 
-    object->pos = pos;
-    object->rect = Rect(pos.x,pos.y,32,32);
+    gameObject->pos = pos;
+    gameObject->rect = Rect(pos.x,pos.y,32,32);
 
     if(json["type"].asString().compare("door") == 0)
-        physics = new DoorPhysics(player,mediator,object->rect);
+        physics = new DoorPhysics(player,mediator,gameObject->rect);
     else
         physics = new ObjectPhysics(player,mediator,
-                                    object->rect);
+                                    gameObject->rect);
 
-    object->setComponents(new ScriptedInput(json["script"].asString(),mediator),
+    gameObject->setComponents(new ScriptedInput(json["script"].asString(),mediator),
             physics,
             new DecorationGraphic(json["image"].asString(),mediator));
 
-    return object;
+    return gameObject;
 }
 
 iGameObject *Factory::createWorld(std::string jsonFile)
@@ -148,7 +156,7 @@ iGameObject *Factory::createWorld(std::string jsonFile)
         obj = createEnemy(actorsDir + json["enemies"][i]["type"].asString() + ".json",world,
                 aux.set(json["enemies"][i]["pos"][0].asInt(),
                 json["enemies"][i]["pos"][1].asInt()) );
-        world->addGameObject(obj);
+        world->addGameEnemies(obj);
     }
 
 

@@ -3,14 +3,14 @@
 
 #include <iostream>
 
-#include "interfaces/iGameObject.h"
-#include "game/main/objects/World.h"
 
 #define OBJ_PLAYER 0
 #define OBJ_ENEMY 1
 
-class GameObject;
+class iGameObject;
+class World;
 
+#include "math/Vector2D.h"
 //TODO a fabrica vai criar o mundo e
 // por os inimigos nele
 class Factory

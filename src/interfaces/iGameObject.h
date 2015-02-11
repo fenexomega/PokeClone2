@@ -12,6 +12,8 @@ class iGameObject
 //    std::vector<iComponent> m_components;
 public:
     ComponentMediator _mediator;
+    std::string name;
+    std::string type;
 
     Rect rect;
     Vector2D<int> pos;

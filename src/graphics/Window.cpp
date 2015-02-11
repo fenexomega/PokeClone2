@@ -1,5 +1,10 @@
 #include "Window.h"
 
+#include "systems/sysInput.h"
+#include "SDL2/SDL_image.h"
+
+#include "util/Logger.h"
+
 SDL_Window *Window::SDLwindow;
 SDL_Renderer *Window::SDLrenderer;
 int Window::width;
@@ -53,6 +58,21 @@ void Window::Destroy()
 {
     SDL_DestroyRenderer(SDLrenderer);
     SDL_DestroyWindow(SDLwindow);
+}
+
+void Window::Update()
+{
+    if(sysInput::isKeyDown(SDL_SCANCODE_F10))
+        TakeShot();
+}
+
+void Window::TakeShot()
+{
+    SDL_Surface *sshot = SDL_CreateRGBSurface(0, width, height, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+    SDL_RenderReadPixels(SDLrenderer, NULL, SDL_PIXELFORMAT_ARGB8888, sshot->pixels, sshot->pitch);
+    IMG_SavePNG(sshot, "screenshot.png");
+    SDL_FreeSurface(sshot);
+    PRINT("Screenshot Taken!");
 }
 
 void Window::appendTitle(std::string st)

@@ -3,11 +3,14 @@
 
 #include "game/components/cPhysics.h"
 
+#define DOOR_DISABLE 3
+
 class DoorPhysics : public cPhysics
 {
 private:
     iGameObject *_player;
     Rect _hitBox;
+    bool _active;
 public:
     DoorPhysics(iGameObject *player, iComponentMediator *mediator,Rect hitbox , bool active = true);
     ~DoorPhysics();

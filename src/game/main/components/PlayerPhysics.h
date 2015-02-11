@@ -5,10 +5,10 @@
 #include "components/MessageSender.h"
 #include "physics/Rect.h"
 
-enum
-{
-    PLAYER_MOVE_BACK = 3
-};
+
+
+#define MOVE_BACK  3
+
 
 class PlayerPhysics : public cPhysics
 {

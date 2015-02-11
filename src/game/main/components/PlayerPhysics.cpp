@@ -6,17 +6,6 @@
 
 //TODO hitbox finetuning
 
-void PlayerPhysics::Move(Vector2D<int> v)
-{
-    _obj->pos += v;
-
-    //TODO melhorar isso
-    _obj->rect.x = _obj->pos.x -16;
-    _obj->rect.y = _obj->pos.y;
-    _world->pos = -_obj->pos;
-
-}
-
 PlayerPhysics::PlayerPhysics(int velocity, Rect hitBox, iComponentMediator *mediator)
     : _hitBox(hitBox),_velocity(velocity),cPhysics(mediator)
 {
@@ -28,33 +17,45 @@ PlayerPhysics::~PlayerPhysics()
 
 }
 
+void PlayerPhysics::Move(Vector2D<int> v)
+{
+    _obj->pos += v;
+
+    //TODO melhorar isso
+    //o vetor POS dá a posição exata no MEIO
+    _hitBox.x = _obj->pos.x - 16;
+    _hitBox.y = _obj->pos.y;
+    //O Mundo deveria se mexer de forma independente?
+    _world->pos = -_obj->pos;
+
+}
+
+
 void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
 {
+
     _obj = obj;
     _world = world;
     Move(obj->acc*_velocity);
 
-
-
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
     for(auto i : colidables)
     {
-        if(sysPhysics::isColliding(obj->rect,i))
+        if(sysPhysics::isColliding(_hitBox,i))
         {
-            Move(-obj->acc*_velocity);
+            Move(-_obj->acc*_velocity);
             return;
         }
     }
-
-
-
 }
 
 
 void PlayerPhysics::receiveMessage(int msg)
 {
-    if(msg == PLAYER_MOVE_BACK)
+
+    if(msg == MOVE_BACK)
     {
+        //Observer Notify?
         Move(-_obj->acc*_velocity);
     }
 }

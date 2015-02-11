@@ -63,7 +63,7 @@ void AnimationController::Update(iGameObject *obj, float dt)
 
 void AnimationController::Render(iGameObject *obj)
 {
-    _animation->Render(obj->rect.x,obj->rect.y);
+    _animation->Render(obj->rect.x,obj->rect.y - obj->rect.w/2);
 
 }
 

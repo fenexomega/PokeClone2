@@ -9,6 +9,7 @@ private:
     iGameObject *_player;
     Rect _hitBox;
     bool _active;
+    iGameObject *_obj;
 public:
     ObjectPhysics(iGameObject *player,iComponentMediator *mediator,Rect hitbox,bool active = true);
     ~ObjectPhysics();

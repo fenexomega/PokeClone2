@@ -26,9 +26,12 @@ void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
 {
 
     obj->pos += obj->acc*_velocity;
+    obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
+    obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
 
     _hitBox.x = obj->pos.x;
-    _hitBox.y = obj->pos.y + 16;
+    _hitBox.y = obj->pos.y;
+
 
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
     //Ver se está colidindo com algum gameObject
@@ -37,7 +40,6 @@ void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
         if(sysPhysics::isColliding(obj->rect,i->rect))
         {
             //TODO estão colidindo mas não saem do canto
-            PRINT("FODA_SE");
             colliding = true;
             break;
         }
@@ -45,14 +47,15 @@ void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
 
     for(auto i : colidables)
     {
-        if(sysPhysics::isColliding(_hitBox,i) || sysPhysics::isColliding(_player->rect,_hitBox)
+        if(sysPhysics::isColliding(_hitBox,i)
                 || colliding)
         {
             obj->pos -= obj->acc*_velocity;
+            obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
+            obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
             break;
         }
     }
-    obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
-    obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
+
 }
 

@@ -79,6 +79,7 @@ int Engine::Run(iGame *game)
 
         win.SwapBuffers();
 
+        win.Update();
 
     }
     game->Dispose();

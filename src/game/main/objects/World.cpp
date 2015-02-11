@@ -79,11 +79,18 @@ void World::Render()
     tilemap->Render(pos + offset);
     for(iGameObject* i : gameObjects)
         i->Render();
+    for(iGameObject* i : gameEnemies)
+        i->Render();
 }
 
 void World::addGameObject(iGameObject *obj)
 {
     gameObjects.push_back(obj);
+}
+
+void World::addGameEnemies(iGameObject *obj)
+{
+    gameEnemies.push_back(obj);
 }
 
 Uint32 World::atPos(std::string stg, int x, int y)
@@ -101,12 +108,16 @@ void World::Update(float dt)
 {
     for(iGameObject* i : gameObjects)
         i->Update(dt);
+    for(iGameObject* i : gameEnemies)
+        i->Update(dt);
 }
 
 
 World::~World()
 {
     for(iGameObject* i : gameObjects)
+        delete i;
+    for(iGameObject* i : gameEnemies)
         delete i;
 }
 

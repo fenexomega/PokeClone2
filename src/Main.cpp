@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 #include "game/Game.h"
+#include "game/main/MainGame.h"
 //#include "debuggames/RectsTest.h"
 //#include "debuggames/TextureTest.h"
 //#include "debuggames/MouseTest.h"
@@ -14,7 +15,7 @@
 
 int main()
 {
-    Game game;
+    MainGame game(NULL);
 
     Engine engine;
     engine.Run(&game);
