@@ -1,4 +1,6 @@
 {
+    "name":"map0",
+    "type":"map",
     "TilemapJson":"Contents/MainGame/tiledmap.json",
     "player":{"type":"player",
               "pos":[400,128] //Posição Inicial

@@ -1,4 +1,5 @@
 {
+    "name":"key0",
     "image" : "Contents/MainGame/images/key0.png",
 	"type"   : "key",
     "prop"  : true,

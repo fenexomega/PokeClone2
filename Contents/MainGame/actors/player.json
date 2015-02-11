@@ -1,4 +1,6 @@
 {
+    "name":"player",
+    "type":"actor",
     "sprite":"Contents/MainGame/playersprite.png", //Player Sprite
     "height":32, //sprite height
     "width":32,  // sprite width

@@ -1,4 +1,6 @@
 {
+    "name":"npc_mage0",
+    "type":"actor",
     "sprite":"Contents\/rpgsprites1\/mage_f.png", //Player Sprite
     "height":36, //sprite height
     "width":32,  // sprite width
