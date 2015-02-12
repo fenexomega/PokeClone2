@@ -10,6 +10,8 @@ class ScriptedInput : public cInput
 private:
     Script *script;
 public:
+
+
     ScriptedInput(std::string _script,iComponentMediator *mediator);
     ~ScriptedInput();
 
@@ -18,6 +20,8 @@ public:
 
     // cInput interface
     void Update(iGameObject *obj,float dt);
+
+    Script &getScript() const;
 
 };
 

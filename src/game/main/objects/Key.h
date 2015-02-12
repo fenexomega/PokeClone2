@@ -1,17 +1,29 @@
 #ifndef KEY_H
 #define KEY_H
 
-#include "interfaces/iGameObject.h"
+//#include "interfaces/iGameObject.h"
+#include "interfaces/iSubject.h"
+#include "game/main/objects/GameObject.h"
 
-class Key : public iGameObject
+//TODO relacao porta-chave
+//usando observer
+class cInput;
+class cPhysics;
+class cGraphic;
+class World;
+
+
+class Key : public GameObject,public iSubject
 {
+private:
+    Key(World *world);
+    bool _active;
 public:
-    Key();
+    //factory method
+    static Key *createKey(World *world, std::string JsonFile, iGameObject *player);
     ~Key();
 
-    // iGameObject interface
-    void Update(float dt);
-    void Render();
+
 };
 
 #endif // KEY_H

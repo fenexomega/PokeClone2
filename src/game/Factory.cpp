@@ -1,5 +1,5 @@
 #include "Factory.h"
-
+#include <assert.h>
 
 #include "game/main/components/PlayerPhysics.h"
 #include "game/main/components/PlayerAnimation.h"
@@ -15,8 +15,12 @@
 #include "interfaces/iGameObject.h"
 #include "game/main/objects/GameObject.h"
 #include "game/main/objects/World.h"
+#include "game/main/objects/Key.h"
 
+#include "game/main/objects/Door.h"
 #include "io/FileLoader.h"
+
+#include "util/Logger.h"
 
 iGameObject* Factory::player;
 
@@ -104,26 +108,39 @@ iGameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<i
 iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    GameObject *gameObject = new GameObject(world);
-    iComponentMediator *mediator = gameObject->mediator();
-    cPhysics *physics;
+    iGameObject *obj = NULL;
 
 
 
-    gameObject->pos = pos;
-    gameObject->rect = Rect(pos.x,pos.y,32,32);
+
 
     if(json["type"].asString().compare("door") == 0)
-        physics = new DoorPhysics(player,mediator,gameObject->rect);
-    else
-        physics = new ObjectPhysics(player,mediator,
-                                    gameObject->rect);
+    {
+        obj = Door::createDoor(world,jsonFile,player);
 
-    gameObject->setComponents(new ScriptedInput(json["script"].asString(),mediator),
-            physics,
-            new DecorationGraphic(json["image"].asString(),mediator));
+        //TODO registrar porta na chave
+        Door *door = dynamic_cast<Door*>(obj);
+        for(iGameObject *key : world->gameObjects)
+        {
+            if(key->name.compare( door->keyName()) == 0 )
+            {
+                PRINT("Porta registrada");
+                ((Key *) key)->AddObserver(((Door*)obj ));
+            }
+        }
 
-    return gameObject;
+    }
+    else if (json["type"].asString().compare("key") == 0)
+    {
+        obj = Key::createKey(world,jsonFile,player);
+    }
+
+    obj->pos = pos;
+    obj->rect = Rect(pos.x,pos.y,32,32);
+
+    assert(obj != NULL);
+
+    return obj;
 }
 
 iGameObject *Factory::createWorld(std::string jsonFile)

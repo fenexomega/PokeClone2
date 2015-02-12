@@ -5,48 +5,51 @@
 
 #include "game/main/components/DoorPhysics.h"
 #include "game/main/components/ScriptedInput.h"
+#include "game/main/components/DecorationGraphic.h"
 
-Door::Door(World *world, bool open)
-    : _open(open),_world(world)
+Door::Door(World *world)
+    : _open(false),GameObject(world)
 {
-    _gameObject = new GameObject(world);
+
 }
+std::string Door::keyName() const
+{
+    return _keyName;
+}
+
+void Door::setKeyName(const std::string &keyName)
+{
+    _keyName = keyName;
+}
+
 
 Door::~Door()
 {
-    delete _gameObject;
+
 }
 
-iGameObject *Door::createDoor(World *world, std::string JsonFile, bool open)
+Door *Door::createDoor(World *world, std::string JsonFile, iGameObject *player)
 {
     //TODO terminar esse factory method
     Json::Value json = FileLoader::LoadJson(JsonFile);
-    Door *door = new Door(world,open);
-    iComponentMediator *mediator = door->_gameObject->mediator();
+    Door *door = new Door(world);
+    iComponentMediator *mediator = door->mediator();
+    door->name = json["name"].asString();
 
+    door->setComponents( new ScriptedInput(json["script"].asString(),mediator),
+            new DoorPhysics(player,mediator),
+            new DecorationGraphic(json["image"].asString(),mediator));
 
-    cPhysics *physics = new DoorPhysics(player,mediator,gameObject->rect);
-    cInput   *input   = new ScriptedInput(json["script"].asString(),mediator);
+    door->_keyName = json["key"].asString();
 
-
-    door->_gameObject->setComponents(physics,);
+    return door;
 
 }
 
-
-
-void Door::Update(float dt)
-{
-    //TODO Checar se o player pegou a chave correta
-}
-
-void Door::Render()
-{
-    _gameObject->Render();
-}
 
 
 void Door::Receive(void *MSG)
 {
     _open = true;
+    SendMessage(DOOR_DISABLE);
 }

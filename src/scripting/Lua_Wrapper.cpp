@@ -10,6 +10,9 @@
 
 #include "util/Logger.h"
 
+//WRAPERS
+#include "scripting/sysPhysics_Wrapper.h"
+
 std::vector<Script *> Lua_Wrapper::scripts;
 
 void Lua_Wrapper::RegisterCoreFunctions(lua::State* state)
@@ -20,7 +23,10 @@ void Lua_Wrapper::RegisterCoreFunctions(lua::State* state)
     state->set("isKeyUp",&sysInput::isKeyUp);
     state->set("getKeyPressed",&sysInput::getKeyPressed);
 
-    state->set("onScreen",&onScreen);
+
+    state->set("onScreen",&sysPhysics_Wrapper::onScreen);
+    state->set("onBorders",&sysPhysics_Wrapper::onBorders);
+    state->set("iCollidingRR",&sysPhysics_Wrapper::isCollidingRR);
 
 }
 
@@ -91,12 +97,7 @@ void Lua_Wrapper::Unsubscrible(Script *script)
     return;
 }
 
-bool Lua_Wrapper::onScreen(lua::Value value)
-{
-    Rect rect(value["x"],value["y"],value["w"],value["h"]);
-    return sysPhysics::onScreen(rect);
 
-}
 
 Lua_Wrapper::~Lua_Wrapper()
 {

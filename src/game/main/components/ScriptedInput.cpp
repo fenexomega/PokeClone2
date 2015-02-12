@@ -39,3 +39,8 @@ void ScriptedInput::Update(iGameObject *obj, float dt)
 
 }
 
+Script &ScriptedInput::getScript() const
+{
+    return *script;
+}
+

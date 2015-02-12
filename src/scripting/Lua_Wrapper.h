@@ -18,7 +18,6 @@ public:
     static void SubscribleScript(Script * script);
     static void Unsubscrible(Script *script);
 
-    static bool onScreen(lua::Value value);
     ~Lua_Wrapper();
 
 

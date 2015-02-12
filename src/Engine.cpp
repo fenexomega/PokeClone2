@@ -32,7 +32,8 @@ void Engine::ShutSystems()
 int Engine::Run(iGame *game)
 {
     unsigned int framerate = 0;
-    float seconds = 0,dt;
+    float seconds = 0;
+    float dt;
     uTime timer;
     uRandom::initRandomSeed();
 

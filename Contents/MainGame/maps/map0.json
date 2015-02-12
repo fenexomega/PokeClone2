@@ -5,12 +5,17 @@
     "player":{"type":"player",
               "pos":[400,128] //Posição Inicial
             },
+            //as Chaves tem de vir antes das portas
+            //porque chaves sao subject e portas sao observers
     "objects":[
-        { "type":"key0",
-            "pos":[600,600]
+        { "type":"keys\/key0",
+            "pos":[400,100]
         },
-        {"type":"door0",
-            "pos":[400,400]
+        { "type":"doors\/door0",
+            "pos":[640,128]
+        },
+        { "type":"doors\/door0",
+            "pos":[672,128]
         }
     ],
     "enemies":[

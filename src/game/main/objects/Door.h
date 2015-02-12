@@ -1,30 +1,26 @@
 #ifndef DOOR_H
 #define DOOR_H
 
-#include "interfaces/iGameObject.h"
+//#include "interfaces/iGameObject.h"
 #include "interfaces/iObserver.h"
+#include "game/main/objects/GameObject.h"
 
-class GameObject;
-class World;
 
-class Door : public iGameObject, public iObserver
+class Door : public GameObject, public iObserver
 {
 private:
-    GameObject *_gameObject;
-    Door(World *world, bool open);
-    bool _open;
-    World *_world;
+    Door(World *world);
+    std::string _keyName;
 public:
+    bool _open;
     ~Door();
 
-    iGameObject *createDoor(World *world,std::string JsonFile,bool open = false);
-
-    // iGameObject interface
-    void Update(float dt);
-    void Render();
+    static Door *createDoor(World *world, std::string JsonFile, iGameObject *player);
 
     // iObserver interface
     void Receive(void *MSG);
+    std::string keyName() const;
+    void setKeyName(const std::string &keyName);
 };
 
 #endif // DOOR_H

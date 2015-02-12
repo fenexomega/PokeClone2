@@ -6,6 +6,8 @@
 
 class sysScripting : public iSystem
 {
+private:
+    lua::State *state;
 public:
     sysScripting();
     ~sysScripting();

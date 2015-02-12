@@ -10,7 +10,7 @@ class World;
 
 class GameObject : public iGameObject
 {
-private:
+protected:
     cInput *_input;
     cPhysics *_physics;
     cGraphic *_graphic;

@@ -6,8 +6,8 @@
 
 #include "game/main/components/PlayerPhysics.h"
 
-DoorPhysics::DoorPhysics(iGameObject *player, iComponentMediator *mediator, Rect hitbox, bool active)
-    : cPhysics(mediator),_hitBox(hitbox),_player(player),_active(active)
+DoorPhysics::DoorPhysics(iGameObject *player, iComponentMediator *mediator, bool active)
+    : cPhysics(mediator),_player(player),_active(active)
 {
 
 }
@@ -23,6 +23,7 @@ void DoorPhysics::receiveMessage(int msg)
 {
     if(msg == DOOR_DISABLE)
     {
+        PRINT("Porta Desativada");
         _active = false;
     }
 }

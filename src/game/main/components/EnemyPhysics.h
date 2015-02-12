@@ -9,6 +9,9 @@ private:
     int _velocity = 2;
     Rect _hitBox;
     iGameObject *_player;
+    iGameObject *_obj;
+    World *_world;
+    void Move(Vector2D<int> v);
 public:
     EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iComponentMediator *mediator);
     ~EnemyPhysics();

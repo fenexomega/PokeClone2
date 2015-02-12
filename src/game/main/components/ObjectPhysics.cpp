@@ -4,11 +4,13 @@
 
 #include "util/Logger.h"
 
+#include "game/main/objects/Key.h"
+
 #define PLAYER_INTERACTION 1
 #define DISSAPEAR 2
 
-ObjectPhysics::ObjectPhysics(iGameObject *player, iComponentMediator *mediator, Rect hitbox, bool active)
-    : cPhysics(mediator),_player(player),_hitBox(hitbox),_active(active)
+ObjectPhysics::ObjectPhysics(iGameObject *player, iComponentMediator *mediator, bool active)
+    : cPhysics(mediator),_player(player),_active(active)
 {
 
 }
@@ -29,8 +31,11 @@ void ObjectPhysics::receiveMessage(int msg)
             if(sysPhysics::isColliding(_player->rect,_obj->rect))
             {
                 PRINT("Item pegue!");
-                _active = !_active;
+                _active = false;
                 sendMessage(DISSAPEAR);
+
+              Key*key =  ((Key *) _obj);
+              key->Notify(key);
             }
 
         }break;

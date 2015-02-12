@@ -7,7 +7,7 @@ class iObserver
 {
 public:
     virtual void Receive(void* MSG) = 0;
-    virtual ~Observer(){}
+    virtual ~iObserver(){}
 
 };
 

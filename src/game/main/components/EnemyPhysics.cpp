@@ -4,10 +4,23 @@
 
 #include "util/Logger.h"
 
+
+
 EnemyPhysics::EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iComponentMediator *mediator)
     : _velocity(velocity),_hitBox(hitBox),cPhysics(mediator),_player(player)
 
 {
+
+}
+
+void EnemyPhysics::Move(Vector2D<int> v)
+{
+    _obj->pos += v;
+    _obj->rect.x = _world->pos.x + _obj->pos.x + _world->offset.x;
+    _obj->rect.y = _world->pos.y + _obj->pos.y + _world->offset.y;
+    _hitBox.x = _obj->pos.x;
+    _hitBox.y = _obj->pos.y;
+
 
 }
 
@@ -20,17 +33,14 @@ EnemyPhysics::~EnemyPhysics()
 
 void EnemyPhysics::receiveMessage(int msg)
 {
+
 }
 
 void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
 {
-
-    obj->pos += obj->acc*_velocity;
-    obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
-    obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
-
-    _hitBox.x = obj->pos.x;
-    _hitBox.y = obj->pos.y;
+    _obj = obj;
+    _world = world;
+    Move(obj->acc*_velocity);
 
 
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
@@ -50,9 +60,8 @@ void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
         if(sysPhysics::isColliding(_hitBox,i)
                 || colliding)
         {
-            obj->pos -= obj->acc*_velocity;
-            obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
-            obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
+            Move(-obj->acc*_velocity);
+
             break;
         }
     }
