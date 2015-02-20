@@ -1,7 +1,7 @@
 {
     "name":"key0",
     "image" : "Contents/MainGame/images/key0.png",
-	"type"   : "key",
+    "type"   : "key",
     "prop"  : false,
-    "script": "Contents/MainGame/scripts/objectInput.lua",
+    "script": "Contents/MainGame/scripts/objectInput.lua"
 }

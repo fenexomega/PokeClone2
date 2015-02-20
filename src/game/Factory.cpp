@@ -59,7 +59,7 @@ iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
             ,json["width"].asInt(),json["height"].asInt()),
             gameObj->mediator()));
 
-    //TODO player deve colidir com os tiles com sua
+    //player deve colidir com os tiles com sua
     // coordenada especial.
     //mas a colisão com os objetos e atores deve ser feita
     //com sua posição na tela.
@@ -118,7 +118,7 @@ iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vect
     {
         obj = Door::createDoor(world,jsonFile,player);
 
-        //TODO registrar porta na chave
+        //Registrar porta na chave
         Door *door = dynamic_cast<Door*>(obj);
         for(iGameObject *key : world->gameObjects)
         {

@@ -12,12 +12,14 @@ void uTime::Update()
     oldTime = currentTime;
     currentTime = SDL_GetTicks();
     dt = (currentTime - oldTime)/1000.0f;
+//    PRINT(dt);
+
 }
 
 float uTime::getDeltaTime()
 {
     //TODO fazer esse delta time direito
-    double value = 0.012f; //60.0f/1000.0f;
+    double value = (1000.0f/60.0f)/1000.0f;
 //    LOG("DT = " + TOSTR(dt) + " | VALUE =  " + TOSTR(value));
     return dt >= value ? dt : value ;
 //    return dt;

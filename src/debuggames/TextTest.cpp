@@ -20,10 +20,7 @@ void TextTest::Init()
                     "TEXTO LINDO DEMAIS.",
                     72,
                     Color(255,255,255,255));
-    Text *tex1 = new Text("Contents/UbuntuMono-B.ttf",
-                          "Pressionar",
-                          16,
-                          Color(0,255,0,255));
+
 //    bt = new Button(100,100,
 //                    new Texture("Contents/button.png"),
 //                    new Texture("Contents/buttonMouseOver.png"),

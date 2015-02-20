@@ -1,16 +1,11 @@
 #ifndef KEY_H
 #define KEY_H
 
-//#include "interfaces/iGameObject.h"
 #include "interfaces/iSubject.h"
 #include "game/main/objects/GameObject.h"
 
 //TODO relacao porta-chave
 //usando observer
-class cInput;
-class cPhysics;
-class cGraphic;
-class World;
 
 
 class Key : public GameObject,public iSubject

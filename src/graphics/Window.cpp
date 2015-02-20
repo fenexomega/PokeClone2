@@ -1,7 +1,10 @@
 #include "Window.h"
 
+#include <stdexcept>
+
 #include "systems/sysInput.h"
 #include "SDL2/SDL_image.h"
+
 
 #include "util/Logger.h"
 
@@ -106,7 +109,7 @@ Window::Window(int _width, int _height, std::string title, bool isFullscreen )
                                  windowsFlags);
    SDLrenderer =  SDL_CreateRenderer(SDLwindow,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if(SDLwindow == NULL || SDLrenderer == NULL)
-        std::cout << "DEU MERDA" << std::endl; // TODO tratar isso
+        throw std::runtime_error("Couldn't set the SDL Window and Renderer:\n " + std::string(SDL_GetError())); // TODO tratar isso
 
 }
 

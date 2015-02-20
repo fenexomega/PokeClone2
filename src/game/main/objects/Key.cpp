@@ -27,7 +27,9 @@ Key *Key::createKey(World *world, std::string JsonFile,iGameObject *player)
             new ObjectPhysics(player,mediator),
             new DecorationGraphic(json["image"].asString(),mediator));
 
-    ((ScriptedInput *) key->_input)->getScript().getState().set("notify",[key](void* msg){ key->Notify(msg);});
+    ScriptedInput *si = dynamic_cast<ScriptedInput*>(key->_input);
+
+    si->getScript().getState().set("notify",[key](void* msg){ key->Notify(msg);});
 
     return key;
 

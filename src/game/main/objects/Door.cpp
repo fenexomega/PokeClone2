@@ -30,7 +30,6 @@ Door::~Door()
 
 Door *Door::createDoor(World *world, std::string JsonFile, iGameObject *player)
 {
-    //TODO terminar esse factory method
     Json::Value json = FileLoader::LoadJson(JsonFile);
     Door *door = new Door(world);
     iComponentMediator *mediator = door->mediator();

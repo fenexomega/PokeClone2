@@ -24,7 +24,6 @@ bool Engine::InitSystems()
 
 void Engine::ShutSystems()
 {
-    //sysGraphics MUST be the last to shut.
     for(iSystem* i : systems)
         i->Dispose();
 }
@@ -52,11 +51,7 @@ int Engine::Run(iGame *game)
 
         timer.Update();
 
-        dt = timer.getDeltaTime();
-        SDL_Delay(dt);
 
-        seconds += dt;
-        framerate++;
 
         FileLoader::Update();
 
@@ -81,6 +76,12 @@ int Engine::Run(iGame *game)
         win.SwapBuffers();
 
         win.Update();
+
+        dt = timer.getDeltaTime();
+
+        seconds += dt;
+        framerate++;
+        SDL_Delay(dt);
 
     }
     game->Dispose();

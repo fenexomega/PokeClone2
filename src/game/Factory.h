@@ -11,8 +11,6 @@ class iGameObject;
 class World;
 
 #include "math/Vector2D.h"
-//TODO a fabrica vai criar o mundo e
-// por os inimigos nele
 class Factory
 {
 private:
