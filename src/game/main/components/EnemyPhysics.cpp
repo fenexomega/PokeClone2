@@ -4,7 +4,7 @@
 
 #include "util/Logger.h"
 
-
+#include "game/main/objects/Door.h"
 
 EnemyPhysics::EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iComponentMediator *mediator)
     : _velocity(velocity),_hitBox(hitBox),cPhysics(mediator),_player(player)
@@ -50,7 +50,14 @@ void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
         if(sysPhysics::isColliding(obj->rect,i->rect))
         {
             //TODO estão colidindo mas não saem do canto
-            colliding = true;
+
+            //Se for uma porta, você deve colidir
+            // senão, pode passar.
+
+            //TODO verificar se a porta está trancada
+            if(i->name.compare("door") < 0)
+                if( !((Door *) i)->_open )
+                colliding = true;
             break;
         }
 
