@@ -1,6 +1,7 @@
 #include "FileLoader.h"
 
 #include <fstream>
+#include <stdexcept>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
@@ -38,12 +39,9 @@ shared_ptr<Texture> FileLoader::LoadTexture(std::string path)
     texture = SDL_CreateTextureFromSurface(Window::getActiveRenderer(),surface);
     SDL_FreeSurface(surface);
 
-    //TODO throw exception
     if(texture == NULL)
-    {
-        std::cerr << "ERROR: " << SDL_GetError() << std::endl;
-        return nullptr;
-    }
+        throw std::runtime_error("Couldn't load texture:\n " + std::string(SDL_GetError()));
+
     Texture *aux = new Texture(texture);
     shared = std::shared_ptr<Texture>(aux);
 
@@ -60,10 +58,14 @@ Json::Value FileLoader::LoadJson(std::string path)
     PRINT(path);
     file.open(path.c_str());
     if(!file.is_open())
-        std::cerr << "Não conseguiu abrir" << std::endl;
+        throw std::runtime_error("Couldn't load file " + path);
 
     if(reader.parse(file,root,false) == false)
-        std::cerr << "Problema no json" << std::endl; //LOG ERROR reader.gerFormattedErrorMessages()
+    {
+        throw std::runtime_error("Problem loading json: \n"
+                                 + reader.getFormattedErrorMessages());
+
+    }
 
     return root;
 }
@@ -72,8 +74,7 @@ TTF_Font* FileLoader::LoadFont(std::string path,int size)
     TTF_Font *font = TTF_OpenFont(path.c_str(),size);
     if(font == nullptr)
     {
-        std::cerr << SDL_GetError() << std::endl;
-        return nullptr;
+        throw std::runtime_error(SDL_GetError());
     }
     return font;
 
@@ -82,9 +83,7 @@ TTF_Font* FileLoader::LoadFont(std::string path,int size)
 void FileLoader::Update()
 {
     for(auto i = files.begin(); i != files.end(); ++i)
-    {
         if(i->second.unique())
             files.erase(i);
-    }
 }
 
