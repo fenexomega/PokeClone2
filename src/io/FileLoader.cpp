@@ -62,7 +62,7 @@ Json::Value FileLoader::LoadJson(std::string path)
 
     if(reader.parse(file,root,false) == false)
     {
-        throw std::runtime_error("Problem loading json: \n"
+        throw std::runtime_error("Problem loading json file" + path +  " : \n"
                                  + reader.getFormattedErrorMessages());
 
     }

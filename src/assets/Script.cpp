@@ -9,12 +9,16 @@
 Script::Script(std::string fileName)
     : iAsset(AS_SCRIPT),file(fileName)
 {
-#ifdef RELEASE
-    file += "c";
-#endif
     st = new lua::State();
     Lua_Wrapper::RegisterCoreFunctions(st);
-    if(st->doFile(file))
+    try{
+        st->doFile(file);
+    }
+    catch(std::runtime_error)
+    {
+        st->doFile(file + "c");
+    }
+
         PRINT("Loaded " + file);
     Lua_Wrapper::SubscribleScript(this);
 }

@@ -21,7 +21,6 @@ void EnemyPhysics::Move(Vector2D<int> v)
     _hitBox.x = _obj->pos.x;
     _hitBox.y = _obj->pos.y;
 
-
 }
 
 EnemyPhysics::~EnemyPhysics()
@@ -53,15 +52,19 @@ void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
 
             //Se for uma porta, você deve colidir
             // senão, pode passar.
-
-            //TODO verificar se a porta está trancada
-            if(i->name.compare("door") < 0)
+            if(i->name.compare("door") == 1)
+            {
+                //verifica se a porta está trancada
                 if( !((Door *) i)->_open )
-                colliding = true;
+                    colliding = true;
+
+            }
+
             break;
         }
 
 
+    //Colisão com o mundo
     for(auto i : colidables)
     {
         if(sysPhysics::isColliding(_hitBox,i)

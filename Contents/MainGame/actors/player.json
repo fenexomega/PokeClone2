@@ -1,11 +1,10 @@
 {
     "name":"player",
     "type":"actor",
-    "sprite":"Contents/MainGame/playersprite.png", //Player Sprite
+    "sprite":"Contents/MainGame/images/playersprite.png", //Player Sprite
     "height":32, //sprite height
     "width":32,  // sprite width
     "animationFrames":4, // frames per animation
     "script": "Contents\/MainGame\/scripts\/playerInput.lua" // Player Update Script
-//    "script": "Contents\/MainGame\/scripts\/RandomInput.lua"
 
 }
