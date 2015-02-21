@@ -14,6 +14,7 @@ public:
     ComponentMediator _mediator;
     std::string name;
     std::string type;
+    bool _active = true;
 
     Rect rect;
     Vector2D<int> pos;

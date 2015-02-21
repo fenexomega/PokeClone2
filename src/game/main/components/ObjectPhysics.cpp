@@ -1,13 +1,9 @@
 #include "ObjectPhysics.h"
 
 #include "systems/sysPhysics.h"
-
 #include "util/Logger.h"
-
 #include "game/main/objects/Key.h"
 
-#define PLAYER_INTERACTION 1
-#define DISSAPEAR 2
 
 ObjectPhysics::ObjectPhysics(iGameObject *player, iComponentMediator *mediator, bool active)
     : cPhysics(mediator),_player(player),_active(active)
@@ -30,11 +26,15 @@ void ObjectPhysics::receiveMessage(int msg)
         if(_active)
             if(sysPhysics::isColliding(_player->rect,_obj->rect))
             {
-                PRINT("Item pegue!");
+                LOG("Item pegue!");
                 _active = false;
                 sendMessage(DISSAPEAR);
 
-              Key*key =  ((Key *) _obj);
+              Key *key = dynamic_cast<Key *>(_obj);
+
+              if(key == nullptr)
+                  throw std::runtime_error("Object " + _obj->name + " is not a Key" );
+
               key->Notify(key);
             }
 

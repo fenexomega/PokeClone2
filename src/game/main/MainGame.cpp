@@ -4,6 +4,8 @@
 
 #include "interfaces/iGameObject.h"
 
+#include "graphics/Window.h"
+
 MainGame::MainGame(iGame *_game)
     : game(_game)
 {
@@ -17,6 +19,7 @@ MainGame::~MainGame()
 
 void MainGame::Init()
 {
+    Window win(1024,768,"Daora",false);
     actualWorld = Factory::createWorld("Contents/MainGame/maps/map0.json");
     player = Factory::player;
 

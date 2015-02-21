@@ -1,4 +1,4 @@
-project("PokeClone 2 Engine" CXX C)
+project("PokeClone 2 Engine" CXX)
 
 cmake_minimum_required(VERSION 3.0)
 
@@ -27,7 +27,7 @@ if( CMAKE_BUILD_TYPE STREQUAL "Release")
     add_definitions(-DRELEASE)
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -rdynamic")
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Contents
 DESTINATION ${CMAKE_BINARY_DIR} )

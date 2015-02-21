@@ -50,14 +50,9 @@ int Engine::Run(iGame *game)
     {
 
         timer.Update();
-
-
-
         FileLoader::Update();
-
         if(seconds >= 1.0f)
         {
-
             win.appendTitle(" " + std::to_string(framerate) + " FPS");
             framerate = seconds = 0;
         }
@@ -84,10 +79,10 @@ int Engine::Run(iGame *game)
         SDL_Delay(dt);
 
     }
+    Logger::CloseLogFile();
     game->Dispose();
     win.Destroy();
     ShutSystems();
-    Logger::CloseLogFile();
 
     return 0;
 }

@@ -4,8 +4,6 @@
 
 #include "util/Logger.h"
 
-
-
 Script::Script(std::string fileName)
     : iAsset(AS_SCRIPT),file(fileName)
 {
@@ -19,7 +17,7 @@ Script::Script(std::string fileName)
         st->doFile(file + "c");
     }
 
-        PRINT("Loaded " + file);
+    LOG("Loaded " + file);
     Lua_Wrapper::SubscribleScript(this);
 }
 

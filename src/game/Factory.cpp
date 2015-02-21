@@ -1,5 +1,4 @@
 #include "Factory.h"
-#include <assert.h>
 
 #include "game/main/components/PlayerPhysics.h"
 #include "game/main/components/PlayerAnimation.h"
@@ -137,8 +136,6 @@ iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vect
 
     obj->pos = pos;
     obj->rect = Rect(pos.x,pos.y,32,32);
-
-    assert(obj != NULL);
 
     return obj;
 }

@@ -5,6 +5,14 @@
 #define COMP_PHYSICS 2
 #define COMP_INPUT 3
 
+/****** MESSAGES ******/
+#define PLAYERNEAR 1
+#define PLAYER_INTERACTION 2
+
+#define DISSAPEAR 3
+#define MOVE_BACK  4
+
+
 #include "interfaces/iComponentMediator.h"
 
 class iComponent

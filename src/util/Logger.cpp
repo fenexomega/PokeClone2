@@ -30,6 +30,7 @@ void Logger::CreateLogFile()
 
 void Logger::CloseLogFile()
 {
+    LOG("Fechando log");
     logFile.close();
 }
 

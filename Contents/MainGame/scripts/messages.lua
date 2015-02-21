@@ -1,0 +1,7 @@
+-- Mensagens do player
+PLAYERNEAR = 1
+PLAYER_INTERACTION = 2
+
+DISSAPEAR = 3
+MOVE_BACK = 4
+

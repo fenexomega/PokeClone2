@@ -2,8 +2,6 @@
 #include "graphics/Drawer.h"
 #include "io/FileLoader.h"
 
-#define DISSAPEAR 2
-
 
 DecorationGraphic::DecorationGraphic(std::string TexFile, iComponentMediator *mediator, bool active)
     : cGraphic(mediator),_active(active)

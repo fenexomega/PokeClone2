@@ -1,0 +1,3 @@
+Implementar Portas
+Implementar Follow do inimigo
+Definir que tipo de jogo será
