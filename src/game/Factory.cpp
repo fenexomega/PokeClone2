@@ -1,28 +1,34 @@
 #include "Factory.h"
 
-#include "game/main/components/PlayerPhysics.h"
-#include "game/main/components/PlayerAnimation.h"
-
-#include "game/main/components/AnimationController.h"
-#include "game/main/components/ScriptedInput.h"
-#include "game/main/components/EnemyPhysics.h"
-
-#include "game/main/components/ObjectPhysics.h"
-#include "game/main/components/DecorationGraphic.h"
-#include "game/main/components/DoorPhysics.h"
-
 #include "interfaces/iGameObject.h"
+
+//GRAPHICS
+#include "game/main/components/PlayerAnimation.h"
+#include "game/main/components/DecorationGraphic.h"
+#include "game/main/components/AnimationController.h"
+
+//INPUT
+#include "game/main/components/ScriptedInput.h"
+
+//PHYSICS
+#include "game/main/components/ObjectPhysics.h"
+#include "game/main/components/DoorPhysics.h"
+#include "game/main/components/EnemyPhysics.h"
+#include "game/main/components/PlayerPhysics.h"
+#include "game/main/components/TeleporterPhysics.h"
+
 #include "game/main/objects/GameObject.h"
 #include "game/main/objects/World.h"
+#include "game/main/objects/WorldContext.h"
 #include "game/main/objects/Key.h"
-
 #include "game/main/objects/Door.h"
+
 #include "io/FileLoader.h"
 
 #include "util/Logger.h"
 
-iGameObject* Factory::player;
-
+iGameObject* Factory::_player;
+WorldContext* Factory::_worldContext;
 //Esse método carrega um json que tem as caracteristicas do player
 //Junto com o mundo
 std::string Factory::getLocationDir(std::string filename)
@@ -33,7 +39,7 @@ std::string Factory::getLocationDir(std::string filename)
     return aux;
 }
 
-iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
+GameObject *Factory::createPlayer(std::string jsonFile, World *world)
 {
 
     //TODO BUG? fix do bug da posição (se o player nascer colidindo com algo,
@@ -51,7 +57,6 @@ iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
             new PlayerPhysics(2,Rect(0,0,json["width"].asInt(),
                               json["height"].asInt()/2),
             gameObj->mediator()),
-//            new PlayerAnimation(aux,
             new AnimationController(
                                 new SpriteAnimation(json["sprite"].asString()
                                 ,json["animationFrames"].asInt()
@@ -75,7 +80,7 @@ iGameObject *Factory::createPlayer(std::string jsonFile, World *world)
     return gameObj;
 }
 
-iGameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<int> pos)
+GameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     GameObject *gameObj = new GameObject(world);
@@ -85,7 +90,7 @@ iGameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<i
     gameObj->setComponents(
                 new ScriptedInput(json["script"].asString(),gameObj->mediator()),
             new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2),
-            player,gameObj->mediator()),
+            _player,gameObj->mediator()),
             new AnimationController(
                 new SpriteAnimation(json["sprite"].asString()
                 ,json["animationFrames"].asInt()
@@ -104,24 +109,38 @@ iGameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<i
     return gameObj;
 }
 
+GameObject *Factory::createTeleporter(std::string jsonFile, World *world, Vector2D<int> pos)
+{
+    GameObject *teleporter = new GameObject(world);
+    Json::Value json = FileLoader::LoadJson(jsonFile);
+    iComponentMediator *mediator = teleporter->mediator();
+
+    teleporter->name = json["name"].asString();
+    teleporter->setComponents(new ScriptedInput(json["script"].asString(),mediator),
+            new TeleporterPhysics(mediator,_player,_worldContext,
+                                  json["map"].asString(),
+                                    Vector2D<int>(json["pos"][0].asInt(),
+                                                  json["pos"][1].asInt())),
+            new DecorationGraphic(json["image"].asString(),mediator));
+
+    return teleporter;
+}
+
 iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj = NULL;
 
 
-
-
-
-    if(json["type"].asString().compare("door") == 0)
+    if(json["type"].asString() == "door")
     {
-        obj = Door::createDoor(world,jsonFile,player);
+        obj = Door::createDoor(world,jsonFile,_player);
 
         //Registrar porta na chave
         Door *door = dynamic_cast<Door*>(obj);
         for(iGameObject *key : world->gameObjects)
         {
-            if(key->name.compare( door->keyName()) == 0 )
+            if(key->name == door->keyName() )
             {
                 PRINT("Porta registrada");
                 ((Key *) key)->AddObserver(((Door*)obj ));
@@ -129,18 +148,29 @@ iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vect
         }
 
     }
-    else if (json["type"].asString().compare("key") == 0)
+    else if (json["type"].asString() == "key")
     {
-        obj = Key::createKey(world,jsonFile,player);
+        obj = Key::createKey(world,jsonFile,_player);
     }
+    else if (json["type"].asString() == "teleporter")
+        obj = createTeleporter(jsonFile,world,pos);
 
     obj->pos = pos;
-    obj->rect = Rect(pos.x,pos.y,32,32);
+    obj->rect = Rect(pos.x,pos.y,json["width"].asInt(),
+            json["height"].asInt());
 
     return obj;
 }
 
-iGameObject *Factory::createWorld(std::string jsonFile)
+WorldContext *Factory::createWorldContext(std::string jsonWorldFile)
+{
+    _worldContext = new WorldContext;
+    _worldContext->setWorld(createWorld(jsonWorldFile));
+
+    return _worldContext;
+}
+
+World *Factory::createWorld(std::string jsonFile)
 {
     static std::string dir = "Contents/MainGame/";
     static std::string actorsDir = dir + "actors/";
@@ -148,13 +178,12 @@ iGameObject *Factory::createWorld(std::string jsonFile)
 
     World *world = new World(jsonFile);
     Json::Value json = FileLoader::LoadJson(jsonFile);
-
     iGameObject *obj;
-
     Vector2D<int>aux;
 
+    world->name = json["name"].asString();
 
-    player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",world);
+    _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",world);
 
     for(Uint16 i = 0; i < json["objects"].size(); ++i)
     {
@@ -172,9 +201,6 @@ iGameObject *Factory::createWorld(std::string jsonFile)
                 json["enemies"][i]["pos"][1].asInt()) );
         world->addGameEnemies(obj);
     }
-
-
-
 
     return world;
 

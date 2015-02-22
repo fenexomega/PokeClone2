@@ -16,5 +16,5 @@ changeGame::~changeGame()
 void changeGame::Run()
 {
     MSG msg = {1};
-    game->SendMessage(msg);
+    game->SendMessage(msg,nullptr);
 }

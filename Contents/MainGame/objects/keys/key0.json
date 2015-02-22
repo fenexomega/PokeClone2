@@ -3,5 +3,7 @@
     "image" : "Contents/MainGame/images/key0.png",
     "type"   : "key",
     "prop"  : false,
+    "width" : 32,
+    "height": 32,
     "script": "Contents/MainGame/scripts/objectInput.lua"
 }

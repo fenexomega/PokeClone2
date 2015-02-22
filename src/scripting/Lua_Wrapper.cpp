@@ -28,6 +28,8 @@ void Lua_Wrapper::RegisterCoreFunctions(lua::State* state)
     state->set("onBorders",&sysPhysics_Wrapper::onBorders);
     state->set("iCollidingRR",&sysPhysics_Wrapper::isCollidingRR);
 
+    state->set("Log",&Logger::Log);
+
 }
 
 Lua_Wrapper::Lua_Wrapper()

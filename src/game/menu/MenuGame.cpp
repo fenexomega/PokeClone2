@@ -47,6 +47,6 @@ void MenuGame::Dispose()
 }
 
 
-void MenuGame::SendMessage(MSG msg)
+void MenuGame::SendMessage(MSG msg, void *content)
 {
 }

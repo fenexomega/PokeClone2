@@ -4,12 +4,15 @@
 #include "interfaces/iGame.h"
 class iGameObject;
 
+class WorldContext;
+
+
 class MainGame : public iGame
 {
 private:
     iGame *game;
     iGameObject *player;
-    iGameObject *actualWorld;
+    WorldContext *_world;
 public:
     MainGame(iGame *_game);
     ~MainGame();
@@ -17,7 +20,7 @@ public:
     // iGame interface
     void Init();
     void Update(float dt);
-    void SendMessage(MSG msg);
+    void SendMessage(MSG msg, void* content);
     void Render();
     void Dispose();
 };

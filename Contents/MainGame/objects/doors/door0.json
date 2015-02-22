@@ -4,5 +4,7 @@
     "image" : "Contents/MainGame/images/door0.png",
     "prop"  : true,
     "script": "Contents/MainGame/scripts/doorInput.lua",
+    "width" : 32,
+    "height": 32,
     "key"  : "key0"
 }

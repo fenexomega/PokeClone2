@@ -33,4 +33,5 @@ public:
 inline void LOG(std::string x){ Logger::Log(x); }
 
 
+
 #endif // LOGGER_H

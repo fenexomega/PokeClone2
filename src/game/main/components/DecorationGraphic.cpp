@@ -1,7 +1,7 @@
 #include "DecorationGraphic.h"
 #include "graphics/Drawer.h"
 #include "io/FileLoader.h"
-
+#include "util/Logger.h"
 
 DecorationGraphic::DecorationGraphic(std::string TexFile, iComponentMediator *mediator, bool active)
     : cGraphic(mediator),_active(active)
@@ -31,6 +31,7 @@ void DecorationGraphic::receiveMessage(int msg)
 
 void DecorationGraphic::Update(iGameObject *obj, float dt)
 {
+
 }
 
 void DecorationGraphic::Render(iGameObject *obj)
