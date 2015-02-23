@@ -9,7 +9,7 @@ class TeleporterPhysics : public cPhysics
 {
 private:
     iGameObject *_player;
-    std::string _map;
+    std::string _mapName;
     Vector2D<int> _mapPos;
     World *_wc;
 public:

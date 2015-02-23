@@ -81,6 +81,7 @@ void Map::Render()
         i->Render();
     for(iGameObject* i : gameEnemies)
         i->Render();
+    player->Render();
 }
 
 void Map::addGameObject(iGameObject *obj)
@@ -106,10 +107,12 @@ Rect Map::atPosRect(int x, int y)
 
 void Map::Update(float dt)
 {
+    player->Update(dt);
     for(iGameObject* i : gameObjects)
         i->Update(dt);
     for(iGameObject* i : gameEnemies)
         i->Update(dt);
+
 }
 
 

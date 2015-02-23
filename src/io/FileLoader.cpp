@@ -46,6 +46,8 @@ shared_ptr<Texture> FileLoader::LoadTexture(std::string path)
     shared = std::shared_ptr<Texture>(aux);
 
     files[path] = shared;
+    LOG("Loaded\tImage\t" + path);
+
 
     return shared;
 }
@@ -55,7 +57,7 @@ Json::Value FileLoader::LoadJson(std::string path)
     Json::Reader reader;
     Json::Value root = new Json::Value;
     std::ifstream file;
-    PRINT(path);
+    LOG("Loaded\tJson\t" + path);
     file.open(path.c_str());
     if(!file.is_open())
         throw std::runtime_error("Couldn't load file " + path);

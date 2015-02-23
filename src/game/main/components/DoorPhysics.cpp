@@ -23,7 +23,7 @@ void DoorPhysics::receiveMessage(int msg)
 {
     if(msg == DOOR_DISABLE)
     {
-        PRINT("Porta Desativada");
+        LOG("Porta Desativada");
         _active = false;
     }
 }

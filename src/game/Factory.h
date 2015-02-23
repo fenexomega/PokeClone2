@@ -24,8 +24,8 @@ public:
     static GameObject *createEnemy(std::string jsonFile, Map *world, Vector2D<int> pos);
     static GameObject *createTeleporter(std::string jsonFile, Map *world, Vector2D<int> pos);
 
-    static World *createWorldContext(std::string jsonWorldFile);
-    static Map *createWorld(std::string jsonFile);
+    static World *createWorld(std::string jsonWorldFile);
+    static Map *createMap(std::string jsonFile);
 
 };
 

@@ -2,15 +2,35 @@
 
 #include "game/main/objects/Map.h"
 
-Map *World::world() const
+Map *World::actualMap() const
 {
-    return _world;
+    return _actualMap;
 }
 
-void World::setWorld(Map *world)
+void World::setActualMap(Map *world)
 {
-    _world = world;
+    _actualMap = world;
 }
+
+void World::setActualMap(std::string mapName)
+{
+    for(Map* i : _maps)
+    {
+        if(i->name == mapName)
+            _actualMap = i;
+    }
+}
+
+void World::addMap(Map *map)
+{
+    _maps.push_back(map);
+}
+
+Map *World::at(int i)
+{
+    return _maps.at(i);
+}
+
 World::World()
 {
 
@@ -18,17 +38,19 @@ World::World()
 
 World::~World()
 {
-    delete _world;
+    for(auto i : _maps)
+        delete i;
+    _maps.clear();
 }
 
 
 
 void World::Update(float dt)
 {
-    _world->Update(dt);
+    _actualMap->Update(dt);
 }
 
 void World::Render()
 {
-    _world->Render();
+    _actualMap->Render();
 }

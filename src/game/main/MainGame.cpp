@@ -22,13 +22,11 @@ MainGame::~MainGame()
 void MainGame::Init()
 {
     Window win(1024,768,"Daora",false);
-    _world = Factory::createWorldContext("Contents/MainGame/maps/map0.json");
-    player = Factory::_player;
+    _world = Factory::createWorld("Contents/MainGame/worlds/world0.json");
 }
 
 void MainGame::Update(float dt)
 {
-    player->Update(dt);
     _world->Update(dt);
 }
 
@@ -41,7 +39,6 @@ void MainGame::Render()
 {
     _world->Render();
 
-    player->Render();
 
 
 
@@ -50,6 +47,5 @@ void MainGame::Render()
 void MainGame::Dispose()
 {
 
-    delete player;
     delete _world;
 }

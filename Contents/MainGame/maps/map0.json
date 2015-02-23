@@ -19,9 +19,8 @@
         },
         {
             "type":"teleporters\/tele0",
-            "pos":[400,200]
+            "pos":[380,200]
         }
-
     ],
     "enemies":[
         {

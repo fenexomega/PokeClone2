@@ -15,7 +15,7 @@ protected:
     cPhysics *_physics;
     cGraphic *_graphic;
 public:
-    Map *_world;
+    Map *_map;
 
     GameObject(Map *world);
     void setComponents(cInput *input,cPhysics *physics,cGraphic *graphic);

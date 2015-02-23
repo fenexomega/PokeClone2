@@ -5,7 +5,7 @@
 #include "game/components/cPhysics.h"
 
 GameObject::GameObject(Map *world)
-    : _world(world)
+    : _map(world)
 {
 
 }
@@ -28,7 +28,7 @@ GameObject::~GameObject()
 void GameObject::Update(float dt)
 {
     _input->Update(this,dt);
-    _physics->Update(this,_world,dt);
+    _physics->Update(this,_map,dt);
     _graphic->Update(this,dt);
 }
 

@@ -17,7 +17,7 @@ Script::Script(std::string fileName)
         st->doFile(file + "c");
     }
 
-    LOG("Loaded " + file);
+    LOG("Loaded\tLua\t" + file);
     Lua_Wrapper::SubscribleScript(this);
 }
 

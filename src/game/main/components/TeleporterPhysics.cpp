@@ -12,7 +12,7 @@
 
 TeleporterPhysics::TeleporterPhysics(iComponentMediator *mediator, iGameObject *player,
                                      World *wc, std::string newMap, Vector2D<int> mapPos)
-    : cPhysics(mediator),_player(player),_wc(wc),_map(newMap),_mapPos(mapPos)
+    : cPhysics(mediator),_player(player),_wc(wc),_mapName(newMap),_mapPos(mapPos)
 {
 
 }
@@ -30,14 +30,18 @@ void TeleporterPhysics::receiveMessage(int msg)
     {
     case CHANGE_MAP:
         //TELEPORT CODE
-        LOG("TELEPORTOU PARA " + _map);
-        Map *world = Factory::createWorld(_map);
+        LOG("TELEPORTOU PARA " + _mapName + " [" + TOSTR(_mapPos.x)
+            + ", " + TOSTR(_mapPos.y) + "]");
         //TODO BUG implementar melhor esse teleporte
-        world->pos = -_mapPos ;
-        //TODO map ou world deveriam guardar o player?
-        _wc->setWorld(world);
-        _player->pos = _mapPos;
-        ((GameObject *)_player)->_world = world;
+
+        _wc->setActualMap(_mapName);
+        Map *map = _wc->actualMap();
+
+        map->pos = -_mapPos ;
+        map->player->pos = _mapPos;
+
+        ((GameObject *) map->player)->_map = map;
+
 
 
         break;

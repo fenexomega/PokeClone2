@@ -151,7 +151,6 @@ iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector
         {
             if(key->name == door->keyName() )
             {
-                PRINT("Porta registrada");
                 ((Key *) key)->AddObserver(((Door*)obj ));
             }
         }
@@ -173,49 +172,59 @@ iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector
     return obj;
 }
 
-World *Factory::createWorldContext(std::string jsonWorldFile)
+World *Factory::createWorld(std::string jsonWorldFile)
 {
     _worldContext = new World;
-    _worldContext->setWorld(createWorld(jsonWorldFile));
+    Json::Value json = FileLoader::LoadJson(jsonWorldFile);
+
+    for(auto i = 0; i < json["maps"].size() ; ++i )
+    {
+        LOG("Criando " + json["maps"][i].asString());
+        _worldContext->addMap( createMap( json["maps"][i].asString() ) );
+    }
+
+    _worldContext->setActualMap(_worldContext->at(0));
 
     return _worldContext;
 }
 
-Map *Factory::createWorld(std::string jsonFile)
+Map *Factory::createMap(std::string jsonFile)
 {
     static std::string dir = "Contents/MainGame/";
     static std::string actorsDir = dir + "actors/";
     static std::string objsDir = dir + "objects/";
 
-    Map *world = new Map(jsonFile);
+    Map *worldMap = new Map(jsonFile);
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj;
     Vector2D<int>aux;
 
-    world->name = json["name"].asString();
+    worldMap->name = json["name"].asString();
 
 
-
-    _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",world);
-
+    LOG("Criando " + json["player"]["type"].asString());
+    _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",worldMap);
+    worldMap->player = _player;
 
     for(Uint16 i = 0; i < json["objects"].size(); ++i)
     {
-        obj = createInteractive(objsDir + json["objects"][i]["type"].asString() + ".json",world,
+        LOG("Criando " + json["objects"][i]["type"].asString());
+        obj = createInteractive(objsDir + json["objects"][i]["type"].asString() + ".json",worldMap,
                 aux.set(json["objects"][i]["pos"][0].asInt(),
                 json["objects"][i]["pos"][1].asInt()) );
-        world->addGameObject(obj);
+        worldMap->addGameObject(obj);
     }
 
 
     for(Uint16 i = 0; i < json["enemies"].size(); ++i)
     {
-        obj = createEnemy(actorsDir + json["enemies"][i]["type"].asString() + ".json",world,
+        LOG("Criando " + json["objects"][i]["type"].asString());
+        obj = createEnemy(actorsDir + json["enemies"][i]["type"].asString() + ".json",worldMap,
                 aux.set(json["enemies"][i]["pos"][0].asInt(),
                 json["enemies"][i]["pos"][1].asInt()) );
-        world->addGameEnemies(obj);
+        worldMap->addGameEnemies(obj);
     }
 
-    return world;
+    return worldMap;
 
 }
