@@ -6,7 +6,7 @@
 class cInput;
 class cPhysics;
 class cGraphic;
-class World;
+class Map;
 
 class GameObject : public iGameObject
 {
@@ -14,9 +14,10 @@ protected:
     cInput *_input;
     cPhysics *_physics;
     cGraphic *_graphic;
-    World *_world;
 public:
-    GameObject(World *world);
+    Map *_world;
+
+    GameObject(Map *world);
     void setComponents(cInput *input,cPhysics *physics,cGraphic *graphic);
     ~GameObject();
 

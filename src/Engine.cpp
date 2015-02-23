@@ -6,16 +6,16 @@
 #include "util/uRandom.h"
 #include "io/FileLoader.h"
 
-Engine::Engine()
+std::vector<iSystem *> Engine::systems;
+
+
+
+bool Engine::InitSystems()
 {
     systems.push_back(new sysGraphics);
     systems.push_back(new sysSound);
     systems.push_back(new sysScripting);
-//    systems.push_back(new sysInput);
-}
 
-bool Engine::InitSystems()
-{
     for(iSystem* i : systems)
         i->Init();
     return true;
@@ -30,6 +30,8 @@ void Engine::ShutSystems()
 
 int Engine::Run(iGame *game)
 {
+    InitSystems();
+
     unsigned int framerate = 0;
     float seconds = 0;
     float dt;

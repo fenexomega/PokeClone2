@@ -43,7 +43,7 @@ void ObjectPhysics::receiveMessage(int msg)
 
 }
 
-void ObjectPhysics::Update(iGameObject *obj, World *world, float dt)
+void ObjectPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
     _obj = obj;
     obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;

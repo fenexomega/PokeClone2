@@ -13,7 +13,7 @@ class PlayerPhysics : public cPhysics
 {
 private:
     iGameObject *_obj;
-    World *_world;
+    Map *_world;
     Rect _hitBox;
     int _velocity = 2;
     int _offset;
@@ -24,7 +24,7 @@ public:
     ~PlayerPhysics();
 
     // cPhysics interface
-    void Update(iGameObject *obj, World *world, float dt);
+    void Update(iGameObject *obj, Map *world, float dt);
 
     // Component interface
     void receiveMessage(int msg);

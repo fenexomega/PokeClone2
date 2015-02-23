@@ -18,8 +18,8 @@
 #include "game/main/components/TeleporterPhysics.h"
 
 #include "game/main/objects/GameObject.h"
+#include "game/main/objects/Map.h"
 #include "game/main/objects/World.h"
-#include "game/main/objects/WorldContext.h"
 #include "game/main/objects/Key.h"
 #include "game/main/objects/Door.h"
 
@@ -28,18 +28,24 @@
 #include "util/Logger.h"
 
 iGameObject* Factory::_player;
-WorldContext* Factory::_worldContext;
-//Esse método carrega um json que tem as caracteristicas do player
-//Junto com o mundo
+World* Factory::_worldContext;
+//TODO Essa classe está se tornando monolitica
+
+/*  Pegar a localização do arquivo
+ *  i.e. se a entrada é "/loca/liza/cao/arquivo.txt",
+ *  ela retorna "/loca/liza/cao/"
+ */
 std::string Factory::getLocationDir(std::string filename)
 {
     std::string aux;
     int i = filename.find_last_of('/');
-    aux.append(filename.substr(0,i) + '/');
+    aux.append(filename.substr(0,i+1));
     return aux;
 }
 
-GameObject *Factory::createPlayer(std::string jsonFile, World *world)
+//Esse método carrega um json que tem as caracteristicas do player
+//Junto com o mundo
+GameObject *Factory::createPlayer(std::string jsonFile, Map *world)
 {
 
     //TODO BUG? fix do bug da posição (se o player nascer colidindo com algo,
@@ -80,7 +86,7 @@ GameObject *Factory::createPlayer(std::string jsonFile, World *world)
     return gameObj;
 }
 
-GameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<int> pos)
+GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     GameObject *gameObj = new GameObject(world);
@@ -109,7 +115,7 @@ GameObject *Factory::createEnemy(std::string jsonFile, World *world, Vector2D<in
     return gameObj;
 }
 
-GameObject *Factory::createTeleporter(std::string jsonFile, World *world, Vector2D<int> pos)
+GameObject *Factory::createTeleporter(std::string jsonFile, Map *world, Vector2D<int> pos)
 {
     GameObject *teleporter = new GameObject(world);
     Json::Value json = FileLoader::LoadJson(jsonFile);
@@ -126,7 +132,7 @@ GameObject *Factory::createTeleporter(std::string jsonFile, World *world, Vector
     return teleporter;
 }
 
-iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vector2D<int> pos)
+iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj = NULL;
@@ -134,6 +140,9 @@ iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vect
 
     if(json["type"].asString() == "door")
     {
+        //TODO inconsistencia?
+        /*** cria com factory method enquanto o resto a *
+         * fábrica mesmo que constroi                 ***/
         obj = Door::createDoor(world,jsonFile,_player);
 
         //Registrar porta na chave
@@ -150,9 +159,11 @@ iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vect
     }
     else if (json["type"].asString() == "key")
     {
+        //inconsistencia?
         obj = Key::createKey(world,jsonFile,_player);
     }
     else if (json["type"].asString() == "teleporter")
+        //inconsistencia?
         obj = createTeleporter(jsonFile,world,pos);
 
     obj->pos = pos;
@@ -162,28 +173,31 @@ iGameObject *Factory::createInteractive(std::string jsonFile, World *world, Vect
     return obj;
 }
 
-WorldContext *Factory::createWorldContext(std::string jsonWorldFile)
+World *Factory::createWorldContext(std::string jsonWorldFile)
 {
-    _worldContext = new WorldContext;
+    _worldContext = new World;
     _worldContext->setWorld(createWorld(jsonWorldFile));
 
     return _worldContext;
 }
 
-World *Factory::createWorld(std::string jsonFile)
+Map *Factory::createWorld(std::string jsonFile)
 {
     static std::string dir = "Contents/MainGame/";
     static std::string actorsDir = dir + "actors/";
     static std::string objsDir = dir + "objects/";
 
-    World *world = new World(jsonFile);
+    Map *world = new Map(jsonFile);
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj;
     Vector2D<int>aux;
 
     world->name = json["name"].asString();
 
+
+
     _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",world);
+
 
     for(Uint16 i = 0; i < json["objects"].size(); ++i)
     {

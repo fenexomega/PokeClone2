@@ -20,7 +20,7 @@ public:
 
     virtual void Dispose() = 0;
 
-    virtual ~iGame() {};
+    virtual ~iGame() {}
 };
 
 #endif

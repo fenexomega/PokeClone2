@@ -7,8 +7,8 @@
 
 class iGameObject;
 class GameObject;
+class Map;
 class World;
-class WorldContext;
 
 class Factory
 {
@@ -16,16 +16,16 @@ private:
     static std::string getLocationDir(std::string filename);
 public:
     static iGameObject* _player;
-    static WorldContext* _worldContext;
+    static World* _worldContext;
 
-    static iGameObject *createInteractive(std::string jsonFile, World *world, Vector2D<int> pos);
+    static iGameObject *createInteractive(std::string jsonFile, Map *world, Vector2D<int> pos);
 
-    static GameObject *createPlayer(std::string jsonFile, World *world);
-    static GameObject *createEnemy(std::string jsonFile, World *world, Vector2D<int> pos);
-    static GameObject *createTeleporter(std::string jsonFile, World *world, Vector2D<int> pos);
+    static GameObject *createPlayer(std::string jsonFile, Map *world);
+    static GameObject *createEnemy(std::string jsonFile, Map *world, Vector2D<int> pos);
+    static GameObject *createTeleporter(std::string jsonFile, Map *world, Vector2D<int> pos);
 
-    static WorldContext *createWorldContext(std::string jsonWorldFile);
-    static World *createWorld(std::string jsonFile);
+    static World *createWorldContext(std::string jsonWorldFile);
+    static Map *createWorld(std::string jsonFile);
 
 };
 

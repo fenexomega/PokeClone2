@@ -1,22 +1,23 @@
 #include "Key.h"
 
-#include "game/main/objects/World.h"
-#include "game/main/components/ScriptedInput.h"
+#include "game/main/objects/Map.h"
 
 #include "io/FileLoader.h"
 
+#include "game/main/components/ScriptedInput.h"
 #include "game/main/components/ObjectPhysics.h"
 #include "game/main/components/DecorationGraphic.h"
 
 #include "assets/Script.h"
 
-Key::Key(World *world)
+Key::Key(Map *world)
     : GameObject(world),_active(true)
 {
 
 }
 
-Key *Key::createKey(World *world, std::string JsonFile,iGameObject *player)
+//Factory Method
+Key *Key::createKey(Map *world, std::string JsonFile,iGameObject *player)
 {
     Json::Value json = FileLoader::LoadJson(JsonFile);
     Key *key = new Key(world);

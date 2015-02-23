@@ -4,7 +4,7 @@
 #include "game/components/cGraphic.h"
 #include "game/components/cPhysics.h"
 
-GameObject::GameObject(World *world)
+GameObject::GameObject(Map *world)
     : _world(world)
 {
 

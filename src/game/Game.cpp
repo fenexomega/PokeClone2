@@ -43,7 +43,7 @@ void Game::Dispose()
 }
 
 
-void Game::SendMessage(MSG msg)
+void Game::SendMessage(MSG msg, void *content)
 {
     actualGame->Dispose();
     actualGame = games.at(msg.id);

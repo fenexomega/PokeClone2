@@ -28,7 +28,7 @@ void DoorPhysics::receiveMessage(int msg)
     }
 }
 
-void DoorPhysics::Update(iGameObject *obj, World *world, float dt)
+void DoorPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
 
 //TODO deveria rever a ordem das movimentações

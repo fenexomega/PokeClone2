@@ -1,3 +1,23 @@
-Implementar Portas
-Implementar Follow do inimigo
-Definir que tipo de jogo será
+FEATURES:
+* Implementar teleporte de mapas
+* Implementar follow do inimigo (preferencia em LUA, usando/modificando menos possível de C++)
+* Implementar colisões do sistema de física:
+  - Ponto a Ponto
+  - Circulo a Circulo
+  - Reta a Reta
+  - Seg. Reta a Seg. Reta
+  - Seg. Reta a Retangulo
+  - Retangulo a Circulo
+  etc,
+* Interface gráfica (GUI) [com QML? (depende da implementação por OpenGL)]
+* Trocar a redenrização do SDL2 por OpenGL 2/3
+* class "World" tem de carregar todos os mapas quando é instanciada
+* Classe assets/Sound tem de tocar som
+* io/Fileloader tem sempre de retornar share_ptr
+* todas as classes em asserts/ tem de ser flyweights
+* Implementar shaders em OpenGL 3.3+
+* Console em Lua
+
+BUGS:
+* Teleporte não coloca o player na posição correta
+* d

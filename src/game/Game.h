@@ -24,7 +24,7 @@ public:
     void Dispose();
 
     // iGame interface
-    void SendMessage(MSG msg);
+    void SendMessage(MSG msg,void* content);
 };
 
 #endif // GAME_H

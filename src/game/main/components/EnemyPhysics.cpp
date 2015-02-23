@@ -35,7 +35,7 @@ void EnemyPhysics::receiveMessage(int msg)
 
 }
 
-void EnemyPhysics::Update(iGameObject *obj, World *world, float dt)
+void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
     _obj = obj;
     _world = world;

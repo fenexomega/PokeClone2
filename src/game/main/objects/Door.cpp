@@ -7,7 +7,7 @@
 #include "game/main/components/ScriptedInput.h"
 #include "game/main/components/DecorationGraphic.h"
 
-Door::Door(World *world)
+Door::Door(Map *world)
     : _open(false),GameObject(world)
 {
 
@@ -28,7 +28,7 @@ Door::~Door()
 
 }
 
-Door *Door::createDoor(World *world, std::string JsonFile, iGameObject *player)
+Door *Door::createDoor(Map *world, std::string JsonFile, iGameObject *player)
 {
     Json::Value json = FileLoader::LoadJson(JsonFile);
     Door *door = new Door(world);

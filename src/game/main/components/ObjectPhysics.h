@@ -17,7 +17,7 @@ public:
     void receiveMessage(int msg);
 
     // cPhysics interface
-    void Update(iGameObject *obj, World *world, float dt);
+    void Update(iGameObject *obj, Map *world, float dt);
 };
 
 #endif // OBJECTPHYSICS_H

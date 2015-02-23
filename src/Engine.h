@@ -11,12 +11,14 @@
 class Engine
 {
 private:
-    std::vector<iSystem *> systems;
-    bool InitSystems();
-    void ShutSystems();
-public:
+    static iGame *_game;
+
+    static std::vector<iSystem *> systems;
+    static  bool InitSystems();
+    static void ShutSystems();
     Engine();
-    int Run(iGame *game);
+public:
+    static int Run(iGame *game);
 };
 
 #endif // ENGINE_H

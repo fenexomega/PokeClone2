@@ -3,8 +3,8 @@
     "type"  : "teleporter",
     "image" : "Contents\/MainGame\/images/downstair0.png",
     "prop"  : false,
-    "map"   : "map0",
-    "pos"   : [64,64],
+    "map"   : "Contents\/MainGame\/maps\/map0.json",
+    "pos"   : [540,120],
     "width" : 32,
     "height": 32,
     "script": "Contents\/MainGame\/scripts\/teleporterInput.lua"

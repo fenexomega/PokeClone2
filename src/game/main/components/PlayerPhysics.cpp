@@ -32,7 +32,7 @@ void PlayerPhysics::Move(Vector2D<int> v)
 }
 
 
-void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
+void PlayerPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
 
     _obj = obj;

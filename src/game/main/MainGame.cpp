@@ -6,7 +6,7 @@
 
 #include "graphics/Window.h"
 
-#include "game/main/objects/WorldContext.h"
+#include "game/main/objects/World.h"
 
 MainGame::MainGame(iGame *_game)
     : game(_game)

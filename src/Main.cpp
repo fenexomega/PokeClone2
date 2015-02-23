@@ -17,8 +17,7 @@ int main()
 {
     MainGame game(NULL);
 
-    Engine engine;
-    engine.Run(&game);
+    Engine::Run(&game);
     return 0;
 }
 

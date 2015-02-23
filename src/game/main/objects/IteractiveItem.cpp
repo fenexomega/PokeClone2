@@ -1,6 +1,7 @@
 #include "IteractiveItem.h"
 
-IteractiveItem::IteractiveItem()
+IteractiveItem::IteractiveItem(Map *world)
+    : GameObject(world)
 {
 
 }
@@ -10,12 +11,3 @@ IteractiveItem::~IteractiveItem()
 
 }
 
-
-
-void IteractiveItem::Update(float dt)
-{
-}
-
-void IteractiveItem::Render()
-{
-}

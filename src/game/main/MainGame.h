@@ -4,7 +4,7 @@
 #include "interfaces/iGame.h"
 class iGameObject;
 
-class WorldContext;
+class World;
 
 
 class MainGame : public iGame
@@ -12,7 +12,7 @@ class MainGame : public iGame
 private:
     iGame *game;
     iGameObject *player;
-    WorldContext *_world;
+    World *_world;
 public:
     MainGame(iGame *_game);
     ~MainGame();

@@ -1,6 +1,7 @@
 math.randomseed(os.time())
 waitTime = math.random()
 x = 0
+acceleration = 1
 
 function Update(obj,dt)
     acc = obj["acc"]
@@ -17,13 +18,13 @@ function Update(obj,dt)
     end
 
     if number == 0 then
-            acc["x"] = -1
-    elseif number == 1 then
-            acc["x"] =  1
+            acc["x"] = -acceleration
+    elseif number == acceleration then
+            acc["x"] =  acceleration
     elseif number == 2 then
-            acc["y"] = -1
+            acc["y"] = -acceleration
     elseif number == 3 then
-            acc["y"] =  1
+            acc["y"] =  acceleration
     end
 
     x = x + dt
