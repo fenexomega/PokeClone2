@@ -52,12 +52,11 @@ void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
 
             //Se for uma porta, você deve colidir
             // senão, pode passar.
-            if(i->type.compare("door") == 0)
+            if(i->type == "door")
             {
                 //verifica se a porta está trancada
                 if( !((Door *) i)->_open )
                     colliding = true;
-
             }
 
             break;
