@@ -1,0 +1,35 @@
+{
+    "name":"map1",
+    "type":"map",
+    "TilemapJson":"Contents/MainGame/tiledmap.json",
+    "player":{"type":"player",
+              "pos":[400,128] //Posição Inicial
+            },
+            //as Chaves tem de vir antes das portas
+            //porque chaves sao subject e portas sao observers
+    "objects":[
+        { "type":"keys\/key0",
+            "pos":[200,140]
+        },
+        { "type":"doors\/door0",
+            "pos":[600,128]
+        },
+        { "type":"doors\/door0",
+            "pos":[600,96]
+        },
+        {
+            "type":"teleporters\/tele0",
+            "pos":[380,200]
+        }
+    ],
+    "enemies":[
+        {
+            "type":"enemy0",
+            "pos":[250,80]
+        },
+        {
+            "type":"enemy0",
+            "pos":[300,90]
+        }
+    ]
+}

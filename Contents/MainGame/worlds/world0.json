@@ -1,6 +1,8 @@
 {
     "maps":
     [
-        "Contents/MainGame/maps/map0.json"
+        "Contents/MainGame/maps/map0.json",
+        "Contents/MainGame/maps/map1.json"
+
     ]
 }

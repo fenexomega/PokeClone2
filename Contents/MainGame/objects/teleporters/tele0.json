@@ -3,7 +3,7 @@
     "type"  : "teleporter",
     "image" : "Contents\/MainGame\/images/downstair0.png",
     "prop"  : false,
-    "map"   : "map0",
+    "map"   : "map1",
     "pos"   : [400,300],
     "width" : 32,
     "height": 32,
