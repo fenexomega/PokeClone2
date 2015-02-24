@@ -34,6 +34,7 @@ Door *Door::createDoor(Map *world, std::string JsonFile, iGameObject *player)
     Door *door = new Door(world);
     iComponentMediator *mediator = door->mediator();
     door->name = json["name"].asString();
+    door->type = json["type"].asString();
 
     door->setComponents( new ScriptedInput(json["script"].asString(),mediator),
             new DoorPhysics(player,mediator),

@@ -23,6 +23,7 @@ Key *Key::createKey(Map *world, std::string JsonFile,iGameObject *player)
     Key *key = new Key(world);
     iComponentMediator *mediator = key->mediator();
     key->name = json["name"].asString();
+    key->type = json["type"].asString();
 
     key->setComponents(new ScriptedInput(json["script"].asString(),mediator),
             new ObjectPhysics(player,mediator),
