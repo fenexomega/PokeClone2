@@ -23,13 +23,19 @@ public:
 
     Rect getRect() const;
 
+    //Escalaciona a textura
     void Scale(float w,float h);
-    void setTexture(SDL_Texture *tex);
-    SDL_Texture *tex() const;
-    void setTex(SDL_Texture *tex);
+
+
+    //getters
     Uint32 pixelFormat() const;
-    void setPixelFormat(const Uint32 &pixelFormat);
+    SDL_Texture *tex() const;
     int acess() const;
+
+    //setters
+    void setTexture(SDL_Texture *tex); 
+    void setTex(SDL_Texture *tex);
+    void setPixelFormat(const Uint32 &pixelFormat);
     void setAcess(int acess);
 };
 

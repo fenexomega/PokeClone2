@@ -19,9 +19,15 @@ private:
     std::shared_ptr<Texture> m_tex;
     Color m_color;
 public:
+
     Text(std::string _path, std::string _text, int _textSize = 16, Color _color = COLORBLACK);
+
+    //Renderiza o Texto
     void Render(int x, int y);
+
+    //Seta o texto e retorna a textura desse texto
     shared_ptr<Texture> setText(std::string _text);
+
     ~Text();
     Rect rect() const;
 };

@@ -24,9 +24,14 @@ private:
 	void static instanceSignalCallbacks();
 	void static generateBackTrace(std::vector<char *> &vec);
 public:
-//  void operator<<(std::ostream &ost);
+
+    //Imprime a string no Log
     static void Log(std::string stg);
+
+    //Cria e ativa o arquivo de Log
     static void CreateLogFile();
+
+    //Fecha o arquivo de Log
     static void CloseLogFile();
 };
 
