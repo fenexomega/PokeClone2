@@ -8,19 +8,30 @@ Map *World::actualMap() const
     return _actualMap;
 }
 
+Map *World::findMapByName(std::string mapName)
+{
+    for(Map* i : _maps)
+    {
+        if(i->name == mapName)
+            return i;
+    }
+    return nullptr;
+}
+
 void World::setActualMap(Map *map)
 {
     _actualMap = map;
 
 }
 
-void World::setActualMap(std::string mapName)
+void World::setActualMap(std::string mapName, Vector2D<int> playerPos)
 {
-    for(Map* i : _maps)
-    {
-        if(i->name == mapName)
-            _actualMap = i;
-    }
+    _actualMap = findMapByName(mapName);
+    _actualMap->pos = -playerPos;
+    GameObject *player = dynamic_cast<GameObject*>(_actualMap->player);
+    player->pos = playerPos;
+    player->setMap(_actualMap);
+
 }
 
 void World::addMap(Map *map)
@@ -43,6 +54,8 @@ void World::setPlayer(GameObject *player)
 {
     _player = player;
 }
+
+
 World::World()
 {
 

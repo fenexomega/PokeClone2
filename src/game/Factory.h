@@ -27,6 +27,8 @@ public:
     static World *createWorld(std::string jsonWorldFile);
     static Map *createMap(std::string jsonFile);
 
+    static void Init();
+
 };
 
 #endif // FACTORY_H

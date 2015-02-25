@@ -186,7 +186,6 @@ World *Factory::createWorld(std::string jsonWorldFile)
         _worldContext->addMap( createMap( json["maps"][i].asString() ) );
     }
 
-    _player = createPlayer(json["player"].asString(),_worldContext->at(0));
     _worldContext->setPlayer(_player);
     _worldContext->setActualMap(_worldContext->at(0));
 
@@ -207,9 +206,14 @@ Map *Factory::createMap(std::string jsonFile)
 
     worldMap->name = json["name"].asString();
 
+    /*TODO o player não deveria ser criado dentro do mapa
+    * e sim no mundo.
+    * Talvez nem nele.
+    */
+    if(_player == nullptr)
+        _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",worldMap);
 
-    LOG("Criando " + json["player"]["type"].asString());
-//    worldMap->player = _player;
+    worldMap->player = _player;
 
     for(Uint16 i = 0; i < json["objects"].size(); ++i)
     {
@@ -232,4 +236,9 @@ Map *Factory::createMap(std::string jsonFile)
 
     return worldMap;
 
+}
+
+void Factory::Init()
+{
+    _player = nullptr;
 }

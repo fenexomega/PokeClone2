@@ -18,12 +18,16 @@ private:
     Map *_actualMap;
     std::vector<Map *> _maps;
     GameObject *_player;
+
+    Map* findMapByName(std::string mapName);
 public:
     World();
     ~World();
     Map *actualMap() const;
     void setActualMap(Map *map);
     void setActualMap(std::string mapName);
+    void setActualMap(std::string mapName, Vector2D<int> playerPos);
+
     void addMap(Map *map);
 
 

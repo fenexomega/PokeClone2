@@ -21,7 +21,7 @@ MainGame::~MainGame()
 
 void MainGame::Init()
 {
-    Window win(1024,768,"Daora",false);
+    Window win(1024,768,"Dungeon",false);
     _world = Factory::createWorld("Contents/MainGame/worlds/world0.json");
 }
 

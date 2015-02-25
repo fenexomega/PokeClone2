@@ -4,11 +4,23 @@
 #include "game/components/cGraphic.h"
 #include "game/components/cPhysics.h"
 
-GameObject::GameObject(Map *world)
-    : _map(world)
+
+Map *GameObject::map() const
+{
+    return _map;
+}
+
+void GameObject::setMap(Map *map)
+{
+    _map = map;
+}
+
+GameObject::GameObject(Map *map)
+    : _map(map)
 {
 
 }
+
 
 void GameObject::setComponents(cInput *input, cPhysics *physics, cGraphic *graphic)
 {
