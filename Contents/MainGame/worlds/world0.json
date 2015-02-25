@@ -1,4 +1,5 @@
 {
+    "player" : "actors\/player.json",
     "maps":
     [
         "Contents/MainGame/maps/map0.json",

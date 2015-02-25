@@ -43,6 +43,7 @@ std::string Factory::getLocationDir(std::string filename)
     return aux;
 }
 
+
 //Esse método carrega um json que tem as caracteristicas do player
 //Junto com o mundo
 GameObject *Factory::createPlayer(std::string jsonFile, Map *world)
@@ -106,6 +107,8 @@ GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D<int>
     gameObj->pos = pos;
     Vector2D<int> aux = world->getOffset();
 
+    /*Esse negócio de quebrar o rect do gameobject
+      pode mais atrapalhar do que ajudar.*/
     gameObj->rect.x = aux.x;
     gameObj->rect.y = aux.y + json["height"].asInt()/2; //A hitbox tem um offset
     gameObj->rect.w = json["width"].asInt();
@@ -203,7 +206,7 @@ Map *Factory::createMap(std::string jsonFile)
 
 
     LOG("Criando " + json["player"]["type"].asString());
-    _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",worldMap);
+        _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",worldMap);
     worldMap->player = _player;
 
     for(Uint16 i = 0; i < json["objects"].size(); ++i)

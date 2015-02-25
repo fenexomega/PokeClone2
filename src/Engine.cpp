@@ -84,6 +84,7 @@ int Engine::Run(iGame *game)
     Logger::CloseLogFile();
     game->Dispose();
     win.Destroy();
+    FileLoader::Clear();
     ShutSystems();
 
     return 0;

@@ -1,15 +1,17 @@
 #include "World.h"
 
 #include "game/main/objects/Map.h"
+#include "game/main/objects/GameObject.h"
 
 Map *World::actualMap() const
 {
     return _actualMap;
 }
 
-void World::setActualMap(Map *world)
+void World::setActualMap(Map *map)
 {
-    _actualMap = world;
+    _actualMap = map;
+
 }
 
 void World::setActualMap(std::string mapName)
@@ -31,6 +33,16 @@ Map *World::at(int i)
     return _maps.at(i);
 }
 
+
+GameObject *World::player() const
+{
+    return _player;
+}
+
+void World::setPlayer(GameObject *player)
+{
+    _player = player;
+}
 World::World()
 {
 

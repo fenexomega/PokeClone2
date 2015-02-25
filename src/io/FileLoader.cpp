@@ -82,10 +82,18 @@ TTF_Font* FileLoader::LoadFont(std::string path,int size)
 
 }
 
+void FileLoader::Clear()
+{
+
+    for(std::map<std::string,std::shared_ptr<iAsset> >::iterator i = files.begin(); i != files.end(); ++i)
+        if(i->second.unique())
+            files.erase(i);
+
+}
+
 void FileLoader::Update()
 {
     for(auto i = files.begin(); i != files.end(); ++i)
-        if(i->second.unique())
             files.erase(i);
 }
 

@@ -16,9 +16,10 @@
         },
         { "type":"doors\/door0",
             "pos":[600,96]
-        },
+        }
+        ,
         {
-            "type":"teleporters\/tele0",
+            "type":"teleporters\/tele1",
             "pos":[380,200]
         }
     ],

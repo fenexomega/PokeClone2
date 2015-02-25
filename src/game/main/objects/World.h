@@ -7,7 +7,7 @@
 
 
 class Map;
-
+class GameObject;
 
 
 //Implemetando State Pattern
@@ -17,12 +17,12 @@ class World
 private:
     Map *_actualMap;
     std::vector<Map *> _maps;
-
+    GameObject *_player;
 public:
     World();
     ~World();
     Map *actualMap() const;
-    void setActualMap(Map *actualMap);
+    void setActualMap(Map *map);
     void setActualMap(std::string mapName);
     void addMap(Map *map);
 
@@ -32,6 +32,8 @@ public:
     // iGameObject interface
     void Update(float dt);
     void Render();
+    GameObject *player() const;
+    void setPlayer(GameObject *player);
 };
 
 #endif // WORLDCONTEXT_H

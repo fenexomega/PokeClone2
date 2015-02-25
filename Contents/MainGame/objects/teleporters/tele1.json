@@ -1,9 +1,9 @@
 {
-    "name"  : "tele0",
+    "name"  : "tele1",
     "type"  : "teleporter",
-    "image" : "Contents\/MainGame\/images/downstair0.png",
+    "image" : "Contents\/MainGame\/images/upstair0.png",
     "prop"  : false,
-    "map"   : "map1",
+    "map"   : "map0",
     "pos"   : [396,232],
     "width" : 32,
     "height": 32,

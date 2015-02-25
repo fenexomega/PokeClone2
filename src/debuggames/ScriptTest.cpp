@@ -1,5 +1,7 @@
 #include "ScriptTest.h"
 
+#include "systems/sysScripting.h"
+
 ScriptTest::ScriptTest()
 {
 

@@ -27,6 +27,7 @@ public:
     static shared_ptr<Texture> LoadTexture(std::string path);
     static Json::Value LoadJson(std::string path);
     static TTF_Font* LoadFont(std::string path, int size);
+    static void Clear();
     static void Update();
 };
 

@@ -29,6 +29,7 @@ private:
     std::string getLocationDir(std::string filename);
 
 public:
+    //TODO tirar o player dessa clases e colocar no World
     iGameObject * player;
 
     std::vector<iGameObject *> gameObjects;
