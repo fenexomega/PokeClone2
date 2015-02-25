@@ -27,7 +27,7 @@
 
 #include "util/Logger.h"
 
-iGameObject* Factory::_player;
+GameObject* Factory::_player;
 World* Factory::_worldContext;
 //TODO Essa classe está se tornando monolitica
 
@@ -52,23 +52,23 @@ GameObject *Factory::createPlayer(std::string jsonFile, Map *world)
     //TODO BUG? fix do bug da posição (se o player nascer colidindo com algo,
     // ele é "empurrado" para fora e fica preso)
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    GameObject* gameObj = new GameObject(world);
-    gameObj->name = json["name"].asString();
-    gameObj->type = json["type"].asString();
+    GameObject* player = new GameObject(world);
+    player->name = json["name"].asString();
+    player->type = json["type"].asString();
 
     world->Normalize(json["width"].asInt(),json["height"].asInt());
-    gameObj->pos = world->getPlayerInitialPos();
+    player->pos = world->getPlayerInitialPos();
 
-    gameObj->setComponents(
-                new ScriptedInput(json["script"].asString(),gameObj->mediator()),
+    player->setComponents(
+                new ScriptedInput(json["script"].asString(),player->mediator()),
             new PlayerPhysics(2,Rect(0,0,json["width"].asInt(),
                               json["height"].asInt()/2),
-            gameObj->mediator()),
+            player->mediator()),
             new AnimationController(
-                                new SpriteAnimation(json["sprite"].asString()
-                                ,json["animationFrames"].asInt()
+                new SpriteAnimation(json["sprite"].asString()
+                ,json["animationFrames"].asInt()
             ,json["width"].asInt(),json["height"].asInt()),
-            gameObj->mediator()));
+            player->mediator()));
 
     //player deve colidir com os tiles com sua
     // coordenada especial.
@@ -77,14 +77,14 @@ GameObject *Factory::createPlayer(std::string jsonFile, Map *world)
 
 
     //O rect do player agora é sua hitbox
-    gameObj->rect.x = world->offset.x;
-    gameObj->rect.y = world->offset.y + json["height"].asInt()/2; //A hitbox tem um offset
-    gameObj->rect.w = json["width"].asInt();
-    gameObj->rect.h = json["height"].asInt()/2;
+    player->rect.x = world->offset.x;
+    player->rect.y = world->offset.y + json["height"].asInt()/2; //A hitbox tem um offset
+    player->rect.w = json["width"].asInt();
+    player->rect.h = json["height"].asInt()/2;
 
 
 
-    return gameObj;
+    return player;
 }
 
 GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D<int> pos)
@@ -128,8 +128,8 @@ GameObject *Factory::createTeleporter(std::string jsonFile, Map *world, Vector2D
     teleporter->setComponents(new ScriptedInput(json["script"].asString(),mediator),
             new TeleporterPhysics(mediator,_player,_worldContext,
                                   json["map"].asString(),
-                                    Vector2D<int>(json["pos"][0].asInt(),
-                                                  json["pos"][1].asInt())),
+            Vector2D<int>(json["pos"][0].asInt(),
+            json["pos"][1].asInt())),
             new DecorationGraphic(json["image"].asString(),mediator));
 
     return teleporter;
@@ -186,7 +186,10 @@ World *Factory::createWorld(std::string jsonWorldFile)
         _worldContext->addMap( createMap( json["maps"][i].asString() ) );
     }
 
+    _player = createPlayer(json["player"].asString(),_worldContext->at(0));
+    _worldContext->setPlayer(_player);
     _worldContext->setActualMap(_worldContext->at(0));
+
 
     return _worldContext;
 }
@@ -206,8 +209,7 @@ Map *Factory::createMap(std::string jsonFile)
 
 
     LOG("Criando " + json["player"]["type"].asString());
-        _player = createPlayer(actorsDir + json["player"]["type"].asString() + ".json",worldMap);
-    worldMap->player = _player;
+//    worldMap->player = _player;
 
     for(Uint16 i = 0; i < json["objects"].size(); ++i)
     {

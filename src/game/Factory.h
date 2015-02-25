@@ -15,7 +15,7 @@ class Factory
 private:
     static std::string getLocationDir(std::string filename);
 public:
-    static iGameObject* _player;
+    static GameObject* _player;
     static World* _worldContext;
 
     static iGameObject *createInteractive(std::string jsonFile, Map *world, Vector2D<int> pos);

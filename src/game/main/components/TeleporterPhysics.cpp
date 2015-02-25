@@ -34,13 +34,7 @@ void TeleporterPhysics::receiveMessage(int msg)
             + ", " + TOSTR(_mapPos.y) + "]");
         //TODO BUG implementar melhor esse teleporte
 
-        _wc->setActualMap(_mapName);
-        Map *map = _wc->actualMap();
-
-        map->pos = -_mapPos ;
-        map->player->pos = _mapPos;
-
-        ((GameObject *) map->player)->_map = map;
+        _wc->setActualMap(_mapName,_mapPos);
 
 
 
