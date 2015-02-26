@@ -31,6 +31,8 @@ GameObject* Factory::_player;
 World* Factory::_worldContext;
 //TODO Essa classe está se tornando monolitica
 
+//TODO Essa classe tem muito código duplicado
+
 /*  Pegar a localização do arquivo
  *  i.e. se a entrada é "/loca/liza/cao/arquivo.txt",
  *  ela retorna "/loca/liza/cao/"
@@ -44,8 +46,7 @@ std::string Factory::getLocationDir(std::string filename)
 }
 
 
-//Esse método carrega um json que tem as caracteristicas do player
-//Junto com o mundo
+
 GameObject *Factory::createPlayer(std::string jsonFile, Map *world)
 {
 

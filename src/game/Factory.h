@@ -20,11 +20,20 @@ public:
 
     static iGameObject *createInteractive(std::string jsonFile, Map *world, Vector2D<int> pos);
 
+    //Esse método carrega um json que tem as caracteristicas do player
+    //Junto com o mundo
     static GameObject *createPlayer(std::string jsonFile, Map *world);
+
+    //Criar Inimigo
     static GameObject *createEnemy(std::string jsonFile, Map *world, Vector2D<int> pos);
+
+    //Criar Teleporter
     static GameObject *createTeleporter(std::string jsonFile, Map *world, Vector2D<int> pos);
 
+    //Criar Mundo
     static World *createWorld(std::string jsonWorldFile);
+
+    //Criar Mapa
     static Map *createMap(std::string jsonFile);
 
     static void Init();
