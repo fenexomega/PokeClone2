@@ -8,11 +8,9 @@ class Script;
 class ScriptedInput : public cInput
 {
 private:
-    Script *script;
+    Script *_script;
 public:
-
-
-    ScriptedInput(std::string _script,iComponentMediator *mediator);
+    ScriptedInput(std::string scriptFile, iComponentMediator *mediator);
     ~ScriptedInput();
 
     // iComponent interface

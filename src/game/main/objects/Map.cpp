@@ -122,5 +122,6 @@ Map::~Map()
         delete i;
     for(iGameObject* i : gameEnemies)
         delete i;
+    delete tilemap;
 }
 
