@@ -2,12 +2,7 @@
 #define PLAYERPHYSICS_H
 
 #include "game/components/cPhysics.h"
-#include "components/MessageSender.h"
 #include "physics/Rect.h"
-
-
-
-
 
 class PlayerPhysics : public cPhysics
 {

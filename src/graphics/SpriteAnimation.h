@@ -9,8 +9,11 @@ class SpriteAnimation
 {
 private:
     SpriteSheet *spst;
+    int _amtOfFrames;
+    int _currentFrame;
+    int _keyFrame;
+
 public:
-    int amtOfFrames,currentFrame,keyFrame;
 
     Vector2D<int> sizeInTiles;
     SpriteAnimation(std::string filePath, int amtOfFramesPerAnimation, int frameWidth,
@@ -21,9 +24,13 @@ public:
 
     void Render(int x, int y);
     void Render(Vector2D<int> pos);
+
+    //getters and Setters
     int getKeyFrame() const;
     void setKeyFrame(int value);
     Vector2D<int> getWidthAndHeight();
+    int amtOfFrames() const;
+    void setAmtOfFrames(int amtOfFrames);
 };
 
 #endif // SPRITEANIMATION_H

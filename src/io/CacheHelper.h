@@ -1,12 +1,9 @@
 #ifndef CACHEHELPER_H
 #define CACHEHELPER_H
 
-
 #include <memory>
 #include <map>
 #include "interfaces/iAsset.h"
-
-
 
 class CacheHelper
 {

@@ -10,7 +10,11 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-É necessária a instalação das bibliotecas SDL2, SDL2_image e SDL2_mixer. Usa-se o cmake para gerar um makefile. 
+* É necessária a instalação das seguintes bibliotecas:
+* SDL2
+* SDL2_image
+* SDL2_mixer
+Usa-se o cmake para gerar um makefile.
 
 ### Contribution guidelines ###
 

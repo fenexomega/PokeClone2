@@ -10,15 +10,17 @@ EnemyPhysics::EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iCompo
     : _velocity(velocity),_hitBox(hitBox),cPhysics(mediator),_player(player)
 
 {
-
+    _offset = _hitBox.w/4;
+    _hitBox.w -= _offset;
 }
+
 
 void EnemyPhysics::Move(Vector2D<int> v)
 {
     _obj->pos += v;
     _obj->rect.x = _world->pos.x + _obj->pos.x + _world->offset.x;
     _obj->rect.y = _world->pos.y + _obj->pos.y + _world->offset.y;
-    _hitBox.x = _obj->pos.x;
+    _hitBox.x = _obj->pos.x + _offset/2;
     _hitBox.y = _obj->pos.y;
 
 }

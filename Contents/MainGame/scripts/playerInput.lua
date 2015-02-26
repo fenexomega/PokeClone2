@@ -1,4 +1,4 @@
-acceleration = 1
+acceleration_init = 1
 
 
 function ReceiveMessage(msg)
@@ -8,16 +8,29 @@ end
 
 function Update(obj,dt)
     acc = obj["acc"]
-    acc["x"] = 0 ; acc["y"] = 0
+    acc.x = 0 ; acc.y = 0
+
+    acceleration = acceleration_init
+    if isKeyPressed(keys["cancel"]) then
+        acceleration = acceleration*2
+    end
+
 
     if isKeyPressed(keys["up"]) then
-        acc["y"] = -acceleration
-    elseif isKeyPressed(keys["down"]) then
-        acc["y"] = acceleration
-    elseif isKeyPressed(keys["left"]) then
-        acc["x"] = acceleration
-    elseif isKeyPressed(keys["right"]) then
-        acc["x"] = -acceleration
+        acc.y = acc.y -acceleration
     end
+    if isKeyPressed(keys["down"]) then
+        acc.y = acc.y + acceleration
+    end
+    if isKeyPressed(keys["left"]) then
+        acc.x = acc.x + acceleration
+    end
+    if isKeyPressed(keys["right"]) then
+        acc.x = acc.x -acceleration
+    end
+
+--    if acc.x ~= 0 and acc.y ~= 0 then
+--        obj.acc = {x = acceleration/2*acc.x, y = acceleration/2*acc.y}
+--    end
 
 end

@@ -31,7 +31,6 @@ void World::setActualMap(std::string mapName, Vector2D<int> playerPos)
     GameObject *player = dynamic_cast<GameObject*>(_actualMap->player);
     player->pos = playerPos;
     player->setMap(_actualMap);
-
 }
 
 void World::addMap(Map *map)

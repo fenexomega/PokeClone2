@@ -24,7 +24,7 @@ void PlayerPhysics::Move(Vector2D<int> v)
 
     //TODO melhorar isso
     //o vetor POS dá a posição exata no MEIO
-    _hitBox.x = _obj->pos.x - 16 + _offset/2;
+    _hitBox.x = _obj->pos.x - (_hitBox.w + _offset)/2 + _offset/2;
     _hitBox.y = _obj->pos.y;
     //O Mundo deveria se mexer de forma independente?
     _world->pos = -_obj->pos;

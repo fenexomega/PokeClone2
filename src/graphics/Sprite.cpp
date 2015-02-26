@@ -3,44 +3,44 @@
 
 int Sprite::getSpriteNbr() const
 {
-    return spriteNbr;
+    return _spriteNbr;
 }
 
 void Sprite::setSpriteNbr(int value)
 {
-    spriteNbr = value;
+    _spriteNbr = value;
 }
 Sprite::Sprite(std::string filePath, int w, int h, int _spriteNbr)
-    : spriteNbr(_spriteNbr)
+    : _spriteNbr(_spriteNbr)
 {
-    spst = new SpriteSheet(filePath,w,h);
+    _spst = new SpriteSheet(filePath,w,h);
 }
 
 Sprite::Sprite(std::string filePath, Vector2D<int> _size, int _spriteNbr)
-    :  size(_size) ,spriteNbr(_spriteNbr)
+    :  _size(_size) ,_spriteNbr(_spriteNbr)
 {
-    spst = new SpriteSheet(filePath,size);
+    _spst = new SpriteSheet(filePath,_size);
 
 }
 
-Sprite::Sprite(SpriteSheet *_spst, int _spriteNbr)
-    : spst(_spst),spriteNbr(_spriteNbr)
+Sprite::Sprite(SpriteSheet *spst, int spriteNbr)
+    : _spst(spst),_spriteNbr(spriteNbr)
 {
-    size = spst->getSz();
+    _size = _spst->getSz();
 }
 
 void Sprite::Render(int x, int y)
 {
-    spst->Render(x,y,spriteNbr);
+    _spst->Render(x,y,_spriteNbr);
 }
 
 void Sprite::Render(Vector2D<int> v)
 {
-    spst->Render(v,spriteNbr);
+    _spst->Render(v,_spriteNbr);
 }
 
 Sprite::~Sprite()
 {
-    delete spst;
+    delete _spst;
 }
 

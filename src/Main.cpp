@@ -13,9 +13,10 @@
 //#include "debuggames/PhysicsTest.h"
 //#include "debuggames/ScriptTest.h"
 
-int main()
+int main(int argc,char **argv)
 {
-    MainGame game(NULL);
+    Game game;
+//    MainGame game(NULL);
 
     Engine::Run(&game);
     return 0;

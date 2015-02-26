@@ -18,13 +18,13 @@ int PlayerAnimation::DirectionFrame(iGameObject *obj)
 
     int result;
     if(obj->acc.y <= -1)
-        result = _animation->amtOfFrames*3;
+        result = _animation->amtOfFrames()*3;
     else if(obj->acc.y >=  1)
         result = 0;
     else if(obj->acc.x >=  1)
-        result = _animation->amtOfFrames;
+        result = _animation->amtOfFrames();
     else if( obj->acc.x <= -1)
-        result = _animation->amtOfFrames*2;
+        result = _animation->amtOfFrames()*2;
     return result;
 }
 

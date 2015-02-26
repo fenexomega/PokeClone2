@@ -4,7 +4,6 @@
 #include "interfaces/iComponent.h"
 #include "interfaces/iGameObject.h"
 #include "math/Vector2D.h"
-#include "components/MessageSender.h"
 
 class cGraphic : public iComponent
 {

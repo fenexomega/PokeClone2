@@ -11,6 +11,8 @@ private:
     iGameObject *_player;
     iGameObject *_obj;
     Map *_world;
+    int _offset;
+
     void Move(Vector2D<int> v);
 public:
     EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iComponentMediator *mediator);

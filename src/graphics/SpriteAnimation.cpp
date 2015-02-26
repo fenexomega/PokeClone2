@@ -2,9 +2,19 @@
 
 
 
+
+int SpriteAnimation::amtOfFrames() const
+{
+    return _amtOfFrames;
+}
+
+void SpriteAnimation::setAmtOfFrames(int amtOfFrames)
+{
+    _amtOfFrames = amtOfFrames;
+}
 SpriteAnimation::SpriteAnimation(std::string filePath, int amtOfFramesPerAnimation,
                                  int frameWidth, int frameHeight, int _keyFrame)
-    : amtOfFrames(amtOfFramesPerAnimation),currentFrame(_keyFrame),keyFrame(_keyFrame)
+    : _amtOfFrames(amtOfFramesPerAnimation),_currentFrame(_keyFrame),_keyFrame(_keyFrame)
 {
     spst = new SpriteSheet(filePath,frameWidth,frameHeight);
     sizeInTiles = spst->getSz();
@@ -13,7 +23,7 @@ SpriteAnimation::SpriteAnimation(std::string filePath, int amtOfFramesPerAnimati
 }
 
 SpriteAnimation::SpriteAnimation(SpriteSheet *_spst, int amtOfFramesPerAnimation, int _keyFrame)
-    : spst(_spst), amtOfFrames(amtOfFramesPerAnimation),currentFrame(_keyFrame),keyFrame(_keyFrame)
+    : spst(_spst), _amtOfFrames(amtOfFramesPerAnimation),_currentFrame(_keyFrame),_keyFrame(_keyFrame)
 {
     sizeInTiles = spst->getSz();
 
@@ -27,36 +37,36 @@ SpriteAnimation::~SpriteAnimation()
 void SpriteAnimation::UpdateAnimation(int i)
 {
     //Atualiza o frame atual
-    currentFrame += i;
+    _currentFrame += i;
     //Se a animação tiver que voltar ao ponto inicial
-    if(currentFrame >= keyFrame + amtOfFrames)
+    if(_currentFrame >= _keyFrame + _amtOfFrames)
     {
-        currentFrame = keyFrame;
+        _currentFrame = _keyFrame;
     }
 
 }
 
 void SpriteAnimation::Render(int x, int y)
 {
-    spst->Render(x,y,currentFrame);
+    spst->Render(x,y,_currentFrame);
 }
 
 void SpriteAnimation::Render(Vector2D<int> pos)
 {
-    spst->Render(pos,currentFrame);
+    spst->Render(pos,_currentFrame);
 
 }
 
 
 int SpriteAnimation::getKeyFrame() const
 {
-    return keyFrame;
+    return _keyFrame;
 }
 
 void SpriteAnimation::setKeyFrame(int value)
 {
-    keyFrame = value;
-    currentFrame = keyFrame;
+    _keyFrame = value;
+    _currentFrame = _keyFrame;
 }
 
 Vector2D<int> SpriteAnimation::getWidthAndHeight()
