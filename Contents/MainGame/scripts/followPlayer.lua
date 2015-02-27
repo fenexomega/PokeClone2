@@ -9,14 +9,17 @@ end
 function Update(obj,dt)
     acc = obj["acc"]
     acc.x = 0 ; acc.y = 0
-    circle = {center = {x = obj.rect.x + 16, y = obj.rect.y + 16},radius = circle_radius }
+    circle = {center = {x = obj.pos.x + 16, y = obj.pos.y + 16},radius = circle_radius }
 
-    print(circle.center.x)
-    print(player.rect.x)
 
 -- BUG Essa colisão não funciona
-    if isCollidingRC(player.rect,circle) then
+    if isCollidingRC(player.pos,circle) then
         print("Colidindo")
+        print(circle.center.x)
+        print(circle.center.y)
+        print(player.rect.x)
+        print(player.rect.y)
+
         acc.x = -1
     end
 

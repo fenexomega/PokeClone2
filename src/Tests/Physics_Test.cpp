@@ -11,10 +11,14 @@ TEST_CASE("Teste da colisão dos circulos","[Circle]")
     Circle c1(Vector2D<int>(0,0),5);
     Circle c2(Vector2D<int>(2,0),5);
     Circle c3(Vector2D<int>(7,7),1);
+    Circle c4(2,2,2);
     Vector2D<int> point1(3,0);
     Vector2D<int> point2(0,4);
     Rect rect1(0,0,5,5);
     Rect rect2(6,6,2,2);
+    Rect rect3(15,2,4,4);
+    Rect r4(2,15,4,4);
+
 
 
     REQUIRE(sysPhysics::DistanceOf(point1,point2) == 5.0f);
@@ -27,4 +31,7 @@ TEST_CASE("Teste da colisão dos circulos","[Circle]")
     REQUIRE_FALSE(sysPhysics::isColliding(rect1,rect2));
     REQUIRE_FALSE(sysPhysics::isColliding(c3,point1));
     REQUIRE_FALSE(sysPhysics::isColliding(c1,c3));
+    REQUIRE_FALSE(sysPhysics::isColliding(rect3,c4));
+    REQUIRE_FALSE(sysPhysics::isColliding(r4,c4));
+
 }
