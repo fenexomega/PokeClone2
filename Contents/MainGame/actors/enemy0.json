@@ -5,5 +5,5 @@
     "height":36, //sprite height
     "width":32,  // sprite width
     "animationFrames":3, // frames per animation
-    "script": "Contents\/MainGame\/scripts\/randomInput.lua"
+    "script": "Contents\/MainGame\/scripts\/followPlayer.lua"
 }
