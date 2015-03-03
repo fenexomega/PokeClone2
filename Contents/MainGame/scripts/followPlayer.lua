@@ -1,5 +1,16 @@
 acceleration_init = 1
-circle_radius = 10
+circle_radius = 180
+
+
+
+function getVectorToPlayer(player,obj)
+    r = {}
+    r.x = player.x - obj.x
+    r.y = player.y - obj.y
+    r.x = r.x/math.abs(r.x)
+    r.y = r.y/math.abs(r.y)
+    return r
+end
 
 function ReceiveMessage(msg)
 
@@ -12,15 +23,9 @@ function Update(obj,dt)
     circle = {center = {x = obj.pos.x + 16, y = obj.pos.y + 16},radius = circle_radius }
 
 
--- BUG Essa colisão não funciona
+-- Se colidir
     if isCollidingRC(player.pos,circle) then
-        print("Colidindo")
-        print(circle.center.x)
-        print(circle.center.y)
-        print(player.rect.x)
-        print(player.rect.y)
-
-        acc.x = -1
+        obj["acc"] = getVectorToPlayer(player["pos"],obj["pos"])
     end
 
 

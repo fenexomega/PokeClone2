@@ -15,7 +15,7 @@ int sysPhysics::clampOnRange(int min, int max, int v)
 {
     if(v < min)
         return min;
-    else if(v < max)
+    else if(v > max)
         return max;
     else
         return v;

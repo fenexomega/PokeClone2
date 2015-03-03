@@ -26,7 +26,16 @@ void PlayerPhysics::Move(Vector2D<int> v)
     //o vetor POS dá a posição exata no MEIO
     _hitBox.x = _obj->pos.x - (_hitBox.w + _offset)/2 + _offset/2;
     _hitBox.y = _obj->pos.y;
-    //O Mundo deveria se mexer de forma independente?
+
+    /*BUG quando o player e o inimigo se mechem na
+     * diagonal, o vetor resultante é 2* maior que
+     * deveria ser.
+     * Isso acontece porque o objeto se move
+     * ao mesmo tempo em x e y, movendo assim
+     * duas unidades!
+     */
+
+    //TODO O Mundo deveria se mexer de forma independente?
     _world->pos = -_obj->pos;
 
 }
