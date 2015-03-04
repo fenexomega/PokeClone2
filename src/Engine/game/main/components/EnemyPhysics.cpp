@@ -65,7 +65,7 @@ void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
         }
 
 
-    //TODO Colisão com os inimigos
+    //BUG Colisão com os inimigos
     for(iGameObject *i : world->gameEnemies)
         if(sysPhysics::isColliding(obj->rect,i->rect))
         {
