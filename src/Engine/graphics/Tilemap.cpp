@@ -24,11 +24,11 @@ Tilemap::Tilemap(std::string jsonFile)
     Json::Value json = FileLoader::LoadJson(jsonFile);
 //    std::string Dir = getLocationDir(jsonFile);
 
-    m_size.x = json["height"].asInt();
-    m_size.y = json["width"].asInt();
+    m_size.x = json["width"].asInt();
+    m_size.y = json["height"].asInt();
 
-    m_tileSize.x = json["tileheight"].asInt();
-    m_tileSize.y = json["tilewidth"].asInt();
+    m_tileSize.x = json["tilewidth"].asInt();
+    m_tileSize.y = json["tileheight"].asInt();
 
     int ArraySize = json["tilesets"].size();
     for(int i = 0; i < ArraySize ; ++i)
@@ -121,7 +121,7 @@ void Tilemap::generateTileMap()
                                m_tileSize.x,m_tileSize.y);
             //Gerar um novo retangulo dest
             destrect = Rect( (i%m_size.x) * m_tileSize.x,
-                                (i/m_size.y) * m_tileSize.y,
+                                (i/m_size.x) * m_tileSize.y,
                                 m_tileSize.x,m_tileSize.y);
             m_tileRects.push_back(destrect);
             //Renderizar na tela
