@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="test_tiles" tilewidth="32" tileheight="32">
+  <image source="Contents/MainGame/images/test_tiles.png" width="256" height="64"/>
+ </tileset>
+ <layer name="Camada de Tiles 1" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgYBzFo3gUj+IhgAHGRgEt
+  </data>
+ </layer>
+ <layer name="Camada de Tiles 2" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIyphagtXlMaDQhvehqR80bNY8S8ygFQ8U8amIA26cAxQ==
+  </data>
+ </layer>
+</map>

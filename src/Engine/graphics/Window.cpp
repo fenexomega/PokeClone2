@@ -110,8 +110,11 @@ Window::Window(int _width, int _height, std::string title, bool isFullscreen )
                                  windowsFlags);
     SDLrenderer =  SDL_CreateRenderer(SDLwindow,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC  );
     if(SDLwindow == NULL || SDLrenderer == NULL)
+    {
+        std::string erro = "Couldn't set the SDL Window and Renderer:\n " + std::string(SDL_GetError());
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"ERROR",erro.c_str(),SDLwindow);
         throw std::runtime_error("Couldn't set the SDL Window and Renderer:\n " + std::string(SDL_GetError())); // TODO tratar isso
-
+    }
 
 }
 

@@ -1,7 +1,7 @@
 {
     "name":"map1",
     "type":"map",
-    "TilemapJson":"Contents/MainGame/tiledmap.json",
+    "TilemapJson":"Contents/MainGame/house.json",
     "player":{"type":"player",
               "pos":[400,128] //Posição Inicial
             },

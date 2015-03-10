@@ -1,9 +1,11 @@
 {
     "name":"npc_mage0",
     "type":"actor",
-    "sprite":"Contents\/MainGame\/images\/mage_m1.png",
+    "sprite":"Contents\/MainGame\/images\/mage_m.png",
     "height":36, //sprite height
     "width":32,  // sprite width
     "animationFrames":3, // frames per animation
     "script": "Contents\/MainGame\/scripts\/followPlayer.lua"
+
+//    "script": "Contents\/MainGame\/scripts\/randomInput.lua"
 }

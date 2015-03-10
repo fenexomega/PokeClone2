@@ -216,6 +216,7 @@ Map *Factory::createMap(std::string jsonFile)
 
     worldMap->player = _player;
 
+    LOG("Objs.Size = " + TOSTR(json["objects"].size()) );
     for(Uint16 i = 0; i < json["objects"].size(); ++i)
     {
         LOG("Criando " + json["objects"][i]["type"].asString());

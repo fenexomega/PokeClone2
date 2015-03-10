@@ -3,7 +3,6 @@
 #include <signal.h>
 #include <execinfo.h>
 
-
 Logger::Logger()
 {
 
@@ -57,20 +56,26 @@ void Logger::generateBackTrace(std::vector<char *> &vec)
 	for(int i = 0; i < logsize; ++i)
 		vec.push_back(logTrace[i]);
 
+
 }
 
 
 void Logger::signalCallbackHandler(int signum)
 {
 	std::vector<char *> vec;
+    std::string logString;
 
 	PRINT("Signal Number Received: " << signum << " \nClosing");
 	generateBackTrace(vec);
     LOG("***** BACKTRACE *****");
 	for(auto bt : vec)
+    {
         LOG(bt);
+        logString += bt;
+    }
     LOG("***** END *****");
 	for(auto bt : vec)
 		delete bt;
-	
+
+
 }
