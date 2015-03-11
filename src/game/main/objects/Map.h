@@ -49,7 +49,9 @@ public:
     // iGameObject interface
     void Update(float dt);
     void Render();
-    //
+    //*********************
+
+    void Move(Vector2D<int> acc);
 
     void addGameObject(iGameObject *obj);
     void addGameEnemies(iGameObject *obj);
@@ -58,6 +60,7 @@ public:
     Uint32 atPos(std::string stg,int x, int y);
     Rect atPosRect(int x, int y);
 
+    //Getters and Setters
     Vector2D<int> getPlayerInitialPos() const;
     Vector2D<int> getOffset() const;
     void setOffset(const Vector2D<int> &value);

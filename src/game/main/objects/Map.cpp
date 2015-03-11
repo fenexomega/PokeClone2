@@ -84,6 +84,11 @@ void Map::Render()
     player->Render();
 }
 
+void Map::Move(Vector2D<int> acc)
+{
+    pos += acc;
+}
+
 void Map::addGameObject(iGameObject *obj)
 {
     gameObjects.push_back(obj);

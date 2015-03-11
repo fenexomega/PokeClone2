@@ -31,7 +31,7 @@ void DoorPhysics::receiveMessage(int msg)
 void DoorPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
 
-//TODO deveria rever a ordem das movimentações
+//NOTE: deveria rever a ordem das movimentações
     obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
     obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
     if(_active)

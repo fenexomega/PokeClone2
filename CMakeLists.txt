@@ -1,4 +1,4 @@
-project("PokeClone 2 Engine" CXX)
+project("PokeClone 2 Engine" CXX C)
 
 cmake_minimum_required(VERSION 3.0)
 
@@ -41,7 +41,6 @@ set_source_files_properties(${LUA_FILES} PROPERTIES HEADER_FILE_ONLY TRUE)
 # Adiciona a biblioteca para compilar, estática
 add_library(VacilationEngine SHARED ${SRC_THIRDPARTIES}  ${ENGINE_SRC_FILES})
 
-
 #linka a lib no app
 target_link_libraries(VacilationEngine ${COMPILER_LIBS})
 ####################################################################################
@@ -50,5 +49,8 @@ DESTINATION ${CMAKE_BINARY_DIR} )
 ####################################################################################
 include(macros.cmake)
 
+# Testes
 add_test(Physics_Test)
+
+# Jogos
 add_game( game )

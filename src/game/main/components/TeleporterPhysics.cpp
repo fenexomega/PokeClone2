@@ -32,7 +32,6 @@ void TeleporterPhysics::receiveMessage(int msg)
         //TELEPORT CODE
         LOG("TELEPORTOU PARA " + _mapName + " [" + TOSTR(_mapPos.x)
             + ", " + TOSTR(_mapPos.y) + "]");
-        //BUG implementar melhor esse teleporte
 
         _wc->setActualMap(_mapName,_mapPos);
 

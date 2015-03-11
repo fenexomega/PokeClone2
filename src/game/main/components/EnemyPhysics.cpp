@@ -50,7 +50,6 @@ void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
     for(iGameObject *i : world->gameObjects)
         if(sysPhysics::isColliding(obj->rect,i->rect))
         {
-            //TODO estão colidindo mas não saem do canto
 
             //Se for uma porta, você deve colidir
             // senão, pode passar.
@@ -69,7 +68,7 @@ void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
     for(iGameObject *i : world->gameEnemies)
         if(sysPhysics::isColliding(obj->rect,i->rect))
         {
-
+            //BUG estão colidindo mas não saem do canto
             colliding = true;
             break;
         }

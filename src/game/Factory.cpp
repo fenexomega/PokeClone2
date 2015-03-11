@@ -207,7 +207,7 @@ Map *Factory::createMap(std::string jsonFile)
 
     worldMap->name = json["name"].asString();
 
-    /*TODO o player não deveria ser criado dentro do mapa
+    /*NOTE: o player não deveria ser criado dentro do mapa
     * e sim no mundo.
     * Talvez nem nele.
     */
