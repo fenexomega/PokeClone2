@@ -41,16 +41,14 @@ set_source_files_properties(${LUA_FILES} PROPERTIES HEADER_FILE_ONLY TRUE)
 # Adiciona a biblioteca para compilar, estática
 add_library(VacilationEngine SHARED ${SRC_THIRDPARTIES}  ${ENGINE_SRC_FILES})
 
-add_executable(game ${SRC_FILES} ${JSON_FILES} ${LUA_FILES})
 
 #linka a lib no app
 target_link_libraries(VacilationEngine ${COMPILER_LIBS})
-target_link_libraries(game VacilationEngine)
 ####################################################################################
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Contents
 DESTINATION ${CMAKE_BINARY_DIR} )
 ####################################################################################
-include(teste.cmake)
+include(macros.cmake)
 
 add_test(Physics_Test)
-
+add_game( game )
