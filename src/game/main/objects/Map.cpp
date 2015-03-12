@@ -89,6 +89,11 @@ void Map::Move(Vector2D<int> acc)
     pos += acc;
 }
 
+void Map::setPos(Vector2D<int> pos)
+{
+    this->pos = pos;
+}
+
 void Map::addGameObject(iGameObject *obj)
 {
     gameObjects.push_back(obj);

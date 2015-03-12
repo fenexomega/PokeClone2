@@ -30,6 +30,7 @@ public:
 
     void addMap(Map *map);
 
+    void Move(Vector2D<int> v);
 
     Map * at(int i);
 

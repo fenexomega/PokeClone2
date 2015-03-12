@@ -52,6 +52,7 @@ public:
     //*********************
 
     void Move(Vector2D<int> acc);
+    void setPos(Vector2D<int> pos);
 
     void addGameObject(iGameObject *obj);
     void addGameEnemies(iGameObject *obj);
