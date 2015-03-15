@@ -17,15 +17,18 @@
 #include "main/components/PlayerPhysics.h"
 #include "main/components/TeleporterPhysics.h"
 
+
 #include "main/objects/GameObject.h"
 #include "main/objects/Map.h"
 #include "main/objects/World.h"
-#include "main/objects/Key.h"
 #include "main/objects/Door.h"
+#include "main/objects/IteractiveItem.h"
 
 #include "io/FileLoader.h"
 
 #include "util/Logger.h"
+
+#include "main/factories/IteractiveFactory.h"
 
 GameObject* Factory::_player;
 World* Factory::_worldContext;
@@ -121,25 +124,17 @@ GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D<int>
 
 GameObject *Factory::createTeleporter(std::string jsonFile, Map *world, Vector2D<int> pos)
 {
-    GameObject *teleporter = new GameObject(world);
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    iComponentMediator *mediator = teleporter->mediator();
 
-    teleporter->name = json["name"].asString();
-    teleporter->setComponents(new ScriptedInput(json["script"].asString(),mediator,_player),
-            new TeleporterPhysics(mediator,_player,_worldContext,
-                                  json["map"].asString(),
-            Vector2D<int>(json["pos"][0].asInt(),
-            json["pos"][1].asInt())),
-            new DecorationGraphic(json["image"].asString(),mediator));
 
-    return teleporter;
+    return IteractiveFactory::createTeleporter(world,json,_player,_worldContext);
 }
 
 iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector2D<int> pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj = NULL;
+    iComponentMediator *mediator = obj->mediator();
 
 
     if(json["type"].asString() == "door")
@@ -155,7 +150,7 @@ iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector
         {
             if(key->name == door->keyName() )
             {
-                ((Key *) key)->AddObserver(((Door*)obj ));
+                ((IteractiveItem *) key)->AddObserver(((Door*)obj ));
             }
         }
 
@@ -163,7 +158,7 @@ iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector
     else if (json["type"].asString() == "key")
     {
         //inconsistencia?
-        obj = Key::createKey(world,jsonFile,_player);
+        obj = IteractiveFactory::createKey(world,json,_player);
     }
     else if (json["type"].asString() == "teleporter")
         //inconsistencia?
@@ -235,7 +230,6 @@ Map *Factory::createMap(std::string jsonFile)
                 json["enemies"][i]["pos"][1].asInt()) );
         worldMap->addGameEnemies(obj);
     }
-
     return worldMap;
 
 }

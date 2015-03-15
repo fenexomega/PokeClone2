@@ -83,12 +83,8 @@ Texture Texture::operator=(Texture &tex)
 
 Rect Texture::getRect() const
 {
-    Rect rect;
-    rect.x = m_rect.x;
-    rect.y = m_rect.y;
-    rect.w = m_rect.w;
-    rect.h = m_rect.h;
-    return rect;
+
+    return m_rect;
 }
 
 Texture::~Texture()

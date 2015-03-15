@@ -2,7 +2,7 @@
 
 #include "systems/sysPhysics.h"
 #include "util/Logger.h"
-#include "main/objects/Key.h"
+#include "main/objects/IteractiveItem.h"
 
 
 ObjectPhysics::ObjectPhysics(iGameObject *player, iComponentMediator *mediator, bool active)
@@ -30,7 +30,7 @@ void ObjectPhysics::receiveMessage(int msg)
                 _active = false;
                 sendMessage(DISSAPEAR);
 
-              Key *key = dynamic_cast<Key *>(_obj);
+              IteractiveItem *key = dynamic_cast<IteractiveItem *>(_obj);
 
               if(key == nullptr)
                   throw std::runtime_error("Object " + _obj->name + " is not a Key" );

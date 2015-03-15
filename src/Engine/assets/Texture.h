@@ -11,7 +11,7 @@ class Texture : public iAsset
 {
 private:
     SDL_Texture *m_tex;
-    SDL_Rect m_rect;
+    Rect m_rect;
     friend class Drawer;
     Uint32 m_pixelFormat;
     int m_acess;
