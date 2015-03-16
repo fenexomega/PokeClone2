@@ -36,7 +36,7 @@ void AnimationController::receiveMessage(int msg)
 void AnimationController::Update(iGameObject *obj, float dt)
 {
     timeCounter += dt;
-    int aux = abs(obj->acc.x + obj->acc.y);
+    int aux = abs(int(obj->acc.x) | int(obj->acc.y));
         aux = aux == 0 ? 1 : aux;
 
     if(timeCounter >= 0.25f/aux)

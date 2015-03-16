@@ -86,7 +86,7 @@ int Engine::Run(iGame *game)
 
         seconds += dt;
         framerate++;
-        SDL_Delay(dt);
+//        SDL_Delay(1000/60);
 
     }
     Logger::CloseLogFile();

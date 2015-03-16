@@ -1,24 +1,5 @@
 #include "Factory.h"
 
-#include "interfaces/iGameObject.h"
-
-//GRAPHICS
-#include "main/components/PlayerAnimation.h"
-#include "main/components/DecorationGraphic.h"
-#include "main/components/AnimationController.h"
-
-//INPUT
-#include "main/components/ScriptedInput.h"
-
-//PHYSICS
-#include "main/components/ObjectPhysics.h"
-#include "main/components/DoorPhysics.h"
-#include "main/components/EnemyPhysics.h"
-#include "main/components/PlayerPhysics.h"
-#include "main/components/TeleporterPhysics.h"
-
-
-#include "main/objects/GameObject.h"
 #include "main/objects/Map.h"
 #include "main/objects/World.h"
 #include "main/objects/Door.h"
@@ -29,12 +10,11 @@
 #include "util/Logger.h"
 
 #include "main/factories/IteractiveFactory.h"
+#include "main/factories/ActorsFactory.h"
 
 GameObject* Factory::_player;
 World* Factory::_worldContext;
-//TODO Essa classe está se tornando monolitica
 
-//TODO Essa classe tem muito código duplicado
 
 /*  Pegar a localização do arquivo
  *  i.e. se a entrada é "/loca/liza/cao/arquivo.txt",
@@ -48,93 +28,26 @@ std::string Factory::getLocationDir(std::string filename)
     return aux;
 }
 
-
-
 GameObject *Factory::createPlayer(std::string jsonFile, Map *world)
 {
-
-    // BUG fix do bug da posição (se o player nascer colidindo com algo,
+    // BUG posição (se o player nascer colidindo com algo,
     // ele é "empurrado" para fora e fica preso)
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    GameObject* player = new GameObject(world);
-    player->name = json["name"].asString();
-    player->type = json["type"].asString();
 
-    world->Normalize(json["width"].asInt(),json["height"].asInt());
-    player->pos = world->getPlayerInitialPos();
-
-    player->setComponents(
-                new ScriptedInput(json["script"].asString(),player->mediator(),player),
-            new PlayerPhysics(2,Rect(0,0,json["width"].asInt(),
-                              json["height"].asInt()/2),
-            player->mediator()),
-            new AnimationController(
-                new SpriteAnimation(json["sprite"].asString()
-                ,json["animationFrames"].asInt()
-            ,json["width"].asInt(),json["height"].asInt()),
-            player->mediator()));
-
-    //player deve colidir com os tiles com sua
-    // coordenada especial.
-    //mas a colisão com os objetos e atores deve ser feita
-    //com sua posição na tela.
-
-
-    //O rect do player agora é sua hitbox
-    player->rect.x = world->offset.x;
-    player->rect.y = world->offset.y + json["height"].asInt()/2; //A hitbox tem um offset
-    player->rect.w = json["width"].asInt();
-    player->rect.h = json["height"].asInt()/2;
-
-
-
-    return player;
+    return ActorsFactory::createPlayer(json,world);
 }
 
 GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
-    GameObject *gameObj = new GameObject(world);
-    gameObj->name = json["name"].asString();
-    gameObj->type = json["type"].asString();
 
-    gameObj->setComponents(
-                new ScriptedInput(json["script"].asString(),gameObj->mediator(),_player),
-            new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2),
-            _player,gameObj->mediator()),
-            new AnimationController(
-                new SpriteAnimation(json["sprite"].asString()
-                ,json["animationFrames"].asInt()
-            ,json["width"].asInt(),json["height"].asInt()),
-            gameObj->mediator()));
-    world->Normalize(gameObj->rect.w,gameObj->rect.h);
-    gameObj->pos = pos;
-    Vector2D aux = world->getOffset();
-
-    /*Esse negócio de quebrar o rect do gameobject
-      pode mais atrapalhar do que ajudar.*/
-    gameObj->rect.x = aux.x;
-    gameObj->rect.y = aux.y + json["height"].asInt()/2; //A hitbox tem um offset
-    gameObj->rect.w = json["width"].asInt();
-    gameObj->rect.h = json["height"].asInt()/2;
-
-
-    return gameObj;
-}
-
-GameObject *Factory::createTeleporter(std::string jsonFile, Map *world, Vector2D pos)
-{
-    Json::Value json = FileLoader::LoadJson(jsonFile);
-
-
-    return IteractiveFactory::createTeleporter(world,json,_player,_worldContext);
+    return ActorsFactory::createEnemy(json,world,pos,_player);
 }
 
 iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector2D pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj = NULL;
-    iComponentMediator *mediator = obj->mediator();
 
 
     if(json["type"].asString() == "door")
@@ -162,8 +75,7 @@ iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector
     }
     else if (json["type"].asString() == "teleporter")
         //inconsistencia?
-        obj = createTeleporter(jsonFile,world,pos);
-
+        obj = IteractiveFactory::createTeleporter(world,json,_player,_worldContext);
     obj->pos = pos;
     obj->rect = Rect(pos.x,pos.y,json["width"].asInt(),
             json["height"].asInt());
