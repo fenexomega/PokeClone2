@@ -24,7 +24,7 @@ void World::setActualMap(Map *map)
 
 }
 
-void World::setActualMap(std::string mapName, Vector2D<int> playerPos)
+void World::setActualMap(std::string mapName, Vector2D playerPos)
 {
     _actualMap = findMapByName(mapName);
     _actualMap->pos = -playerPos;

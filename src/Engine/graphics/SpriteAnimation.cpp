@@ -51,7 +51,7 @@ void SpriteAnimation::Render(int x, int y)
     spst->Render(x,y,_currentFrame);
 }
 
-void SpriteAnimation::Render(Vector2D<int> pos)
+void SpriteAnimation::Render(Vector2D pos)
 {
     spst->Render(pos,_currentFrame);
 
@@ -69,9 +69,9 @@ void SpriteAnimation::setKeyFrame(int value)
     _currentFrame = _keyFrame;
 }
 
-Vector2D<int> SpriteAnimation::getWidthAndHeight()
+Vector2D SpriteAnimation::getWidthAndHeight()
 {
-    Vector2D<int> aux;
+    Vector2D aux;
     Rect aux_rect = spst->getFramerect();
     aux.set(aux_rect.w,aux_rect.h);
     return aux;

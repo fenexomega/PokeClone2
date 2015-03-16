@@ -16,7 +16,7 @@ class sysPhysics_Wrapper
 protected:
     static Rect toRect(lua::Value value);
     static Circle toCircle(lua::Value value);
-    static Vector2D<int> toVector2D(lua::Value value);
+    static Vector2D toVector2D(lua::Value value);
 public:
     sysPhysics_Wrapper();
     static bool onScreen(lua::Value value);

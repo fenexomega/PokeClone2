@@ -40,19 +40,19 @@ void Map::Normalize(int x, int y)
 
 }
 
-Vector2D<int> Map::getPlayerInitialPos() const
+Vector2D Map::getPlayerInitialPos() const
 {
     return playerInitialPos;
 }
 
 
 
-Vector2D<int> Map::getOffset() const
+Vector2D Map::getOffset() const
 {
     return offset;
 }
 
-void Map::setOffset(const Vector2D<int> &value)
+void Map::setOffset(const Vector2D &value)
 {
     offset = value;
 }
@@ -84,12 +84,12 @@ void Map::Render()
     player->Render();
 }
 
-void Map::Move(Vector2D<int> acc)
+void Map::Move(Vector2D acc)
 {
     pos += acc;
 }
 
-void Map::setPos(Vector2D<int> pos)
+void Map::setPos(Vector2D pos)
 {
     this->pos = pos;
 }

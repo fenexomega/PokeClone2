@@ -12,7 +12,8 @@ private:
     Rect _hitBox;
     int _velocity = 2;
     int _offset{};
-    void Move(Vector2D<int> v);
+
+    void Move(Vector2D v);
 public:
     PlayerPhysics(int velocity,Rect hitBox,
                   iComponentMediator *mediator);

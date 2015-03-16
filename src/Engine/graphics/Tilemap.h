@@ -12,7 +12,7 @@
 typedef struct
 {
     std::vector<Uint32> data;
-    Vector2D<int> size;
+    Vector2D size;
     bool visible;
 }Layer;
 
@@ -27,8 +27,8 @@ private:
     public:
         std::shared_ptr<Texture> tex;
         std::string name;
-        Vector2D<int> size;
-        TileImage(std::shared_ptr<Texture> _tex,std::string _name,Vector2D<int> _imageSize)
+        Vector2D size;
+        TileImage(std::shared_ptr<Texture> _tex,std::string _name,Vector2D _imageSize)
             :   tex(_tex), name(_name), size(_imageSize) {}
         ~TileImage()
         {
@@ -39,8 +39,8 @@ private:
 public:
 
     std::vector<Rect> m_tileRects;
-    Vector2D<int> m_size;
-    Vector2D<int> m_tileSize;
+    Vector2D m_size;
+    Vector2D m_tileSize;
     std::shared_ptr<Texture> tileTexture;
 
     std::vector<TileImage* >m_tileImages;
@@ -48,10 +48,11 @@ public:
 
     Tilemap(std::string jsonFile);
 
-    void Render(Vector2D<int> pos);
+    void Render(Vector2D pos);
+
     void Render(int x, int y);
     std::vector<Uint32> operator[](int i);
-    Vector2D<int> getLayerSize();
+    Vector2D getLayerSize();
     ~Tilemap();
 
     std::vector<Uint32> getLayers(int i) const;

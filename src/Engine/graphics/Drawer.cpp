@@ -87,7 +87,7 @@ void Drawer::Render(std::shared_ptr<Texture>texture, int x, int y)
 
 }
 
-void Drawer::Render(std::shared_ptr<Texture>texture, Vector2D<int> vec)
+void Drawer::Render(std::shared_ptr<Texture>texture, Vector2D vec)
 {
     SDL_Rect rect = texture->getRect().To_SDLRect();
     rect.x = vec.x;

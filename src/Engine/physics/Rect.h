@@ -17,13 +17,13 @@ public:
 
     }
 
-    inline Rect operator+(Vector2D<int> vec)
+    inline Rect operator+(Vector2D vec)
     {
         Rect r(x + vec.x, y + vec.y, w,h);
         return r;
     }
 
-    inline Rect& operator+=(Vector2D<int> vec)
+    inline Rect& operator+=(Vector2D vec)
     {
         x += vec.x;
         y += vec.y;

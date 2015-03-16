@@ -11,7 +11,7 @@
 
 
 TeleporterPhysics::TeleporterPhysics(iComponentMediator *mediator, iGameObject *player,
-                                     World *wc, std::string newMap, Vector2D<int> mapPos)
+                                     World *wc, std::string newMap, Vector2D mapPos)
     : cPhysics(mediator),_player(player),_wc(wc),_mapName(newMap),_mapPos(mapPos)
 {
 

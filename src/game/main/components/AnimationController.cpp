@@ -3,6 +3,7 @@
 #include "graphics/Drawer.h"
 #include "util/Logger.h"
 
+
 int AnimationController::DirectionFrame(iGameObject *obj)
 {
     int result;
@@ -35,8 +36,8 @@ void AnimationController::receiveMessage(int msg)
 void AnimationController::Update(iGameObject *obj, float dt)
 {
     timeCounter += dt;
-    int aux = abs(obj->acc.x | obj->acc.y);
-    aux = aux == 0 ? 1 : aux;
+    int aux = abs(obj->acc.x + obj->acc.y);
+        aux = aux == 0 ? 1 : aux;
 
     if(timeCounter >= 0.25f/aux)
     {
@@ -44,7 +45,7 @@ void AnimationController::Update(iGameObject *obj, float dt)
         timeCounter = 0;
     }
 
-    if(obj->acc.x == 0 && obj->acc.y == 0)
+    if(obj->acc.isZero())
     {
         _animation->setKeyFrame(_animation->getKeyFrame());
     }

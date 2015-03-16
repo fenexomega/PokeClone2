@@ -11,7 +11,7 @@ unsigned int SpriteSheet::getFrames() const
 
 
 
-Vector2D<int> SpriteSheet::getSz() const
+Vector2D SpriteSheet::getSz() const
 {
     return sz;
 }
@@ -32,7 +32,7 @@ SpriteSheet::SpriteSheet(std::string fileName, Rect _frameRect)
     frames = sz.x * sz.y;
 }
 
-SpriteSheet::SpriteSheet(std::string fileName, Vector2D<int> frameSize)
+SpriteSheet::SpriteSheet(std::string fileName, Vector2D frameSize)
 {
     m_tex = FileLoader::LoadTexture(fileName);
     framerect.w = frameSize.x;
@@ -64,12 +64,12 @@ void SpriteSheet::Render(int x, int y,Uint16 frame)
     }
     Rect dest(x,y,framerect.w,framerect.h);
 
-    Rect src(framerect.w * (frame%sz.x), framerect.h * (frame / sz.x)
+    Rect src(framerect.w * (frame%int(sz.x)), framerect.h * (frame /int(sz.x))
              ,framerect.w,framerect.h);
     Drawer::Render(m_tex,&src,&dest);
 }
 
-void SpriteSheet::Render(Vector2D<int> vec,Uint16 frame)
+void SpriteSheet::Render(Vector2D vec,Uint16 frame)
 {
     if(frame >= frames)
     {
@@ -77,7 +77,7 @@ void SpriteSheet::Render(Vector2D<int> vec,Uint16 frame)
     }
     Rect dest(vec.x,vec.y,framerect.w,framerect.h);
 
-    Rect src(framerect.w * (frame%sz.x), framerect.h * (frame / sz.x)
+    Rect src(framerect.w * (frame%int(sz.x)), framerect.h * (frame /int(sz.x))
              ,framerect.w,framerect.h);
     Drawer::Render(m_tex,&src,&dest);
 }

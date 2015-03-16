@@ -1,6 +1,6 @@
 #include "PlayerAnimation.h"
 
-PlayerAnimation::PlayerAnimation(Vector2D<int> pos,SpriteAnimation *sptAnm,iComponentMediator *mediator)
+PlayerAnimation::PlayerAnimation(Vector2D pos,SpriteAnimation *sptAnm,iComponentMediator *mediator)
    : _animation(sptAnm),cGraphic(mediator),_pos(pos)
 {
     timeCounter = 0;

@@ -104,11 +104,11 @@ bool sysInput::getKey(int key)
     return keys[key] == 1;
 }
 
-Vector2D<int> sysInput::getMousePos()
+Vector2D sysInput::getMousePos()
 {
     int x,y;
     SDL_GetMouseState(&x,&y);
-    Vector2D<int> aux(x,y);
+    Vector2D aux(x,y);
     return aux;
 
 }

@@ -17,8 +17,8 @@ public:
     bool _active = true;
 
     Rect rect;
-    Vector2D<float> pos;
-    Vector2D<float> acc;
+    Vector2D pos;
+    Vector2D acc;
 
     virtual void Update(float dt) = 0;
     virtual void Render() = 0;

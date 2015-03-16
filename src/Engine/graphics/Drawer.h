@@ -24,7 +24,8 @@ public:
     static void Render(std::shared_ptr<Texture>texture, Rect *rect);
     static void Render(std::shared_ptr<Texture>texture,Rect *srcrect,Rect *destrect);
     static void Render(std::shared_ptr<Texture>texture, int x, int y);
-    static void Render(std::shared_ptr<Texture>texture,Vector2D<int> vec);
+
+    static void Render(std::shared_ptr<Texture>texture,Vector2D vec);
 
 
 

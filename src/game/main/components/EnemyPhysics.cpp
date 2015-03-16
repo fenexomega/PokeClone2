@@ -15,7 +15,7 @@ EnemyPhysics::EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iCompo
 }
 
 
-void EnemyPhysics::Move(Vector2D<int> v)
+void EnemyPhysics::Move(Vector2D v)
 {
     _obj->pos += v;
     _obj->rect.x = _world->pos.x + _obj->pos.x + _world->offset.x;

@@ -18,7 +18,7 @@ PlayerPhysics::~PlayerPhysics()
 
 }
 
-void PlayerPhysics::Move(Vector2D<int> v)
+void PlayerPhysics::Move(Vector2D v)
 {
     _obj->pos += v;
 

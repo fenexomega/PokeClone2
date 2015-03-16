@@ -16,7 +16,7 @@ Sprite::Sprite(std::string filePath, int w, int h, int _spriteNbr)
     _spst = new SpriteSheet(filePath,w,h);
 }
 
-Sprite::Sprite(std::string filePath, Vector2D<int> _size, int _spriteNbr)
+Sprite::Sprite(std::string filePath, Vector2D _size, int _spriteNbr)
     :  _size(_size) ,_spriteNbr(_spriteNbr)
 {
     _spst = new SpriteSheet(filePath,_size);
@@ -34,7 +34,7 @@ void Sprite::Render(int x, int y)
     _spst->Render(x,y,_spriteNbr);
 }
 
-void Sprite::Render(Vector2D<int> v)
+void Sprite::Render(Vector2D v)
 {
     _spst->Render(v,_spriteNbr);
 }

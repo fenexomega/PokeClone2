@@ -16,13 +16,13 @@ Rect sysPhysics_Wrapper::toRect(lua::Value value)
 
 Circle sysPhysics_Wrapper::toCircle(lua::Value value)
 {
-    return Circle(Vector2D<int>(value["center"]["x"],
+    return Circle(Vector2D(value["center"]["x"],
             value["center"]["y"]),value["radius"]);
 }
 
-Vector2D<int> sysPhysics_Wrapper::toVector2D(lua::Value value)
+Vector2D sysPhysics_Wrapper::toVector2D(lua::Value value)
 {
-    return Vector2D<int>(value["x"],value["y"]);
+    return Vector2D(value["x"],value["y"]);
 }
 
 

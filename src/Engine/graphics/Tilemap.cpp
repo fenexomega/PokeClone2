@@ -35,7 +35,7 @@ Tilemap::Tilemap(std::string jsonFile)
     {
         m_tileImages.push_back(new TileImage(FileLoader::LoadTexture(DIR + json["tilesets"][i]["image"].asString()),
                                         json["tilesets"][i]["name"].asString(),
-                                        Vector2D<int>(json["tilesets"][i]["imagewidth"].asInt(),
+                                        Vector2D(json["tilesets"][i]["imagewidth"].asInt(),
                                                       json["tilesets"][i]["imageheight"].asInt()) ));
     }
 
@@ -45,7 +45,7 @@ Tilemap::Tilemap(std::string jsonFile)
     for(int i = 0; i < ArraySize; ++i)
     {
         Layer l1;
-        l1.size = Vector2D<int>(jsonLayers[i]["width"].asInt(),jsonLayers[i]["height"].asInt());
+        l1.size = Vector2D(jsonLayers[i]["width"].asInt(),jsonLayers[i]["height"].asInt());
         l1.visible = jsonLayers[i]["visible"].asBool();
 
         if(l1.visible)
@@ -77,7 +77,7 @@ Tilemap::~Tilemap()
 
 }
 
-void Tilemap::Render(Vector2D<int> pos)
+void Tilemap::Render(Vector2D pos)
 {
     Drawer::Render(tileTexture,pos);
 }
@@ -93,7 +93,7 @@ std::vector<Uint32> Tilemap::operator[](int i)
     return  layers.at(i).data;
 }
 
-Vector2D<int> Tilemap::getLayerSize()
+Vector2D Tilemap::getLayerSize()
 {
     return layers.at(0).size;
 }
@@ -109,19 +109,19 @@ void Tilemap::generateTileMap()
     for(Layer layer : layers)
     {
         //Pegar o tamanho da imagem em tiles
-        Vector2D<int> imageSizeIT(m_tileImages[0]->size.x / m_tileSize.x,
+        Vector2D imageSizeIT(m_tileImages[0]->size.x / m_tileSize.x,
                                   m_tileImages[0]->size.y / m_tileSize.y);
         //Para cada valor na camada de tiles
         for(Uint32 i = 0; i < layer.data.size(); ++i)
         {
             int value = layer.data[i];
             //Gerar um novo retangulo src
-            srcrect = Rect( ((value-1)%imageSizeIT.x) * m_tileSize.x,
-                               ((value-1)/imageSizeIT.x) * m_tileSize.y,
+            srcrect = Rect( ((value-1)%int(imageSizeIT.x)) * m_tileSize.x,
+                               ((value-1)/int(imageSizeIT.x)) * m_tileSize.y,
                                m_tileSize.x,m_tileSize.y);
             //Gerar um novo retangulo dest
-            destrect = Rect( (i%m_size.x) * m_tileSize.x,
-                                (i/m_size.x) * m_tileSize.y,
+            destrect = Rect( (i%int(m_size.x)) * m_tileSize.x,
+                                (i/int(m_size.x)) * m_tileSize.y,
                                 m_tileSize.x,m_tileSize.y);
             m_tileRects.push_back(destrect);
             //Renderizar na tela
@@ -134,3 +134,4 @@ void Tilemap::generateTileMap()
     Drawer::RenderTo(NULL);
 
 }
+

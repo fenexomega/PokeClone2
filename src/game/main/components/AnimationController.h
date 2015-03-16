@@ -13,7 +13,7 @@ private:
     float timeCounter;
     int DirectionFrame(iGameObject *obj);
     SpriteAnimation *_animation;
-    Vector2D<int> oldAcc;
+    Vector2D oldAcc;
 public:
     AnimationController(SpriteAnimation *sptAnm,iComponentMediator *mediator);
     ~AnimationController();

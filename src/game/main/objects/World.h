@@ -26,11 +26,11 @@ public:
     Map *actualMap() const;
     void setActualMap(Map *map);
     void setActualMap(std::string mapName);
-    void setActualMap(std::string mapName, Vector2D<int> playerPos);
+    void setActualMap(std::string mapName, Vector2D playerPos);
 
     void addMap(Map *map);
 
-    void Move(Vector2D<int> v);
+    void Move(Vector2D v);
 
     Map * at(int i);
 

@@ -46,7 +46,7 @@ GameObject *IteractiveFactory::createTeleporter(Map *world, Json::Value json, iG
                               mediator,player),
             new TeleporterPhysics(mediator,player,worldContext,
                                   json["map"].asString(),
-            Vector2D<int>(json["pos"][0].asInt(),
+            Vector2D(json["pos"][0].asInt(),
             json["pos"][1].asInt())),
             new DecorationGraphic(json["image"].asString(),mediator));
 

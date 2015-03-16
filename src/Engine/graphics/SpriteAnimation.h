@@ -15,7 +15,7 @@ private:
 
 public:
 
-    Vector2D<int> sizeInTiles;
+    Vector2D sizeInTiles;
     SpriteAnimation(std::string filePath, int amtOfFramesPerAnimation, int frameWidth,
                     int frameHeight, int _keyFrame = 0 );
     SpriteAnimation(SpriteSheet *_spst,int amtOfFramesPerAnimation,int _keyFrame = 0);
@@ -23,12 +23,12 @@ public:
     void UpdateAnimation(int i = 1);
 
     void Render(int x, int y);
-    void Render(Vector2D<int> pos);
+    void Render(Vector2D pos);
 
     //getters and Setters
     int getKeyFrame() const;
     void setKeyFrame(int value);
-    Vector2D<int> getWidthAndHeight();
+    Vector2D getWidthAndHeight();
     int amtOfFrames() const;
     void setAmtOfFrames(int amtOfFrames);
 };

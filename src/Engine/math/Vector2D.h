@@ -4,28 +4,28 @@
 #include <cmath>
 #include <iostream>
 
+#define ABS(X) (X) > 0 ? (X) : -(X)
 
-template <class TYPE>
+
 class Vector2D
 {
 public:
-    TYPE x, y;
+    float x, y;
 
     Vector2D() : x(0.0f), y(0.0f) {}
-    Vector2D(TYPE _x, TYPE _y) : x(_x), y(_y) {}
+    Vector2D(float _x, float _y) : x(_x), y(_y) {}
 
     inline Vector2D operator +(Vector2D v)
     {
         return Vector2D (x + v.x, y + v.y);
     }
 
-    inline Vector2D<TYPE> operator -(Vector2D<TYPE> v)
+    inline Vector2D operator -(Vector2D v)
     {
-        return Vector2D<TYPE> (x - v.x, y - v.y);
+        return Vector2D (x - v.x, y - v.y);
     }
 
-
-    inline Vector2D operator *(double i)
+    inline Vector2D operator *(float i)
     {
         Vector2D aux = *this;
         aux.x *= i;
@@ -33,7 +33,7 @@ public:
         return aux;
     }
 
-    inline Vector2D operator /(double i)
+    inline Vector2D operator /(float i)
     {
         Vector2D aux = *this;
         aux.x /= i;
@@ -41,7 +41,7 @@ public:
         return aux;
     }
 
-    inline Vector2D operator +(double i)
+    inline Vector2D operator +(float i)
     {
         Vector2D aux = *this;
         aux.x += i;
@@ -49,7 +49,7 @@ public:
         return aux;
     }
 
-    inline Vector2D operator -(double i)
+    inline Vector2D operator -(float i)
     {
         Vector2D aux = *this;
         aux.x -= i;
@@ -57,21 +57,26 @@ public:
         return aux;
     }
 
-    inline Vector2D& operator +=(Vector2D v)
+    inline Vector2D operator +=(Vector2D v)
     {
         x = x + v.x;
         y = y + v.y;
         return *this;
     }
 
-    inline Vector2D& operator -=(Vector2D v)
+    inline Vector2D operator -=(Vector2D v)
     {
         x -= v.x;
         y -= v.y;
         return *this;
     }
 
-
+    inline Vector2D operator=(Vector2D v)
+    {
+        x = v.x;
+        y = v.y;
+        return *this;
+    }
 
     inline bool operator ==(Vector2D v)
     {
@@ -83,14 +88,14 @@ public:
         return x == v.x && y == v.y ? false : true;
     }
 
-    inline Vector2D& operator+=(TYPE i)
+    inline Vector2D operator+=(double i)
     {
         x += i;
         y += i;
         return *this;
     }
 
-    inline Vector2D& operator-=(TYPE i)
+    inline Vector2D operator-=(double i)
     {
         x -= i;
         y -= i;
@@ -102,27 +107,32 @@ public:
         return sqrt(x*x + y*y);
     }
 
-    inline Vector2D set(TYPE _x, TYPE _y)
+    inline Vector2D set(float _x, float _y)
     {
         x = _x;
         y = _y;
         return *this;
     }
+
+    inline bool isZero()
+    {
+        auto res = ABS(x - y);
+        return res <= 0.01;
+    }
 };
 
-template <class TYPE>
-std::ostream& operator<<(std::ostream& ost,Vector2D<TYPE> vec)
+inline std::ostream& operator<<(std::ostream& ost,Vector2D vec)
 {
     return ost << "{ " << vec.x << ", " << vec.y << " }";
 }
 
-template <class TYPE>
-inline Vector2D<TYPE> operator-(Vector2D<TYPE> v)
+inline Vector2D operator-(Vector2D v)
 {
     v.x *= -1;
     v.y *= -1;
     return v;
 }
+
 
 
 #endif // VECTOR2D_H

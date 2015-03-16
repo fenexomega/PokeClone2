@@ -10,10 +10,10 @@ private:
     float timeCounter;
     int DirectionFrame(iGameObject *obj);
     SpriteAnimation *_animation;
-    Vector2D<int> _oldAcc;
-    Vector2D<int> _pos;
+    Vector2D _oldAcc;
+    Vector2D _pos;
 public:
-    PlayerAnimation(Vector2D<int> pos, SpriteAnimation *sptAnm, iComponentMediator *mediator);
+    PlayerAnimation(Vector2D pos, SpriteAnimation *sptAnm, iComponentMediator *mediator);
     ~PlayerAnimation();
 
     // iComponent interface

@@ -34,7 +34,7 @@ bool sysPhysics::isColliding(Rect obj1, Rect obj2)
 
 }
 
-bool sysPhysics::isColliding(Vector2D<int> point, Rect rect)
+bool sysPhysics::isColliding(Vector2D point, Rect rect)
 {
     if(point.x >= rect.x &&
             point.x  <= rect.x + rect.w)
@@ -47,14 +47,14 @@ bool sysPhysics::isColliding(Vector2D<int> point, Rect rect)
 bool sysPhysics::isColliding(Rect rect, Circle circle)
 {
     //Ponto do triangulo mais perto do circulo
-    Vector2D<int> p;
+    Vector2D p;
     p.x = clampOnRange(rect.x,rect.x + rect.w, circle.center.x);
     p.y = clampOnRange(rect.y,rect.y + rect.h, circle.center.y);
 
     return isColliding(circle , p);
 }
 
-bool sysPhysics::isColliding(Circle circle, Vector2D<int> point)
+bool sysPhysics::isColliding(Circle circle, Vector2D point)
 {
     return DistanceOf(circle.center,point) <= circle.radius;
 }
@@ -64,7 +64,7 @@ bool sysPhysics::isColliding(Circle c1, Circle c2)
     return DistanceOf(c1.center,c2.center) <= c1.radius + c2.radius;
 }
 
-float sysPhysics::DistanceOf(Vector2D<int> p1, Vector2D<int> p2)
+float sysPhysics::DistanceOf(Vector2D p1, Vector2D p2)
 {
     return sqrt(pow(p1.x - p2.x,2) + pow(p1.y - p2.y,2));
 }

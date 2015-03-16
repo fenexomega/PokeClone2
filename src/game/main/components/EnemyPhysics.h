@@ -13,7 +13,7 @@ private:
     Map *_world;
     int _offset;
 
-    void Move(Vector2D<int> v);
+    void Move(Vector2D v);
 public:
     EnemyPhysics(int velocity, Rect hitBox,iGameObject *player, iComponentMediator *mediator);
     ~EnemyPhysics();

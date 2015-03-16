@@ -52,7 +52,7 @@ public:
 
     static bool getKey(int key);
 
-    static Vector2D<int> getMousePos();
+    static Vector2D getMousePos();
 
     static bool getMouseButton(int button);
 

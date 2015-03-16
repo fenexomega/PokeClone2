@@ -91,7 +91,7 @@ GameObject *Factory::createPlayer(std::string jsonFile, Map *world)
     return player;
 }
 
-GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D<int> pos)
+GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     GameObject *gameObj = new GameObject(world);
@@ -109,7 +109,7 @@ GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D<int>
             gameObj->mediator()));
     world->Normalize(gameObj->rect.w,gameObj->rect.h);
     gameObj->pos = pos;
-    Vector2D<int> aux = world->getOffset();
+    Vector2D aux = world->getOffset();
 
     /*Esse negócio de quebrar o rect do gameobject
       pode mais atrapalhar do que ajudar.*/
@@ -122,7 +122,7 @@ GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D<int>
     return gameObj;
 }
 
-GameObject *Factory::createTeleporter(std::string jsonFile, Map *world, Vector2D<int> pos)
+GameObject *Factory::createTeleporter(std::string jsonFile, Map *world, Vector2D pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
 
@@ -130,7 +130,7 @@ GameObject *Factory::createTeleporter(std::string jsonFile, Map *world, Vector2D
     return IteractiveFactory::createTeleporter(world,json,_player,_worldContext);
 }
 
-iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector2D<int> pos)
+iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector2D pos)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj = NULL;
@@ -198,7 +198,7 @@ Map *Factory::createMap(std::string jsonFile)
     Map *worldMap = new Map(jsonFile);
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj;
-    Vector2D<int>aux;
+    Vector2D aux;
 
     worldMap->name = json["name"].asString();
 

@@ -6,12 +6,12 @@
 #include "systems/sysPhysics.h"
 #include "math/Vector2D.h"
 
-Circle c1(Vector2D<int>(0,0),5);
-Circle c2(Vector2D<int>(2,0),5);
-Circle c3(Vector2D<int>(7,7),1);
+Circle c1(Vector2D(0,0),5);
+Circle c2(Vector2D(2,0),5);
+Circle c3(Vector2D(7,7),1);
 Circle c4(2,2,2);
-Vector2D<int> p1(3,0);
-Vector2D<int> p2(0,4);
+Vector2D p1(3,0);
+Vector2D p2(0,4);
 Rect r1(0,0,5,5);
 Rect r2(6,6,2,2);
 Rect r3(15,2,4,4);

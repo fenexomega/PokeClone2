@@ -10,11 +10,11 @@ class TeleporterPhysics : public cPhysics
 private:
     iGameObject *_player;
     std::string _mapName;
-    Vector2D<int> _mapPos;
+    Vector2D _mapPos;
     World *_wc;
 public:
     TeleporterPhysics(iComponentMediator *mediator,iGameObject *player,
-                      World *wc,std::string newMap,Vector2D<int> mapPos);
+                      World *wc,std::string newMap,Vector2D mapPos);
     ~TeleporterPhysics();
 
     // iComponent interface

@@ -31,7 +31,7 @@ Button::~Button()
 void Button::Update()
 {
     //TODO fazer um botão melhor que use Observer
-    Vector2D<int> mousePos = sysInput::getMousePos();
+    Vector2D mousePos = sysInput::getMousePos();
     bool leftbutton = sysInput::isMouseButtonDown(1);
     Rect mouse (0,0,1,1);
     mouse.x = mousePos.x;

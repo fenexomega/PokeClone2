@@ -7,8 +7,8 @@ function getVectorToPlayer(player,obj)
     r = {}
     r.x = player.x - obj.x
     r.y = player.y - obj.y
-    r.x = r.x/math.abs(r.x)
-    r.y = r.y/math.abs(r.y)
+    r.x = r.x/math.floor(math.abs(r.x))
+    r.y = r.y/math.floor(math.abs(r.y))
     return r
 end
 

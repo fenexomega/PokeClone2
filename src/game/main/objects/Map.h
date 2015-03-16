@@ -18,8 +18,8 @@ class Map : public iGameObject
 {
 private:
     Tilemap *tilemap;
-    Vector2D<int> playerInitialPos;
-    Vector2D<int> playerDimensions;
+    Vector2D playerInitialPos;
+    Vector2D playerDimensions;
 
     std::vector<Rect>tileRects;
 
@@ -35,9 +35,9 @@ public:
     std::vector<iGameObject *> gameObjects;
     std::vector<iGameObject *> gameEnemies;
 
-    Vector2D<int> offset;
-    Vector2D<int> tileSize;
-    Vector2D<int> layerSize;
+    Vector2D offset;
+    Vector2D tileSize;
+    Vector2D layerSize;
 
     std::vector<iGameObject *> npcs;
 
@@ -51,8 +51,8 @@ public:
     void Render();
     //*********************
 
-    void Move(Vector2D<int> acc);
-    void setPos(Vector2D<int> pos);
+    void Move(Vector2D acc);
+    void setPos(Vector2D pos);
 
     void addGameObject(iGameObject *obj);
     void addGameEnemies(iGameObject *obj);
@@ -62,9 +62,9 @@ public:
     Rect atPosRect(int x, int y);
 
     //Getters and Setters
-    Vector2D<int> getPlayerInitialPos() const;
-    Vector2D<int> getOffset() const;
-    void setOffset(const Vector2D<int> &value);
+    Vector2D getPlayerInitialPos() const;
+    Vector2D getOffset() const;
+    void setOffset(const Vector2D &value);
     std::vector<Rect> getLayersRect(std::string key);
     void setLayersRect(const std::map<std::string, std::vector<Rect> > &value);
 
