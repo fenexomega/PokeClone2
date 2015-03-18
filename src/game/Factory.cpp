@@ -52,7 +52,7 @@ iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector
 
     if(json["type"].asString() == "door")
     {
-        //TODO inconsistencia?
+        //NOTE inconsistencia?
         /*** cria com factory method enquanto o resto a *
          * fábrica mesmo que constroi                 ***/
         obj = Door::createDoor(world,jsonFile,_player);

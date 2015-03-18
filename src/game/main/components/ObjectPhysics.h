@@ -6,9 +6,10 @@
 class ObjectPhysics : public cPhysics
 {
 private:
-    iGameObject *_player;
+    iGameObject *_player{};
     bool _active;
-    iGameObject *_obj;
+    iGameObject *_obj{};
+    Map *_map{};
 public:
     ObjectPhysics(iGameObject *player,iComponentMediator *mediator,bool active = true);
     ~ObjectPhysics();
@@ -18,6 +19,7 @@ public:
 
     // cPhysics interface
     void Update(iGameObject *obj, Map *world, float dt);
+    void UpdatePos();
 };
 
 #endif // OBJECTPHYSICS_H

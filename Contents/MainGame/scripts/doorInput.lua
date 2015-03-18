@@ -5,6 +5,6 @@ end
 
 function Update(pos,dt)
     if isKeyDown(keys["action"]) then
-        SendMessage(1)
+        SendMessage(PLAYER_INTERACTION)
     end
 end

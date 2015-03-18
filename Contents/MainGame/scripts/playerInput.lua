@@ -11,13 +11,14 @@ function Update(obj,dt)
     acc.x = 0 ; acc.y = 0
 
     acceleration = acceleration_init
+
     if isKeyPressed(keys["cancel"]) then
         acceleration = acceleration*2
     end
 
 
     if isKeyPressed(keys["up"]) then
-        acc.y = acc.y -acceleration
+        acc.y = acc.y - acceleration
     end
     if isKeyPressed(keys["down"]) then
         acc.y = acc.y + acceleration
@@ -29,8 +30,5 @@ function Update(obj,dt)
         acc.x = acc.x -acceleration
     end
 
---    if acc.x ~= 0 and acc.y ~= 0 then
---        obj.acc = {x = acceleration/2*acc.x, y = acceleration/2*acc.y}
---    end
 
 end

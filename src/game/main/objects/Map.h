@@ -57,6 +57,8 @@ public:
     void addGameObject(iGameObject *obj);
     void addGameEnemies(iGameObject *obj);
 
+    void sendMessage(int MSG);
+
 
     Uint32 atPos(std::string stg,int x, int y);
     Rect atPosRect(int x, int y);

@@ -47,6 +47,7 @@ void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
     //Ver se está colidindo com algum gameObject
     bool colliding = false;
+
     for(iGameObject *i : world->gameObjects)
         if(sysPhysics::isColliding(obj->rect,i->rect))
         {

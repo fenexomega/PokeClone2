@@ -104,6 +104,15 @@ void Map::addGameEnemies(iGameObject *obj)
     gameEnemies.push_back(obj);
 }
 
+void Map::sendMessage(int MSG)
+{
+    for(iGameObject* i : gameObjects)
+        i->SendMessage(MSG);
+    for(iGameObject* i : gameEnemies)
+        i->SendMessage(MSG);
+
+}
+
 Uint32 Map::atPos(std::string stg, int x, int y)
 {
 

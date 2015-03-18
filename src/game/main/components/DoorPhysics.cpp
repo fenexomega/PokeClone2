@@ -6,6 +6,12 @@
 
 #include "main/components/PlayerPhysics.h"
 
+void DoorPhysics::UpdatePos()
+{
+    _obj->rect.x = _map->pos.x + _obj->pos.x + _map->offset.x;
+    _obj->rect.y = _map->pos.y + _obj->pos.y + _map->offset.y;
+}
+
 DoorPhysics::DoorPhysics(iGameObject *player, iComponentMediator *mediator, bool active)
     : cPhysics(mediator),_player(player),_active(active)
 {
@@ -21,25 +27,32 @@ DoorPhysics::~DoorPhysics()
 
 void DoorPhysics::receiveMessage(int msg)
 {
-    if(msg == DOOR_DISABLE)
+    switch(msg)
     {
+    case DOOR_DISABLE:
         LOG("Porta Desativada");
         _active = false;
+        sendMessage(DISSAPEAR);
+        break;
+    case OBJS_UPDATE_POS:
+        UpdatePos();
+        break;
     }
+
 }
 
 void DoorPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
 
 //NOTE: deveria rever a ordem das movimentações
-    obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
-    obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
-    if(_active)
-    if(sysPhysics::isColliding(_player->rect,obj->rect))
+    _obj = obj;
+    _map = world;
+   UpdatePos();
+
+    if(_active && sysPhysics::isColliding(_player->rect,obj->rect))
     {
         _player->SendMessage(MOVE_BACK);
-        obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
-        obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
+        _map->sendMessage(OBJS_UPDATE_POS);
     }
 
 }

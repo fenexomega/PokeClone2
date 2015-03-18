@@ -8,7 +8,7 @@ macro(add_game FOLDER_NAME)
         ${CMAKE_CURRENT_SOURCE_DIR} src/${FOLDER_NAME}/*.cpp
         src/${FOLDER_NAME}/*.h src/${FOLDER_NAME}/*.hpp)
     include_directories(src/${FOLDER_NAME})
-    add_executable(${FOLDER_NAME} ${SRC_FILES}
+    add_executable(${FOLDER_NAME} WIN32 ${SRC_FILES}
                    ${JSON_FILES} ${LUA_FILES} )
     target_link_libraries(${FOLDER_NAME} VacilationEngine)
 endmacro()

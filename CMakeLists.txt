@@ -14,14 +14,16 @@ find_package(Lua 5.2 REQUIRED)
 ####################################################################################
 ####################################################################################
 # Verificar se é Release
-if( CMAKE_BUILD_TYPE STREQUAL "Release")
-    add_definitions(-DRELEASE)
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
-else()
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
-endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -rdynamic")
+if( NOT MSVC)
+    if( CMAKE_BUILD_TYPE STREQUAL "Release")
+        add_definitions(-DRELEASE)
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+    else()
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+    endif()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -rdynamic")
+endif()
 ####################################################################################
 ####################################################################################
 

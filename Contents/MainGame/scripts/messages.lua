@@ -1,7 +1,8 @@
 -- Mensagens do player
-PLAYER_NEAR = 1
-PLAYER_INTERACTION = 2
+-- Definidos em Engine/Components/iComponent.h
+PLAYER_NEAR = 0x10
+PLAYER_INTERACTION = 0x11
 
-DISSAPEAR = 3
-MOVE_BACK = 4
-CHANGE_MAP = 5
+DISSAPEAR = 0x20
+MOVE_BACK = 0x21
+CHANGE_MAP = 0x22

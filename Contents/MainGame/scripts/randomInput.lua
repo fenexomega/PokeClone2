@@ -3,6 +3,10 @@ waitTime = math.random()
 x = 0
 acceleration = 1
 
+function ReceiveMessage(msg)
+
+end
+
 function Update(obj,dt)
     acc = obj["acc"]
     acc.x = 0; acc.y = 0

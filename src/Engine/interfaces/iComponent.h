@@ -6,13 +6,14 @@
 #define COMP_INPUT 3
 
 /****** MESSAGES ******/
-#define PLAYER_NEAR 1
-#define PLAYER_INTERACTION 2
+#define PLAYER_NEAR 0x10
+#define PLAYER_INTERACTION 0x11
 
-#define DISSAPEAR  3
-#define MOVE_BACK  4
-#define CHANGE_MAP 5
+#define DISSAPEAR  0x20
+#define MOVE_BACK  0x21
+#define CHANGE_MAP 0x22
 
+#define OBJS_UPDATE_POS 0x30
 
 
 #include "interfaces/iComponentMediator.h"

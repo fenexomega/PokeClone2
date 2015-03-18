@@ -3,13 +3,18 @@
 
 #include "components/cPhysics.h"
 
-#define DOOR_DISABLE 3
+#define DOOR_DISABLE 0x0010
 
 class DoorPhysics : public cPhysics
 {
 private:
     iGameObject *_player;
     bool _active;
+
+    Map* _map{};
+    iGameObject* _obj{};
+
+    void UpdatePos();
 public:
     DoorPhysics(iGameObject *player, iComponentMediator *mediator, bool active = true);
     ~DoorPhysics();

@@ -35,7 +35,7 @@ void PlayerPhysics::Move(Vector2D v)
      * duas unidades!
      */
 
-    //TODO O Mundo deveria se mexer de forma independente?
+    //NOTE O Mundo deveria se mexer de forma independente?
     _world->pos = -_obj->pos;
 
 }
