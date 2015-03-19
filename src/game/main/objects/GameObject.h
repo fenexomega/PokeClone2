@@ -10,8 +10,6 @@ class Map;
 
 class GameObject : public iGameObject
 {
-friend class World;
-friend class Factory;
 protected:
     cInput *_input;
     cPhysics *_physics;

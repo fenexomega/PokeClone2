@@ -1,8 +1,11 @@
 #include "MenuGame.h"
 
 #include "commands/changeGame.h"
+#include "commands/exitGame.h"
 
 #include "io/FileLoader.h"
+
+#include "graphics/Window.h"
 
 MenuGame::MenuGame(iGame *_game)
     : game(_game)
@@ -17,14 +20,26 @@ MenuGame::~MenuGame()
 
 void MenuGame::Init()
 {
-    static Button *aux = new Button(200,200,
+    static Button *b1 = new Button(Window::getWidth()/2,
+                                   Window::getHeight()/2 ,
                              FileLoader::LoadTexture("Contents/Menu/button.png"),
                              FileLoader::LoadTexture("Contents/Menu/buttonMouseOver.png"),
                              new changeGame(game),
                              new Text("Contents/Menu/UbuntuMono-B.ttf",
                                                        "Iniciar",
                                                        24));
-    buttons.push_back(aux);
+
+    static Button *b2 = new Button(Window::getWidth()/2,
+                                    Window::getHeight()/2 + 100,
+                             FileLoader::LoadTexture("Contents/Menu/button.png"),
+                             FileLoader::LoadTexture("Contents/Menu/buttonMouseOver.png"),
+                             new exitGame,
+                             new Text("Contents/Menu/UbuntuMono-B.ttf",
+                                                       "Sair",
+                                                       24));
+
+    buttons.push_back(b1);
+    buttons.push_back(b2);
 }
 
 void MenuGame::Update(float dt)
