@@ -21,11 +21,14 @@ public:
     //Colore a tela inteira com a cor escolhida, inclusive o Alpha
     static void clearScreen(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
-    static void Render(std::shared_ptr<Texture>texture, Rect *rect);
-    static void Render(std::shared_ptr<Texture>texture,Rect *srcrect,Rect *destrect);
-    static void Render(std::shared_ptr<Texture>texture, int x, int y);
+    static void Render(const std::shared_ptr<Texture>texture, Rect *const rect);
+    static void Render(const std::shared_ptr<Texture>texture, Rect *const  srcrect,Rect *const  destrect);
+    static void Render(const std::shared_ptr<Texture>texture, const int x, const int y);
 
-    static void Render(std::shared_ptr<Texture>texture,Vector2D vec);
+    static void Render(const std::shared_ptr<Texture>texture, const Vector2D vec);
+
+    static void Render(const std::shared_ptr<Texture> texture, const int x, const int y,
+                        float angle,const Vector2D center, int offsetx, int offsety);
 
 
 

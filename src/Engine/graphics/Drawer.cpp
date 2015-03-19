@@ -64,35 +64,49 @@ Drawer::~Drawer()
 
 }
 
-void Drawer::Render(std::shared_ptr<Texture>texture, Rect *rect)
+void Drawer::Render(const std::shared_ptr<Texture>texture, Rect *const rect)
 {
-    SDL_Rect sdlrect = rect->To_SDLRect();
+    SDL_Rect&& sdlrect = rect->To_SDLRect();
    SDL_RenderCopy(RENDERER, texture->tex(), NULL, &sdlrect);
 
 }
 
-void Drawer::Render(std::shared_ptr<Texture>texture, Rect *srcrect, Rect *destrect)
+void Drawer::Render(const std::shared_ptr<Texture> texture,  Rect *const srcrect, Rect *const destrect)
 {
-    SDL_Rect src = srcrect->To_SDLRect(), dest = destrect->To_SDLRect();
+    SDL_Rect&& src = srcrect->To_SDLRect(), && dest = destrect->To_SDLRect();
     SDL_RenderCopy(RENDERER, texture->tex(),&src,&dest);
 
 }
 
-void Drawer::Render(std::shared_ptr<Texture>texture, int x, int y)
+void Drawer::Render(const std::shared_ptr<Texture>texture,const int x,const int y)
 {
-    SDL_Rect rect = texture->getRect().To_SDLRect();
+    SDL_Rect&& rect = texture->getRect().To_SDLRect();
     rect.x = x;
     rect.y = y;
     SDL_RenderCopy(RENDERER, texture->tex(), NULL, &rect);
 
 }
 
-void Drawer::Render(std::shared_ptr<Texture>texture, Vector2D vec)
+void Drawer::Render(const std::shared_ptr<Texture>texture, const Vector2D vec)
 {
-    SDL_Rect rect = texture->getRect().To_SDLRect();
+    SDL_Rect&& rect = texture->getRect().To_SDLRect();
     rect.x = vec.x;
     rect.y = vec.y;
     SDL_RenderCopy(RENDERER, texture->tex(), NULL, &rect);
+}
+
+void Drawer::Render(std::shared_ptr<Texture> texture, const int x, const int y,
+                    float angle,const Vector2D center, int offsetx, int offsety)
+{
+    SDL_Rect&& srcrect = texture->getRect().To_SDLRect();
+    SDL_Rect&& destrect = texture->getRect().To_SDLRect();
+    SDL_Point&& centerP = {center.x,center.y};
+    srcrect.x = destrect.x = x;
+    srcrect.y = destrect.y = y;
+
+    destrect.x += offsetx;
+    destrect.y += offsety;
+    SDL_RenderCopyEx(RENDERER, texture->tex(), &srcrect, &destrect,angle,&centerP,SDL_FLIP_NONE);
 }
 
 void Drawer::RenderTo(std::shared_ptr<Texture>texture )
