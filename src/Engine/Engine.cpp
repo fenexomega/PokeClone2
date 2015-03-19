@@ -15,7 +15,7 @@
 
 
 std::vector<iSystem *> Engine::systems;
-
+bool Engine::_exit;
 
 
 bool Engine::InitSystems()
@@ -39,7 +39,7 @@ void Engine::ShutSystems()
 int Engine::Run(iGame *game)
 {
     InitSystems();
-
+    _exit = false;
     unsigned int framerate = 0;
     float seconds = 0;
     float dt;
@@ -56,7 +56,7 @@ int Engine::Run(iGame *game)
 
     game->Init();
 
-    while(!win.UserWannaQuit())
+    while(!_exit && !win.UserWannaQuit())
     {
 
         timer.Update();
@@ -86,7 +86,17 @@ int Engine::Run(iGame *game)
 
         seconds += dt;
         framerate++;
-//        SDL_Delay(1000/60);
+
+        /*BUG LINUX quando
+         * Você muda de desktop
+         * virtual, o número
+         * de frames fica louco.
+         *
+         * Colocar esse delay,
+         * mesmo sendo feio,
+         * resolve o problema.
+         */
+        timer.Delay(1000/66.0f);
 
     }
     Logger::CloseLogFile();
@@ -96,4 +106,9 @@ int Engine::Run(iGame *game)
     ShutSystems();
 
     return 0;
+}
+
+void Engine::Exit()
+{
+    _exit = true;
 }

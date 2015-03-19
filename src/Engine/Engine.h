@@ -12,6 +12,7 @@ class Engine
 {
 private:
     static iGame *_game;
+    static bool _exit;
 
     static std::vector<iSystem *> systems;
     static  bool InitSystems();
@@ -19,6 +20,7 @@ private:
     Engine();
 public:
     static int Run(iGame *game);
+    static void Exit();
 };
 
 #endif // ENGINE_H
