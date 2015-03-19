@@ -25,3 +25,8 @@ float uTime::getDeltaTime()
 //    return dt < value ? value : dt ;
     return dt;
 }
+
+void uTime::Delay(double s)
+{
+    SDL_Delay(s);
+}

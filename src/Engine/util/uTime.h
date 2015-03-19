@@ -15,6 +15,7 @@ public:
 
     void Update();
     float getDeltaTime();
+    void Delay(double s);
 
 
 };

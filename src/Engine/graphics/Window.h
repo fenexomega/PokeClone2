@@ -11,6 +11,8 @@ private:
     static SDL_Renderer *SDLrenderer;
     static int width, height;
     static std::string title;
+    static SDL_Event PollEvent();
+
 public:
     Window(int width, int height, std::string title, bool isFullscreen = false);
     ~Window();
@@ -29,7 +31,6 @@ public:
     static void setWidth(int value);
     static int getHeight();
     static void setHeight(int value);
-
 
 };
 

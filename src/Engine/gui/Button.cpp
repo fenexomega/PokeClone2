@@ -9,8 +9,8 @@ Button::Button(int x, int y, std::shared_ptr<Texture> normal, std::shared_ptr<Te
                , iCommand* command, Text *text)
 {
     rect = normal->getRect();
-    rect.x = x;
-    rect.y = y;
+    rect.x = x - rect.w/2;
+    rect.y = y - rect.y/2;
     textures.push_back(normal);
     textures.push_back(mouseOver);
     m_text = text;

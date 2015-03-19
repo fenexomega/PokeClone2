@@ -1,0 +1,7 @@
+#ifndef IINPUTHANDLER
+#define IINPUTHANDLER
+
+
+
+#endif // IINPUTHANDLER
+

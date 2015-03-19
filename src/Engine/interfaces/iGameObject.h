@@ -10,8 +10,10 @@
 class iGameObject
 {
 //    std::vector<iComponent> m_components;
-public:
+private:
     ComponentMediator _mediator;
+
+public:
     std::string name;
     std::string type;
     bool _active = true;

@@ -52,9 +52,7 @@ void Window::SwapBuffers()
 
 bool Window::UserWannaQuit()
 {
-    SDL_Event e;
-    SDL_PollEvent(&e);
-    return e.type == SDL_QUIT;
+    return PollEvent().type == SDL_QUIT;
 }
 
 void Window::Destroy()
@@ -67,6 +65,7 @@ void Window::Update()
 {
     if(sysInput::isKeyDown(SDL_SCANCODE_F10))
         TakeShot();
+
 }
 
 void Window::TakeShot()
@@ -87,6 +86,14 @@ void Window::clearScreen(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
     SDL_SetRenderDrawColor(SDLrenderer,r,g,b,a);
     SDL_RenderClear(SDLrenderer);
+}
+
+SDL_Event Window::PollEvent()
+{
+    SDL_Event e;
+    SDL_PollEvent(&e);
+
+    return e;
 }
 
 Window::Window(int _width, int _height, std::string title, bool isFullscreen )
