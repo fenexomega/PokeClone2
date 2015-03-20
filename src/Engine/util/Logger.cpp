@@ -1,7 +1,7 @@
 #include "Logger.h"
 
-#ifndef WIN32
-//if not Windows
+#ifdef __unix__
+
 #include <signal.h>
 #include <execinfo.h>
 
@@ -44,15 +44,15 @@ Logger::~Logger()
 
 void Logger::instanceSignalCallbacks()
 {
-#ifndef WIN32
-	signal(SIGSEGV,signalCallbackHandler);
+#ifdef __unix__
+    signal(SIGSEGV,signalCallbackHandler);
 #endif
 }
 
 void Logger::generateBackTrace(std::vector<char *> &vec)
 {
-#ifndef WIN32
-	const int maxbtsize = 64;
+#ifdef __unix__
+    const int maxbtsize = 64;
 	int logsize = 0;
 	void *bt[maxbtsize];
 	char ** logTrace;
@@ -80,6 +80,11 @@ void Logger::signalCallbackHandler(int signum)
         logString += "\n";
     }
     LOG("***** END *****");
+    std::ofstream backtrace;
+    backtrace.open("backtrace.log",std::ios_base::out);
+    backtrace << logString;
+    backtrace.close();
+
 	for(auto bt : vec)
 		delete bt;
 

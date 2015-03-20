@@ -25,7 +25,7 @@ void Button::RegisterCommand(iCommand *command)
 Button::~Button()
 {
     delete m_text;
-
+    delete command;
 }
 
 void Button::Update()
@@ -33,7 +33,7 @@ void Button::Update()
     //TODO fazer um botão melhor que use Observer
     Vector2D mousePos = sysInput::getMousePos();
     bool leftbutton = sysInput::isMouseButtonDown(1);
-    Rect mouse (0,0,1,1);
+    Vector2D mouse;
     mouse.x = mousePos.x;
     mouse.y = mousePos.y;
     if(sysPhysics::isColliding(mouse,(this->rect)))

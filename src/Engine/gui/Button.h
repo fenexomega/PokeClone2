@@ -27,11 +27,11 @@ public:
     void Update();
     void Render();
 private:
-    iCommand *command;
+    iCommand *command{};
     std::vector<std::shared_ptr<Texture> > textures;
     Rect rect;
-    int state;
-    Text *m_text;
+    int state{};
+    Text *m_text{};
 };
 
 #endif // BUTTON_H

@@ -38,6 +38,9 @@ void MenuGame::Init()
                                                        "Sair",
                                                        24));
 
+    text = new Text("Contents/Menu/slkscr.ttf","VACILATION",60,COLORWHITE);
+    text2 = new Text("Contents/Menu/slkscr.ttf","GAME",60,COLORWHITE);
+
     buttons.push_back(b1);
     buttons.push_back(b2);
 }
@@ -50,6 +53,11 @@ void MenuGame::Update(float dt)
 
 void MenuGame::Render()
 {
+    static int posx = 220;
+    static int posy = 80;
+    text->Render(posx,posy);
+    text2->Render(posx + 90,posy + 80);
+
     for(auto i : buttons)
         i->Render();
 }
@@ -59,6 +67,8 @@ void MenuGame::Dispose()
     for(auto i : buttons)
         delete i;
     buttons.clear();
+    delete text;
+    delete text2;
 }
 
 

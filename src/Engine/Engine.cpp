@@ -61,11 +61,6 @@ int Engine::Run(iGame *game)
 
         timer.Update();
         FileLoader::Update();
-        if(seconds >= 1.0f)
-        {
-            win.appendTitle(" " + std::to_string(framerate) + " FPS");
-            framerate = seconds = 0;
-        }
 
         sysInput::update();
 
@@ -82,6 +77,11 @@ int Engine::Run(iGame *game)
 
         win.Update();
 
+        if(seconds >= 1.0f)
+        {
+            win.appendTitle(" " + std::to_string(framerate) + " FPS");
+            framerate = seconds = 0;
+        }
         dt = timer.getDeltaTime();
 
         seconds += dt;

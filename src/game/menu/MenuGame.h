@@ -12,6 +12,7 @@ class MenuGame : public iGame
 private:
     std::vector<Button *> buttons;
     iGame *game;
+    Text *text{}, *text2;
 public:
     MenuGame(iGame *_game);
     ~MenuGame();

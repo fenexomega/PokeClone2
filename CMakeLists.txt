@@ -22,7 +22,11 @@ if( NOT MSVC)
     else()
             set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
     endif()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -rdynamic")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+
+    if(UNIX)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic")
+    endif()
 endif()
 ####################################################################################
 ####################################################################################
@@ -47,6 +51,7 @@ add_library(VacilationEngine SHARED ${SRC_THIRDPARTIES}  ${ENGINE_SRC_FILES})
 target_link_libraries(VacilationEngine ${COMPILER_LIBS})
 ####################################################################################
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Contents
+${CMAKE_CURRENT_SOURCE_DIR}/instrucoes.txt
 DESTINATION ${CMAKE_BINARY_DIR} )
 ####################################################################################
 include(macros.cmake)
