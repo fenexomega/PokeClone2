@@ -88,7 +88,7 @@ World *Factory::createWorld(std::string jsonWorldFile)
     _worldContext = new World;
     Json::Value json = FileLoader::LoadJson(jsonWorldFile);
 
-    for(auto i = 0; i < json["maps"].size() ; ++i )
+    for(unsigned int i = 0; i < json["maps"].size() ; ++i )
     {
         LOG("Criando " + json["maps"][i].asString());
         _worldContext->addMap( createMap( json["maps"][i].asString() ) );

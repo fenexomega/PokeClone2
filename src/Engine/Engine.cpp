@@ -1,8 +1,16 @@
 #include "Engine.h"
 
+
+
 #include "graphics/Window.h"
 #include "util/Logger.h"
 #include "util/uRandom.h"
+#include "util/uTime.h"
+
+#include "interfaces/iGame.h"
+#include "interfaces/iSystem.h"
+
+
 #include "io/FileLoader.h"
 
 #include "systems/sysGraphics.h"
@@ -52,7 +60,7 @@ int Engine::Run(iGame *game)
         return -1;
 
 
-    Window win(800,600,"PokeClone");
+    Window win(800,600,ENGINE_NAME);
 
     game->Init();
 

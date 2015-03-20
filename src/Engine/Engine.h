@@ -1,12 +1,14 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include "SDL2/SDL.h"
-#include "interfaces/iGame.h"
-#include "interfaces/iSystem.h"
-#include "util/uTime.h"
+#define ENGINE_NAME "Vacilation Engine"
+
 
 #include <vector>
+
+class iGame;
+class iSystem;
+
 
 class Engine
 {

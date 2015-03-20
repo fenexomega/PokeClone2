@@ -62,7 +62,8 @@ bool sysPhysics_Wrapper::isCollidingRC(lua::Value rect,lua::Value circle)
 
 bool sysPhysics_Wrapper::isCollidingCP(lua::Value circle, lua::Value point)
 {
-
+    //TODO
+    return true;
 }
 
 
