@@ -4,7 +4,10 @@ cmake_minimum_required(VERSION 3.0)
 
 set(CMAKE_BUILD_TYPE Debug CACHE STRING "Type of build: release of debug")
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMakeInclude)
-include(sources.cmake)
+
+# incluir arquivos CMAKE
+include(CMakeFiles/sources.cmake)
+include(CMakeFiles/macros.cmake)
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
@@ -13,7 +16,7 @@ find_package(SDL2_mixer REQUIRED)
 find_package(Lua 5.2 REQUIRED)
 ####################################################################################
 ####################################################################################
-# Verificar se é Release
+# Verificar qual compilador é e se é Release
 
 if( NOT MSVC)
     if( CMAKE_BUILD_TYPE STREQUAL "Release")
@@ -28,10 +31,11 @@ if( NOT MSVC)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic")
     endif()
 endif()
+
 ####################################################################################
 ####################################################################################
 
-include_directories(src/Engine ThirdParties/ ${SDL2_INCLUDE_DIR}
+include_directories(src/Engine src/ThirdParties/ ${SDL2_INCLUDE_DIR}
 ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR} ${SDL2_MIXER_INCLUDE_DIR}
  ${LUA_INCLUDE_DIR} )
 
@@ -54,7 +58,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Contents
 ${CMAKE_CURRENT_SOURCE_DIR}/instrucoes.txt
 DESTINATION ${CMAKE_BINARY_DIR} )
 ####################################################################################
-include(macros.cmake)
+
 
 # Testes
 add_test(Physics_Test)

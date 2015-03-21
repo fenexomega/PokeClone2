@@ -5,7 +5,7 @@
   <property name="playerPosY" value="0"/>
  </properties>
  <tileset firstgid="1" name="map" tilewidth="32" tileheight="32">
-  <image source="MainGame/images/test_tiles.png" width="256" height="64"/>
+  <image source="Contents/MainGame/images/test_tiles.png" width="256" height="64"/>
  </tileset>
  <layer name="background" width="30" height="30">
   <data encoding="base64" compression="zlib">
