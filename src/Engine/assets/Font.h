@@ -9,28 +9,29 @@
 #include "graphics/Color.h"
 using std::shared_ptr;
 
+enum FontAlign : short
+{
+    CENTER = 0,
+    RIGHT,
+    LEFT
+};
+
 class Font : iAsset
 {
-friend class Drawer;
 private:
     TTF_Font* m_font;
     int m_textSize;
-    Rect m_rect;
-    std::string m_text;
-    std::shared_ptr<Texture> m_tex;
-    Color m_color;
 public:
 
-    Font(std::string _path, std::string _text, int _textSize = 16, Color _color = COLORBLACK);
+    Font(std::string _path, int _textSize = 16);
 
     //Renderiza o Fonto
     void Render(int x, int y);
 
-    //Seta o texto e retorna a textura desse texto
-    shared_ptr<Texture> setFont(std::string _text);
+    shared_ptr<Texture> getTexture(std::string text,
+                                   Color color, Uint32 lineWrap);
 
     ~Font();
-    Rect rect() const;
 };
 
 #endif // FONT_H

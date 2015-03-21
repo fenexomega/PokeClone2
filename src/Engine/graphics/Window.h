@@ -10,6 +10,7 @@ private:
     static SDL_Window *SDLwindow;
     static SDL_Renderer *SDLrenderer;
     static int width, height;
+    static SDL_Texture *finalScreen;
     static std::string title;
     static SDL_Event PollEvent();
 

@@ -5,7 +5,7 @@
 #include "physics/Rect.h"
 #include "assets/Font.h"
 #include <SDL2/SDL_ttf.h>
-
+#include "util/Logger.h"
 
 #define RENDERER Window::getActiveRenderer()
 
@@ -14,7 +14,8 @@ Drawer::Drawer()
 
 }
 
-void Drawer::clearScreen(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+void Drawer::clearScreen(unsigned char r, unsigned char g,
+                         unsigned char b, unsigned char a)
 {
     SDL_SetRenderDrawColor(RENDERER,r,g,b,a);
     SDL_RenderClear(RENDERER);
@@ -67,21 +68,24 @@ Drawer::~Drawer()
 
 }
 
-void Drawer::Render(const std::shared_ptr<Texture>texture, Rect *const rect)
+void Drawer::Render(const std::shared_ptr<Texture>texture,
+                    Rect *const rect)
 {
     SDL_Rect&& sdlrect = rect->To_SDLRect();
    SDL_RenderCopy(RENDERER, texture->tex(), NULL, &sdlrect);
 
 }
 
-void Drawer::Render(const std::shared_ptr<Texture> texture,  Rect *const srcrect, Rect *const destrect)
+void Drawer::Render(const std::shared_ptr<Texture> texture,
+                    Rect *const srcrect, Rect *const destrect)
 {
     SDL_Rect&& src = srcrect->To_SDLRect(), && dest = destrect->To_SDLRect();
     SDL_RenderCopy(RENDERER, texture->tex(),&src,&dest);
 
 }
 
-void Drawer::Render(const std::shared_ptr<Texture>texture,const int x,const int y)
+void Drawer::Render(const std::shared_ptr<Texture>texture,
+                    const int x,const int y)
 {
     SDL_Rect&& rect = texture->getRect().To_SDLRect();
     rect.x = x;
@@ -90,7 +94,8 @@ void Drawer::Render(const std::shared_ptr<Texture>texture,const int x,const int 
 
 }
 
-void Drawer::Render(const std::shared_ptr<Texture>texture, const Vector2D vec)
+void Drawer::Render(const std::shared_ptr<Texture>texture,
+                    const Vector2D vec)
 {
     SDL_Rect&& rect = texture->getRect().To_SDLRect();
     rect.x = vec.x;
@@ -121,13 +126,27 @@ void Drawer::RenderTo(std::shared_ptr<Texture>texture )
 }
 
 void Drawer::RenderText(Font *font, std::string text, int x, int y,
-                        Color color, Uint32 lineWrap)
+                        Color color,  Uint32 lineWrap,short align )
 {
-   SDL_Surface *surface = TTF_RenderUTF8_Blended_Wrapped(font->m_font,text.c_str(),
-                                   color.toSDLColor(),lineWrap);
-   SDL_Texture *tex = SDL_CreateTextureFromSurface(Window::getActiveRenderer(),surface);
-   auto m_tex = shared_ptr<Texture>(new Texture(tex));
-   SDL_FreeSurface(surface);
-   Render(m_tex,x,y);
+   shared_ptr<Texture> tex = font->getTexture(text,color,lineWrap);
+   int ax = 0;
+   switch(align)
+   {
+   case CENTER:
+       ax = tex->getRect().x/2;break;
+   case RIGHT:
+       ax = tex->getRect().x;break;
+   case LEFT:
+       ax = 0; break;
+   default:
+      throw std::runtime_error
+               ("Invalid Align value! (value = "
+                + TOSTR(align) + ")");
+
+
+
+   }
+
+   Render(tex,x+ax,y);
 }
 

@@ -9,13 +9,14 @@
 class Rect;
 class Texture;
 class Font;
+enum FontAlign : short;
 
 class Drawer
 {
+friend class Font;
 private:
     Drawer();
     ~Drawer();
-
 public:
     //Renderizar textura.
 
@@ -37,7 +38,7 @@ public:
 
     static void RenderText(Font *font, std::string text, int x, int y,
                            Color color = COLORBLACK,
-                           Uint32 lineWrap = 0);
+                           Uint32 lineWrap = 0, short align = 0);
 
     //Desenha uma linha de x1,y1 a x2,y2
     static void drawLine(Color color,int x1, int y1, int x2, int y2);

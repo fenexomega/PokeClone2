@@ -125,6 +125,8 @@ Window::Window(int _width, int _height, std::string title, bool isFullscreen )
         throw std::runtime_error("Couldn't set the SDL Window and Renderer:\n " + std::string(SDL_GetError())); // TODO tratar isso
     }
 
+//    finalScreen = SDL_CreateTexture(SDLrenderer,SDL_Rende)
+
 }
 
 

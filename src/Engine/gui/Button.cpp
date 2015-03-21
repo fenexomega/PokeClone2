@@ -6,14 +6,16 @@
 #include "graphics/Drawer.h"
 
 Button::Button(int x, int y, std::shared_ptr<Texture> normal, std::shared_ptr<Texture> mouseOver
-               , iCommand* command, Font *text)
+               , iCommand* command, Font *font, std::string text, Color text_color)
+    : m_text(text)
 {
     rect = normal->getRect();
     rect.x = x - rect.w/2;
     rect.y = y - rect.y/2;
     textures.push_back(normal);
     textures.push_back(mouseOver);
-    m_text = text;
+    m_font = font;
+    m_text_tex = font->getTexture(text,text_color,rect.w);
     RegisterCommand(command);
 }
 
@@ -24,7 +26,7 @@ void Button::RegisterCommand(iCommand *command)
 
 Button::~Button()
 {
-    delete m_text;
+    delete m_font;
     delete command;
 }
 
@@ -55,7 +57,7 @@ void Button::Update()
 void Button::Render()
 {
     Drawer::Render(textures[state],rect.x,rect.y);
-    if(m_text != nullptr)
-        m_text->Render( rect.x + (rect.w/2 - m_text->rect().w/2),
-                   rect.y + (rect.h/2 - m_text->rect().h/2) );
+//    if(m_font != nullptr)
+        Drawer::Render(m_text_tex, rect.x + (rect.w/2 - m_text_tex->getRect().w/2),
+                   rect.y + (rect.h/2 - m_text_tex->getRect().h/2) );
 }
