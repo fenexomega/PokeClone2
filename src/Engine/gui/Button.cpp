@@ -6,7 +6,7 @@
 #include "graphics/Drawer.h"
 
 Button::Button(int x, int y, std::shared_ptr<Texture> normal, std::shared_ptr<Texture> mouseOver
-               , iCommand* command, Text *text)
+               , iCommand* command, Font *text)
 {
     rect = normal->getRect();
     rect.x = x - rect.w/2;

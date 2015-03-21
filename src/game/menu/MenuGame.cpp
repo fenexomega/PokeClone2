@@ -25,7 +25,7 @@ void MenuGame::Init()
                              FileLoader::LoadTexture("Contents/Menu/button.png"),
                              FileLoader::LoadTexture("Contents/Menu/buttonMouseOver.png"),
                              new changeGame(game),
-                             new Text("Contents/Menu/UbuntuMono-B.ttf",
+                             new Font("Contents/Menu/UbuntuMono-B.ttf",
                                                        "Iniciar",
                                                        24));
 
@@ -34,12 +34,12 @@ void MenuGame::Init()
                              FileLoader::LoadTexture("Contents/Menu/button.png"),
                              FileLoader::LoadTexture("Contents/Menu/buttonMouseOver.png"),
                              new exitGame,
-                             new Text("Contents/Menu/UbuntuMono-B.ttf",
+                             new Font("Contents/Menu/UbuntuMono-B.ttf",
                                                        "Sair",
                                                        24));
 
-    text = new Text("Contents/Menu/slkscr.ttf","VACILATION",60,COLORWHITE);
-    text2 = new Text("Contents/Menu/slkscr.ttf","GAME",60,COLORWHITE);
+    text = new Font("Contents/Menu/slkscr.ttf","VACILATION",60,COLORWHITE);
+    text2 = new Font("Contents/Menu/slkscr.ttf","GAME",60,COLORWHITE);
 
     buttons.push_back(b1);
     buttons.push_back(b2);

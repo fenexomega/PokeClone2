@@ -8,6 +8,7 @@
 
 class Rect;
 class Texture;
+class Font;
 
 class Drawer
 {
@@ -33,6 +34,10 @@ public:
 
 
     static void RenderTo(std::shared_ptr<Texture>texture = NULL);
+
+    static void RenderText(Font *font, std::string text, int x, int y,
+                           Color color = COLORBLACK,
+                           Uint32 lineWrap = 0);
 
     //Desenha uma linha de x1,y1 a x2,y2
     static void drawLine(Color color,int x1, int y1, int x2, int y2);

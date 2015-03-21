@@ -3,6 +3,9 @@
 #include "graphics/Window.h"
 #include "assets/Texture.h"
 #include "physics/Rect.h"
+#include "assets/Font.h"
+#include <SDL2/SDL_ttf.h>
+
 
 #define RENDERER Window::getActiveRenderer()
 
@@ -115,5 +118,16 @@ void Drawer::RenderTo(std::shared_ptr<Texture>texture )
         SDL_SetRenderTarget(RENDERER,NULL);
     else
         SDL_SetRenderTarget(RENDERER,texture->tex());
+}
+
+void Drawer::RenderText(Font *font, std::string text, int x, int y,
+                        Color color, Uint32 lineWrap)
+{
+   SDL_Surface *surface = TTF_RenderUTF8_Blended_Wrapped(font->m_font,text.c_str(),
+                                   color.toSDLColor(),lineWrap);
+   SDL_Texture *tex = SDL_CreateTextureFromSurface(Window::getActiveRenderer(),surface);
+   auto m_tex = shared_ptr<Texture>(new Texture(tex));
+   SDL_FreeSurface(surface);
+   Render(m_tex,x,y);
 }
 

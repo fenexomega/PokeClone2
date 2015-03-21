@@ -1,5 +1,5 @@
-#ifndef TEXT_H
-#define TEXT_H
+#ifndef FONT_H
+#define FONT_H
 
 #include <memory>
 #include <SDL2/SDL_ttf.h>
@@ -9,8 +9,9 @@
 #include "graphics/Color.h"
 using std::shared_ptr;
 
-class Text : iAsset
+class Font : iAsset
 {
+friend class Drawer;
 private:
     TTF_Font* m_font;
     int m_textSize;
@@ -20,16 +21,16 @@ private:
     Color m_color;
 public:
 
-    Text(std::string _path, std::string _text, int _textSize = 16, Color _color = COLORBLACK);
+    Font(std::string _path, std::string _text, int _textSize = 16, Color _color = COLORBLACK);
 
-    //Renderiza o Texto
+    //Renderiza o Fonto
     void Render(int x, int y);
 
     //Seta o texto e retorna a textura desse texto
-    shared_ptr<Texture> setText(std::string _text);
+    shared_ptr<Texture> setFont(std::string _text);
 
-    ~Text();
+    ~Font();
     Rect rect() const;
 };
 
-#endif // TEXT_H
+#endif // FONT_H

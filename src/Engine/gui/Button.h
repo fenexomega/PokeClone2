@@ -5,7 +5,7 @@
 
 #include "interfaces/iCommand.h"
 #include "assets/Texture.h"
-#include "assets/Text.h"
+#include "assets/Font.h"
 
 class Button
 {   
@@ -19,7 +19,7 @@ public:
 
     };
 
-    Button(int x, int y, std::shared_ptr<Texture>normal,std::shared_ptr<Texture>mouseOver,iCommand* command = nullptr,Text *text = nullptr);
+    Button(int x, int y, std::shared_ptr<Texture>normal,std::shared_ptr<Texture>mouseOver,iCommand* command = nullptr,Font *text = nullptr);
     void RegisterCommand(iCommand* command);
     ~Button();
 
@@ -31,7 +31,7 @@ private:
     std::vector<std::shared_ptr<Texture> > textures;
     Rect rect;
     int state{};
-    Text *m_text{};
+    Font *m_text{};
 };
 
 #endif // BUTTON_H
