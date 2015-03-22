@@ -21,7 +21,8 @@ MenuGame::~MenuGame()
 
 void MenuGame::Init()
 {
-    static Button *b1 = new Button(Window::getWidth()/2,
+    Window::setHiddenMouseCursor(false);
+    Button *b1 = new Button(Window::getWidth()/2,
                                    Window::getHeight()/2 ,
                                    FileLoader::LoadTexture("Contents/Menu/button.png"),
                                    FileLoader::LoadTexture("Contents/Menu/buttonMouseOver.png"),
@@ -29,7 +30,7 @@ void MenuGame::Init()
                                    new Font("Contents/Menu/UbuntuMono-B.ttf",
                                             24), "Iniciar",COLORBLACK);
 
-    static Button *b2 = new Button(Window::getWidth()/2,
+    Button *b2 = new Button(Window::getWidth()/2,
                                    Window::getHeight()/2 + 100,
                                    FileLoader::LoadTexture("Contents/Menu/button.png"),
                                    FileLoader::LoadTexture("Contents/Menu/buttonMouseOver.png"),

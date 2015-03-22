@@ -28,6 +28,7 @@ Button::~Button()
 {
     delete m_font;
     delete command;
+    textures.clear();
 }
 
 void Button::Update()

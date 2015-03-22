@@ -25,6 +25,8 @@ public:
     void Destroy();
     void Update();
 
+    static void setGrabMouse(bool value);
+    static void setHiddenMouseCursor(bool value);
     static void TakeShot();
     static void appendTitle(std::string st);
     static void clearScreen(uint8_t r, uint8_t g, uint8_t b,uint8_t a);

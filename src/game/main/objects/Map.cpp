@@ -69,7 +69,7 @@ void Map::setLayersRect(const std::map<std::string, std::vector<Rect> > &value)
 std::string Map::getLocationDir(std::string filename)
 {
     std::string aux;
-    int i = filename.find_last_of('/');
+    int&& i = filename.find_last_of('/');
     aux.append(filename.substr(0,i) + '/');
     return aux;
 }
@@ -139,8 +139,15 @@ Map::~Map()
 {
     for(iGameObject* i : gameObjects)
         delete i;
+    gameObjects.clear();
     for(iGameObject* i : gameEnemies)
         delete i;
+    gameEnemies.clear();
+
+    tileRects.clear();
+    layersTiles.clear();
+     layersRect.clear();
+
     delete tilemap;
 }
 

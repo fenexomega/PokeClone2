@@ -68,6 +68,26 @@ void Window::Update()
 
 }
 
+void Window::setGrabMouse(bool value)
+{
+    SDL_bool b;
+    if(value)
+        b = SDL_TRUE;
+    else
+        b = SDL_FALSE;
+    SDL_SetRelativeMouseMode(b);
+}
+
+void Window::setHiddenMouseCursor(bool value)
+{
+    int sd;
+    if(value)
+        sd = SDL_DISABLE;
+    else
+        sd = SDL_ENABLE;
+    SDL_ShowCursor(sd);
+}
+
 void Window::TakeShot()
 {
     SDL_Surface *sshot = SDL_CreateRGBSurface(0, width, height, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);

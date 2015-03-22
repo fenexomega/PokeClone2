@@ -13,7 +13,7 @@ Game::Game()
 {
     ADD_GAME(new MenuGame(this));
     ADD_GAME(new MainGame(this));
-    actualGame = games[0];
+    _actualGame = games[0];
 }
 
 Game::~Game()
@@ -23,29 +23,35 @@ Game::~Game()
 
 void Game::Init()
 {
-    actualGame->Init();
+    _actualGame->Init();
+    _previousGame = nullptr;
 }
 
 void Game::Update(float dt)
 {
-    actualGame->Update(dt);
+    if(_previousGame != nullptr)
+    {
+        _previousGame->Dispose();
+        _previousGame = nullptr;
+    }
+    _actualGame->Update(dt);
 
 }
 
 void Game::Render()
 {
-    actualGame->Render();
+    _actualGame->Render();
 }
 
 void Game::Dispose()
 {
-    actualGame->Dispose();
+    _actualGame->Dispose();
 }
 
 
 void Game::SendMessage(MSG msg, void *content)
 {
-    actualGame->Dispose();
-    actualGame = games.at(msg.id);
-    actualGame->Init();
+    _previousGame = _actualGame;
+    _actualGame = games.at(msg.id);
+    _actualGame->Init();
 }

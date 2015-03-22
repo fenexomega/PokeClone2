@@ -12,8 +12,9 @@ typedef shared_ptr<iGame> sh_ptr;
 class Game : public iGame
 {
 private:
-    sh_ptr actualGame;
+    sh_ptr _actualGame;
     std::vector<sh_ptr> games;
+    sh_ptr _previousGame;
 public:
 
     Game();
