@@ -8,6 +8,8 @@
 #include "graphics/Window.h"
 #include "graphics/Drawer.h"
 
+#include "Factory.h"
+
 MenuGame::MenuGame(iGame *_game)
     : game(_game)
 {
@@ -41,6 +43,8 @@ void MenuGame::Init()
 
     buttons.push_back(b1);
     buttons.push_back(b2);
+
+    Factory::Init();
 }
 
 void MenuGame::Update(float dt)

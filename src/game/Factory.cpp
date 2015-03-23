@@ -101,6 +101,8 @@ World *Factory::createWorld(std::string jsonWorldFile)
     return _worldContext;
 }
 
+
+
 Map *Factory::createMap(std::string jsonFile)
 {
     static std::string dir = "Contents/MainGame/";
@@ -148,5 +150,7 @@ Map *Factory::createMap(std::string jsonFile)
 
 void Factory::Init()
 {
+    if(_player)
+        delete _player;
     _player = nullptr;
 }
