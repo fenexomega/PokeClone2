@@ -7,11 +7,12 @@
 class PlayerPhysics : public cPhysics
 {
 private:
-    iGameObject *_obj;
-    Map *_world;
-    Rect _hitBox;
-    int _velocity = 2;
+    iGameObject *_obj{};
+    Map *_world{};
+    Rect _hitBox{};
+    int _velocity{};
     int _offset{};
+    Vector2D _v;
 
     void Move(Vector2D v);
 public:

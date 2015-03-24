@@ -27,7 +27,7 @@ GameObject *ActorsFactory::createPlayer(Json::Value json, Map *world)
 
     player->setComponents(
                 new ScriptedInput(json["script"].asString(),player->mediator(),player),
-            new PlayerPhysics(2,Rect(0,0,json["width"].asInt(),
+            new PlayerPhysics(100,Rect(0,0,json["width"].asInt(),
                               json["height"].asInt()/2),
             player->mediator()),
             new AnimationController(
@@ -62,7 +62,7 @@ GameObject *ActorsFactory::createEnemy(Json::Value json, Map *world, Vector2D po
 
     gameObj->setComponents(
                 new ScriptedInput(json["script"].asString(),gameObj->mediator(),player),
-            new EnemyPhysics(2,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2),
+            new EnemyPhysics(120,Rect(0,0,json["width"].asInt(),json["height"].asInt()/2),
             player,gameObj->mediator()),
             new AnimationController(
                 new SpriteAnimation(json["sprite"].asString()

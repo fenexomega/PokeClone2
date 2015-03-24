@@ -44,16 +44,17 @@ void PlayerPhysics::Move(Vector2D v)
 void PlayerPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
 
+    _v = obj->acc*_velocity*dt;
     _obj = obj;
     _world = world;
-    Move(obj->acc*_velocity);
+    Move(_v);
 
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
     for(auto i : colidables)
     {
         if(sysPhysics::isColliding(_hitBox,i))
         {
-            Move(-_obj->acc*_velocity);
+            Move(-_v);
             return;
         }
     }
@@ -66,7 +67,7 @@ void PlayerPhysics::receiveMessage(int msg)
     if(msg == MOVE_BACK)
     {
         //Observer Notify?
-        Move(-_obj->acc*_velocity);
+        Move(-_v);
     }
 }
 

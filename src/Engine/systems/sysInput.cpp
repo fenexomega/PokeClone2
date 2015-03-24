@@ -113,6 +113,9 @@ Vector2D sysInput::getMousePos()
 
 }
 
+/*TODO fazer uma fila que guarda os inputs
+ * e trabalha com eles.
+ */
 bool sysInput::getMouseButton(int button)
 {
     return SDL_GetMouseState(NULL, NULL)&SDL_BUTTON(button);

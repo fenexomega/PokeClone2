@@ -39,9 +39,10 @@ void EnemyPhysics::receiveMessage(int msg)
 
 void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
+    _v = obj->acc*_velocity*dt;
     _obj = obj;
     _world = world;
-    Move(obj->acc*_velocity);
+    Move(_v);
 
 
     std::vector<Rect> colidables = world->getLayersRect("colidiveis");
@@ -79,10 +80,10 @@ void EnemyPhysics::Update(iGameObject *obj, Map *world, float dt)
     //Colisão com o mundo
     for(auto i : colidables)
     {
-        if(sysPhysics::isColliding(_hitBox,i)
-                || colliding)
+        if(colliding ||
+                sysPhysics::isColliding(_hitBox,i))
         {
-            Move(-obj->acc*_velocity);
+            Move(-_v);
 
             break;
         }

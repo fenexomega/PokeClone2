@@ -73,7 +73,7 @@ Json::Value FileLoader::LoadJson(std::string path)
 TTF_Font* FileLoader::LoadFont(std::string path,int size)
 {
     TTF_Font *font = TTF_OpenFont(path.c_str(),size);
-    if(font == nullptr)
+    if(font == NULL)
     {
         throw std::runtime_error(SDL_GetError());
     }

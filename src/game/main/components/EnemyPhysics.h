@@ -12,6 +12,7 @@ private:
     iGameObject *_obj;
     Map *_world;
     int _offset;
+    Vector2D _v{};
 
     void Move(Vector2D v);
 public:

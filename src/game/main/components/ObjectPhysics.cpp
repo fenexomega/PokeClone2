@@ -54,6 +54,7 @@ void ObjectPhysics::Update(iGameObject *obj, Map *world, float dt)
 
 void ObjectPhysics::UpdatePos()
 {
+    //BUG portas e objetos estão "tremendo" na tela
     _obj->rect.x = _map->pos.x + _obj->pos.x + _map->offset.x;
     _obj->rect.y = _map->pos.y + _obj->pos.y + _map->offset.y;
 }

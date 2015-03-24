@@ -104,7 +104,7 @@ int Engine::Run(iGame *game)
          * mesmo sendo feio,
          * resolve o problema.
          */
-        timer.Delay(1000/66.0f);
+        timer.Delay(1000/60.0f);
 
     }
     Logger::CloseLogFile();
