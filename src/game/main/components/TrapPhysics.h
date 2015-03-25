@@ -6,7 +6,7 @@
 class TrapPhysics : public cPhysics
 {
 public:
-    TrapPhysics();
+    TrapPhysics(iComponentMediator *mediator);
     ~TrapPhysics();
 
     // iComponent interface

@@ -1,6 +1,7 @@
 #include "TrapPhysics.h"
 
-TrapPhysics::TrapPhysics()
+TrapPhysics::TrapPhysics(iComponentMediator *mediator)
+    : cPhysics(mediator)
 {
 
 }
