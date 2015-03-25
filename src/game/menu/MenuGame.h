@@ -12,7 +12,8 @@ class MenuGame : public iGame
 private:
     std::vector<Button *> buttons;
     iGame *game;
-    Font *text{}, *text2;
+    shared_ptr<Font> textFont;
+    shared_ptr<Font> instFont;
 public:
     MenuGame(iGame *_game);
     ~MenuGame();

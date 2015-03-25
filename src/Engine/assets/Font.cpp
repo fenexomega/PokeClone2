@@ -8,10 +8,16 @@
 #include <memory>
 
 
-Font::Font(std::string _path, int _textSize) :
-    iAsset(AS_FONT), m_textSize(_textSize)
+
+int Font::textSize() const
 {
-    m_font = FileLoader::LoadFont(_path,m_textSize);
+    return m_textSize;
+}
+
+Font::Font() :
+    iAsset(AS_FONT)
+{
+    
 }
 
 

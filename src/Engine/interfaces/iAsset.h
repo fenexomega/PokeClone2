@@ -13,6 +13,7 @@ class iAsset
 {
 private:
 
+
 public:
     int id;
 

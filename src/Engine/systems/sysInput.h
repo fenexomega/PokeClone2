@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <SDL2/SDL.h>
-#include <glm/glm.hpp>
 #include "math/Vector2D.h"
+
+class Vector2D;
 
 using namespace std;
 

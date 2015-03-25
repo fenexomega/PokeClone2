@@ -1,5 +1,8 @@
 #include "sysInput.h"
 
+#include <algorithm>
+
+
  const Uint8 * sysInput::keys;
  const Uint8 * sysInput::mouseKeys;
 

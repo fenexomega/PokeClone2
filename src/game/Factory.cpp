@@ -90,7 +90,7 @@ World *Factory::createWorld(std::string jsonWorldFile)
 
     for(unsigned int i = 0; i < json["maps"].size() ; ++i )
     {
-        LOG("Criando " + json["maps"][i].asString());
+        LOG("Creating\tMap\t" + json["maps"][i].asString());
         _worldContext->addMap( createMap( json["maps"][i].asString() ) );
     }
 

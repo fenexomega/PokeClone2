@@ -9,7 +9,7 @@ class uTime
 private:
     long currentTime;
     long oldTime;
-    float dt;
+    double dt;
 public:
     uTime();
 
