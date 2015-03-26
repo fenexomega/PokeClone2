@@ -15,6 +15,36 @@ void GameObject::setMap(Map *map)
     _map = map;
 }
 
+
+cPhysics *GameObject::physics() const
+{
+    return _physics;
+}
+
+void GameObject::setPhysics(cPhysics *physics)
+{
+    _physics = physics;
+}
+
+cInput *GameObject::input() const
+{
+    return _input;
+}
+
+void GameObject::setInput(cInput *input)
+{
+    _input = input;
+}
+
+cGraphic *GameObject::graphic() const
+{
+    return _graphic;
+}
+
+void GameObject::setGraphic(cGraphic *graphic)
+{
+    _graphic = graphic;
+}
 GameObject::GameObject(Map *map)
     : _map(map)
 {
@@ -22,7 +52,9 @@ GameObject::GameObject(Map *map)
 }
 
 
-void GameObject::setComponents(cInput *input, cPhysics *physics, cGraphic *graphic)
+void GameObject::setComponents(cInput *input,
+                               cPhysics *physics,
+                               cGraphic *graphic)
 {
     _input = input;
     _physics = physics;

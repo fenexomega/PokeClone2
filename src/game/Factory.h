@@ -10,6 +10,11 @@ class GameObject;
 class Map;
 class World;
 
+namespace Json
+{
+    class Value;
+}
+
 class Factory
 {
 private:
@@ -18,7 +23,9 @@ public:
     static GameObject* _player;
     static World* _worldContext;
 
-    static iGameObject *createInteractive(std::string jsonFile, Map *world, Vector2D pos);
+    static iGameObject *createInteractive(std::string jsonFile,
+                                          Map *world, Vector2D pos,
+                                          Json::Value auxJson);
 
     //Esse método carrega um json que tem as caracteristicas do player
     //Junto com o mundo

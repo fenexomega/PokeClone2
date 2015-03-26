@@ -6,6 +6,7 @@ class Map;
 class GameObject;
 class iGameObject;
 class World;
+class Vector2D;
 
 namespace Json
 {
@@ -21,6 +22,7 @@ public:
 
    static GameObject *createTeleporter(Map *world,Json::Value json,iGameObject * player,World *worldContext);
 
+   static void changeMap(iGameObject *obj, Json::Value json);
 
     ~IteractiveFactory();
 };

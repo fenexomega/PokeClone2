@@ -18,7 +18,9 @@ protected:
 public:
 
     GameObject(Map *map);
-    void setComponents(cInput *input,cPhysics *physics,cGraphic *graphic);
+    void setComponents(cInput *input,
+                       cPhysics *physics,
+                       cGraphic *graphic);
     ~GameObject();
 
     // iGameObject interface
@@ -27,6 +29,12 @@ public:
 
     Map *map() const;
     void setMap(Map *map);
+    cPhysics *physics() const;
+    void setPhysics(cPhysics *physics);
+    cInput *input() const;
+    void setInput(cInput *input);
+    cGraphic *graphic() const;
+    void setGraphic(cGraphic *graphic);
 };
 
 #endif // GAMEOBJECT_H

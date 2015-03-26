@@ -19,8 +19,10 @@
         }
         ,
         {
-            "type":"teleporters\/tele1",
-            "pos":[380,200]
+            "type":"teleporters\/tele0",
+            "pos":[380,200],
+            "map"   : "map0",
+            "posTele"   : [396,232]
         }
     ],
     "enemies":[

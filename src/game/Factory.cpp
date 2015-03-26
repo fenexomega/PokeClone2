@@ -12,6 +12,7 @@
 #include "main/factories/IteractiveFactory.h"
 #include "main/factories/ActorsFactory.h"
 
+
 GameObject* Factory::_player;
 World* Factory::_worldContext;
 
@@ -44,7 +45,9 @@ GameObject *Factory::createEnemy(std::string jsonFile, Map *world, Vector2D pos)
     return ActorsFactory::createEnemy(json,world,pos,_player);
 }
 
-iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector2D pos)
+iGameObject *Factory::createInteractive(std::string jsonFile,
+                                        Map *world, Vector2D pos,
+                                        Json::Value auxJson)
 {
     Json::Value json = FileLoader::LoadJson(jsonFile);
     iGameObject *obj = NULL;
@@ -70,12 +73,17 @@ iGameObject *Factory::createInteractive(std::string jsonFile, Map *world, Vector
     }
     else if (json["type"].asString() == "key")
     {
-        //inconsistencia?
         obj = IteractiveFactory::createKey(world,json,_player);
     }
     else if (json["type"].asString() == "teleporter")
-        //inconsistencia?
-        obj = IteractiveFactory::createTeleporter(world,json,_player,_worldContext);
+    {
+        obj = IteractiveFactory::
+                createTeleporter(world,json,_player,_worldContext);
+        IteractiveFactory::changeMap(obj,auxJson);
+
+    }
+    else
+        throw std::runtime_error("No known object type");
     obj->pos = pos;
     obj->rect = Rect(pos.x,pos.y,json["width"].asInt(),
             json["height"].asInt());
@@ -131,7 +139,7 @@ Map *Factory::createMap(std::string jsonFile)
         LOG("Criando " + json["objects"][i]["type"].asString());
         obj = createInteractive(objsDir + json["objects"][i]["type"].asString() + ".json",worldMap,
                 aux.set(json["objects"][i]["pos"][0].asInt(),
-                json["objects"][i]["pos"][1].asInt()) );
+                json["objects"][i]["pos"][1].asInt()) ,json["objects"][i]);
         worldMap->addGameObject(obj);
     }
 

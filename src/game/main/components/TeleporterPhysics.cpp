@@ -9,10 +9,9 @@
 #include "Factory.h"
 #include "main/objects/GameObject.h"
 
-
 TeleporterPhysics::TeleporterPhysics(iComponentMediator *mediator, iGameObject *player,
-                                     World *wc, std::string newMap, Vector2D mapPos)
-    : cPhysics(mediator),_player(player),_wc(wc),_mapName(newMap),_mapPos(mapPos)
+                                     World *wc)
+    : cPhysics(mediator),_player(player),_wc(wc)
 {
 
 }
@@ -39,13 +38,21 @@ void TeleporterPhysics::receiveMessage(int msg)
     }
 }
 
-void TeleporterPhysics::Update(iGameObject *obj, Map *world, float dt)
+void TeleporterPhysics::Update(iGameObject *obj,
+                               Map *world, float dt)
 {
-//    LOG("TELEPORTER");
     obj->rect.x = world->pos.x + obj->pos.x + world->offset.x;
     obj->rect.y = world->pos.y + obj->pos.y + world->offset.y;
     if(sysPhysics::isColliding(obj->rect,_player->rect))
     {
         sendMessage(PLAYER_NEAR);
     }
+}
+
+void TeleporterPhysics::setMapToTeleport(
+        const std::string mapName,
+        const Vector2D mapPos)
+{
+    _mapName = mapName;
+    _mapPos = mapPos;
 }

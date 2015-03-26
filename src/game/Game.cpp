@@ -54,4 +54,5 @@ void Game::SendMessage(MSG msg, void *content)
     _previousGame = _actualGame;
     _actualGame = games.at(msg.id);
     _actualGame->Init();
+
 }
