@@ -75,7 +75,7 @@ Json::Value FileLoader::LoadJson(std::string path)
 shared_ptr<Font> FileLoader::LoadFont(std::string path,int size)
 {
 
-    shared_ptr<Font> shared{new Font};
+    shared_ptr<Font> shared;
 
     auto auxpath = path + TOSTR(size);
 
@@ -83,9 +83,11 @@ shared_ptr<Font> FileLoader::LoadFont(std::string path,int size)
 
     if(files.find(auxpath) != files.end())
     {
-        shared = std::static_pointer_cast<Font,iAsset>(files[path]);
+        shared = std::static_pointer_cast<Font,iAsset>(files[auxpath]);
         return shared;
     }
+
+    shared = shared_ptr<Font>(new Font);
 
     TTF_Font *font = TTF_OpenFont(path.c_str(),size);
 
@@ -105,16 +107,21 @@ shared_ptr<Font> FileLoader::LoadFont(std::string path,int size)
 
 void FileLoader::Clear()
 {
-
-    for(std::map<std::string,std::shared_ptr<iAsset> >::iterator i = files.begin(); i != files.end(); ++i)
-        if(i->second.unique())
+    for(auto i = files.begin(); i != files.end(); ++i)
             files.erase(i);
+
 
 }
 
 void FileLoader::Update()
 {
-    for(auto i = files.begin(); i != files.end(); ++i)
+
+    for(std::map<std::string,std::shared_ptr<iAsset> >::iterator i = files.begin(); i != files.end(); ++i)
+        if(i->second.unique())
+        {
+            LOG("Erasing " + i->first);
             files.erase(i);
+        }
+
 }
 
