@@ -11,6 +11,8 @@ class Texture;
 class Font;
 enum FontAlign : short;
 
+using std::shared_ptr;
+
 class Drawer
 {
 friend class Font;
@@ -23,20 +25,20 @@ public:
     //Colore a tela inteira com a cor escolhida, inclusive o Alpha
     static void clearScreen(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
-    static void Render(const std::shared_ptr<Texture>texture, Rect *const rect);
-    static void Render(const std::shared_ptr<Texture>texture, Rect *const  srcrect,Rect *const  destrect);
-    static void Render(const std::shared_ptr<Texture>texture, const int x, const int y);
+    static void Render(const shared_ptr<Texture>texture, Rect *const rect);
+    static void Render(const shared_ptr<Texture>texture, Rect *const  srcrect,Rect *const  destrect);
+    static void Render(const shared_ptr<Texture>texture, const int x, const int y);
 
-    static void Render(const std::shared_ptr<Texture>texture, const Vector2D vec);
+    static void Render(const shared_ptr<Texture>texture, const Vector2D vec);
 
-    static void Render(const std::shared_ptr<Texture> texture, const int x, const int y,
+    static void Render(const shared_ptr<Texture> texture, const int x, const int y,
                         float angle,const Vector2D center, int offsetx, int offsety);
 
 
 
-    static void RenderTo(std::shared_ptr<Texture>texture = NULL);
+    static void RenderTo(shared_ptr<Texture>texture = NULL);
 
-    static void RenderText(Font *font, std::string text, int x, int y,
+    static void RenderText(shared_ptr<Font> font, std::string text, int x, int y,
                            Color color = COLORBLACK,
                            Uint32 lineWrap = 0, short align = 0);
 

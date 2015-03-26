@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 
+#define FRAMERATE_LIMIT 60
 
 #include "graphics/Window.h"
 #include "util/Logger.h"
@@ -50,7 +51,7 @@ int Engine::Run(iGame *game)
     _exit = false;
     unsigned int framerate = 0;
     float seconds = 0;
-    float dt;
+    double dt;
     uTime timer;
     uRandom::initRandomSeed();
 
@@ -95,16 +96,7 @@ int Engine::Run(iGame *game)
         seconds += dt;
         framerate++;
 
-        /*BUG LINUX quando
-         * Você muda de desktop
-         * virtual, o número
-         * de frames fica louco.
-         *
-         * Colocar esse delay,
-         * mesmo sendo feio,
-         * resolve o problema.
-         */
-        timer.Delay(1000/60.0f);
+        timer.Delay(1000.0/FRAMERATE_LIMIT);
 
     }
     Logger::CloseLogFile();

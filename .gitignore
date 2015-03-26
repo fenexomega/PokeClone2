@@ -4,3 +4,4 @@ cmake_install.cmake
 install_manifest.txt
 build/
 CMakeLists.txt.user*
+*.swp

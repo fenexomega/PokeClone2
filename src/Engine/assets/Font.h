@@ -16,22 +16,21 @@ enum FontAlign : short
     LEFT
 };
 
-class Font : iAsset
+class Font : public iAsset
 {
+    friend class FileLoader;
+
 private:
     TTF_Font* m_font;
     int m_textSize;
+
 public:
-
-    Font(std::string _path, int _textSize = 16);
-
-    //Renderiza o Fonto
-    void Render(int x, int y);
+    Font();
 
     shared_ptr<Texture> getTexture(std::string text,
                                    Color color, Uint32 lineWrap);
-
     ~Font();
+    int textSize() const;
 };
 
 #endif // FONT_H

@@ -28,8 +28,6 @@ void Drawer::drawLine(Color color,int x1, int y1, int x2, int y2)
     SDL_RenderDrawLine(RENDERER,x1,y1,x2,y2);
 }
 
-
-
 void Drawer::drawRect(Color color, int x, int y, int w, int h)
 {
     SDL_Rect rect = {x,y,w,h};
@@ -125,7 +123,7 @@ void Drawer::RenderTo(std::shared_ptr<Texture>texture )
         SDL_SetRenderTarget(RENDERER,texture->tex());
 }
 
-void Drawer::RenderText(Font *font, std::string text, int x, int y,
+void Drawer::RenderText(shared_ptr<Font> font, std::string text, int x, int y,
                         Color color,  Uint32 lineWrap,short align )
 {
    shared_ptr<Texture> tex = font->getTexture(text,color,lineWrap);

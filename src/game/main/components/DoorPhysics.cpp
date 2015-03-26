@@ -45,8 +45,8 @@ void DoorPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
 
 //NOTE: deveria rever a ordem das movimentações
-    _obj = obj;
-    _map = world;
+    if(!_obj) _obj = obj;
+    if(!_map) _map = world;
    UpdatePos();
 
     if(_active && sysPhysics::isColliding(_player->rect,obj->rect))

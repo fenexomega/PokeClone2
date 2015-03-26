@@ -10,6 +10,8 @@
 #include "graphics/Window.h"
 #include "util/Logger.h"
 #include "assets/Texture.h"
+#include <SDL2/SDL_ttf.h>
+#include "assets/Font.h"
 
 
 std::map<std::string,std::shared_ptr<iAsset> > FileLoader::files;
@@ -70,29 +72,56 @@ Json::Value FileLoader::LoadJson(std::string path)
 
     return root;
 }
-TTF_Font* FileLoader::LoadFont(std::string path,int size)
+shared_ptr<Font> FileLoader::LoadFont(std::string path,int size)
 {
+
+    shared_ptr<Font> shared;
+
+    auto auxpath = path + TOSTR(size);
+
+
+
+    if(files.find(auxpath) != files.end())
+    {
+        shared = std::static_pointer_cast<Font,iAsset>(files[auxpath]);
+        return shared;
+    }
+
+    shared = shared_ptr<Font>(new Font);
+
     TTF_Font *font = TTF_OpenFont(path.c_str(),size);
+
     if(font == NULL)
     {
         throw std::runtime_error(SDL_GetError());
     }
-    return font;
 
+    shared->m_font = font;
+    shared->m_textSize = size;
+
+    files[auxpath] = shared;
+    LOG("Loaded\tFont\t" + path);
+
+    return shared;
 }
 
 void FileLoader::Clear()
 {
-
-    for(std::map<std::string,std::shared_ptr<iAsset> >::iterator i = files.begin(); i != files.end(); ++i)
-        if(i->second.unique())
+    for(auto i = files.begin(); i != files.end(); ++i)
             files.erase(i);
+
 
 }
 
 void FileLoader::Update()
 {
-    for(auto i = files.begin(); i != files.end(); ++i)
+
+    for(std::map<std::string,std::shared_ptr<iAsset> >::iterator i = files.begin(); i != files.end(); ++i)
+        if(i->second.unique())
+        {
+            LOG("Erasing " + i->first);
             files.erase(i);
+        }
+
 }
 

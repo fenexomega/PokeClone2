@@ -3,12 +3,12 @@
 
 #include <iostream>
 #include <memory>
-#include <SDL2/SDL_ttf.h>
 #include <map>
 
 #include "json/json.h"
 
 class Texture;
+class Font;
 class iAsset;
 
 using std::shared_ptr;
@@ -26,7 +26,7 @@ public:
 //    static Mix_Chunk*   LoadSound(std::string path);
     static shared_ptr<Texture> LoadTexture(std::string path);
     static Json::Value LoadJson(std::string path);
-    static TTF_Font* LoadFont(std::string path, int size);
+    static shared_ptr<Font> LoadFont(std::string path, int size);
     static void Clear();
     static void Update();
 };

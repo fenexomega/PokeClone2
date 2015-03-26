@@ -21,7 +21,7 @@ public:
 
     Button(int x, int y, std::shared_ptr<Texture>normal,
            std::shared_ptr<Texture>mouseOver, iCommand* command ,
-           Font *font, std::string text, Color text_color);
+           std::shared_ptr<Font> font, std::string text, Color text_color);
     void RegisterCommand(iCommand* command);
     ~Button();
 
@@ -33,7 +33,7 @@ private:
     std::vector<std::shared_ptr<Texture> > textures;
     Rect rect;
     int state{};
-    Font *m_font{};
+    std::shared_ptr<Font> m_font;
     std::shared_ptr<Texture> m_text_tex;
     std::string m_text;
 };

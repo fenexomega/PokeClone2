@@ -6,7 +6,7 @@
 #include "graphics/Drawer.h"
 
 Button::Button(int x, int y, std::shared_ptr<Texture> normal, std::shared_ptr<Texture> mouseOver
-               , iCommand* command, Font *font, std::string text, Color text_color)
+               , iCommand* command, std::shared_ptr<Font> font, std::string text, Color text_color)
     : m_text(text)
 {
     rect = normal->getRect();
@@ -26,7 +26,6 @@ void Button::RegisterCommand(iCommand *command)
 
 Button::~Button()
 {
-    delete m_font;
     delete command;
     textures.clear();
 }

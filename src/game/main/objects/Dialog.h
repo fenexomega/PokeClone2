@@ -18,6 +18,7 @@ private:
     ptr_font _font;
 public:
     Dialog(std::string text,ptr_font font);
+    void Render();
     ~Dialog();
 };
 
