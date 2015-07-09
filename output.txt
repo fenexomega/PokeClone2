@@ -1,0 +1,94 @@
+Loaded	Font	Contents/Menu/UbuntuMono-B.ttf
+Loaded	Image	Contents/Menu/button.png
+Loaded	Image	Contents/Menu/buttonMouseOver.png
+Loaded	Font	Contents/Menu/slkscr.ttf
+Loaded	Font	Contents/Menu/slkscr.ttf
+Loaded	Json	Contents/MainGame/worlds/world0.json
+Creating	Map	Contents/MainGame/maps/map0.json
+Loaded	Json	Contents/MainGame/maps/map0.json
+Loaded	Json	Contents/MainGame/tiledmap.json
+Loaded	Image	Contents/MainGame/images/test_tiles.png
+Loaded	Json	Contents/MainGame/maps/map0.json
+Loaded	Json	Contents/MainGame/actors/player.json
+Loaded	Image	Contents/MainGame/images/playersprite.png
+Loaded	Lua	Contents/MainGame/scripts/playerInput.lua
+Objs.Size = 4
+Criando keys/key0
+Loaded	Json	Contents/MainGame/objects/keys/key0.json
+Loaded	Lua	Contents/MainGame/scripts/objectInput.lua
+Loaded	Image	Contents/MainGame/images/key0.png
+Criando doors/door0
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Image	Contents/MainGame/images/door0.png
+Loaded	Lua	Contents/MainGame/scripts/doorInput.lua
+Criando doors/door0
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Lua	Contents/MainGame/scripts/doorInput.lua
+Criando teleporters/tele0
+Loaded	Json	Contents/MainGame/objects/teleporters/tele0.json
+Loaded	Image	Contents/MainGame/images/downstair0.png
+Loaded	Lua	Contents/MainGame/scripts/teleporterInput.lua
+Criando keys/key0
+Loaded	Json	Contents/MainGame/actors/enemy0.json
+Loaded	Image	Contents/MainGame/images/mage_m.png
+Loaded	Lua	Contents/MainGame/scripts/randomInput.lua
+Criando doors/door0
+Loaded	Json	Contents/MainGame/actors/enemy0.json
+Loaded	Lua	Contents/MainGame/scripts/randomInput.lua
+Criando doors/door0
+Loaded	Json	Contents/MainGame/actors/enemy0.json
+Loaded	Lua	Contents/MainGame/scripts/randomInput.lua
+Creating	Map	Contents/MainGame/maps/map1.json
+Loaded	Json	Contents/MainGame/maps/map1.json
+Loaded	Json	Contents/MainGame/house.json
+Loaded	Json	Contents/MainGame/maps/map1.json
+Objs.Size = 4
+Criando keys/key0
+Loaded	Json	Contents/MainGame/objects/keys/key0.json
+Loaded	Lua	Contents/MainGame/scripts/objectInput.lua
+Criando doors/door0
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Lua	Contents/MainGame/scripts/doorInput.lua
+Criando doors/door0
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Json	Contents/MainGame/objects/doors/door0.json
+Loaded	Lua	Contents/MainGame/scripts/doorInput.lua
+Criando teleporters/tele0
+Loaded	Json	Contents/MainGame/objects/teleporters/tele0.json
+Loaded	Lua	Contents/MainGame/scripts/teleporterInput.lua
+Criando keys/key0
+Loaded	Json	Contents/MainGame/actors/enemy0.json
+Loaded	Lua	Contents/MainGame/scripts/randomInput.lua
+Criando doors/door0
+Loaded	Json	Contents/MainGame/actors/enemy0.json
+Loaded	Lua	Contents/MainGame/scripts/randomInput.lua
+Erasing Contents/Menu/UbuntuMono-B.ttf24
+Erasing Contents/Menu/button.png
+Erasing Contents/Menu/buttonMouseOver.png
+TELEPORTOU PARA map1 [396.000000, 232.000000]
+TELEPORTOU PARA map0 [396.000000, 232.000000]
+Item pegue!
+Porta Desativada
+Porta Desativada
+TELEPORTOU PARA map1 [396.000000, 232.000000]
+TELEPORTOU PARA map0 [396.000000, 232.000000]
+TELEPORTOU PARA map1 [396.000000, 232.000000]
+TELEPORTOU PARA map0 [396.000000, 232.000000]
+TELEPORTOU PARA map1 [396.000000, 232.000000]
+TELEPORTOU PARA map0 [396.000000, 232.000000]
+TELEPORTOU PARA map1 [396.000000, 232.000000]
+TELEPORTOU PARA map0 [396.000000, 232.000000]
+TELEPORTOU PARA map1 [396.000000, 232.000000]
+Loaded	Font	Contents/Menu/UbuntuMono-B.ttf
+Loaded	Image	Contents/Menu/button.png
+Loaded	Image	Contents/Menu/buttonMouseOver.png
+Erasing Contents/MainGame/images/playersprite.png
+Erasing Contents/MainGame/images/door0.png
+Erasing Contents/MainGame/images/downstair0.png
+Erasing Contents/MainGame/images/key0.png
+Erasing Contents/MainGame/images/mage_m.png
+Erasing Contents/MainGame/images/test_tiles.png
+Fechando log
