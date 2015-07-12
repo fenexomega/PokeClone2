@@ -2,14 +2,15 @@
 
 #include "systems/sysInput.h"
 
-PlayerInput::PlayerInput()
+PlayerInput::PlayerInput(iComponentMediator *mediator)
+    : cInput(mediator)
 {
 
 }
 
 void PlayerInput::Update(iGameObject *obj)
 {
-    obj->acc = Vector2D<int>(0,0);
+    obj->acc = Vector2D(0,0);
     if(sysInput::isKeyPressed(SDL_SCANCODE_W))
         obj->acc.y = -1;
     else if(sysInput::isKeyPressed(SDL_SCANCODE_S))

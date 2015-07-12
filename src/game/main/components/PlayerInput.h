@@ -2,12 +2,12 @@
 #define PLAYERINPUT_H
 
 #include "interfaces/iGameObject.h"
-#include "game/components/cInput.h"
+#include "components/cInput.h"
 
 class PlayerInput : public cInput
 {
 public:
-    PlayerInput();
+    PlayerInput(iComponentMediator *mediator);
     void Update(iGameObject *obj);
     ~PlayerInput();
 

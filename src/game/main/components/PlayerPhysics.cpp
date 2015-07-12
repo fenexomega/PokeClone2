@@ -4,8 +4,8 @@
 
 #include "systems/sysPhysics.h"
 
-PlayerPhysics::PlayerPhysics(int velocity,Rect hitBox)
-    : _velocity(velocity),_hitBox(hitBox)
+PlayerPhysics::PlayerPhysics(int velocity,Rect hitBox, ComponentMediator* mediator)
+    : _velocity(velocity),_hitBox(hitBox), cPhysics(mediator)
 {
 }
 
@@ -14,7 +14,7 @@ PlayerPhysics::~PlayerPhysics()
 
 }
 
-void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
+void PlayerPhysics::Update(iGameObject *obj, Map *world, float dt)
 {
 
     obj->pos += obj->acc*_velocity;
@@ -38,3 +38,5 @@ void PlayerPhysics::Update(iGameObject *obj, World *world, float dt)
 void PlayerPhysics::receiveMessage(int msg)
 {
 }
+
+
