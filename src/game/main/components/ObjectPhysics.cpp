@@ -3,7 +3,7 @@
 #include "systems/sysPhysics.h"
 #include "util/Logger.h"
 #include "main/objects/IteractiveItem.h"
-
+#include <cmath>
 
 ObjectPhysics::ObjectPhysics(iGameObject *player, iComponentMediator *mediator, bool active)
     : cPhysics(mediator),_player(player),_active(active)
@@ -57,4 +57,8 @@ void ObjectPhysics::UpdatePos()
     //BUG portas e objetos estão "tremendo" na tela
     _obj->rect.x = _map->pos.x + _obj->pos.x + _map->offset.x;
     _obj->rect.y = _map->pos.y + _obj->pos.y + _map->offset.y;
+    PRINT(_map->pos);
+    PRINT(" X = " <<  _map->pos.x + _obj->pos.x + _map->offset.x << " | " << _obj->rect.x);
+    PRINT(" Y = " << _map->pos.y + _obj->pos.y + _map->offset.y << " | " << _obj->rect.y);
+
 }

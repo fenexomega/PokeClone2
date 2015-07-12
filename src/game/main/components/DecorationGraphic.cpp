@@ -21,10 +21,8 @@ void DecorationGraphic::receiveMessage(int msg)
     switch(msg)
     {
         case DISSAPEAR:
-        {
             _active = !_active;
-
-        }break;
+        break;
     }
 
 }
@@ -36,6 +34,9 @@ void DecorationGraphic::Update(iGameObject *obj, float dt)
 
 void DecorationGraphic::Render(iGameObject *obj)
 {
+#ifndef RELEASE
+    PRINT("Draw Rect = " << obj->rect);
+#endif
     if(_active)
         Drawer::Render(_tex,&obj->rect);
 }

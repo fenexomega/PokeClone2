@@ -119,6 +119,21 @@ public:
         auto res = ABS(x - y);
         return res <= 0.01;
     }
+
+    inline Vector2D floor()
+    {
+        Vector2D aux;
+        aux.x = (int) this->x;
+        aux.y = (int) this->y;
+        return aux;
+    }
+
+    inline Vector2D ceiling()
+    {
+        Vector2D aux;
+        aux.x = int(this->x) < this->x ? (int) x+1 : (int) x;
+        aux.y = int(this->y) < this->y ? (int) y+1 : (int) y;
+    }
 };
 
 inline std::ostream& operator<<(std::ostream& ost,Vector2D vec)

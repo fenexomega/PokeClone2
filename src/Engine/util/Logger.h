@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "math/Vector2D.h"
 
 static std::ofstream logFile;
 
@@ -13,6 +14,8 @@ static std::ofstream logFile;
 #define TOSTR(x) std::to_string(x)
 #define ERROR(x) std::cerr << x << std::endl
 #define PRINT(x)  std::cout << x << std::endl
+
+
 
 
 class Logger
