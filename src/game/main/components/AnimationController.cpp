@@ -7,13 +7,13 @@
 int AnimationController::DirectionFrame(iGameObject *obj)
 {
     int result;
-    if(obj->acc.y <= -1)
+    if(obj->acc.y < 0)
         result = _animation->amtOfFrames()*3;
-    else if(obj->acc.y >=  1)
+    else if(obj->acc.y >  0)
         result = 0;
-    else if(obj->acc.x >=  1)
+    else if(obj->acc.x >  0)
         result = _animation->amtOfFrames();
-    else if( obj->acc.x <= -1)
+    else if( obj->acc.x < 0)
         result = _animation->amtOfFrames()*2;
     return result;
 }
