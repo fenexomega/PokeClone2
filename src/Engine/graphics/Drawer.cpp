@@ -106,7 +106,7 @@ void Drawer::Render(std::shared_ptr<Texture> texture, const int x, const int y,
 {
     SDL_Rect&& srcrect = texture->getRect().To_SDLRect();
     SDL_Rect&& destrect = texture->getRect().To_SDLRect();
-    SDL_Point&& centerP = {center.x,center.y};
+    SDL_Point&& centerP = {(int)center.x,(int)center.y};
     srcrect.x = destrect.x = x;
     srcrect.y = destrect.y = y;
 

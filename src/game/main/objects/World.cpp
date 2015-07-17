@@ -20,17 +20,20 @@ Map *World::findMapByName(std::string mapName)
 
 void World::setActualMap(Map *map)
 {
-    _actualMap = map;
-
+    _outerMap = map;
+    _mapHasChanged = true;
 }
 
 void World::setActualMap(std::string mapName, Vector2D playerPos)
 {
-    _actualMap = findMapByName(mapName);
-    _actualMap->pos = -playerPos;
-    GameObject *player = dynamic_cast<GameObject*>(_actualMap->player);
+    _outerMap = findMapByName(mapName);
+    _outerMap->pos = -playerPos;
+    GameObject *player = dynamic_cast<GameObject*>(_outerMap->player);
     player->pos = playerPos;
-    player->setMap(_actualMap);
+    player->setMap(_outerMap);
+    _mapHasChanged = true;
+
+
 }
 
 void World::addMap(Map *map)
@@ -71,10 +74,17 @@ World::~World()
 
 void World::Update(float dt)
 {
+    if(_mapHasChanged)
+    {
+        _actualMap = _outerMap;
+        _mapHasChanged = false;
+    }
     _actualMap->Update(dt);
 }
 
 void World::Render()
 {
-    _actualMap->Render();
+    //Ugly hack, but...
+    if(_actualMap)
+        _actualMap->Render();
 }

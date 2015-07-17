@@ -15,9 +15,12 @@ class GameObject;
 class World
 {
 private:
-    Map *_actualMap;
+    Map *_actualMap{};
     std::vector<Map *> _maps;
     GameObject *_player;
+    bool _mapHasChanged = false;
+    Map *_outerMap{};
+
 
     Map* findMapByName(std::string mapName);
 public:
@@ -31,6 +34,9 @@ public:
     void addMap(Map *map);
 
     void Move(Vector2D v);
+
+    //Function to alerts that the world changed,
+    //needs to call update again, on the other frame
 
     Map * at(int i);
 
